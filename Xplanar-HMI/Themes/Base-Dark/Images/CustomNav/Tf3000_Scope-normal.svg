@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 198.57 153.7"
+   id="uuid-cafb1e00-af8f-42ae-bcca-3586527dc8db"
+   overflow="hidden"
+   version="1.1"
+   sodipodi:docname="Tf3000_Scope-active.svg"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview13"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="4.8340925"
+     inkscape:cx="99.294749"
+     inkscape:cy="76.849998"
+     inkscape:window-width="1920"
+     inkscape:window-height="961"
+     inkscape:window-x="-9"
+     inkscape:window-y="21"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="uuid-cafb1e00-af8f-42ae-bcca-3586527dc8db" />
+  <style
+     type="text/css"
+     id="style1">
+        .Icon{fill:#090806;} <!-- icon fill color default: #090806-->
+</style>
+  <defs
+     id="defs1" />
+  <path
+     d="M175.19 0 23.37 0C10.49 0 0 10.49 0 23.37L0 130.33C0 143.22 10.49 153.7 23.37 153.7L175.19 153.7C188.08 153.7 198.56 143.22 198.56 130.33L198.56 23.37C198.56 10.48 188.07 0 175.19 0L175.19 0ZM23.37 12 175.19 12C181.46 12 186.56 17.1 186.56 23.37L186.56 70.68C183.83 74.41 178.34 81.58 171.59 88.71 159.56 101.41 148.75 108.41 141.14 108.41 129.46 108.41 119.2 96.67 110.75 84.26L111.11 84.26 111.11 79.26 107.45 79.26C105.77 76.64 104.17 74.06 102.67 71.63L101.28 69.38 111.12 69.38 111.12 64.38 98.18 64.38C96.2 61.19 94.09 57.84 91.83 54.5L111.12 54.5 111.12 49.5 88.33 49.5C78.99 36.7 67.39 25.34 52.74 25.34 45.11 25.34 32.14 30.99 11.99 55.7L11.99 23.37C11.99 17.1 17.09 12 23.36 12L23.36 12ZM175.19 141.7 23.37 141.7C17.1 141.7 12 136.6 12 130.33L12 72.04C28.8 49.33 44.28 35.35 52.75 35.35 65.96 35.35 77.36 50.38 86.36 64.39L81.44 64.39 81.44 69.39 89.52 69.39C90.1 70.32 90.66 71.23 91.22 72.13L94.18 76.9C94.66 77.68 95.15 78.47 95.65 79.27L81.45 79.27 81.45 84.27 98.8 84.27C100.9 87.55 103.12 90.89 105.5 94.15L81.46 94.15 81.46 99.15 109.34 99.15C117.99 109.81 128.42 118.42 141.17 118.42 157.47 118.42 175.55 100.28 186.59 87.01L186.59 130.34C186.59 136.61 181.49 141.71 175.22 141.71L175.22 141.71Z"
+     class="Icon"
+     id="path1"
+     style="fill:#ffffff;fill-opacity:1" />
+  <path
+     d="M111.12 19.74 81.44 19.74 81.44 24.74 111.12 24.74 111.12 19.74 111.12 19.74Z"
+     class="Icon"
+     id="path2"
+     style="fill:#ffffff;fill-opacity:1" />
+  <path
+     d="M111.12 34.62 81.44 34.62 81.44 39.62 111.12 39.62 111.12 34.62 111.12 34.62Z"
+     class="Icon"
+     id="path3"
+     style="fill:#ffffff;fill-opacity:1" />
+  <path
+     d="M81.44 114.03 111.12 114.03 111.12 109.03 81.44 109.03 81.44 114.03 81.44 114.03Z"
+     class="Icon"
+     id="path4"
+     style="fill:#ffffff;fill-opacity:1" />
+  <path
+     d="M81.44 128.91 111.12 128.91 111.12 123.91 81.44 123.91 81.44 128.91 81.44 128.91Z"
+     class="Icon"
+     id="path5"
+     style="fill:#ffffff;fill-opacity:1" />
+  <path
+     d="M17.15 81.48 22.15 81.48 22.15 67.76 17.15 67.76 17.15 81.48 17.15 81.48Z"
+     class="Icon"
+     id="path6"
+     style="fill:#ffffff;fill-opacity:1" />
+  <path
+     d="M32.47 81.48 37.47 81.48 37.47 67.76 32.47 67.76 32.47 81.48 32.47 81.48Z"
+     class="Icon"
+     id="path7"
+     style="fill:#ffffff;fill-opacity:1" />
+  <path
+     d="M47.8 81.48 52.8 81.48 52.8 67.76 47.8 67.76 47.8 81.48 47.8 81.48Z"
+     class="Icon"
+     id="path8"
+     style="fill:#ffffff;fill-opacity:1" />
+  <path
+     d="M63.13 81.48 68.13 81.48 68.13 67.76 63.13 67.76 63.13 81.48 63.13 81.48Z"
+     class="Icon"
+     id="path9"
+     style="fill:#ffffff;fill-opacity:1" />
+  <path
+     d="M129.43 67.76 124.43 67.76 124.43 81.48 129.43 81.48 129.43 67.76 129.43 67.76Z"
+     class="Icon"
+     id="path10"
+     style="fill:#ffffff;fill-opacity:1" />
+  <path
+     d="M144.76 67.76 139.76 67.76 139.76 81.48 144.76 81.48 144.76 67.76 144.76 67.76Z"
+     class="Icon"
+     id="path11"
+     style="fill:#ffffff;fill-opacity:1" />
+  <path
+     d="M160.08 67.76 155.08 67.76 155.08 81.48 160.08 81.48 160.08 67.76 160.08 67.76Z"
+     class="Icon"
+     id="path12"
+     style="fill:#ffffff;fill-opacity:1" />
+  <path
+     d="M175.41 67.76 170.41 67.76 170.41 81.48 175.41 81.48 175.41 67.76 175.41 67.76Z"
+     class="Icon"
+     id="path13"
+     style="fill:#ffffff;fill-opacity:1" />
+</svg>

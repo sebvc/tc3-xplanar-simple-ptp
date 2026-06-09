@@ -1,0 +1,179 @@
+<div id="Scope" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-height-mode="Value" data-tchmi-creator-viewport-width="1920" data-tchmi-right="0" data-tchmi-bottom="0">
+
+  <div id="TcHmiTextblock_Scope_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="32" data-tchmi-height-unit="px" data-tchmi-left="32" data-tchmi-left-unit="px" data-tchmi-text="%l%L_Scope%/l%" data-tchmi-top="16" data-tchmi-top-unit="px" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-right="16">
+    <script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
+      [
+      "headline-2"
+      ]
+    </script>
+  </div>
+
+  <div id="TcHmiGrid_Scope_1" data-tchmi-type="TcHmi.Controls.System.TcHmiGrid" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-top="48" data-tchmi-top-unit="px" data-tchmi-height-unit="px" data-tchmi-right="0" data-tchmi-bottom="0" data-tchmi-creator-visibility="Visible" data-tchmi-min-width="200" data-tchmi-min-height="200">
+    <script data-tchmi-target-attribute="data-tchmi-column-options" type="application/json">
+[
+  {
+    "maxWidthUnit": "px",
+    "minWidthUnit": "px",
+    "overflow": false,
+    "width": 1.0,
+    "widthMode": "Value",
+    "widthUnit": "factor"
+  },
+  {
+    "width": 2.0,
+    "widthMode": "Value",
+    "widthUnit": "factor"
+  }
+]
+</script>
+
+
+    <script data-tchmi-target-attribute="data-tchmi-cell-options" type="application/json">
+[
+  {
+    "backgroundImageHeightUnit": "px",
+    "backgroundImageHorizontalAlignment": "Center",
+    "backgroundImageVerticalAlignment": "Center",
+    "backgroundImageWidthUnit": "px",
+    "columnIndex": 0,
+    "padding": {
+      "left": 16,
+      "right": 16,
+      "top": 16,
+      "bottom": 16,
+      "leftUnit": "px",
+      "rightUnit": "px",
+      "topUnit": "px",
+      "bottomUnit": "px"
+    },
+    "rowIndex": 0
+  },
+  {
+    "columnIndex": 1,
+    "padding": {
+      "left": 16,
+      "right": 16,
+      "top": 16,
+      "bottom": 16,
+      "leftUnit": "px",
+      "rightUnit": "px",
+      "topUnit": "px",
+      "bottomUnit": "px"
+    },
+    "rowIndex": 0
+  }
+]
+</script>
+    <div id="TcHmiContainer_Scope_1" data-tchmi-type="TcHmi.Controls.System.TcHmiContainer" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width-unit="px" data-tchmi-right-unit="px" data-tchmi-right="0" data-tchmi-bottom="0" data-tchmi-min-height="100" data-tchmi-creator-visibility="Visible">
+
+
+        <script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
+            [
+            "background-container"
+            ]
+        </script>
+
+            <div id="TcHmiScopeControl_XY" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiScopeControl.TcHmiScopeControl" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-top="5" data-tchmi-top-unit="px" data-tchmi-enable-record-controls="False" data-tchmi-enable-show-trigger-window="False" data-tchmi-server-interval="100" data-tchmi-opacity="1" data-tchmi-chart-color-source="Theme" data-tchmi-trigger-window-position="Left" data-tchmi-autostart-record="True" data-tchmi-right="5" data-tchmi-bottom="5" data-tchmi-creator-visibility="Visible">
+<script data-tchmi-target-attribute="data-tchmi-scope-config" type="application/json">
+{
+  "name": "Xplanar-Scope",
+  "chart": "XY Chart"
+}
+</script>
+        </div>
+</div>
+    
+    
+
+  <div id="TcHmiContainer_Scope_2" data-tchmi-type="TcHmi.Controls.System.TcHmiContainer" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width-unit="px" data-tchmi-right-unit="px" data-tchmi-right="0" data-tchmi-bottom="0" data-tchmi-min-height="100" data-tchmi-creator-visibility="Visible" data-tchmi-grid-column-index="1">
+<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
+            [
+            "background-container"
+            ]
+        </script>
+
+            <div id="TcHmiScopeControl_M1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiScopeControl.TcHmiScopeControl" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-top="5" data-tchmi-top-unit="px" data-tchmi-enable-record-controls="True" data-tchmi-enable-show-trigger-window="False" data-tchmi-server-interval="100" data-tchmi-opacity="1" data-tchmi-chart-color-source="Theme" data-tchmi-trigger-window-position="Left" data-tchmi-autostart-record="True" data-tchmi-right="5" data-tchmi-bottom="5" data-tchmi-creator-visibility="Visible">
+
+        
+
+
+<script data-tchmi-target-attribute="data-tchmi-scope-config" type="application/json">
+{
+  "name": "Xplanar-Scope",
+  "chart": "YT Chart (Both)"
+}
+</script>
+</div>
+</div>
+</div>
+<div id="TcHmiToggleSwitch_YTScope" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiToggleSwitch" data-tchmi-height="40" data-tchmi-height-unit="px" data-tchmi-text="Switch Mover Position Scope" data-tchmi-top="16" data-tchmi-top-unit="px" data-tchmi-text-horizontal-alignment="Right" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-position="Left" data-tchmi-right="32" data-tchmi-is-enabled="True" data-tchmi-toggle-state="Normal">
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "%ctx%owner::Id|EventRegistrationMode=Resolve%/ctx%.onToggleStateChanged",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "parts": [
+          {
+            "if": [
+              {
+                "compare1": {
+                  "objectType": "Symbol",
+                  "valueType": "tchmi:framework#/definitions/ToggleState",
+                  "symbolExpression": "%ctx%owner::ToggleState%/ctx%"
+                },
+                "compare2": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ToggleState",
+                  "value": "Normal"
+                },
+                "compareOperator": "==",
+                "logic": null
+              }
+            ],
+            "then": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%TcHmiScopeControl_M1::ScopeConfig%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiScopeControl.Config",
+                  "value": {
+                    "name": "Xplanar-Scope",
+                    "chart": "M1 YT Chart"
+                  }
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "else": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%TcHmiScopeControl_M1::ScopeConfig%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiScopeControl.Config",
+                  "value": {
+                    "name": "Xplanar-Scope",
+                    "chart": "M2 YT Chart"
+                  }
+                },
+                "asyncWait": true
+              }
+            ]
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+</div>

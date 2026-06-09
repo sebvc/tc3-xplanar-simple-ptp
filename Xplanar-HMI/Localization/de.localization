@@ -1,0 +1,16 @@
+{
+  "$schema": "../../Packages/Beckhoff.TwinCAT.HMI.Framework.14.4.5/runtimes/native1.12-tchmi/Schema/LocalizationDescription.Schema.json",
+  "locale": "de",
+  "localizedText": {
+    "L_StartPage": "Startseite",
+    "L_Visualization": "Visualisierung",
+    "L_Scope": "Messumfang",
+    "L_EtherCATDiagnostics": "EtherCAT Diagnóstik",
+    "L_Events": "Meldungen",
+    "L_Localization": "Lokalisierung",
+    "L_Theme": "Farbschema",
+    "L_Settings": "Einstellungen",
+    "L_Diagnostics": "Diagnóstik",
+    "L_TwinCATScope": "TwinCAT Scope"
+  }
+}

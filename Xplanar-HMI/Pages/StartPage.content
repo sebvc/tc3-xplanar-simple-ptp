@@ -1,0 +1,140 @@
+<div id="StartPage" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-height-mode="Value" data-tchmi-creator-viewport-width="1152" data-tchmi-right="0" data-tchmi-bottom="0">
+  <div id="TcHmiTextblock_StartPage_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="32" data-tchmi-height-unit="px" data-tchmi-left="32" data-tchmi-left-unit="px" data-tchmi-text="%l%L_StartPage%/l%" data-tchmi-top="16" data-tchmi-top-unit="px" data-tchmi-width="288" data-tchmi-width-unit="px" data-tchmi-word-wrap="True">
+    <script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
+      [
+      "headline-2"
+      ]
+    </script>
+  </div>
+
+  <div id="TcHmiGrid_StartPage_1" data-tchmi-type="TcHmi.Controls.System.TcHmiGrid" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-top="48" data-tchmi-top-unit="px" data-tchmi-cell-wrap="True" data-tchmi-creator-visibility="Visible" data-tchmi-width-unit="%" data-tchmi-width="100" data-tchmi-bottom="0">
+    <script data-tchmi-target-attribute="data-tchmi-column-options" type="application/json">
+[
+  {
+    "width": 1.0,
+    "widthMode": "Content",
+    "widthUnit": "factor"
+  },
+  {
+    "width": 1.0,
+    "widthMode": "Content",
+    "widthUnit": "factor"
+  },
+  {
+    "width": 1.0,
+    "widthMode": "Value",
+    "widthUnit": "factor"
+  }
+]
+</script>
+    <script data-tchmi-target-attribute="data-tchmi-row-options" type="application/json">
+[
+  {
+    "height": 1.0,
+    "heightMode": "Value",
+    "heightUnit": "factor",
+    "maxHeightUnit": "px",
+    "minHeightUnit": "px",
+    "overflow": false
+  }
+]
+</script>
+
+
+    
+        
+  
+<script data-tchmi-target-attribute="data-tchmi-cell-options" type="application/json">
+[
+  {
+    "columnIndex": 2,
+    "padding": {
+      "left": 0,
+      "right": 16,
+      "top": 16,
+      "bottom": 16,
+      "leftUnit": "px",
+      "rightUnit": "px",
+      "topUnit": "px",
+      "bottomUnit": "px"
+    },
+    "rowIndex": 0
+  },
+  {
+    "columnIndex": 1,
+    "padding": {
+      "left": 0,
+      "right": 16,
+      "top": 16,
+      "bottom": 16,
+      "leftUnit": "px",
+      "rightUnit": "px",
+      "topUnit": "px",
+      "bottomUnit": "px"
+    },
+    "rowIndex": 0
+  },
+  {
+    "columnIndex": 0,
+    "padding": {
+      "left": 16,
+      "right": 16,
+      "top": 16,
+      "bottom": 16,
+      "leftUnit": "px",
+      "rightUnit": "px",
+      "topUnit": "px",
+      "bottomUnit": "px"
+    },
+    "rowIndex": 0
+  }
+]
+</script>
+<div id="XPlanarView_2" data-tchmi-type="TcHmi.Controls.XPlanarView.XPlanarView" data-tchmi-tile-config="%s%ADS.PLC1.XPlanarHMI.TileObjects%/s%" data-tchmi-mover-info="%s%ADS.PLC1.XPlanarHMI.MoverObjects%/s%" data-tchmi-mover-vector-data="%s%ADS.PLC1.XPlanarHMI.MoverPositions%/s%" data-tchmi-rotate="False" data-tchmi-use-mover-image="True" data-tchmi-scale-to-fit="True" data-tchmi-display-mover-btn="False" data-tchmi-smooth-motion="True" data-tchmi-grid-column-index="0" data-tchmi-height-mode="Value" data-tchmi-width-mode="Value" data-tchmi-opacity="1" data-tchmi-width="%f%%ctrl%TcHmiGrid_StartPage_1::RenderedHeight%/ctrl%/2-16%/f%" data-tchmi-width-unit="px" data-tchmi-height-unit="%" data-tchmi-height="100">
+
+
+
+
+
+
+
+
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+{
+  "color": "rgba(255, 0, 0, 1)"
+}
+</script>
+</div>
+<div id="TcHmiScopeControl_XY_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiScopeControl.TcHmiScopeControl" data-tchmi-enable-record-controls="False" data-tchmi-enable-show-trigger-window="False" data-tchmi-server-interval="100" data-tchmi-chart-color-source="Theme" data-tchmi-trigger-window-position="Left" data-tchmi-autostart-record="True" data-tchmi-creator-visibility="Visible" data-tchmi-grid-column-index="1" data-tchmi-height-mode="Value" data-tchmi-width-mode="Value" data-tchmi-opacity="1" data-tchmi-width="%f%%ctrl%TcHmiGrid_StartPage_1::RenderedHeight%/ctrl%/2%/f%" data-tchmi-height-unit="%" data-tchmi-height="100">
+<script data-tchmi-target-attribute="data-tchmi-scope-config" type="application/json">
+{
+  "name": "Xplanar-Scope",
+  "chart": "XY Chart"
+}
+</script>
+        
+
+
+
+
+
+
+
+</div>
+<div id="TcHmiVideo_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiVideo" data-tchmi-controls="True" data-tchmi-mute="True" data-tchmi-autoplay="True" data-tchmi-loop="True" data-tchmi-poster="Images/Media/XPlanar_PC_based_kv.jpg" data-tchmi-width-mode="Value" data-tchmi-height-mode="Value" data-tchmi-height="100" data-tchmi-height-unit="%" data-tchmi-width="100" data-tchmi-width-unit="%" data-tchmi-left="0" data-tchmi-top="0" data-tchmi-grid-row-index="0" data-tchmi-grid-column-index="2">
+<script data-tchmi-target-attribute="data-tchmi-src-list" type="application/json">
+[
+  {
+    "source": "Images/Media/IO_production_testing_machine_XPlanar.mp4"
+  }
+]
+</script>
+
+
+</div>
+</div>
+</div>

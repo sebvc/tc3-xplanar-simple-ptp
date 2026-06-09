@@ -1,0 +1,20 @@
+<div id="Visualization" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width-mode="Value" data-tchmi-height-mode="Value" data-tchmi-right="0" data-tchmi-bottom="0">
+  
+  <div id="TcHmiTextblock_Visualization_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="32" data-tchmi-height-unit="px" data-tchmi-left="32" data-tchmi-left-unit="px" data-tchmi-text="%l%L_Visualization%/l%" data-tchmi-top="16" data-tchmi-top-unit="px" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-right="16">
+    <script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
+      [
+      "headline-2"
+      ]
+    </script>
+  </div>
+
+  <div id="TcHmiContainer_Visualization_1" data-tchmi-type="TcHmi.Controls.System.TcHmiContainer" data-tchmi-left="16" data-tchmi-left-unit="px" data-tchmi-top="64" data-tchmi-top-unit="px" data-tchmi-right-unit="px" data-tchmi-right="16" data-tchmi-width-mode="Parent" data-tchmi-height-mode="Value" data-tchmi-bottom="16">
+    <script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
+      [
+      "background-container"
+      ]
+    </script>
+  <div id="XPlanarView_1" data-tchmi-type="TcHmi.Controls.XPlanarView.XPlanarView" data-tchmi-left="10" data-tchmi-left-unit="px" data-tchmi-tile-config="%s%ADS.PLC1.XPlanarHMI.TileObjects%/s%" data-tchmi-mover-info="%s%ADS.PLC1.XPlanarHMI.MoverObjects%/s%" data-tchmi-mover-vector-data="%s%ADS.PLC1.XPlanarHMI.MoverPositions%/s%" data-tchmi-rotate="True" data-tchmi-use-mover-image="False" data-tchmi-scale-to-fit="True" data-tchmi-display-mover-btn="True" data-tchmi-smooth-motion="True" data-tchmi-top="%ctrl%XPlanarView_1::Left%/ctrl%" data-tchmi-right="%ctrl%XPlanarView_1::Left%/ctrl%" data-tchmi-bottom="%ctrl%XPlanarView_1::Left%/ctrl%">
+</div>
+</div>    
+</div>
