@@ -9,7 +9,7 @@
     <WriteProductVersion>true</WriteProductVersion>
     <GenerateTpy>false</GenerateTpy>
     <Name>PLC1</Name>
-    <ProgramVersion>3.1.4026.24</ProgramVersion>
+    <ProgramVersion>3.1.4026.25</ProgramVersion>
     <Application>{5a2fb397-92e6-4204-bd6e-216bc41ce243}</Application>
     <TypeSystem>{b78a24a5-397d-4c9a-b81a-ce14b634d8f0}</TypeSystem>
     <Implicit_Task_Info>{8a4ecf42-cedc-47e2-8318-8f4016af6f01}</Implicit_Task_Info>
@@ -46,6 +46,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PlcTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\F_IncrementSequeceIndex.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\F_SetAllMoversMovement.TcPOU">
