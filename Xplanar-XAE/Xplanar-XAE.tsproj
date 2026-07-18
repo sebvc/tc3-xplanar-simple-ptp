@@ -14818,7 +14818,7 @@
 					<Name>Normal</Name>
 					<Simulation Enable="false"/>
 					<TargetNetId>169.254.221.1.1.1</TargetNetId>
-					<BuildConfig>Release|TwinCAT OS (x64)</BuildConfig>
+					<BuildConfig>Release|TwinCAT RT (x64)</BuildConfig>
 				</Variant>
 				<Variant>
 					<Name>SimOnIPC</Name>
@@ -14830,7 +14830,7 @@
 					<Name>UMRT</Name>
 					<Simulation Enable="false"/>
 					<TargetNetId>199.4.42.250.1.1</TargetNetId>
-					<BuildConfig>Release|TwinCAT OS (x64)</BuildConfig>
+					<BuildConfig>Release|TwinCAT RT (x64)</BuildConfig>
 				</Variant>
 			</ProjectVariant>
 		</System>
@@ -15124,10 +15124,6 @@
 							<Value>
 								<Name>Maximal position.c</Name>
 								<Value>11</Value>
-							</Value>
-							<Value>
-								<Name>C coordinate modulus</Name>
-								<Value>360</Value>
 							</Value>
 							<Value>
 								<Name>Maximum Position Lag Value.x</Name>
@@ -15559,10 +15555,6 @@
 							<Value>
 								<Name>Maximal position.c</Name>
 								<Value>11</Value>
-							</Value>
-							<Value>
-								<Name>C coordinate modulus</Name>
-								<Value>360</Value>
 							</Value>
 							<Value>
 								<Name>Maximum Position Lag Value.x</Name>
@@ -16705,7 +16697,7 @@
 		</Motion>
 		<Plc>
 			<Project GUID="{233169FE-F7A5-4EC4-9427-C86C70D23AE6}" Name="PLC1" PrjFilePath="PLC1\PLC1.plcproj" TmcFilePath="PLC1\PLC1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{333CE2AD-5139-CF80-E286-4478AB6FA4DD}" TmcPath="PLC1\PLC1.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{E5404B19-F884-4414-5E29-2FA6EBEA714A}" TmcPath="PLC1\PLC1.tmc">
 					<Name>PLC1 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -16806,6 +16798,7 @@
 		</Variants>
 	</Project>
 	<Mappings>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500820000403}" Id="#x02030070"/>
 		<MappingInfo Identifier="{02010050-0060-0201-5000-010110001105}" Id="#x02030030" Watchdog="20000000040000000400000004000000"/>
 		<MappingInfo Identifier="{02010050-0060-0201-6000-010120001105}" Id="#x02030040" Watchdog="20000000040000000400000004000000"/>
 		<MappingInfo Identifier="{02010060-2001-0850-1000-100500205008}" Id="#x02030010" Watchdog="04000000080000000400000004000000"/>

@@ -24,7 +24,9 @@ TYPE E_DemoStep :
 	Spin,
 	Lift,
 	Tilt,
-	Disable
+	Disable,
+	//added for ADLM
+	MoveAroundSingleTile
 );
 END_TYPE
 ]]></Declaration>

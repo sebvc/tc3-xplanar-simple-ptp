@@ -45,6 +45,9 @@ VAR
 	
 	LicUsbState AT %I* : E_UsbLicenseDongleSate; // license dongle state //UINT;
 	
+	Mover1_is_on_Top: BOOL;
+	TopMoverTarget: ST_POINT;
+	BottomMoverTarget: ST_POINT;
 END_VAR                      	
 VAR CONSTANT
 	MAX_SEQUENCE_STEPS		: USINT := 14;
@@ -70,7 +73,16 @@ VAR CONSTANT
 	TOP_RIGHT				:	ST_POINT	:=	(X := 180.0, 	Y := 420.0);
 	BOTTOM_LEFT				:	ST_POINT	:=	(X := 60.0, 	Y := 60.0);
 	BOTTOM_RIGHT			:	ST_POINT	:=	(X := 180.0, 	Y := 60.0);
-	                         	        	  	
+	
+	TOP_UPPER_RIGHT			:	ST_POINT	:=	(X := 180.0, 	Y := 420.0);
+	TOP_UPPER_LEFT			:	ST_POINT	:=	(X := 60.0, 	Y := 420.0);
+	TOP_LOWER_RIGHT			:	ST_POINT	:=	(X := 180.0, 	Y := 300.0);
+	TOP_LOWER_LEFT			:	ST_POINT	:=	(X := 60.0, 	Y := 300.0);
+	BOTTOM_UPPER_RIGHT		:	ST_POINT	:=	(X := 180.0, 	Y := 180.0);
+	BOTTOM_UPPER_LEFT		:	ST_POINT	:=	(X := 60.0, 	Y := 180.0);
+	BOTTOM_LOWER_RIGHT		:	ST_POINT	:=	(X := 180.0, 	Y := 60.0);
+	BOTTOM_LOWER_LEFT		:	ST_POINT	:=	(X := 60.0, 	Y := 60.0);	                         	        	  	
+	
 	TOP_CENTER				:	ST_POINT	:=	(X := 120.0, 	Y := 360.0);
 	BOTTOM_CENTER			:	ST_POINT	:=	(X := 120.0, 	Y := 120.0);	
 END_VAR
@@ -335,22 +347,76 @@ CASE Step OF
 		END_IF
 		
 {endregion}	
-{region "MoveToCenterOfTiles"}	
+{region "MoveAroundSingleTile"}	
+
+	E_DemoStep.MoveAroundSingleTile:						
+		CASE SubStep OF 
+			0:
+				Cycles:=0;
+				Mover1_is_on_Top 	:= ip.Movers[1].ActualPosition.y > ip.Movers[2].ActualPosition.y;
+				SubStep:=1;
+				
+			1:	TopMoverTarget:=TOP_UPPER_LEFT;		BottomMoverTarget:=BOTTOM_LOWER_RIGHT;
+			2:	TopMoverTarget:=TOP_UPPER_RIGHT;	BottomMoverTarget:=BOTTOM_LOWER_LEFT;
+			3:	TopMoverTarget:=TOP_LOWER_RIGHT;	BottomMoverTarget:=BOTTOM_UPPER_LEFT;
+			4:	TopMoverTarget:=TOP_LOWER_LEFT;		BottomMoverTarget:=BOTTOM_UPPER_RIGHT;
+		END_CASE
+		IF Mover1_is_on_Top THEN 
+			Mover1Target := TopMoverTarget;
+			Mover2Target := BottomMoverTarget;
+		ELSE
+			Mover1Target := BottomMoverTarget;
+			Mover2Target := TopMoverTarget; 
+		END_IF
+		IF 	ip.Movers[1].MoveCommand.FreeMove(Mover1Target.x,Mover1Target.Y).Done AND
+			ip.Movers[2].MoveCommand.FreeMove(Mover2Target.x,Mover2Target.Y).Done
+		THEN
+			IF SubStep=4 THEN //Cycle completed
+				Cycles			:=Cycles+1;
+				IF Cycles=2 THEN
+					Substep:=0;
+					//Next Step in Sequence
+					F_IncrementSequeceIndex(currentIdx:=SequenceIndx, MaxSequenceSteps:=MAX_SEQUENCE_STEPS);
+					Step:= MoveSequence[SequenceIndx]; 
+					//Step	:=E_DemoStep.MoveToCenterOfTiles;
+				ELSE
+					SubStep	:=1; // first move substep
+				END_IF
+			ELSE
+				SubStep	:=SubStep+1;
+			END_IF
+				
+		END_IF
+		
+{endregion}	
+{region "MoveToCenterOfTiles"}	// mover 1 should be on Top tile already, mover 2 on Bottom Tile
 
 	E_DemoStep.MoveToCenterOfTiles:
-
-		IF 	ip.Movers[1].MoveCommand.FreeMove(TOP_CENTER.X,TOP_CENTER.Y).Done AND
-			ip.Movers[2].MoveCommand.FreeMove(BOTTOM_CENTER.X,BOTTOM_CENTER.Y).Done
-		THEN
-			//Cycles	:=0;
-			//FlipFlop:=FALSE;
-			//F_SetAllMoversRotation(ROTATE_INVERSE_MOVE);
-			//Next Step in Sequence
-			F_IncrementSequeceIndex(currentIdx:=SequenceIndx, MaxSequenceSteps:=MAX_SEQUENCE_STEPS);
-			Step:= MoveSequence[SequenceIndx]; 
-			//Step	:=E_DemoStep.RotateInverse;
-		END_IF	
-		
+		CASE SubStep OF
+			0: 
+				IF ip.Movers[1].ActualPosition.y > ip.Movers[2].ActualPosition.y THEN 
+					//this should be true already in default sequence
+					Mover1Target 	:= TOP_CENTER;
+					Mover2Target 	:= BOTTOM_CENTER;	
+				ELSE
+					Mover1Target 	:= BOTTOM_CENTER;
+					Mover2Target 	:= TOP_CENTER;		
+				END_IF
+				SubStep:=1;
+			1:
+				IF 	ip.Movers[1].MoveCommand.FreeMove(Mover1Target.X,Mover1Target.Y).Done AND
+					ip.Movers[2].MoveCommand.FreeMove(Mover2Target.X,Mover2Target.Y).Done
+				THEN
+					SubStep:=0;
+					//Cycles	:=0;
+					//FlipFlop:=FALSE;
+					//F_SetAllMoversRotation(ROTATE_INVERSE_MOVE);
+					//Next Step in Sequence
+					F_IncrementSequeceIndex(currentIdx:=SequenceIndx, MaxSequenceSteps:=MAX_SEQUENCE_STEPS);
+					Step:= MoveSequence[SequenceIndx]; 
+					//Step	:=E_DemoStep.RotateInverse;
+				END_IF	
+		END_CASE
 {endregion}	
 {region "RotateInverse"}	
 		
@@ -502,7 +568,7 @@ CASE Step OF
 				THEN
 					//Next Step in Sequence
 					F_IncrementSequeceIndex(currentIdx:=SequenceIndx, MaxSequenceSteps:=MAX_SEQUENCE_STEPS);
-					Step:= MoveSequence[SequenceIndx]; //starts/Init to 1
+					Step:= MoveSequence[SequenceIndx]; 
 					//Step	:=E_DemoStep.Init;
 				END_IF					
 				
