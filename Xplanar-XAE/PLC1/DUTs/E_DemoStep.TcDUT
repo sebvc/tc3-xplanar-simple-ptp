@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.19">
   <DUT Name="E_DemoStep" Id="{ec2e79b1-db13-496a-827a-4cb926db1174}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 {attribute 'strict'}
@@ -24,7 +24,13 @@ TYPE E_DemoStep :
 	Spin,
 	Lift,
 	Tilt,
-	Disable
+	Disable,
+	//added for ADLM
+	ADLM_Step1, // L_move for test tubes AND RotateInverse for Pipeting
+	ADLM_Step2, // traverse to start positions for Gripper AND dispensing head
+	ADLM_Step3, // cycle through six tubes AND start Pipeting sequence
+	ADLM_Step4 // Spin Test tubes AND finish Pipeting sequence
+
 );
 END_TYPE
 ]]></Declaration>

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.24" ClassName="CDevEthernetUsbDef" SubType="57" TcProjectVariant="Normal">
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.25" ClassName="CDevEthernetUsbDef" SubType="57" TcProjectVariant="Normal">
 	<ImageDatas>
 		<ImageData Id="1000">424df60200000000000036000000280000000e00000010000000010018000000000000000000c30e0000c30e00000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffffffff00ff000000000000000000000000000000000000000000000000000000000000000000000000ff00ff17ff000000000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00000000000000ff000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00000000ff000000ffffff000000ffffff000000ffffff000000000000000000ffffff171717ffffffffffff000000ffff000000ffffff000000ffffff000000ffffff000000ffffffffffffffffffeeeeee000000ffffff000000ffff000000ffffff000000000000ffffffffffff000000000000000000ffffffffffff101010ffffff000000ffff000000ffffff000000000000ffffffffffff000000ffffffffffffffffff000000ebebeb1e1e1e00000000ff000000ffffff000000ffffff000000ffffff000000000000000000ffffff000000ffffff000000000000ffff000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00000000ff303030000000000000000000000000000000000000000000000000000000000000000000000000303030ffffff00ffff00ff000000ffffffffffffffffffffffffffffffffffffffffffffffff000000ff00ffff00ffffffff00ffff00ff000000ffffffffffffffffffffffffffffffffffffffffffffffff000000ff00ffff00ffffffff00ffff00ff000000ffffffffffffffffffffffffffffffffffffffffffffffff000000ff00ffff00ffffffff00ffff00ff000000ffffffffffffffffffffffffffffffffffffffffffffffff000000ff00ffff00ffffffff00ffff00ff303030000000000000000000000000000000000000000000000000303030ff00ffff00ff00ff</ImageData>
 	</ImageDatas>
@@ -8,12 +8,12 @@
 		<ProjectVariant PvUseDisable="true" PvUseLink="true">
 			<Variant>
 				<Name>Normal</Name>
-				<Name>SimOnIPC</Name>
 				<Disable>false</Disable>
 				<AddressInfo/>
 				<AmsNetId>0.0.0.0.0.0</AmsNetId>
 			</Variant>
 			<Variant>
+				<Name>SimOnIPC</Name>
 				<Name>UMRT</Name>
 				<Disable>true</Disable>
 				<AddressInfo/>

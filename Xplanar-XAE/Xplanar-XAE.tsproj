@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.24" TcProjectVariant="Normal">
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.25" TcProjectVariant="Normal">
 	<DataTypes>
 		<DataType>
 			<Name GUID="{5AC0538E-BDFA-4B58-A6B5-99E997DABADA}" Namespace="MC">MoverVector</Name>
@@ -4828,12 +4828,12 @@
 			<EnumInfo>
 				<Text><![CDATA[Standard1D]]></Text>
 				<Enum>1</Enum>
-				<Comment><![CDATA[The Planar Mover keeps a distance to its neighbours on track that is at least the sum of gap and stop distance.]]></Comment>
+				<Comment><![CDATA[The Planar Mover keeps a distance to its neighbors on track that is at least the sum of gap and stop distance.]]></Comment>
 			</EnumInfo>
 			<EnumInfo>
 				<Text><![CDATA[Fast1D]]></Text>
 				<Enum>2</Enum>
-				<Comment><![CDATA[The Planar Mover keeps a distance to its neighbours on track that is at least the gap.]]></Comment>
+				<Comment><![CDATA[The Planar Mover keeps a distance to its neighbors on track that is at least the gap.]]></Comment>
 			</EnumInfo>
 			<Properties>
 				<Property>
@@ -4938,7 +4938,7 @@
 			<SubItem>
 				<Name>Gap</Name>
 				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
-				<Comment><![CDATA[Gap that the mover keeps to its neighbours.]]></Comment>
+				<Comment><![CDATA[Gap that the mover keeps to its neighbors.]]></Comment>
 				<BitSize>64</BitSize>
 				<BitOffs>192</BitOffs>
 			</SubItem>
@@ -5784,7 +5784,7 @@
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{D98B1DAF-0C0E-3C5A-353F-0691F6C83C78}" AutoDeleteType="true">E_UsbLicenseDongleSate</Name>
+			<Name GUID="{1077E2FE-0CE5-D7CB-EA12-699F24B8E96B}" AutoDeleteType="true">E_UsbLicenseDongleSate</Name>
 			<BitSize>16</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000005}">UINT</BaseType>
 			<EnumInfo>
@@ -5804,6 +5804,9 @@
 			</EnumInfo>
 			<Properties>
 				<Property>
+					<Name>generate_implicit_init_function</Name>
+				</Property>
+				<Property>
 					<Name>qualified_only</Name>
 				</Property>
 				<Property>
@@ -5811,9 +5814,6 @@
 				</Property>
 				<Property>
 					<Name>to_string</Name>
-				</Property>
-				<Property>
-					<Name>generate_implicit_init_function</Name>
 				</Property>
 			</Properties>
 		</DataType>
@@ -6904,7 +6904,6 @@
 				<ProjectVariant PvUseParameter="true">
 					<Variant>
 						<Name>Normal</Name>
-						<Name>SimOnIPC</Name>
 						<Parameters RouterMemory="32" CoresPerPkg="0" MaxWinCpus="2" MaxNonWinCpus="2">
 							<Cpu Id="2" Percent="80" BaseTime="10000"/>
 							<Cpu Id="3" Percent="80" BaseTime="2500"/>
@@ -6915,6 +6914,20 @@
 							<Affinity ObjId="#x02010050" Mask="#x8"/>
 							<Affinity ObjId="#x02010060" Mask="#x4"/>
 							<Affinity ObjId="#x02010070" Mask="#x4"/>
+						</Parameters>
+					</Variant>
+					<Variant>
+						<Name>SimOnIPC</Name>
+						<Parameters RouterMemory="32" CoresPerPkg="0" MaxWinCpus="15" MaxNonWinCpus="1">
+							<Cpu Id="14" Percent="80" BaseTime="10000"/>
+							<Cpu Id="15" Percent="80" BaseTime="2500"/>
+							<Affinity ObjId="#x03000011" Mask="#x4000"/>
+							<Affinity ObjId="#x02010030" Mask="#x4000"/>
+							<Affinity ObjId="#x02010040" Mask="#x4000"/>
+							<Affinity ObjId="#x02010050" Mask="#x8000"/>
+							<Affinity ObjId="#x02010060" Mask="#x4000"/>
+							<Affinity ObjId="#x02010070" Mask="#x4000"/>
+							<Affinity ObjId="#x08500010" Mask="#x4000"/>
 						</Parameters>
 					</Variant>
 					<Variant>
@@ -6936,7 +6949,19 @@
 			<Licenses>
 				<Target>
 					<ManualSelect>{27326EE5-AB30-4084-B15B-8CCA96CCBF0B}</ManualSelect>
-					<LicenseDevice DongleHardwareId="2" DongleDevice="#x03020007" DongleLevel="60" DongleSystemId="{C22FCD40-C6AF-9E06-E312-CF9F5749A104}" DongleSerialNumber="000bs99i" DongleCacheLicense="true"/>
+					<LicenseDevice DongleHardwareId="2" DongleDevice="#x03020007" DongleLevel="60" DongleSerialNumber="000bs99i" DongleCacheLicense="true">
+						<ProjectVariant PvUseDisable="true">
+							<Variant>
+								<Name>Normal</Name>
+								<Name>UMRT</Name>
+								<Disable>false</Disable>
+							</Variant>
+							<Variant>
+								<Name>SimOnIPC</Name>
+								<Disable>true</Disable>
+							</Variant>
+						</ProjectVariant>
+					</LicenseDevice>
 				</Target>
 				<ProjectVariant PvUseParameter="true">
 					<Variant>
@@ -7019,7 +7044,6 @@
 					<ProjectVariant PvUseLink="true" PvUseSParameter="1">
 						<Variant>
 							<Name>Normal</Name>
-							<Name>SimOnIPC</Name>
 							<Parameters>
 								<Parameter PID="#x3002103" Data="03000000"/>
 								<Parameter PID="#x3170000" Data="00000000"/>
@@ -7075,6 +7099,7 @@
 							</Parameters>
 						</Variant>
 						<Variant>
+							<Name>SimOnIPC</Name>
 							<Name>UMRT</Name>
 							<Parameters>
 								<Parameter PID="#x3002103" Data="03000000"/>
@@ -14858,16 +14883,16 @@
 			<ProjectVariant PvUseParameter="true" PvUseLink="true" PvUseSimulation="true">
 				<Variant>
 					<Name>Normal</Name>
-					<Name>SimOnIPC</Name>
-					<Simulation Enable="false"/>
-					<TargetNetId>169.254.221.1.1.1</TargetNetId>
-					<BuildConfig>Release|TwinCAT OS (x64)</BuildConfig>
-				</Variant>
-				<Variant>
 					<Name>UMRT</Name>
 					<Simulation Enable="false"/>
-					<BuildConfig>Release|TwinCAT OS (x64)</BuildConfig>
-					<TargetNetId>199.4.42.250.1.1</TargetNetId>
+					<TargetNetId>169.254.221.1.1.1</TargetNetId>
+					<BuildConfig>Release|TwinCAT RT (x64)</BuildConfig>
+				</Variant>
+				<Variant>
+					<Name>SimOnIPC</Name>
+					<Simulation Enable="false"/>
+					<TargetNetId/>
+					<BuildConfig>Release|TwinCAT RT (x64)</BuildConfig>
 				</Variant>
 			</ProjectVariant>
 		</System>
@@ -15066,6 +15091,11 @@
 							</Parameters>
 						</Variant>
 					</ProjectVariant>
+					<Xml>
+						<mover-ui>
+							<app-cards>"{\"state\":{\"defaultCards\":[{\"id\":\"Basic Controls\",\"header\":{\"title\":\"Mover Controls\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"MoverJogDialog\",\"index\":0}]}},{\"id\":\"Basic Information and Control\",\"header\":{\"title\":\"Basic Information and Control\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"GeneralInformationDialog\",\"index\":0},{\"type\":\"JoinTrackDialog\",\"index\":1}]}},{\"id\":\"Default Movements\",\"header\":{\"title\":\"Default Movements\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"MoveToPositionDialog\",\"index\":0},{\"type\":\"SequenceDialog\",\"index\":1}]}}],\"cards\":[{\"id\":\"Basic Controls\",\"header\":{\"title\":\"Mover Controls\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"MoverJogDialog\",\"props\":{\"showAB\":false,\"rowOrder\":[\"X\",\"Y\",\"Z\",\"C\",\"A\",\"B\"],\"customDynamicsProps\":{\"dynamicsX\":{\"velocity\":\"#Default\",\"acceleration\":\"#Default\",\"deceleration\":\"#Default\",\"jerk\":\"#Default\"},\"dynamicsY\":{\"velocity\":\"#Default\",\"acceleration\":\"#Default\",\"deceleration\":\"#Default\",\"jerk\":\"#Default\"},\"dynamicsZ\":{\"velocity\":\"#Default\",\"acceleration\":\"#Default\",\"deceleration\":\"#Default\",\"jerk\":\"#Default\"},\"dynamicsA\":{\"velocity\":\"#Default\",\"acceleration\":\"#Default\",\"deceleration\":\"#Default\",\"jerk\":\"#Default\"},\"dynamicsB\":{\"velocity\":\"#Default\",\"acceleration\":\"#Default\",\"deceleration\":\"#Default\",\"jerk\":\"#Default\"},\"dynamicsC\":{\"velocity\":\"#Default\",\"acceleration\":\"#Default\",\"deceleration\":\"#Default\",\"jerk\":\"#Default\"},\"isActiveX\":false,\"isActiveY\":false,\"isActiveZ\":false,\"isActiveA\":false,\"isActiveB\":false,\"isActiveC\":false}},\"index\":0}]}},{\"id\":\"Basic Information and Control\",\"header\":{\"title\":\"Basic Information and Control\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"GeneralInformationDialog\",\"index\":0},{\"type\":\"JoinTrackDialog\",\"props\":{\"newTrack\":null,\"customDynamicsProps\":{\"isActive\":false,\"dynamics\":{\"velocity\":\"#Default\",\"acceleration\":\"#Default\",\"deceleration\":\"#Default\",\"jerk\":\"#Default\"}}},\"index\":1}]}},{\"id\":\"Default Movements\",\"header\":{\"title\":\"Default Movements\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"MoveToPositionDialog\",\"index\":0},{\"type\":\"SequenceDialog\",\"props\":{\"positionX1\":\"0\",\"positionY1\":\"0\",\"positionC1\":\"0\",\"useOrientation1\":false,\"positionX2\":\"0\",\"positionY2\":\"0\",\"positionC2\":\"0\",\"useOrientation2\":false,\"idleTime1\":\"0\",\"idleTime2\":\"0\",\"customDynamicsWorkProps\":{\"isActive\":false,\"dynamics\":{\"velocity\":\"#Default\",\"acceleration\":\"#Default\",\"deceleration\":\"#Default\",\"jerk\":\"#Default\"}},\"customDynamicsBaseProps\":{\"isActive\":false,\"dynamics\":{\"velocity\":\"#Default\",\"acceleration\":\"#Default\",\"deceleration\":\"#Default\",\"jerk\":\"#Default\"}},\"invokeId\":-1},\"index\":1}]}}],\"layouts\":{\"lg\":[{\"i\":\"Basic Controls\",\"x\":0,\"y\":0,\"w\":1,\"minW\":1,\"h\":3,\"minH\":1},{\"i\":\"Basic Information and Control\",\"x\":1,\"y\":0,\"w\":1,\"minW\":1,\"h\":3,\"minH\":1},{\"i\":\"Default Movements\",\"x\":2,\"y\":0,\"w\":1,\"minW\":1,\"h\":3,\"minH\":1}],\"md\":[{\"i\":\"Basic Controls\",\"x\":0,\"y\":0,\"w\":1,\"h\":3,\"minW\":1,\"minH\":1,\"moved\":false,\"static\":false},{\"i\":\"Basic Information and Control\",\"x\":1,\"y\":0,\"w\":1,\"h\":3,\"minW\":1,\"minH\":1,\"moved\":false,\"static\":false},{\"i\":\"Default Movements\",\"x\":2,\"y\":0,\"w\":1,\"h\":3,\"minW\":1,\"minH\":1,\"moved\":false,\"static\":false}],\"xs\":[{\"i\":\"Basic Controls\",\"x\":0,\"y\":0,\"w\":1,\"h\":3,\"minW\":1,\"minH\":1,\"moved\":false,\"static\":false},{\"i\":\"Basic Information and Control\",\"x\":0,\"y\":3,\"w\":1,\"h\":3,\"minW\":1,\"minH\":1,\"moved\":false,\"static\":false},{\"i\":\"Default Movements\",\"x\":0,\"y\":6,\"w\":1,\"h\":3,\"minW\":1,\"minH\":1,\"moved\":false,\"static\":false}]},\"defaultGrid\":{\"cards\":[{\"id\":\"Basic Controls\",\"header\":{\"title\":\"Mover Controls\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"MoverJogDialog\",\"index\":0}]}},{\"id\":\"Basic Information and Control\",\"header\":{\"title\":\"Basic Information and Control\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"GeneralInformationDialog\",\"index\":0},{\"type\":\"JoinTrackDialog\",\"index\":1}]}},{\"id\":\"Default Movements\",\"header\":{\"title\":\"Default Movements\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"MoveToPositionDialog\",\"index\":0},{\"type\":\"SequenceDialog\",\"index\":1}]}}],\"layouts\":{\"lg\":[{\"i\":\"Basic Controls\",\"x\":0,\"y\":0,\"w\":1,\"minW\":1,\"h\":3,\"minH\":3},{\"i\":\"Basic Information and Control\",\"x\":1,\"y\":0,\"w\":1,\"minW\":1,\"h\":3,\"minH\":2},{\"i\":\"Default Movements\",\"x\":2,\"y\":0,\"w\":1,\"minW\":1,\"h\":3,\"minH\":3}]},\"widgetCollection\":{\"left-widgets\":[{\"containerId\":\"widget-container-left\",\"index\":0,\"widgetType\":{\"type\":\"MoverStatusWidget\"}},{\"containerId\":\"widget-container-left\",\"index\":1,\"widgetType\":{\"type\":\"MoverCommandModeWidget\"}},{\"containerId\":\"widget-container-left\",\"index\":2,\"widgetType\":{\"type\":\"ErrorWidget\"}}],\"right-widgets\":[]}},\"widgetCollection\":{\"left-widgets\":[{\"containerId\":\"widget-container-left\",\"index\":0,\"widgetType\":{\"type\":\"MoverStatusWidget\"}},{\"containerId\":\"widget-container-left\",\"index\":1,\"widgetType\":{\"type\":\"MoverCommandModeWidget\"}},{\"containerId\":\"widget-container-left\",\"index\":2,\"widgetType\":{\"type\":\"ErrorWidget\"}}],\"right-widgets\":[]},\"layoutVersion\":0},\"version\":0}"</app-cards>
+						</mover-ui>
+					</Xml>
 					<TmcDesc GUID="{5FC17892-62EA-4736-9999-D79964E87717}" TcSmClass="TComMcPlanarMoverObj">
 						<Name>Planar Mover</Name>
 						<InitSequence>PSO</InitSequence>
@@ -15861,6 +15891,11 @@
 				<Group Id="#x05120010" KeepUnrestoredLinks="2">
 					<Name>XPlanar</Name>
 					<ImageId>1004</ImageId>
+					<Xml>
+						<planargroup-ui>
+							<app-cards>"{\"state\":{\"defaultCards\":[{\"id\":\"Basic Controls\",\"header\":{\"title\":\"Basic Controls\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"EnableDialog\",\"index\":0},{\"type\":\"ResetDialog\",\"index\":1},{\"type\":\"AddAllToGroupDialog\",\"index\":2}]}}],\"cards\":[{\"id\":\"Basic Controls\",\"header\":{\"title\":\"Basic Controls\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"EnableDialog\",\"index\":0},{\"type\":\"ResetDialog\",\"index\":1},{\"type\":\"AddAllToGroupDialog\",\"props\":{},\"index\":2}]}}],\"layouts\":{\"lg\":[{\"i\":\"Basic Controls\",\"x\":0,\"y\":0,\"w\":1,\"minW\":1,\"h\":2,\"minH\":2}]},\"defaultGrid\":{\"cards\":[{\"id\":\"Basic Controls\",\"header\":{\"title\":\"Basic Controls\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"EnableDialog\",\"index\":0},{\"type\":\"ResetDialog\",\"index\":1},{\"type\":\"AddAllToGroupDialog\",\"index\":2}]}}],\"layouts\":{\"lg\":[{\"i\":\"Basic Controls\",\"x\":0,\"y\":0,\"w\":1,\"minW\":1,\"h\":2,\"minH\":2}]},\"widgetCollection\":{\"left-widgets\":[{\"containerId\":\"widget-container-left\",\"index\":0,\"widgetType\":{\"type\":\"GroupStatusWidget\"}}],\"right-widgets\":[{\"containerId\":\"widget-container-right\",\"index\":0,\"widgetType\":{\"type\":\"ObjectsInGroupWidget\"}}]}},\"widgetCollection\":{\"left-widgets\":[{\"containerId\":\"widget-container-left\",\"index\":0,\"widgetType\":{\"type\":\"GroupStatusWidget\"}}],\"right-widgets\":[{\"containerId\":\"widget-container-right\",\"index\":0,\"widgetType\":{\"type\":\"ObjectsInGroupWidget\"}}]},\"layoutVersion\":0},\"version\":0}"</app-cards>
+						</planargroup-ui>
+					</Xml>
 					<TmcDesc GUID="{C2D951C9-E4FA-409C-8B5E-58B3BE9EB676}" TcSmClass="TComMcGroupObj">
 						<Name>Planar Group</Name>
 						<CLSID ClassFactory="TcNc3">{050300C9-0000-0000-F000-000000000064}</CLSID>
@@ -15973,6 +16008,11 @@
 				<Group Id="#x05120020" KeepUnrestoredLinks="2">
 					<Name>Environment</Name>
 					<ImageId>1004</ImageId>
+					<Xml>
+						<environment-ui>
+							<app-cards>"{\"state\":{\"defaultCards\":[{\"id\":\"Environment Overview\",\"header\":{\"title\":\"Environment Overview\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"Environment2DViewDialog\",\"index\":0}]}},{\"id\":\"Basic Controls\",\"header\":{\"title\":\"Basic Controls\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"EnableDialog\",\"index\":0},{\"type\":\"HaltDialog\",\"index\":1},{\"type\":\"ResetDialog\",\"index\":2},{\"type\":\"MoverJogDialog\",\"index\":3},{\"type\":\"GeneralInformationDialog\",\"index\":4}]}}],\"cards\":[{\"id\":\"Environment Overview\",\"header\":{\"title\":\"Environment Overview\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"Environment2DViewDialog\",\"props\":{},\"index\":0}]}},{\"id\":\"Basic Controls\",\"header\":{\"title\":\"Basic Controls\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"EnableDialog\",\"index\":0},{\"type\":\"HaltDialog\",\"index\":1},{\"type\":\"ResetDialog\",\"index\":2},{\"type\":\"MoverJogDialog\",\"props\":{\"showAB\":false,\"rowOrder\":[\"X\",\"Y\",\"Z\",\"C\",\"A\",\"B\"],\"customDynamicsProps\":{\"customDynamicsProps\":{\"dynamicsX\":{\"velocity\":100,\"acceleration\":200,\"deceleration\":200,\"jerk\":1000},\"dynamicsY\":{\"velocity\":100,\"acceleration\":200,\"deceleration\":200,\"jerk\":1000},\"dynamicsZ\":{\"velocity\":5,\"acceleration\":20,\"deceleration\":20,\"jerk\":100},\"dynamicsA\":{\"velocity\":5,\"acceleration\":20,\"deceleration\":20,\"jerk\":100},\"dynamicsB\":{\"velocity\":5,\"acceleration\":20,\"deceleration\":20,\"jerk\":100},\"dynamicsC\":{\"velocity\":5,\"acceleration\":20,\"deceleration\":20,\"jerk\":100},\"isActiveX\":false,\"isActiveY\":false,\"isActiveZ\":false,\"isActiveA\":false,\"isActiveB\":false,\"isActiveC\":false}}},\"index\":3},{\"type\":\"GeneralInformationDialog\",\"props\":{},\"index\":4}]}}],\"layouts\":{\"lg\":[{\"i\":\"Environment Overview\",\"x\":0,\"y\":0,\"w\":2,\"minW\":1,\"h\":6,\"minH\":1},{\"i\":\"Basic Controls\",\"x\":2,\"y\":0,\"w\":1,\"minW\":1,\"h\":6,\"minH\":1}],\"md\":[{\"i\":\"Environment Overview\",\"x\":0,\"y\":0,\"w\":2,\"h\":6,\"minW\":1,\"minH\":1,\"moved\":false,\"static\":false},{\"i\":\"Basic Controls\",\"x\":2,\"y\":0,\"w\":1,\"h\":6,\"minW\":1,\"minH\":1,\"moved\":false,\"static\":false}],\"sm\":[{\"i\":\"Environment Overview\",\"x\":0,\"y\":0,\"w\":2,\"h\":6,\"minW\":1,\"minH\":1,\"moved\":false,\"static\":false},{\"i\":\"Basic Controls\",\"x\":1,\"y\":6,\"w\":1,\"h\":6,\"minW\":1,\"minH\":1,\"moved\":false,\"static\":false}],\"xs\":[{\"i\":\"Environment Overview\",\"x\":0,\"y\":0,\"w\":1,\"h\":6,\"minW\":1,\"minH\":1,\"moved\":false,\"static\":false},{\"i\":\"Basic Controls\",\"x\":0,\"y\":6,\"w\":1,\"h\":6,\"minW\":1,\"minH\":1,\"moved\":false,\"static\":false}]},\"defaultGrid\":{\"cards\":[{\"id\":\"Environment Overview\",\"header\":{\"title\":\"Environment Overview\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"Environment2DViewDialog\",\"index\":0}]}},{\"id\":\"Basic Controls\",\"header\":{\"title\":\"Basic Controls\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"EnableDialog\",\"index\":0},{\"type\":\"HaltDialog\",\"index\":1},{\"type\":\"ResetDialog\",\"index\":2},{\"type\":\"MoverJogDialog\",\"index\":3},{\"type\":\"GeneralInformationDialog\",\"index\":4}]}}],\"layouts\":{\"lg\":[{\"i\":\"Environment Overview\",\"x\":0,\"y\":0,\"w\":2,\"minW\":1,\"h\":6,\"minH\":3},{\"i\":\"Basic Controls\",\"x\":2,\"y\":0,\"w\":1,\"minW\":1,\"h\":6,\"minH\":3}]},\"widgetCollection\":{\"left-widgets\":[{\"containerId\":\"widget-container-left\",\"index\":0,\"widgetType\":{\"type\":\"MoverCountWidget\"}}],\"right-widgets\":[{\"containerId\":\"widget-container-right\",\"index\":0,\"widgetType\":{\"type\":\"CreateBoundaryWidget\"}},{\"containerId\":\"widget-container-right\",\"index\":1,\"widgetType\":{\"type\":\"AddToGroupWidget\"}}]}},\"widgetCollection\":{\"left-widgets\":[{\"containerId\":\"widget-container-left\",\"index\":0,\"widgetType\":{\"type\":\"MoverCountWidget\"}}],\"right-widgets\":[{\"containerId\":\"widget-container-right\",\"index\":0,\"widgetType\":{\"type\":\"CreateBoundaryWidget\"}},{\"containerId\":\"widget-container-right\",\"index\":1,\"widgetType\":{\"type\":\"AddToGroupWidget\"}}]},\"layoutVersion\":0},\"version\":0}"</app-cards>
+						</environment-ui>
+					</Xml>
 					<TmcDesc GUID="{9A40A34B-DD2F-4271-8FEE-3ADE2271DB79}" TcSmClass="TComMcGroupObj">
 						<Name>Planar Environment</Name>
 						<CLSID ClassFactory="TcNc3">{050300CB-0000-0000-F000-000000000064}</CLSID>
@@ -16719,7 +16759,7 @@
 		</Motion>
 		<Plc>
 			<Project GUID="{233169FE-F7A5-4EC4-9427-C86C70D23AE6}" Name="PLC1" PrjFilePath="PLC1\PLC1.plcproj" TmcFilePath="PLC1\PLC1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{E784FAF7-4B80-9E2F-A80C-B4EDE710D49E}" TmcPath="PLC1\PLC1.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{8A242B86-9E4A-7451-5C63-FF9B3062DBDA}" TmcPath="PLC1\PLC1.tmc">
 					<Name>PLC1 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -16781,7 +16821,7 @@
 						<Var>
 							<Name>MAIN.LicUsbState</Name>
 							<Comment><![CDATA[ license dongle state //UINT;]]></Comment>
-							<Type GUID="{D98B1DAF-0C0E-3C5A-353F-0691F6C83C78}">E_UsbLicenseDongleSate</Type>
+							<Type GUID="{1077E2FE-0CE5-D7CB-EA12-699F24B8E96B}">E_UsbLicenseDongleSate</Type>
 						</Var>
 					</Vars>
 					<Contexts>
@@ -16822,10 +16862,10 @@
 	<Mappings>
 		<MappingInfo Identifier="{02010050-0060-0201-5000-010110001105}" Id="#x02030030" Watchdog="20000000040000000400000004000000"/>
 		<MappingInfo Identifier="{02010050-0060-0201-6000-010120001105}" Id="#x02030040" Watchdog="20000000040000000400000004000000"/>
-		<MappingInfo Identifier="{02010060-2001-0850-1000-100500205008}" Id="#x02030010" Watchdog="04000000080000000400000004000000"/>
-		<MappingInfo Identifier="{02010060-2001-0850-1000-120500205008}" Id="#x02030020" Watchdog="04000000080000000400000004000000"/>
-		<MappingInfo Identifier="{02010060-2001-0850-2000-120500205008}" Id="#x02030050" Watchdog="04000000080000000400000004000000"/>
-		<MappingInfo Identifier="{02010060-2001-0850-3000-120500205008}" Id="#x02030060" Watchdog="04000000080000000400000004000000"/>
+		<MappingInfo Identifier="{02010060-2001-0850-1000-100500205008}" Id="#x02030020" Watchdog="04000000080000000400000004000000"/>
+		<MappingInfo Identifier="{02010060-2001-0850-1000-120500205008}" Id="#x02030050" Watchdog="04000000080000000400000004000000"/>
+		<MappingInfo Identifier="{02010060-2001-0850-2000-120500205008}" Id="#x02030060" Watchdog="04000000080000000400000004000000"/>
+		<MappingInfo Identifier="{02010060-2001-0850-3000-120500205008}" Id="#x02030070" Watchdog="04000000080000000400000004000000"/>
 		<OwnerA Name="TIPC^PLC1^PLC1 Instance">
 			<OwnerB Name="TIID^IO (EtherCAT)^Box 5 (EP2316-0003)">
 				<Link VarA="PlcTask Inputs^MAIN.Estop.IO.Ch2" VarB="DIG Inputs^Estop Ch2"/>

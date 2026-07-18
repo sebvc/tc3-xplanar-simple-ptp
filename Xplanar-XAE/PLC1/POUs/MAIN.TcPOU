@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.19">
   <POU Name="MAIN" Id="{5d7a64d1-e12e-4103-aeb9-3e5714fc6cb6}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
@@ -13,8 +13,8 @@ VAR
 	
 	
 	XPlanarTable  			:	FB_Component_XPlanar;
-	Mover1		  			:	FB_XPlanarMover;
-	Mover2		  			:	FB_XPlanarMover;
+	Mover1		  			:	FB_XPlanarMover; // Pipeting (starts on lower tile from origin)
+	Mover2		  			:	FB_XPlanarMover; // Test Tubes (starts on higher tile from origin)
 	Track1		 			:	FB_XPlanarTrackSegment;	
 	
 	i						: 	UDINT;
@@ -32,7 +32,7 @@ VAR
 	Cycles					:	UINT;
 	SubStep					:	UINT;
 	
-	MoverCurentPos			:	ST_Point;
+	MoverCurentPos1,MoverCurentPos2	:	ST_Point;
 	
 	TwinCATRestart			:	TC_Restart;
 	
@@ -41,7 +41,33 @@ VAR
 	
 	LicUsbState AT %I* : E_UsbLicenseDongleSate; // license dongle state //UINT;
 	
-END_VAR                      	
+	PipetSubStep,	TestTubeSubStep: UINT;
+	PipetStepDone,	TestTubeStepDone: BOOL;
+	PipetCycles, 	TestTubeCycles: UINT;
+	 
+	WellCountX,WellCountY,TubeCountX,TubeCountY: UINT;
+	flipDirY		: INT;
+	
+	TubeYRetractDistance: LREAL:=40.0;
+	WellStepIncrement: UINT;
+	
+	//THESE SHOULD BE CONSTANTS, NOT A CONSTANT FOR DEBUGGING PURPOSES
+	PIPET_DISPENSING_HEAD 	:   ST_Point 	:= 	(X := 120.0(*mounted in the middle*), 	
+												 Y := 120.0(*length of fake dispensing head*));	
+	WELLPLATE_OFFSET		:   ST_Point 	:= 	(X := 60.0, Y := -40.0);//relative coordinates of first well(bottom right) from center of Mover1	
+	WELL_PITCH				:   LREAL := 2.25;
+	WELL_MAXCOUNT_X			: UINT:=48;
+	WELL_MAXCOUNT_Y			: UINT:=32;
+	
+	SCARA_GRIPPER_HEAD	 	:   ST_Point 	:= 	(X := 100.0(*mounted left of the middle/ ~2/3rds of a mover*), 	
+												 Y := 480.0-60.0(*length of fake dispensing head*));	
+	TESTTUBE_OFFSET			:   ST_Point 	:= 	(X := 25.0, Y := 25.0);//relative coordinates of first TestTube(top right) from center of Mover2
+	TUBE_PITCH_X				:   LREAL := 25.0;
+	TUBE_PITCH_Y				:   LREAL := 40.0;
+	TUBE_MAXCOUNT_X			: UINT:=3;
+	TUBE_MAXCOUNT_Y			: UINT:=2;
+END_VAR                      
+
 VAR CONSTANT
 	//Mover Count
 	SystemMoverCount	    : UDINT := 2;
@@ -52,22 +78,36 @@ VAR CONSTANT
 	FIGURE_EIGHT_MOVE		: 	ST_MoveDynamics := (Velocity := 750.0, 	Accel := 5000.0, 	Decel := 5000.0, 	Jerk := 200000.0);               		
 	FLY_BY_MOVE				: 	ST_MoveDynamics := (Velocity := 1500.0, Accel := 20000.0, 	Decel := 20000.0, 	Jerk := 200000.0);    
 	PerimeterMove			: 	ST_MoveDynamics := (Velocity := 2000.0, Accel := 20000.0, 	Decel := 20000.0, 	Jerk := 200000.0);
+    LShapeMove				: 	ST_MoveDynamics := (Velocity := 500.0,  Accel := 1000.0, 	Decel := 1000.0, 	Jerk := 200000.0);
                               	
 	ROTATE_INVERSE_MOVE		: 	ST_MoveDynamics := (Velocity := 750.0, 	Accel := 2000.0, 	Decel := 2000.0, 	Jerk := 15000.0);  
-	SPIN_MOVE				: 	ST_MoveDynamics := (Velocity := 2500.0, Accel := 4000.0, 	Decel := 4000.0, 	Jerk := 20000.0);
+	ROTATE_TESTTUBE_GRIPPER	: 	ST_MoveDynamics := (Velocity := 750.0, 	Accel := 2000.0, 	Decel := 2000.0, 	Jerk := 15000.0);  
+	SPIN_MOVE				: 	ST_MoveDynamics := (Velocity := 1500.0, Accel := 4000.0, 	Decel := 4000.0, 	Jerk := 20000.0);
 	NUMBER_OF_SPINS			:   DINT:=30;
     
 	//Move positions                         	
-	START_POS_MOVER1		:	ST_Point 	:= 	(X := 60, 		Y := 60);
-	START_POS_MOVER2		:	ST_Point 	:= 	(X := 180, 		Y := 180);	
-	                         	
-	TOP_LEFT				:	ST_POINT	:=	(X := 60.0, 	Y := 420.0);
-	TOP_RIGHT				:	ST_POINT	:=	(X := 180.0, 	Y := 420.0);
-	BOTTOM_LEFT				:	ST_POINT	:=	(X := 60.0, 	Y := 60.0);
-	BOTTOM_RIGHT			:	ST_POINT	:=	(X := 180.0, 	Y := 60.0);
-	                         	        	  	
-	TOP_CENTER				:	ST_POINT	:=	(X := 120.0, 	Y := 360.0);
-	BOTTOM_CENTER			:	ST_POINT	:=	(X := 120.0, 	Y := 120.0);	
+	START_POS_MOVER1		:	ST_Point 	:= 	(X := 120.0, 	Y := 120.0); // M1.y < M2.y because of sort
+	START_POS_MOVER2		:	ST_Point 	:= 	(X := 120.0, 	Y := 360.0);	
+	
+	TOP_UPPER_RIGHT,TOP_RIGHT			:	ST_POINT	:=	(X := 180.0, 	Y := 420.0);
+	TOP_UPPER_CENTER					:	ST_POINT	:=	(X := 120.0, 	Y := 420.0);
+	TOP_UPPER_LEFT,TOP_LEFT				:	ST_POINT	:=	(X := 60.0, 	Y := 420.0);
+	TOP_MIDDLE_RIGHT					:	ST_POINT	:=	(X := 180.0, 	Y := 360.0);
+	TOP_MIDDLE_CENTER,TOP_CENTER		:	ST_POINT	:=	(X := 120.0, 	Y := 360.0);
+	TOP_MIDDLE_LEFT						:	ST_POINT	:=	(X := 60.0, 	Y := 360.0);
+	TOP_LOWER_RIGHT						:	ST_POINT	:=	(X := 180.0, 	Y := 300.0);
+	TOP_LOWER_CENTER					:	ST_POINT	:=	(X := 120.0, 	Y := 300.0);
+	TOP_LOWER_LEFT						:	ST_POINT	:=	(X := 60.0, 	Y := 300.0);
+	BOTTOM_UPPER_RIGHT					:	ST_POINT	:=	(X := 180.0, 	Y := 180.0);
+	BOTTOM_UPPER_CENTER					:	ST_POINT	:=	(X := 120.0, 	Y := 180.0);	
+	BOTTOM_UPPER_LEFT					:	ST_POINT	:=	(X := 60.0, 	Y := 180.0);
+	BOTTOM_MIDDLE_RIGHT					:	ST_POINT	:=	(X := 180.0, 	Y := 120.0);
+	BOTTOM_MIDDLE_CENTER,BOTTOM_CENTER	:	ST_POINT	:=	(X := 120.0, 	Y := 120.0);
+	BOTTOM_MIDDLE_LEFT					:	ST_POINT	:=	(X := 60.0, 	Y := 120.0);
+	BOTTOM_LOWER_RIGHT,BOTTOM_RIGHT		:	ST_POINT	:=	(X := 180.0, 	Y := 60.0);
+	BOTTOM_LOWER_CENTER					:	ST_POINT	:=	(X := 120.0, 	Y := 60.0);	         
+	BOTTOM_LOWER_LEFT,BOTTOM_LEFT		:	ST_POINT	:=	(X := 60.0, 	Y := 60.0);	         
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -163,18 +203,23 @@ CASE Step OF
 	E_DemoStep.MoveToSeqenceStartPos:
 		CASE SubStep OF
 			0:	
-				MoverCurentPos.X:=ip.Movers[1].ActualPosition.x;
-				MoverCurentPos.Y:=ip.Movers[1].ActualPosition.y;
+				MoverCurentPos1.X:=ip.Movers[1].ActualPosition.x;
+				MoverCurentPos1.Y:=ip.Movers[1].ActualPosition.y;
+				MoverCurentPos2.X:=ip.Movers[2].ActualPosition.x;
+				MoverCurentPos2.Y:=ip.Movers[2].ActualPosition.y;
+				
 				SubStep:=1;
-			1:
-				IF ip.Movers[1].MoveCommand.FreeMove(MoverCurentPos.X,START_POS_MOVER1.Y).Done THEN
-					SubStep:=2;
+			1: // y-alignment
+				IF	ip.Movers[1].MoveCommand.FreeMove(MoverCurentPos1.X,START_POS_MOVER1.Y).Done THEN 
+					IF ip.Movers[2].MoveCommand.FreeMove(MoverCurentPos2.X,START_POS_MOVER2.Y).Done THEN
+						SubStep:=2;
+					END_IF
 				END_IF
-			2:
-				IF ip.Movers[1].MoveCommand.FreeMove(START_POS_MOVER1.X,START_POS_MOVER1.Y).Done THEN
-					IF ip.Movers[2].MoveCommand.FreeMove(START_POS_MOVER2.X,START_POS_MOVER2.Y).Done THEN
+			2: // xy-alignment
+				IF 		ip.Movers[1].MoveCommand.FreeMove(START_POS_MOVER1.X,START_POS_MOVER1.Y).Done THEN
+					IF 	ip.Movers[2].MoveCommand.FreeMove(START_POS_MOVER2.X,START_POS_MOVER2.Y).Done THEN
 						SubStep	:=0;
-						Step	:= E_DemoStep.JoinTrack;
+						Step	:= E_DemoStep.ADLM_Step1;
 					END_IF
 				END_IF					
 				
@@ -423,6 +468,309 @@ CASE Step OF
 		END_CASE
 		
 {endregion}			
+{region "ADLM_Step1"}
+
+	E_DemoStep.ADLM_Step1: // L_move for test tubes AND RotateInverse for Pipeting
+		//F_SetAllMoversRotation(ROTATE_INVERSE_MOVE);
+		//F_SetAllMoversMovement(LShapeMove);
+		// for Pipet (mover1) --> rotate inverse
+		CASE PipetSubStep OF 
+			0:
+	  			//F_SetAllMoversRotation(ROTATE_INVERSE_MOVE);
+				ip.Movers[1].Dynamics.Rotation:=ROTATE_INVERSE_MOVE;
+				PipetCycles:=0;
+				RotateTarget:=0;
+				PipetSubStep:=1;
+			1:
+				IF FlipFlop THEN
+					Mover1RotateTarget:=RotateTarget;
+				ELSE
+					Mover1RotateTarget:=(360.0-RotateTarget)*-1;
+				END_IF
+					IF 	ip.Movers[1].MoveCommand.Rotate(Mover1RotateTarget,0).Done THEN
+						IF FlipFlop THEN
+							PipetCycles:=PipetCycles+1;
+							IF PipetCycles>=6 THEN
+								FlipFlop	:=FALSE;
+								PipetSubStep:=2;//inverse rotate done
+							ELSE
+								RotateTarget:=RotateTarget+15;
+							END_IF
+						END_IF
+						FlipFlop:=NOT FlipFlop;	
+					END_IF
+			2:
+				IF ip.Movers[1].MoveCommand.Rotate(0).Done THEN
+					PipetSubStep:=3;
+				END_IF
+			3:
+				PipetStepDone:= TRUE;
+				
+		END_CASE
+				
+		//for test tube (mover2) --> L shape path
+		CASE TestTubeSubStep OF
+			0:
+				//F_SetAllMoversMovement(LShapeMove);
+				ip.Movers[2].Dynamics.Movement:=LShapeMove;
+				TestTubeCycles:=0;
+				Mover2Target:=TOP_LOWER_LEFT;
+				TestTubeSubStep:=1;
+				
+			1:	Mover2Target:=TOP_LOWER_LEFT;	
+			2:	Mover2Target:=TOP_LOWER_RIGHT;
+			3:	Mover2Target:=TOP_UPPER_RIGHT;
+			4:	Mover2Target:=TOP_LOWER_RIGHT;
+			5:	Mover2Target:=TOP_LOWER_LEFT;
+	
+			6:
+				TestTubeStepDone:= TRUE;
+		END_CASE
+		IF TestTubeSubStep <> 6 THEN
+			IF 	ip.Movers[2].MoveCommand.FreeMove(Mover2Target.x,Mover2Target.Y).Done THEN
+				IF TestTubeSubStep=5 THEN //Cycle completed
+					TestTubeCycles			:=TestTubeCycles+1;
+					IF TestTubeCycles=2 THEN
+						TestTubeSubStep:=6;
+					ELSE
+						TestTubeSubStep	:=1; // first move substep
+					END_IF
+				ELSE
+					TestTubeSubStep	:=TestTubeSubStep+1;
+				END_IF
+			END_IF		
+		END_IF
+
+		
+		//both done
+		IF PipetStepDone AND TestTubeStepDone THEN
+			PipetStepDone:=TestTubeStepDone:=FALSE;
+			PipetSubStep:=TestTubeSubStep:=0;
+			F_SetAllMoversMovement(DEFAULT_MOVE);
+			F_SetAllMoversRotation(DEFAULT_ROTATE);
+			Step:=E_DemoStep.ADLM_Step2;
+		END_IF
+		
+{endregion}
+{region "ADLM_Step2"}
+
+	E_DemoStep.ADLM_Step2: // traverse to start positions for Gripper AND dispensing head
+
+		// for Pipet (mover1) --> move to first pipetting dispensing position
+		CASE PipetSubStep OF 
+			0:
+				IF 	ip.Movers[1].MoveCommand.FreeMove(BOTTOM_UPPER_LEFT.X,BOTTOM_UPPER_LEFT.Y).Done THEN
+					PipetSubStep:=1;
+				END_IF
+			1:
+				IF 	ip.Movers[1].MoveCommand.FreeMove(
+						PIPET_DISPENSING_HEAD.X-WELLPLATE_OFFSET.X,BOTTOM_UPPER_LEFT.Y).Done THEN
+					PipetSubStep:=2;
+				END_IF
+			2:
+				IF ip.Movers[1].MoveCommand.FreeMove(
+						PIPET_DISPENSING_HEAD.X-WELLPLATE_OFFSET.X,
+						PIPET_DISPENSING_HEAD.Y-WELLPLATE_OFFSET.Y).Done THEN
+					PipetSubStep:=3;
+				END_IF
+			3:
+				PipetStepDone:= TRUE;
+				
+		END_CASE
+				
+		//for test tube (mover2) -->
+		CASE TestTubeSubStep OF
+			0:
+				IF 	ip.Movers[2].MoveCommand.FreeMove(TOP_LOWER_LEFT.X,TOP_LOWER_LEFT.Y).Done THEN
+					TestTubeSubStep:=1;
+				END_IF
+			1:
+				IF 	ip.Movers[2].MoveCommand.FreeMove(
+						SCARA_GRIPPER_HEAD.X-TESTTUBE_OFFSET.X,TOP_LOWER_LEFT.Y).Done THEN
+					TestTubeSubStep:=2;
+				END_IF
+			2:
+				IF ip.Movers[2].MoveCommand.FreeMove(
+						SCARA_GRIPPER_HEAD.X-TESTTUBE_OFFSET.X,
+						SCARA_GRIPPER_HEAD.Y-TESTTUBE_OFFSET.Y).Done THEN
+					TestTubeSubStep:=3;
+				END_IF
+			3:
+				TestTubeStepDone:= TRUE;
+			
+		END_CASE
+				
+		//both done
+		IF PipetStepDone AND TestTubeStepDone THEN
+			PipetStepDone:=TestTubeStepDone:=FALSE;
+			PipetSubStep:=TestTubeSubStep:=0;
+			
+			Step:=E_DemoStep.ADLM_Step3;
+		END_IF
+{endregion}
+{region "ADLM_Step3"}
+
+	E_DemoStep.ADLM_Step3: // cycle through six tubes AND start Pipeting sequence
+	
+		// for Pipet (mover1) --> Continuous pipetting cycle
+		CASE PipetSubStep OF 
+			0:
+				WellCountX:=WellCountY:=1;
+				flipDirY:=-1; //set to 1 or -1
+				WellStepIncrement:=1; 
+				PipetSubStep:=1;
+				Mover1Target.X:=PIPET_DISPENSING_HEAD.X-WELLPLATE_OFFSET.X;//MoverCurentPos1.X:=ip.Movers[1].ActualPosition.x;    
+				Mover1Target.Y:=PIPET_DISPENSING_HEAD.Y-WELLPLATE_OFFSET.Y;//MoverCurentPos1.Y:=ip.Movers[1].ActualPosition.y;
+			1:
+				IF 	ip.Movers[1].MoveCommand.MoveRelativeY(flipDirY*WELL_PITCH).Done THEN
+					WellCountY:=WellCountY+1;
+					ip.Movers[1].MoveCommand.MoveRelativeY(0.0);//prep for new Relative Y-Move
+					IF WellCountY = WELL_MAXCOUNT_Y THEN
+						IF WellCountX = WELL_MAXCOUNT_X THEN 
+							PipetSubStep:=3;//finally done
+						ELSE
+							PipetSubStep:=2;
+						END_IF
+						WellCountY:=1;
+						flipDirY:=-1*flipDirY;//flip direction of Y-moves
+					END_IF
+				END_IF
+			2:
+				IF 	ip.Movers[1].MoveCommand.MoveX(Mover1Target.X+WELL_PITCH*WellCountX).Done THEN
+					
+					IF WellCountX < 2 THEN
+						WellStepIncrement := 1;
+					ELSIF WellCountX < 7 THEN
+						WellStepIncrement := 9;
+					ELSIF WellCountX < WELL_MAXCOUNT_X-8 THEN
+						WellStepIncrement := 12;
+					ELSIF WellCountX < WELL_MAXCOUNT_X-2 THEN
+						WellStepIncrement := 3;
+					ELSE
+						WellStepIncrement := 1;
+					END_IF;
+					WellCountX:=WellCountX+WellStepIncrement;
+					IF WellCountX > WELL_MAXCOUNT_X THEN
+						WellCountX:=WELL_MAXCOUNT_X;
+					END_IF
+					PipetSubStep:=1;	
+				END_IF
+			3:
+				PipetStepDone:= TRUE;
+				
+		END_CASE
+
+		//for test tube (mover2) --> Continuous testube cycle + rotate midway
+		CASE TestTubeSubStep OF
+			0:
+				ip.Movers[2].Dynamics.Rotation:=ROTATE_TESTTUBE_GRIPPER;
+				TubeCountX:=TubeCountY:=1;
+				//TubeYRetractDistance:=40.0;
+				TestTubeSubStep:=1;
+				Cycles:=1;
+				//Save current Position of mover
+				Mover2Target.X:=SCARA_GRIPPER_HEAD.X-TESTTUBE_OFFSET.X;//MoverCurentPos2.X:=ip.Movers[2].ActualPosition.x;    
+				Mover2Target.Y:=SCARA_GRIPPER_HEAD.Y-TESTTUBE_OFFSET.Y;//MoverCurentPos2.Y:=ip.Movers[2].ActualPosition.y;
+				
+			1:	IF 	ip.Movers[2].MoveCommand.VerticalMove(5).Done THEN	TestTubeSubStep:=2;	END_IF
+			2:	IF 	ip.Movers[2].MoveCommand.VerticalMove(1).Done THEN 	TestTubeSubStep:=3; END_IF
+			3:	IF 	ip.Movers[2].MoveCommand.VerticalMove(2).Done THEN	TestTubeSubStep:=4;	END_IF
+			4:	//retract
+				IF 	ip.Movers[2].MoveCommand.MoveRelativeY(-TubeYRetractDistance).Done THEN
+					IF TubeCountX = TUBE_MAXCOUNT_X THEN
+						TubeCountX:=1;
+						IF TubeCountY = TUBE_MAXCOUNT_Y THEN
+							//TubeCountY:=1;
+							TestTubeSubStep:=11;// reset to finish
+						ELSE
+							TubeCountY:=TubeCountY+1;
+							TestTubeSubStep:=7;//rotate 180deg to other side	
+						END_IF
+					ELSE
+						TubeCountX:=TubeCountX+1;
+						TestTubeSubStep:=5; // not done with Tubes along X
+					END_IF
+				END_IF
+			5: //prep next X-axis move
+				IF 	ip.Movers[2].MoveCommand.MoveRelativeX(TUBE_PITCH_X).Done THEN
+					//next Tube Position
+					IF ip.Movers[2].MoveCommand.MoveRelativeY(TubeYRetractDistance).Done THEN
+						TestTubeSubStep:=1;
+					END_IF
+				END_IF
+			7: //flip sides prep
+				IF 	ip.Movers[2].MoveCommand.FreeMove(TOP_CENTER.X,TOP_CENTER.Y).Done THEN
+					// rotate180
+					IF 	ip.Movers[2].MoveCommand.Rotate(180.0,0).Done THEN
+						TestTubeSubStep:=9;
+					END_IF
+				END_IF
+			9: // reposition for other side.
+				IF ip.Movers[2].MoveCommand.MoveX(Mover2Target.X).Done THEN //reset to starting XY position aligned to gripper
+					IF ip.Movers[2].MoveCommand.MoveY(Mover2Target.Y).Done THEN
+						TestTubeSubStep:=1;
+					END_IF
+				END_IF
+			
+			11: // spin and reset rotation position
+				IF 	ip.Movers[2].MoveCommand.FreeMove(TOP_CENTER.X,TOP_CENTER.Y).Done THEN
+					IF 	ip.Movers[2].MoveCommand.Rotate(0.0,-3).Done THEN
+						TestTubeSubStep:=12;
+					END_IF
+				END_IF
+			12:
+				IF 	ip.Movers[2].MoveCommand.VerticalMove(5).Done THEN
+						TestTubeSubStep:=13;
+				END_IF
+			13: // start tilt partial revolve
+				IF ip.Movers[2].MoveCommand.TiltB(-2).Done THEN
+					IF ip.Movers[2].MoveCommand.TiltA(2).Done THEN
+						TestTubeSubStep:=14;
+					END_IF
+				END_IF
+				
+			14:	
+
+				IF ip.Movers[2].MoveCommand.TiltB(2).Done THEN
+					IF ip.Movers[2].MoveCommand.TiltA(0).Done THEN
+						TestTubeSubStep:=15;
+					END_IF
+				END_IF	
+			15:
+				IF 	ip.Movers[2].MoveCommand.TiltB(0).Done THEN
+					IF Cycles = 2 THEN
+						Cycles:=1;
+						TestTubeSubStep:=16;
+					ELSE
+						Cycles:=Cycles+1;
+						TestTubeSubStep:=13;
+					END_IF
+				END_IF
+			16:
+				IF ip.Movers[2].MoveCommand.VerticalMove(2).Done
+				THEN
+					TestTubeSubStep:=17;
+				END_IF	
+			17:
+				TestTubeStepDone:= TRUE;
+				
+			
+		END_CASE
+				
+		//both done
+		IF PipetStepDone AND TestTubeStepDone THEN
+			TubeCountX:=TubeCountY:=1;
+			PipetStepDone:=TestTubeStepDone:=FALSE;
+			PipetSubStep:=TestTubeSubStep:=0;
+			F_SetAllMoversMovement(DEFAULT_MOVE);
+			F_SetAllMoversRotation(DEFAULT_ROTATE);
+			Step:=E_DemoStep.Init;//Step:=E_DemoStep.ADLM_Step4;
+		END_IF
+{endregion}
+{region "ADLM_Step4"}
+
+	E_DemoStep.ADLM_Step4: // Spin Test tubes AND finish Pipeting sequence			
+{endregion}
 {region "Disable"}					
     
 	E_DemoStep.Disable:
