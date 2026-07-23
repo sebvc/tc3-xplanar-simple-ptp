@@ -1,13 +1,28 @@
 <?xml version="1.0"?>
-<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.24" ClassName="CDevEtherCATDef" SubType="111" TcProjectVariant="Normal">
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.25" ClassName="CDevEtherCATDef" SubType="111" TcProjectVariant="Normal">
 	<ImageDatas>
 		<ImageData Id="1000">424dd6020000000000003600000028000000100000000e0000000100180000000000a002000000000000000000000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff808080808080b4b4b4b4b4b4b4b4b4808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff808080b4b4b4b4b4b4808080b4b4b4808080b4b4b4b4b4b4808080ff00ffff00ffff00ffff00ffff00ff808080808080b4b4b4b4b4b4808080dcdcdcdcdcdcdcdcdc808080b4b4b4b4b4b4808080808080ff00ffff00ff808080b4b4b4b4b4b4808080808080dcdcdcdcdcdcdcdcdcdcdcdcdcdcdc808080808080b4b4b4b4b4b4808080808080b4b4b4b4b4b4808080fafafaf0f0f0f0f0f0e6e6e6e6e6e6e1e1e1dcdcdcdcdcdcdcdcdc808080b4b4b4808080808080b4b4b4808080fffffffafafafafafaf0f0f0f0f0f0e6e6e6e6e6e6e1e1e1dcdcdcdcdcdcdcdcdc808080808080808080808080fffffffffffffffffffafafafafafaf0f0f0f0f0f0e6e6e6e6e6e6e1e1e1e1e1e1dcdcdcdcdcdc808080ff00ff808080808080fffffffffffffffffffafafafafafaf0f0f0f0f0f0e6e6e6e6e6e6dcdcdc808080808080ff00ffff00ffff00ffff00ff808080808080fffffffffffffffffffafafaf0f0f0f0f0f0e1e1e1808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff808080808080fffffffafafaf0f0f0808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff808080878787808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff</ImageData>
 	</ImageDatas>
-	<Device Id="3" DevType="111" DevFlags="#x0003" AmsPort="28675" AmsNetId="169.254.221.1.4.1" RemoteName="XPlanar" InfoImageId="4">
+	<Device Id="3" DevType="111" DevFlags="#x0003" AmsPort="28675" AmsNetId="169.254.77.64.4.1" RemoteName="XPlanar" InfoImageId="4">
 		<Name>__FILENAME__</Name>
 		<ProjectVariant PvUseDisable="true" PvUseParameter="true" PvUseLink="true" PvUseSimulation="true">
 			<Variant>
 				<Name>Normal</Name>
+				<Disable>false</Disable>
+				<Parameters>
+					<EtherCAT DcSyncMode="3"/>
+				</Parameters>
+				<Simulation Enable="false"/>
+				<AddressInfo PromiscuousMode="false" PromiscuousModeNoCopy="true" VirtualDeviceName="false">
+					<Pnp>
+						<DeviceDesc>Ethernet 5 (TwinCAT-Intel PCI Ethernet Adapter (Gig</DeviceDesc>
+						<DeviceName>\DEVICE\{429CA7E7-666F-4BC2-B598-65B8C3DA5412}</DeviceName>
+						<DeviceData>000105900959</DeviceData>
+					</Pnp>
+				</AddressInfo>
+				<AmsNetId>169.254.77.64.4.1</AmsNetId>
+			</Variant>
+			<Variant>
 				<Name>SimOnIPC</Name>
 				<Disable>false</Disable>
 				<AddressInfo PromiscuousMode="false" VirtualDeviceName="false">
@@ -42,9 +57,9 @@
 		</ProjectVariant>
 		<AddressInfo>
 			<Pnp>
-				<DeviceDesc>LAN2 X103 (TwinCAT-Intel PCI Ethernet Adapter (Giga</DeviceDesc>
-				<DeviceName>\DEVICE\{1031EDE7-BBC1-461C-941A-B3EE484405BF}</DeviceName>
-				<DeviceData>0001059ba482</DeviceData>
+				<DeviceDesc>Ethernet 5 (TwinCAT-Intel PCI Ethernet Adapter (Gig</DeviceDesc>
+				<DeviceName>\DEVICE\{429CA7E7-666F-4BC2-B598-65B8C3DA5412}</DeviceName>
+				<DeviceData>000105900959</DeviceData>
 			</Pnp>
 		</AddressInfo>
 		<Image Id="3" AddrType="9" ImageType="3">
@@ -53,7 +68,7 @@
 		<Box Id="1" BoxType="9099" BoxFlags="#x00000020">
 			<Name>Term 1 (APS4322-7000)</Name>
 			<ImageId>1000</ImageId>
-			<EtherCAT SlaveType="2" PdiType="#x0405" MboxDataLinkLayer="true" StateMBoxPolling="true" CfgModeSafeOp="true" CycleMBoxPollingTime="0" CoeType="39" FoeType="1" VendorId="#x00000002" ProductCode="#x77c43c29" RevisionNo="#x00121b58" BIC="1P238046SBTN0000kgma1KAPS4322-0000-0000             Q1    2P282305120018" InfoDataAddr="true" InfoDataDcTimes="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="305" SdoUploadWithMaxLength="true" DataRates="4" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="APS4322-7000 Drive" Desc="APS4322-7000" PortABoxInfo="#x00ffffff">
+			<EtherCAT SlaveType="2" PdiType="#x0405" MboxDataLinkLayer="true" StateMBoxPolling="true" CfgModeSafeOp="true" CycleMBoxPollingTime="0" CoeType="39" FoeType="1" VendorId="#x00000002" ProductCode="#x77c43c29" RevisionNo="#x00121b58" BIC="1P238046SBTN0000kl6k1KAPS4322-0000-0000             Q1    2P362305120018" InfoDataAddr="true" InfoDataDcTimes="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="305" SdoUploadWithMaxLength="true" DataRates="4" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="APS4322-7000 Drive" Desc="APS4322-7000" PortABoxInfo="#x00ffffff">
 				<SyncMan>001080002600010001000000800080008000001026010000</SyncMan>
 				<SyncMan>801080002200010002000000800080008000801022010000</SyncMan>
 				<SyncMan>001196002400010003000000000000009600001124010000</SyncMan>
@@ -970,7 +985,7 @@
 		<Box Id="3" BoxType="9099" BoxFlags="#x00000020">
 			<Name>Term 3 (APS4322-7000)</Name>
 			<ImageId>1000</ImageId>
-			<EtherCAT SlaveType="2" PdiType="#x0405" MboxDataLinkLayer="true" StateMBoxPolling="true" CfgModeSafeOp="true" CycleMBoxPollingTime="0" CoeType="39" FoeType="1" VendorId="#x00000002" ProductCode="#x77c43c29" RevisionNo="#x00121b58" BIC="1P238046SBTN0000kg841KAPS4322-0000-0000             Q1    2P272305120018" InfoDataAddr="true" InfoDataDcTimes="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="305" SdoUploadWithMaxLength="true" DataRates="4" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="APS4322-7000 Drive" Desc="APS4322-7000" PortABoxInfo="#x02000001">
+			<EtherCAT SlaveType="2" PdiType="#x0405" MboxDataLinkLayer="true" StateMBoxPolling="true" CfgModeSafeOp="true" CycleMBoxPollingTime="0" CoeType="39" FoeType="1" VendorId="#x00000002" ProductCode="#x77c43c29" RevisionNo="#x00121b58" BIC="1P238046SBTN0000kkfj1KAPS4322-0000-0000             Q1    2P352305120018" InfoDataAddr="true" InfoDataDcTimes="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="305" SdoUploadWithMaxLength="true" DataRates="4" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="APS4322-7000 Drive" Desc="APS4322-7000" PortABoxInfo="#x02000001">
 				<SyncMan>001080002600010001000000800080008000001026010000</SyncMan>
 				<SyncMan>801080002200010002000000800080008000801022010000</SyncMan>
 				<SyncMan>001196002400010003000000000000009600001124010000</SyncMan>
@@ -1884,7 +1899,7 @@
 				</EtherCAT>
 			</Box>
 		</Box>
-		<EtherCAT DcSyncMode="3"/>
+		<EtherCAT PromiscuousModeNoCopy="true" DcSyncMode="3"/>
 	</Device>
 	<Mappings>
 		<OwnerA>

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.24" TcProjectVariant="Normal">
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.25" TcProjectVariant="Normal">
 	<DataTypes>
 		<DataType>
 			<Name GUID="{5AC0538E-BDFA-4B58-A6B5-99E997DABADA}" Namespace="MC">MoverVector</Name>
@@ -4828,12 +4828,12 @@
 			<EnumInfo>
 				<Text><![CDATA[Standard1D]]></Text>
 				<Enum>1</Enum>
-				<Comment><![CDATA[The Planar Mover keeps a distance to its neighbours on track that is at least the sum of gap and stop distance.]]></Comment>
+				<Comment><![CDATA[The Planar Mover keeps a distance to its neighbors on track that is at least the sum of gap and stop distance.]]></Comment>
 			</EnumInfo>
 			<EnumInfo>
 				<Text><![CDATA[Fast1D]]></Text>
 				<Enum>2</Enum>
-				<Comment><![CDATA[The Planar Mover keeps a distance to its neighbours on track that is at least the gap.]]></Comment>
+				<Comment><![CDATA[The Planar Mover keeps a distance to its neighbors on track that is at least the gap.]]></Comment>
 			</EnumInfo>
 			<Properties>
 				<Property>
@@ -4938,7 +4938,7 @@
 			<SubItem>
 				<Name>Gap</Name>
 				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
-				<Comment><![CDATA[Gap that the mover keeps to its neighbours.]]></Comment>
+				<Comment><![CDATA[Gap that the mover keeps to its neighbors.]]></Comment>
 				<BitSize>64</BitSize>
 				<BitOffs>192</BitOffs>
 			</SubItem>
@@ -5936,13 +5936,13 @@
 				</License>
 			</Licenses>
 			<Parameters>
-				<Group Collapsed="true"><![CDATA[General]]></Group>
+				<Group><![CDATA[General]]></Group>
 				<Group Collapsed="true"><![CDATA[Simulation]]></Group>
 				<Group Collapsed="true"><![CDATA[Hardware]]></Group>
-				<Group Collapsed="true"><![CDATA[Maximum Dynamics]]></Group>
-				<Group Collapsed="true"><![CDATA[Default Dynamics]]></Group>
+				<Group><![CDATA[Maximum Dynamics]]></Group>
+				<Group><![CDATA[Default Dynamics]]></Group>
 				<Group Collapsed="true"><![CDATA[On Track Dynamics]]></Group>
-				<Group><![CDATA[Monitoring]]></Group>
+				<Group Collapsed="true"><![CDATA[Monitoring]]></Group>
 				<Group><![CDATA[Command Sequencer]]></Group>
 				<Group><![CDATA[Command mode on track]]></Group>
 				<Group Collapsed="true"><![CDATA[Internal]]></Group>
@@ -5968,7 +5968,7 @@
 					<BitSize>8</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
 					<Default>
-						<Value>0</Value>
+						<EnumText>FALSE</EnumText>
 					</Default>
 					<PTCID>#x050300b1</PTCID>
 					<ContextId OnlineAccess="true">0</ContextId>
@@ -6107,7 +6107,7 @@
 					<BitSize>8</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
 					<Default>
-						<Value>1</Value>
+						<EnumText>TRUE</EnumText>
 					</Default>
 					<PTCID>#x0503011a</PTCID>
 				</Parameter>
@@ -6637,8 +6637,8 @@
 					<PTCID>#x05030180</PTCID>
 				</Parameter>
 				<Parameter OnlineParameter="true" ReadOnly="true" Group="Command mode on track">
-					<Name>Forward blocking neighbours</Name>
-					<Comment><![CDATA[OIDs of neighbours in front of this mover blocking it in standstill on the track.]]></Comment>
+					<Name>Forward blocking neighbors</Name>
+					<Comment><![CDATA[OIDs of neighbors in front of this mover blocking it in standstill on the track.]]></Comment>
 					<BitSize>0</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-00000000000F}">OTCID</BaseType>
 					<ArrayInfo>
@@ -6648,8 +6648,8 @@
 					<PTCID>#x0503012e</PTCID>
 				</Parameter>
 				<Parameter OnlineParameter="true" ReadOnly="true" Group="Command mode on track">
-					<Name>Backward blocking neighbours</Name>
-					<Comment><![CDATA[OIDs of neighbours behind this mover blocking it in standstill on the track.]]></Comment>
+					<Name>Backward blocking neighbors</Name>
+					<Comment><![CDATA[OIDs of neighbors behind this mover blocking it in standstill on the track.]]></Comment>
 					<BitSize>0</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-00000000000F}">OTCID</BaseType>
 					<ArrayInfo>
@@ -6886,12 +6886,12 @@
 		<ImageData Id="1003">424d360300000000000036000000280000001000000010000000010018000000000000000000c30e0000c30e000000000000000000003d3b293d3b293d3b293d3b293d3b293d3b293d3b293d3b293d3b293d3b293d3b293d3b293d3b293d3b293d3b293d3b293d3b297b766f7a756d79746c77726a767168756f66736e64716c626f695f6d675d6b655a696358666155645e523d3b293d3b297f7a737f7b727e7a717c78707a766d78746bb6b4aeb6b4ae726d63706a606d685d6b665b6964586661553d3b293d3b2989847e8a867f8a867e88847cb6b4aeb6b4ae3d3b293d3b29b6b4aeb6b4ae706b606d685d6b665b6863583d3b293d3b2995918b96938db6b4aeb6b4ae3d3b293d3b2988837b817c743d3b293d3b29b6b4aeb6b4ae6d685d6b655a3d3b293d3b29a19e98b6b4ae3d3b293d3b299e9b943d3b29b6b4aeb6b4ae3d3b29a09c963d3b293d3b29b6b4ae6d675d3d3b293d3b29aca9a43d3b29aeaba6adaaa4a9a6a13d3b293d3b293d3b293d3b29a09c967b766d7570663d3b29b6b4ae3d3b293d3b29b6b3ae3d3b29b9b6b2b7b5b13d3b293d3b29a9a6a0a09c963d3b293d3b29a09c96a09c963d3b29b6b4ae3d3b293d3b29c1bfbb3d3b293d3b293d3b29bfbcb8bab8b3b3b0aba9a6a0a09c9696928b3d3b293d3b293d3b29b6b4ae3d3b293d3b29cac8c53d3b29ceccc9cccbc7c9c7c4c3c1bdbbb8b4b1aea9a6a39d9c9891908c85847f773d3b29b6b4ae3d3b293d3b29d1cfcd3d3b29d7d6d3d6d5d2d1cfcdcac8c5c1bebab6b4afaca9a3a09d9795918a89847d3d3b29b6b4ae3d3b293d3b29d6d4d2dcdbd93d3b293d3b29d6d5d2cfcdcac5c3c0bab8b3afaca7a4a19b3d3b293d3b297f7a7277736b3d3b293d3b29d9d7d6e0dfdde5e4e2e2e1df3d3b293d3b29c7c5c2bcb9b53d3b293d3b299a96908d8982807c7479756c3d3b293d3b29d8d6d5dedddce2e1e0dfdeddd8d7d5d0cfcc3d3b293d3b29b1aeaaa6a39d9a96918e8a84817d767a766e3d3b293d3b29d4d2d1d9d7d6dad9d8d9d8d6d4d2d0cdcbc9c4c2bfbab7b3afaca8a5a19c9995908d8983817c757b766f3d3b293d3b293d3b293d3b293d3b293d3b293d3b293d3b293d3b293d3b293d3b293d3b293d3b293d3b293d3b293d3b293d3b29</ImageData>
 		<ImageData Id="1004">424dd6020000000000003600000028000000100000000e00000001001800000000000000000000000000000000000000000000000000939393939393939393939393939393939393939393939393939393939393939393939393939393939393939393939393939393bdbbbb5d5c5c5d5c5c5d5c5c5d5c5c5d5c5c5d5c5c5d5c5c5d5c5c5d5c5c5d5c5c5d5c5c5d5c5c5d5c5c939393939393c5c3c35d5c5c9e9d9d5d5c5c636363c5c3c3c5c3c37d7c7b6c6b6cc0bebd545454c0bebdbdbbbb636363939393939393c5c3c35d5c5cadababc8c6c5605f5ea8a6a4c5c3c3c5c3c3adabab9e9d9dc5c3c3939393605f5e70706f939393939393cccccc5d5c5c5454549a9a976c6b6cc5c3c3c5c3c3c5c3c3c5c3c3c5c3c3c5c3c3605f5eb2b2b2b0aeae939393939393d0cecd5d5c5c8785859696965d5c5caaa8a7545454747474c5c3c3c5c3c36c6b6caaa8a7b2b2b2b2b2b2939393939393d5d3d3605f5ed5d3d35d5c5ccccccc5d5c5cb0aeae7d7c7b9e9c9ac5c3c35d5c5cbdbbbbb2b2b2bdbbbb939393939393dddddd5d5c5cdddddd6c6b6cadababcbcbcbcbcbcb9493915d5c5c545454939393c0bebdbdbbbbb2b2b2939393939393dddddd5d5c5ce3e3e3adabab6c6b6cd0cecdcbcbcbcbcbcbc8c6c55d5c5cc5c3c3c0bebdbdbbbbb2b2b2939393939393e3e3e3605f5ee3e3e3e3e3e3636363adababd0cecdcbcbcb8a8988878585c5c3c3c5c3c3bdbbbbbdbbbb939393939393e3e3e35d5c5ceaeaeaeaeaeae3e3e3545454adabab9a9a975d5c5ccbcbcbc8c6c5c5c3c3bdbbbbb2b2b2939393939393e3e3e35d5c5cf1f1f1eaeaeae3e3e3e3e3e36c6b6c797977d5d3d3cbcbcbc8c6c5c5c3c3bdbbbbb2b2b2939393939393e3e3e3605f5eeaeaeaeaeaeae3e3e3ddddddddddddd5d3d3d5d3d3ccccccc8c6c5c5c3c3bdbbbbbdbbbb939393939393939393939393939393939393939393939393939393939393939393939393939393939393939393939393939393</ImageData>
 	</ImageDatas>
-	<Project ProjectGUID="{C1C23192-B976-461A-B5A5-F8C9B6F9B861}" TargetNetId="169.254.221.1.1.1" Target64Bit="true" ShowHideConfigurations="#x6">
+	<Project ProjectGUID="{C1C23192-B976-461A-B5A5-F8C9B6F9B861}" TargetNetId="169.254.77.64.1.1" Target64Bit="true" ShowHideConfigurations="#x6">
 		<System>
-			<Settings MaxCpus="4" NonWinCpus="2">
-				<Cpu CpuId="2"/>
-				<Cpu CpuId="3" BaseTime="2500"/>
-				<IoIdleTask Affinity="#x00000004">
+			<Settings MaxCpus="6" NonWinCpus="2">
+				<Cpu CpuId="4"/>
+				<Cpu CpuId="5" BaseTime="2500"/>
+				<IoIdleTask Affinity="#x00000010">
 					<ProjectVariant PvUseParameter="true">
 						<Variant>
 							<Name>Normal</Name>
@@ -6904,6 +6904,19 @@
 				<ProjectVariant PvUseParameter="true">
 					<Variant>
 						<Name>Normal</Name>
+						<Parameters RouterMemory="32" CoresPerPkg="0" MaxWinCpus="4" MaxNonWinCpus="2">
+							<Cpu Id="4" Percent="80" BaseTime="10000"/>
+							<Cpu Id="5" Percent="80" BaseTime="2500"/>
+							<Affinity ObjId="#x03000011" Mask="#x10"/>
+							<Affinity ObjId="#x02010030" Mask="#x10"/>
+							<Affinity ObjId="#x08500010"/>
+							<Affinity ObjId="#x02010040" Mask="#x20"/>
+							<Affinity ObjId="#x02010050" Mask="#x10"/>
+							<Affinity ObjId="#x02010060" Mask="#x10"/>
+							<Affinity ObjId="#x02010070" Mask="#x10"/>
+						</Parameters>
+					</Variant>
+					<Variant>
 						<Name>SimOnIPC</Name>
 						<Parameters RouterMemory="32" CoresPerPkg="0" MaxWinCpus="2" MaxNonWinCpus="2">
 							<Cpu Id="2" Percent="80" BaseTime="10000"/>
@@ -6936,7 +6949,7 @@
 			<Licenses>
 				<Target>
 					<ManualSelect>{27326EE5-AB30-4084-B15B-8CCA96CCBF0B}</ManualSelect>
-					<LicenseDevice DongleHardwareId="2" DongleDevice="#x03020007" DongleLevel="60" DongleSystemId="{C22FCD40-C6AF-9E06-E312-CF9F5749A104}" DongleSerialNumber="000bs99i" DongleCacheLicense="true"/>
+					<LicenseDevice Disabled="true" DongleHardwareId="2" DongleDevice="#x03020007" DongleLevel="80" DongleSerialNumber="000bs99i" DongleCacheLicense="true"/>
 				</Target>
 				<ProjectVariant PvUseParameter="true">
 					<Variant>
@@ -6952,7 +6965,7 @@
 				</ProjectVariant>
 			</Licenses>
 			<Tasks>
-				<Task Id="3" Priority="20" CycleTime="10000" AmsPort="350" Affinity="#x00000004" AdtTasks="true">
+				<Task Id="3" Priority="20" CycleTime="10000" AmsPort="350" Affinity="#x00000010" AdtTasks="true">
 					<Name>PlcTask</Name>
 					<ProjectVariant PvUseParameter="true">
 						<Variant>
@@ -6963,174 +6976,24 @@
 						</Variant>
 					</ProjectVariant>
 				</Task>
-				<Task Id="4" Priority="32" Affinity="#x00000004" AdtTasks="true" JobTask="true">
+				<Task Id="4" Priority="1" CycleTime="2500" AmsPort="351" Affinity="#x00000020" AdtTasks="true">
+					<Name>XPlanar Task_7</Name>
+				</Task>
+				<Task Id="5" Priority="2" Affinity="#x00000010" AdtTasks="true" JobTask="true">
 					<Name>Job Task</Name>
 					<ImageId>327</ImageId>
-					<ProjectVariant PvUseParameter="true">
-						<Variant>
-							<Name>Normal</Name>
-							<Name>SimOnIPC</Name>
-							<Name>UMRT</Name>
-							<Parameters Priority="32" CycleTime="0"/>
-						</Variant>
-					</ProjectVariant>
 				</Task>
-				<Task Id="5" Priority="1" CycleTime="2500" AmsPort="351" Affinity="#x00000008" AdtTasks="true">
-					<Name>XPlanar Task_3</Name>
-					<ProjectVariant PvUseParameter="true">
-						<Variant>
-							<Name>Normal</Name>
-							<Name>SimOnIPC</Name>
-							<Parameters Priority="1" CycleTime="2500"/>
-						</Variant>
-						<Variant>
-							<Name>UMRT</Name>
-							<Parameters Priority="1" CycleTime="10000"/>
-						</Variant>
-					</ProjectVariant>
-				</Task>
-				<Task Id="6" Priority="2" CycleTime="20000" AmsPort="352" Affinity="#x00000004" AdtTasks="true">
+				<Task Id="6" Priority="3" CycleTime="20000" AmsPort="352" Affinity="#x00000010" AdtTasks="true">
 					<Name>MC-Task (MET)</Name>
-					<ProjectVariant PvUseParameter="true">
-						<Variant>
-							<Name>Normal</Name>
-							<Name>SimOnIPC</Name>
-							<Name>UMRT</Name>
-							<Parameters Priority="2" CycleTime="20000"/>
-						</Variant>
-					</ProjectVariant>
 				</Task>
-				<Task Id="7" Priority="3" CycleTime="100000" AmsPort="353" Affinity="#x00000004" AdtTasks="true">
+				<Task Id="7" Priority="4" CycleTime="100000" AmsPort="353" Affinity="#x00000010" AdtTasks="true">
 					<Name>MC-Task (MPT)</Name>
-					<ProjectVariant PvUseParameter="true">
-						<Variant>
-							<Name>Normal</Name>
-							<Name>SimOnIPC</Name>
-							<Name>UMRT</Name>
-							<Parameters Priority="3" CycleTime="100000"/>
-						</Variant>
-					</ProjectVariant>
 				</Task>
 			</Tasks>
 			<Modules>
 				<Module Id="#x01010010" KeepUnrestoredLinks="2" ClassFactoryId="Beckhoff Automation GmbH|TcIoXPlanar|5.0.112.0">
 					<Name>XPlanar</Name>
 					<ImageId>1000</ImageId>
-					<ProjectVariant PvUseLink="true" PvUseSParameter="1">
-						<Variant>
-							<Name>Normal</Name>
-							<Name>SimOnIPC</Name>
-							<Parameters>
-								<Parameter PID="#x3002103" Data="03000000"/>
-								<Parameter PID="#x3170000" Data="00000000"/>
-								<Parameter PID="#x3170001" Data="01"/>
-								<Parameter PID="#x317001b" Data="0000"/>
-								<Parameter PID="#x3170010" Data="0000"/>
-								<Parameter PID="#x3171002" Data=""/>
-								<Parameter PID="#x3171006" Data="0100"/>
-								<Parameter PID="#x3171007" Data="0000"/>
-								<Parameter PID="#x3171003" Data="0000"/>
-								<Parameter PID="#x3171012" Data="00"/>
-								<Parameter PID="#x3170032" Text=""/>
-								<Parameter PID="#x317000c" Data="8665"/>
-								<Parameter PID="#x3170016" Data=""/>
-								<Parameter PID="#x3170002" Data="0000000000000000000000000000000000000000"/>
-								<Parameter PID="#x3170020" Data="0000000000000000"/>
-								<Parameter PID="#x3170003" Data="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
-								<Parameter PID="#x317001a" Data="0000000000000000"/>
-								<Parameter PID="#x3170004" Data="00000000"/>
-								<Parameter PID="#x3170005" Data="00000000" Elements="1"/>
-								<Parameter PID="#x3170013" Data="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" Elements="1"/>
-								<Parameter PID="#x3170017" Data="00000000"/>
-								<Parameter PID="#x3170018" Data="00000000" Elements="1"/>
-								<Parameter PID="#x3170019" Data="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" Elements="1"/>
-								<Parameter PID="#x3170006" Data="00000000"/>
-								<Parameter PID="#x3170007" Data="00000000" Elements="1"/>
-								<Parameter PID="#x3170011" Data="00000000"/>
-								<Parameter PID="#x3170012" Data="00000000" Elements="1"/>
-								<Parameter PID="#x3170021" Data="00000000"/>
-								<Parameter PID="#x3170022" Data="00000000" Elements="1"/>
-								<Parameter PID="#x3170024" Data="00000000"/>
-								<Parameter PID="#x3170025" Data="00000000" Elements="1"/>
-								<Parameter PID="#x317000a" Data="00000000"/>
-								<Parameter PID="#x317000b" Data="00000000" Elements="1"/>
-								<Parameter PID="#x3170008" Data="00000000"/>
-								<Parameter PID="#x3170009" Data="00000000" Elements="1"/>
-								<Parameter PID="#x317001c" Data="00000000"/>
-								<Parameter PID="#x317001d" Data="00000000" Elements="1"/>
-								<Parameter PID="#x3171000" Data="00000000"/>
-								<Parameter PID="#x3171001" Data="00000000" Elements="1"/>
-								<Parameter PID="#x3170014" Data="00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
-								<Parameter PID="#x3170027" Data="00000000"/>
-								<Parameter PID="#x3170026" Data="000000000000000000000000000000000000000000000000" Elements="1"/>
-								<Parameter PID="#x3171005" Data="0000"/>
-								<Parameter PID="#x3171004" Data="0000"/>
-								<Parameter PID="#x3171008" Data="00000000"/>
-								<Parameter PID="#x317002b" Text=""/>
-								<Parameter PID="#x317002a" Data="0000000000002440"/>
-								<Parameter PID="#x3170033" Data="0000000000c06240"/>
-								<Context>
-									<Id>1</Id>
-								</Context>
-							</Parameters>
-						</Variant>
-						<Variant>
-							<Name>UMRT</Name>
-							<Parameters>
-								<Parameter PID="#x3002103" Data="03000000"/>
-								<Parameter PID="#x3170000" Data="00000000"/>
-								<Parameter PID="#x3170001" Data="01"/>
-								<Parameter PID="#x317001b" Data="0000"/>
-								<Parameter PID="#x3170010" Data="0100"/>
-								<Parameter PID="#x3171002" Data=""/>
-								<Parameter PID="#x3171006" Data="0100"/>
-								<Parameter PID="#x3171007" Data="0000"/>
-								<Parameter PID="#x3171003" Data="0000"/>
-								<Parameter PID="#x3171012" Data="00"/>
-								<Parameter PID="#x3170032" Text=""/>
-								<Parameter PID="#x317000c" Data="8665"/>
-								<Parameter PID="#x3170016" Data=""/>
-								<Parameter PID="#x3170002" Data="0000000000000000000000000000000000000000"/>
-								<Parameter PID="#x3170020" Data="0000000000000000"/>
-								<Parameter PID="#x3170003" Data="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
-								<Parameter PID="#x317001a" Data="0000000000000000"/>
-								<Parameter PID="#x3170004" Data="00000000"/>
-								<Parameter PID="#x3170005" Data="00000000" Elements="1"/>
-								<Parameter PID="#x3170013" Data="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" Elements="1"/>
-								<Parameter PID="#x3170017" Data="00000000"/>
-								<Parameter PID="#x3170018" Data="00000000" Elements="1"/>
-								<Parameter PID="#x3170019" Data="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" Elements="1"/>
-								<Parameter PID="#x3170006" Data="00000000"/>
-								<Parameter PID="#x3170007" Data="00000000" Elements="1"/>
-								<Parameter PID="#x3170011" Data="00000000"/>
-								<Parameter PID="#x3170012" Data="00000000" Elements="1"/>
-								<Parameter PID="#x3170021" Data="00000000"/>
-								<Parameter PID="#x3170022" Data="00000000" Elements="1"/>
-								<Parameter PID="#x3170024" Data="00000000"/>
-								<Parameter PID="#x3170025" Data="00000000" Elements="1"/>
-								<Parameter PID="#x317000a" Data="00000000"/>
-								<Parameter PID="#x317000b" Data="00000000" Elements="1"/>
-								<Parameter PID="#x3170008" Data="00000000"/>
-								<Parameter PID="#x3170009" Data="00000000" Elements="1"/>
-								<Parameter PID="#x317001c" Data="00000000"/>
-								<Parameter PID="#x317001d" Data="00000000" Elements="1"/>
-								<Parameter PID="#x3171000" Data="00000000"/>
-								<Parameter PID="#x3171001" Data="00000000" Elements="1"/>
-								<Parameter PID="#x3170014" Data="00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
-								<Parameter PID="#x3170027" Data="00000000"/>
-								<Parameter PID="#x3170026" Data="000000000000000000000000000000000000000000000000" Elements="1"/>
-								<Parameter PID="#x3171005" Data="0000"/>
-								<Parameter PID="#x3171004" Data="0000"/>
-								<Parameter PID="#x3171008" Data="00000000"/>
-								<Parameter PID="#x317002b" Text=""/>
-								<Parameter PID="#x317002a" Data="0000000000002440"/>
-								<Parameter PID="#x3170033" Data="0000000000c06240"/>
-								<Context>
-									<Id>1</Id>
-								</Context>
-							</Parameters>
-						</Variant>
-					</ProjectVariant>
 					<TmcDesc GUID="{FCCD755F-8FB3-4417-A3BA-ECA6580E285B}" ClassFactoryId="Beckhoff Automation GmbH|TcIoXPlanar|5.0.112.0">
 						<Name>XPlanarProcessingUnit</Name>
 						<CLSID ClassFactory="TcIoXPlanar">{FCCD755F-8FB3-4417-A3BA-ECA6580E285B}</CLSID>
@@ -7938,7 +7801,7 @@
 									<Context>
 										<Id>1</Id>
 										<ManualConfig>
-											<OTCID>#x02010050</OTCID>
+											<OTCID>#x02010040</OTCID>
 										</ManualConfig>
 										<Priority>1</Priority>
 										<CycleTime>250000</CycleTime>
@@ -8496,11 +8359,11 @@
 								<ParameterValues>
 									<Value>
 										<Name>TaskOID</Name>
-										<Value>33620048</Value>
+										<Value>33620032</Value>
 									</Value>
 									<Value>
 										<Name>BTN</Name>
-										<String>0000kg84</String>
+										<String>0000kkfj</String>
 									</Value>
 									<Value>
 										<Name>TilePositionOnPart.x</Name>
@@ -9956,7 +9819,7 @@
 									<Context>
 										<Id>1</Id>
 										<ManualConfig>
-											<OTCID>#x02010050</OTCID>
+											<OTCID>#x02010040</OTCID>
 										</ManualConfig>
 										<Priority>1</Priority>
 										<CycleTime>250000</CycleTime>
@@ -10514,11 +10377,11 @@
 								<ParameterValues>
 									<Value>
 										<Name>TaskOID</Name>
-										<Value>33620048</Value>
+										<Value>33620032</Value>
 									</Value>
 									<Value>
 										<Name>BTN</Name>
-										<String>0000kgma</String>
+										<String>0000kl6k</String>
 									</Value>
 									<Value>
 										<Name>TilePositionOnPart.x</Name>
@@ -11975,7 +11838,7 @@
 								<Context>
 									<Id>1</Id>
 									<ManualConfig>
-										<OTCID>#x02010050</OTCID>
+										<OTCID>#x02010040</OTCID>
 									</ManualConfig>
 									<Priority>1</Priority>
 									<CycleTime>250000</CycleTime>
@@ -13014,7 +12877,7 @@
 							<ParameterValues>
 								<Value>
 									<Name>TaskOID</Name>
-									<Value>33620048</Value>
+									<Value>33620032</Value>
 								</Value>
 								<Value>
 									<Name>MoverType</Name>
@@ -13030,11 +12893,11 @@
 								</Value>
 								<Value>
 									<Name>SimulationModeStartPosition.X</Name>
-									<Value>77.1077880859375</Value>
+									<Value>74.157470703125</Value>
 								</Value>
 								<Value>
 									<Name>SimulationModeStartPosition.Y</Name>
-									<Value>72.3728332519531</Value>
+									<Value>122.503723144531</Value>
 								</Value>
 								<Value>
 									<Name>SimulationModeStartPosition.MovementArea</Name>
@@ -13421,7 +13284,7 @@
 								<Context>
 									<Id>1</Id>
 									<ManualConfig>
-										<OTCID>#x02010050</OTCID>
+										<OTCID>#x02010040</OTCID>
 									</ManualConfig>
 									<Priority>1</Priority>
 									<CycleTime>250000</CycleTime>
@@ -14460,7 +14323,7 @@
 							<ParameterValues>
 								<Value>
 									<Name>TaskOID</Name>
-									<Value>33620048</Value>
+									<Value>33620032</Value>
 								</Value>
 								<Value>
 									<Name>MoverType</Name>
@@ -14476,11 +14339,11 @@
 								</Value>
 								<Value>
 									<Name>SimulationModeStartPosition.X</Name>
-									<Value>169.473236083984</Value>
+									<Value>159.992126464844</Value>
 								</Value>
 								<Value>
 									<Name>SimulationModeStartPosition.Y</Name>
-									<Value>396.431945800781</Value>
+									<Value>397.260620117188</Value>
 								</Value>
 								<Value>
 									<Name>SimulationModeStartPosition.MovementArea</Name>
@@ -14858,25 +14721,30 @@
 			<ProjectVariant PvUseParameter="true" PvUseLink="true" PvUseSimulation="true">
 				<Variant>
 					<Name>Normal</Name>
+					<Simulation Enable="false"/>
+					<BuildConfig>Release|TwinCAT RT (x64)</BuildConfig>
+					<TargetNetId>169.254.77.64.1.1</TargetNetId>
+				</Variant>
+				<Variant>
 					<Name>SimOnIPC</Name>
 					<Simulation Enable="false"/>
 					<TargetNetId>169.254.221.1.1.1</TargetNetId>
-					<BuildConfig>Release|TwinCAT OS (x64)</BuildConfig>
+					<BuildConfig>Release|TwinCAT RT (x64)</BuildConfig>
 				</Variant>
 				<Variant>
 					<Name>UMRT</Name>
 					<Simulation Enable="false"/>
-					<BuildConfig>Release|TwinCAT OS (x64)</BuildConfig>
 					<TargetNetId>199.4.42.250.1.1</TargetNetId>
+					<BuildConfig>Release|TwinCAT RT (x64)</BuildConfig>
 				</Variant>
 			</ProjectVariant>
 		</System>
 		<Motion>
 			<MC Id="#x051f0010">
 				<Name>XPlanar MC Project</Name>
-				<MET Priority="2" CycleTimeNS="2000000" OTCID="#x02010060"/>
-				<MPT Priority="3" CycleTimeNS="10000000" OTCID="#x02010070"/>
-				<MJT Priority="32" OTCID="#x02010040"/>
+				<MET Priority="3" CycleTimeNS="2000000" OTCID="#x02010060"/>
+				<MPT Priority="4" CycleTimeNS="10000000" OTCID="#x02010070"/>
+				<MJT Priority="2" OTCID="#x02010050"/>
 				<Instance Id="#x05100010" ShareTmcDesc="true" KeepUnrestoredLinks="2">
 					<Name>Context1</Name>
 					<TmcDesc GUID="{6445FBA6-B920-4AD2-873B-8C61DD652099}" TcSmClass="TComMcCtxObj">
@@ -14889,7 +14757,7 @@
 								<ManualConfig>
 									<OTCID>#x02010060</OTCID>
 								</ManualConfig>
-								<Priority>2</Priority>
+								<Priority>3</Priority>
 								<CycleTime>2000000</CycleTime>
 							</Context>
 							<Context>
@@ -14898,16 +14766,16 @@
 								<ManualConfig>
 									<OTCID>#x02010070</OTCID>
 								</ManualConfig>
-								<Priority>3</Priority>
+								<Priority>4</Priority>
 								<CycleTime>10000000</CycleTime>
 							</Context>
 							<Context>
 								<Id>2</Id>
 								<Name>MJT</Name>
 								<ManualConfig>
-									<OTCID>#x02010040</OTCID>
+									<OTCID>#x02010050</OTCID>
 								</ManualConfig>
-								<Priority>32</Priority>
+								<Priority>2</Priority>
 							</Context>
 						</Contexts>
 						<ParameterValues>
@@ -14921,7 +14789,7 @@
 							</Value>
 							<Value>
 								<Name>Job-Task OID (MJT)</Name>
-								<Value>33620032</Value>
+								<Value>33620048</Value>
 							</Value>
 							<Value>
 								<Name>DataAreaSizes[0].size</Name>
@@ -14957,115 +14825,6 @@
 				<Axis Id="#x05110010" ShareTmcDesc="true" KeepUnrestoredLinks="2">
 					<Name>Mover4220_1</Name>
 					<ImageId>1003</ImageId>
-					<ProjectVariant PvUseSParameter="2">
-						<Variant>
-							<Name>Normal</Name>
-							<Name>SimOnIPC</Name>
-							<Parameters>
-								<Parameter PID="#x3002103" Data="02000000"/>
-								<Parameter PID="#x3002060" Data="60000102"/>
-								<Parameter PID="#x50300b1" Data="00"/>
-								<Parameter PID="#x50300b5" Data="00000000e6465340feffff7fdc1752400000000000000000000000000000000000000000000000000000000000000000"/>
-								<Parameter PID="#x50300d3" Data="000000205fa002c2000000205fa002c2000000000000f0bf00000000000018c000000000000018c000000000000026c0"/>
-								<Parameter PID="#x50300d4" Data="000000205fa00242000000205fa002420000000000002440000000000000184000000000000018400000000000002640"/>
-								<Parameter PID="#x50300e0" Data="00000000"/>
-								<Parameter PID="#x503011a" Data="01"/>
-								<Parameter PID="#x50300be" Data="00000000000014400000000000001440000000000000f03f000000000000f03f000000000000f03f000000000000f83f"/>
-								<Parameter PID="#x50300bf" Data="7b14ae47e17a943f7b14ae47e17a943f7b14ae47e17a943f7b14ae47e17a943f7b14ae47e17a943f7b14ae47e17a943f"/>
-								<Parameter PID="#x503d004" Data="0000000000001440"/>
-								<Parameter PID="#x50300d2" Data="000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
-								<Parameter PID="#x5030126" Data="00000000"/>
-								<Parameter PID="#x503012d" Data="00000000"/>
-								<Parameter PID="#x50300c3" Data="00000000"/>
-								<Parameter PID="#x50300b6" Data="0000"/>
-								<Parameter PID="#x50300b7" Data="0000"/>
-								<Parameter PID="#x50300c1" Data="000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
-								<Parameter PID="#x50300c2" Data="00000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
-								<Parameter PID="#x50300db" Data="0000"/>
-								<Parameter PID="#x5030180" Data="000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
-								<Parameter PID="#x503012e" Data="" Elements="0"/>
-								<Parameter PID="#x503012f" Data="" Elements="0"/>
-								<Parameter PID="#x503013e" Data="" Elements="0"/>
-								<Parameter PID="#x50301e3" Data="" Elements="0"/>
-								<Parameter PID="#x3000029" Data="1000100500000000000000000800000010001005010000000000000028000000" Elements="2"/>
-								<Parameter PID="#x3007000" Data="06c00305400000000000000002000000" Elements="1"/>
-								<Parameter PID="#x3007001" Data="07c0030540000000000000000200000008c0030540000000400000000200000009c003054000000080000000020000000ac0030540000000c00000000200000003c00305400000000001000002000000" Elements="5"/>
-								<Context>
-									<Id>0</Id>
-									<Name>MET</Name>
-									<ManualConfig>
-										<OTCID>#x02010060</OTCID>
-									</ManualConfig>
-									<Priority>2</Priority>
-									<CycleTime>2000000</CycleTime>
-									<DependOn>ParentObject</DependOn>
-								</Context>
-								<Context>
-									<Id>1</Id>
-									<Name>MPT</Name>
-									<ManualConfig>
-										<OTCID>#x02010070</OTCID>
-									</ManualConfig>
-									<Priority>3</Priority>
-									<CycleTime>10000000</CycleTime>
-									<DependOn>ParentObject</DependOn>
-								</Context>
-							</Parameters>
-						</Variant>
-						<Variant>
-							<Name>UMRT</Name>
-							<Parameters>
-								<Parameter PID="#x3002103" Data="02000000"/>
-								<Parameter PID="#x3002060" Data="60000102"/>
-								<Parameter PID="#x50300b1" Data="00"/>
-								<Parameter PID="#x50300b5" Data="00000000e6465340feffff7fdc1752400000000000000000000000000000000000000000000000000000000000000000"/>
-								<Parameter PID="#x50300d3" Data="000000205fa002c2000000205fa002c2000000000000f0bf00000000000018c000000000000018c000000000000026c0"/>
-								<Parameter PID="#x50300d4" Data="000000205fa00242000000205fa002420000000000002440000000000000184000000000000018400000000000002640"/>
-								<Parameter PID="#x50300e0" Data="00000000"/>
-								<Parameter PID="#x503011a" Data="00"/>
-								<Parameter PID="#x50300be" Data="00000000000014400000000000001440000000000000f03f000000000000f03f000000000000f03f000000000000f83f"/>
-								<Parameter PID="#x50300bf" Data="7b14ae47e17a943f7b14ae47e17a943f7b14ae47e17a943f7b14ae47e17a943f7b14ae47e17a943f7b14ae47e17a943f"/>
-								<Parameter PID="#x503d004" Data="0000000000001440"/>
-								<Parameter PID="#x50300d2" Data="000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
-								<Parameter PID="#x5030126" Data="00000000"/>
-								<Parameter PID="#x503012d" Data="00000000"/>
-								<Parameter PID="#x50300c3" Data="00000000"/>
-								<Parameter PID="#x50300b6" Data="0000"/>
-								<Parameter PID="#x50300b7" Data="0000"/>
-								<Parameter PID="#x50300c1" Data="000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
-								<Parameter PID="#x50300c2" Data="00000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
-								<Parameter PID="#x50300db" Data="0000"/>
-								<Parameter PID="#x5030180" Data="000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
-								<Parameter PID="#x503012e" Data="" Elements="0"/>
-								<Parameter PID="#x503012f" Data="" Elements="0"/>
-								<Parameter PID="#x503013e" Data="" Elements="0"/>
-								<Parameter PID="#x50301e3" Data="" Elements="0"/>
-								<Parameter PID="#x3000029" Data="1000100500000000000000000800000010001005010000000000000028000000" Elements="2"/>
-								<Parameter PID="#x3007000" Data="06c00305400000000000000002000000" Elements="1"/>
-								<Parameter PID="#x3007001" Data="07c0030540000000000000000200000008c0030540000000400000000200000009c003054000000080000000020000000ac0030540000000c00000000200000003c00305400000000001000002000000" Elements="5"/>
-								<Context>
-									<Id>0</Id>
-									<Name>MET</Name>
-									<ManualConfig>
-										<OTCID>#x02010060</OTCID>
-									</ManualConfig>
-									<Priority>2</Priority>
-									<CycleTime>2000000</CycleTime>
-									<DependOn>ParentObject</DependOn>
-								</Context>
-								<Context>
-									<Id>1</Id>
-									<Name>MPT</Name>
-									<ManualConfig>
-										<OTCID>#x02010070</OTCID>
-									</ManualConfig>
-									<Priority>3</Priority>
-									<CycleTime>10000000</CycleTime>
-									<DependOn>ParentObject</DependOn>
-								</Context>
-							</Parameters>
-						</Variant>
-					</ProjectVariant>
 					<TmcDesc GUID="{5FC17892-62EA-4736-9999-D79964E87717}" TcSmClass="TComMcPlanarMoverObj">
 						<Name>Planar Mover</Name>
 						<InitSequence>PSO</InitSequence>
@@ -15076,7 +14835,7 @@
 								<ManualConfig>
 									<OTCID>#x02010060</OTCID>
 								</ManualConfig>
-								<Priority>2</Priority>
+								<Priority>3</Priority>
 								<CycleTime>2000000</CycleTime>
 								<DependOn>ParentObject</DependOn>
 							</Context>
@@ -15086,7 +14845,7 @@
 								<ManualConfig>
 									<OTCID>#x02010070</OTCID>
 								</ManualConfig>
-								<Priority>3</Priority>
+								<Priority>4</Priority>
 								<CycleTime>10000000</CycleTime>
 								<DependOn>ParentObject</DependOn>
 							</Context>
@@ -15103,11 +14862,11 @@
 							</Value>
 							<Value>
 								<Name>Initial position.x</Name>
-								<Value>77.1077880859375</Value>
+								<Value>74.157470703125</Value>
 							</Value>
 							<Value>
 								<Name>Initial position.y</Name>
-								<Value>72.3728332519531</Value>
+								<Value>122.503723144531</Value>
 							</Value>
 							<Value>
 								<Name>Minimal position.x</Name>
@@ -15435,63 +15194,6 @@
 				<Axis Id="#x05110020" ShareTmcDesc="true" KeepUnrestoredLinks="2">
 					<Name>Mover4220_2</Name>
 					<ImageId>1003</ImageId>
-					<ProjectVariant PvUseSParameter="2">
-						<Variant>
-							<Name>Normal</Name>
-							<Name>SimOnIPC</Name>
-							<Name>UMRT</Name>
-							<Parameters>
-								<Parameter PID="#x3002103" Data="02000000"/>
-								<Parameter PID="#x3002060" Data="60000102"/>
-								<Parameter PID="#x50300b1" Data="00"/>
-								<Parameter PID="#x50300b5" Data="f3ffffbf242f6540fcffff3fe9c678400000000000000000000000000000000000000000000000000000000000000000"/>
-								<Parameter PID="#x50300d3" Data="000000205fa002c2000000205fa002c2000000000000f0bf00000000000018c000000000000018c000000000000026c0"/>
-								<Parameter PID="#x50300d4" Data="000000205fa00242000000205fa002420000000000002440000000000000184000000000000018400000000000002640"/>
-								<Parameter PID="#x50300e0" Data="00000000"/>
-								<Parameter PID="#x503011a" Data="01"/>
-								<Parameter PID="#x50300be" Data="00000000000014400000000000001440000000000000f03f000000000000f03f000000000000f03f000000000000f83f"/>
-								<Parameter PID="#x50300bf" Data="7b14ae47e17a943f7b14ae47e17a943f7b14ae47e17a943f7b14ae47e17a943f7b14ae47e17a943f7b14ae47e17a943f"/>
-								<Parameter PID="#x503d004" Data="0000000000001440"/>
-								<Parameter PID="#x50300d2" Data="000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
-								<Parameter PID="#x5030126" Data="00000000"/>
-								<Parameter PID="#x503012d" Data="00000000"/>
-								<Parameter PID="#x50300c3" Data="00000000"/>
-								<Parameter PID="#x50300b6" Data="0000"/>
-								<Parameter PID="#x50300b7" Data="0000"/>
-								<Parameter PID="#x50300c1" Data="000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
-								<Parameter PID="#x50300c2" Data="00000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
-								<Parameter PID="#x50300db" Data="0000"/>
-								<Parameter PID="#x5030180" Data="000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
-								<Parameter PID="#x503012e" Data="" Elements="0"/>
-								<Parameter PID="#x503012f" Data="" Elements="0"/>
-								<Parameter PID="#x503013e" Data="" Elements="0"/>
-								<Parameter PID="#x50301e3" Data="" Elements="0"/>
-								<Parameter PID="#x3000029" Data="1000100500000000080000000800000010001005010000002800000028000000" Elements="2"/>
-								<Parameter PID="#x3007000" Data="06c00305400000000000000002000000" Elements="1"/>
-								<Parameter PID="#x3007001" Data="07c0030540000000000000000200000008c0030540000000400000000200000009c003054000000080000000020000000ac0030540000000c00000000200000003c00305400000000001000002000000" Elements="5"/>
-								<Context>
-									<Id>0</Id>
-									<Name>MET</Name>
-									<ManualConfig>
-										<OTCID>#x02010060</OTCID>
-									</ManualConfig>
-									<Priority>2</Priority>
-									<CycleTime>2000000</CycleTime>
-									<DependOn>ParentObject</DependOn>
-								</Context>
-								<Context>
-									<Id>1</Id>
-									<Name>MPT</Name>
-									<ManualConfig>
-										<OTCID>#x02010070</OTCID>
-									</ManualConfig>
-									<Priority>3</Priority>
-									<CycleTime>10000000</CycleTime>
-									<DependOn>ParentObject</DependOn>
-								</Context>
-							</Parameters>
-						</Variant>
-					</ProjectVariant>
 					<TmcDesc GUID="{5FC17892-62EA-4736-9999-D79964E87717}" TcSmClass="TComMcPlanarMoverObj">
 						<Name>Planar Mover</Name>
 						<InitSequence>PSO</InitSequence>
@@ -15502,7 +15204,7 @@
 								<ManualConfig>
 									<OTCID>#x02010060</OTCID>
 								</ManualConfig>
-								<Priority>2</Priority>
+								<Priority>3</Priority>
 								<CycleTime>2000000</CycleTime>
 								<DependOn>ParentObject</DependOn>
 							</Context>
@@ -15512,7 +15214,7 @@
 								<ManualConfig>
 									<OTCID>#x02010070</OTCID>
 								</ManualConfig>
-								<Priority>3</Priority>
+								<Priority>4</Priority>
 								<CycleTime>10000000</CycleTime>
 								<DependOn>ParentObject</DependOn>
 							</Context>
@@ -15529,11 +15231,11 @@
 							</Value>
 							<Value>
 								<Name>Initial position.x</Name>
-								<Value>169.473236083984</Value>
+								<Value>159.992126464844</Value>
 							</Value>
 							<Value>
 								<Name>Initial position.y</Name>
-								<Value>396.431945800781</Value>
+								<Value>397.260620117188</Value>
 							</Value>
 							<Value>
 								<Name>Minimal position.x</Name>
@@ -15877,7 +15579,7 @@
 								<ManualConfig>
 									<OTCID>#x02010060</OTCID>
 								</ManualConfig>
-								<Priority>2</Priority>
+								<Priority>3</Priority>
 								<CycleTime>2000000</CycleTime>
 								<DependOn>ParentObject</DependOn>
 							</Context>
@@ -15887,7 +15589,7 @@
 								<ManualConfig>
 									<OTCID>#x02010070</OTCID>
 								</ManualConfig>
-								<Priority>3</Priority>
+								<Priority>4</Priority>
 								<CycleTime>10000000</CycleTime>
 								<DependOn>ParentObject</DependOn>
 							</Context>
@@ -15989,7 +15691,7 @@
 								<ManualConfig>
 									<OTCID>#x02010060</OTCID>
 								</ManualConfig>
-								<Priority>2</Priority>
+								<Priority>3</Priority>
 								<CycleTime>2000000</CycleTime>
 								<DependOn>ParentObject</DependOn>
 							</Context>
@@ -15999,7 +15701,7 @@
 								<ManualConfig>
 									<OTCID>#x02010070</OTCID>
 								</ManualConfig>
-								<Priority>3</Priority>
+								<Priority>4</Priority>
 								<CycleTime>10000000</CycleTime>
 								<DependOn>ParentObject</DependOn>
 							</Context>
@@ -16175,7 +15877,7 @@
 								<ManualConfig>
 									<OTCID>#x02010060</OTCID>
 								</ManualConfig>
-								<Priority>2</Priority>
+								<Priority>3</Priority>
 								<CycleTime>2000000</CycleTime>
 								<DependOn>ParentObject</DependOn>
 							</Context>
@@ -16185,7 +15887,7 @@
 								<ManualConfig>
 									<OTCID>#x02010070</OTCID>
 								</ManualConfig>
-								<Priority>3</Priority>
+								<Priority>4</Priority>
 								<CycleTime>10000000</CycleTime>
 								<DependOn>ParentObject</DependOn>
 							</Context>
@@ -16213,9 +15915,6 @@
 								<Comment><![CDATA[Length of the track (read only).]]></Comment>
 								<BitSize>64</BitSize>
 								<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
-								<Default>
-									<Value>0.0</Value>
-								</Default>
 								<PTCID>#x05030060</PTCID>
 							</Parameter>
 							<Parameter>
@@ -16246,7 +15945,7 @@
 								<BitSize>8</BitSize>
 								<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
 								<Default>
-									<Value>0</Value>
+									<EnumText>FALSE</EnumText>
 								</Default>
 								<PTCID>#x050300b4</PTCID>
 								<ContextId OnlineAccess="true">0</ContextId>
@@ -16386,7 +16085,7 @@
 								<BitSize>8</BitSize>
 								<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
 								<Default>
-									<Value>0</Value>
+									<EnumText>FALSE</EnumText>
 								</Default>
 								<PTCID>#x05030066</PTCID>
 							</Parameter>
@@ -16395,9 +16094,6 @@
 								<Comment><![CDATA[Bool indicating if the tracks online configuration is a closed loop.]]></Comment>
 								<BitSize>8</BitSize>
 								<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-								<Default>
-									<Value>0</Value>
-								</Default>
 								<PTCID>#x050300e1</PTCID>
 							</Parameter>
 							<Parameter OnlineParameter="true" ReadOnly="true">
@@ -16719,7 +16415,7 @@
 		</Motion>
 		<Plc>
 			<Project GUID="{233169FE-F7A5-4EC4-9427-C86C70D23AE6}" Name="PLC1" PrjFilePath="PLC1\PLC1.plcproj" TmcFilePath="PLC1\PLC1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{E784FAF7-4B80-9E2F-A80C-B4EDE710D49E}" TmcPath="PLC1\PLC1.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{EA6BD23A-6B29-414B-1509-7154715B69CC}" TmcPath="PLC1\PLC1.tmc">
 					<Name>PLC1 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -16820,12 +16516,21 @@
 		</Variants>
 	</Project>
 	<Mappings>
-		<MappingInfo Identifier="{02010050-0060-0201-5000-010110001105}" Id="#x02030030" Watchdog="20000000040000000400000004000000"/>
-		<MappingInfo Identifier="{02010050-0060-0201-6000-010120001105}" Id="#x02030040" Watchdog="20000000040000000400000004000000"/>
-		<MappingInfo Identifier="{02010060-2001-0850-1000-100500205008}" Id="#x02030010" Watchdog="04000000080000000400000004000000"/>
-		<MappingInfo Identifier="{02010060-2001-0850-1000-120500205008}" Id="#x02030020" Watchdog="04000000080000000400000004000000"/>
-		<MappingInfo Identifier="{02010060-2001-0850-2000-120500205008}" Id="#x02030050" Watchdog="04000000080000000400000004000000"/>
-		<MappingInfo Identifier="{02010060-2001-0850-3000-120500205008}" Id="#x02030060" Watchdog="04000000080000000400000004000000"/>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500820000403}" Id="#x02030010"/>
+		<MappingInfo Identifier="{02010040-0060-0201-5000-010110001105}" Id="#x02030020" Watchdog="20000000040000000400000004000000"/>
+		<MappingInfo Identifier="{02010040-0060-0201-6000-010120001105}" Id="#x02030030" Watchdog="20000000040000000400000004000000"/>
+		<OwnerA Name="TINC^XPlanar MC Project^Axes^Mover4220_1">
+			<OwnerB Name="TIRC^TcCOM Objects^XPlanar^Mover4220_1">
+				<Link VarA="IoToMc^STD" VarB="OutputsToNC3^HWToNC3" Size="960"/>
+				<Link VarA="McToIo^STD" VarB="InputsFromNC3^NC3ToHW" Size="1408"/>
+			</OwnerB>
+		</OwnerA>
+		<OwnerA Name="TINC^XPlanar MC Project^Axes^Mover4220_2">
+			<OwnerB Name="TIRC^TcCOM Objects^XPlanar^Mover4220_2">
+				<Link VarA="IoToMc^STD" VarB="OutputsToNC3^HWToNC3" Size="960"/>
+				<Link VarA="McToIo^STD" VarB="InputsFromNC3^NC3ToHW" Size="1408"/>
+			</OwnerB>
+		</OwnerA>
 		<OwnerA Name="TIPC^PLC1^PLC1 Instance">
 			<OwnerB Name="TIID^IO (EtherCAT)^Box 5 (EP2316-0003)">
 				<Link VarA="PlcTask Inputs^MAIN.Estop.IO.Ch2" VarB="DIG Inputs^Estop Ch2"/>
@@ -16860,16 +16565,6 @@
 			</OwnerB>
 			<OwnerB Name="TINC^XPlanar MC Project^Groups^XPlanar">
 				<Link VarA="PlcTask Inputs^XPlanar.Group.MCTOPLC_STD" VarB="McToPlc^STD"/>
-			</OwnerB>
-		</OwnerA>
-		<OwnerA Name="TIRC^TcCOM Objects^XPlanar">
-			<OwnerB Name="TINC^XPlanar MC Project^Axes^Mover4220_1">
-				<Link VarA="Mover4220_1^InputsFromNC3^NC3ToHW" VarB="McToIo^STD" Size="1408"/>
-				<Link VarA="Mover4220_1^OutputsToNC3^HWToNC3" VarB="IoToMc^STD" Size="960"/>
-			</OwnerB>
-			<OwnerB Name="TINC^XPlanar MC Project^Axes^Mover4220_2">
-				<Link VarA="Mover4220_2^InputsFromNC3^NC3ToHW" VarB="McToIo^STD" Size="1408"/>
-				<Link VarA="Mover4220_2^OutputsToNC3^HWToNC3" VarB="IoToMc^STD" Size="960"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>
