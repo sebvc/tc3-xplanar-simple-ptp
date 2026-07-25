@@ -53,17 +53,17 @@ VAR
 	
 	//THESE SHOULD BE CONSTANTS, NOT A CONSTANT FOR DEBUGGING PURPOSES
 	PIPET_DISPENSING_HEAD 	:   ST_Point 	:= 	(X := 120.0(*mounted in the middle*), 	
-												 Y := 120.0(*length of fake dispensing head*));	
-	WELLPLATE_OFFSET		:   ST_Point 	:= 	(X := 60.0, Y := -40.0);//relative coordinates of first well(bottom right) from center of Mover1	
+												 Y := 128.75(*length of fake dispensing head*));	
+	WELLPLATE_OFFSET		:   ST_Point 	:= 	(X := 52.875, Y := -34.875);//relative coordinates of first well(bottom right) from center of Mover1	
 	WELL_PITCH				:   LREAL := 2.25;
 	WELL_MAXCOUNT_X			: UINT:=48;
 	WELL_MAXCOUNT_Y			: UINT:=32;
 	
-	SCARA_GRIPPER_HEAD	 	:   ST_Point 	:= 	(X := 100.0(*mounted left of the middle/ ~2/3rds of a mover*), 	
-												 Y := 480.0-60.0(*length of fake dispensing head*));	
-	TESTTUBE_OFFSET			:   ST_Point 	:= 	(X := 25.0, Y := 25.0);//relative coordinates of first TestTube(top right) from center of Mover2
-	TUBE_PITCH_X				:   LREAL := 25.0;
-	TUBE_PITCH_Y				:   LREAL := 40.0;
+	SCARA_GRIPPER_HEAD	 	:   ST_Point 	:= 	(X := 95.0(*mounted left of the middle/ ~2/3rds of a mover*), 	
+												 Y := 480.0-50.0(*length of fake dispensing head*));	
+	TESTTUBE_OFFSET			:   ST_Point 	:= 	(X := 31.3685, Y := 29.94);//relative coordinates of first TestTube(top right) from center of Mover2
+	TUBE_PITCH_X				:   LREAL := 31.3685;
+	TUBE_PITCH_Y				:   LREAL := 59.880; // not used since symetrical
 	TUBE_MAXCOUNT_X			: UINT:=3;
 	TUBE_MAXCOUNT_Y			: UINT:=2;
 END_VAR                      
@@ -469,7 +469,6 @@ CASE Step OF
 		
 {endregion}			
 {region "ADLM_Step1"}
-
 	E_DemoStep.ADLM_Step1: // L_move for test tubes AND RotateInverse for Pipeting
 		//F_SetAllMoversRotation(ROTATE_INVERSE_MOVE);
 		//F_SetAllMoversMovement(LShapeMove);
@@ -503,8 +502,7 @@ CASE Step OF
 				IF ip.Movers[1].MoveCommand.Rotate(0).Done THEN
 					PipetSubStep:=3;
 				END_IF
-			3:
-				PipetStepDone:= TRUE;
+			3:	PipetStepDone:= TRUE;
 				
 		END_CASE
 				
@@ -519,10 +517,9 @@ CASE Step OF
 				
 			1:	Mover2Target:=TOP_LOWER_LEFT;	
 			2:	Mover2Target:=TOP_LOWER_RIGHT;
-			3:	Mover2Target:=TOP_UPPER_RIGHT;
+			3:	Mover2Target.X:=TOP_UPPER_RIGHT.X; Mover2Target.Y:=SCARA_GRIPPER_HEAD.Y-60;;
 			4:	Mover2Target:=TOP_LOWER_RIGHT;
 			5:	Mover2Target:=TOP_LOWER_LEFT;
-	
 			6:
 				TestTubeStepDone:= TRUE;
 		END_CASE
@@ -540,7 +537,7 @@ CASE Step OF
 				END_IF
 			END_IF		
 		END_IF
-
+		
 		
 		//both done
 		IF PipetStepDone AND TestTubeStepDone THEN
@@ -555,7 +552,6 @@ CASE Step OF
 {region "ADLM_Step2"}
 
 	E_DemoStep.ADLM_Step2: // traverse to start positions for Gripper AND dispensing head
-
 		// for Pipet (mover1) --> move to first pipetting dispensing position
 		CASE PipetSubStep OF 
 			0:
@@ -573,8 +569,7 @@ CASE Step OF
 						PIPET_DISPENSING_HEAD.Y-WELLPLATE_OFFSET.Y).Done THEN
 					PipetSubStep:=3;
 				END_IF
-			3:
-				PipetStepDone:= TRUE;
+			3: PipetStepDone:= TRUE;
 				
 		END_CASE
 				
@@ -611,7 +606,7 @@ CASE Step OF
 {region "ADLM_Step3"}
 
 	E_DemoStep.ADLM_Step3: // cycle through six tubes AND start Pipeting sequence
-	
+		
 		// for Pipet (mover1) --> Continuous pipetting cycle
 		CASE PipetSubStep OF 
 			0:
@@ -659,7 +654,7 @@ CASE Step OF
 				PipetStepDone:= TRUE;
 				
 		END_CASE
-
+		
 		//for test tube (mover2) --> Continuous testube cycle + rotate midway
 		CASE TestTubeSubStep OF
 			0:
@@ -711,7 +706,6 @@ CASE Step OF
 						TestTubeSubStep:=1;
 					END_IF
 				END_IF
-			
 			11: // spin and reset rotation position
 				IF 	ip.Movers[2].MoveCommand.FreeMove(TOP_CENTER.X,TOP_CENTER.Y).Done THEN
 					IF 	ip.Movers[2].MoveCommand.Rotate(0.0,-3).Done THEN
@@ -729,8 +723,7 @@ CASE Step OF
 					END_IF
 				END_IF
 				
-			14:	
-
+			14:		
 				IF ip.Movers[2].MoveCommand.TiltB(2).Done THEN
 					IF ip.Movers[2].MoveCommand.TiltA(0).Done THEN
 						TestTubeSubStep:=15;

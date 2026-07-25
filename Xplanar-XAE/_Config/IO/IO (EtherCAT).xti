@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.23" ClassName="CDevEtherCATDef" SubType="111" TcProjectVariant="Normal">
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.25" ClassName="CDevEtherCATDef" SubType="111" TcProjectVariant="Normal">
 	<DataTypes>
 		<DataType>
 			<Name GUID="{18071995-0000-0000-0000-002000000005}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..4] OF BIT</Name>
@@ -59,21 +59,22 @@
 	<ImageDatas>
 		<ImageData Id="1000">424dba000000000000004a00000028000000100000000e000000010004000000000070000000c30e0000c30e0000050000000500000000000000ff00ff0080808000007fff0000ff000011111111111111110000000000000000020202020000044004040404000004400000000000000000000000000000000002020202000004400404040400000440000000000000000033333311111111113333331111111111333333111111111133333311111111113333331111111111</ImageData>
 	</ImageDatas>
-	<Device Id="1" Disabled="true" DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="169.254.69.196.2.1" RemoteName="IO (EtherCAT)" InfoImageId="5" SimulationMode="true">
+	<Device Id="1" DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="169.254.69.196.3.1" RemoteName="IO (EtherCAT)" InfoImageId="4">
 		<Name>__FILENAME__</Name>
 		<ProjectVariant PvUseDisable="true" PvUseSimulation="true">
 			<Variant>
 				<Name>Normal</Name>
 				<Name>SimOnIPC</Name>
 				<Name>UMRT</Name>
-				<Disable>true</Disable>
+				<Disable>false</Disable>
+				<Simulation Enable="false"/>
 			</Variant>
 		</ProjectVariant>
 		<AddressInfo>
 			<Pnp>
-				<DeviceDesc>Ethernet 2 (TwinCAT-Intel PCI Ethernet Adapter (Gig</DeviceDesc>
-				<DeviceName>\DEVICE\{705F1BB7-C8F4-4A1B-BBFE-E459A19E6DBF}</DeviceName>
-				<DeviceData>0001055c7555</DeviceData>
+				<DeviceDesc>LAN2 X103 (Other IO) (TwinCAT-Intel PCI Ethernet Ad</DeviceDesc>
+				<DeviceName>\DEVICE\{38409CD1-259B-499E-A9F3-4D6DDE17FC20}</DeviceName>
+				<DeviceData>0001058d6bba</DeviceData>
 			</Pnp>
 		</AddressInfo>
 		<Image Id="1" AddrType="9" ImageType="3">
@@ -223,6 +224,6 @@
 				<CoeProfile ProfileNo="18355081"/>
 			</EtherCAT>
 		</Box>
-		<EtherCAT/>
+		<EtherCAT PromiscuousModeNoCopy="true"/>
 	</Device>
 </TcSmItem>
