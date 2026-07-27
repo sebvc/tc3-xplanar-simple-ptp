@@ -14906,6 +14906,10 @@
 								<Value>11</Value>
 							</Value>
 							<Value>
+								<Name>C coordinate modulus</Name>
+								<Value>360</Value>
+							</Value>
+							<Value>
 								<Name>Maximum Position Lag Value.x</Name>
 								<Value>5</Value>
 							</Value>
@@ -15115,7 +15119,7 @@
 							</Value>
 							<Value>
 								<Name>Default dynamic C.V</Name>
-								<Value>5</Value>
+								<Value>4.99999999999999</Value>
 							</Value>
 							<Value>
 								<Name>Default dynamic C.A</Name>
@@ -15147,7 +15151,7 @@
 							</Value>
 							<Value>
 								<Name>Default dynamic A.V</Name>
-								<Value>5</Value>
+								<Value>4.99999999999999</Value>
 							</Value>
 							<Value>
 								<Name>Default dynamic A.A</Name>
@@ -15163,7 +15167,7 @@
 							</Value>
 							<Value>
 								<Name>Default dynamic B.V</Name>
-								<Value>5</Value>
+								<Value>4.99999999999999</Value>
 							</Value>
 							<Value>
 								<Name>Default dynamic B.A</Name>
@@ -15280,6 +15284,10 @@
 								<Value>11</Value>
 							</Value>
 							<Value>
+								<Name>C coordinate modulus</Name>
+								<Value>360</Value>
+							</Value>
+							<Value>
 								<Name>Maximum Position Lag Value.x</Name>
 								<Value>5</Value>
 							</Value>
@@ -15377,15 +15385,15 @@
 							</Value>
 							<Value>
 								<Name>Maximum dynamic C.V</Name>
-								<Value>7000</Value>
+								<Value>6999.99999999999</Value>
 							</Value>
 							<Value>
 								<Name>Maximum dynamic C.A</Name>
-								<Value>7000</Value>
+								<Value>6999.99999999999</Value>
 							</Value>
 							<Value>
 								<Name>Maximum dynamic C.D</Name>
-								<Value>7000</Value>
+								<Value>6999.99999999999</Value>
 							</Value>
 							<Value>
 								<Name>Maximum dynamic C.J</Name>
@@ -15409,35 +15417,35 @@
 							</Value>
 							<Value>
 								<Name>Maximum dynamic A.V</Name>
-								<Value>10</Value>
+								<Value>9.99999999999999</Value>
 							</Value>
 							<Value>
 								<Name>Maximum dynamic A.A</Name>
-								<Value>100</Value>
+								<Value>99.9999999999999</Value>
 							</Value>
 							<Value>
 								<Name>Maximum dynamic A.D</Name>
-								<Value>100</Value>
+								<Value>99.9999999999999</Value>
 							</Value>
 							<Value>
 								<Name>Maximum dynamic A.J</Name>
-								<Value>1000</Value>
+								<Value>999.999999999999</Value>
 							</Value>
 							<Value>
 								<Name>Maximum dynamic B.V</Name>
-								<Value>10</Value>
+								<Value>9.99999999999999</Value>
 							</Value>
 							<Value>
 								<Name>Maximum dynamic B.A</Name>
-								<Value>100</Value>
+								<Value>99.9999999999999</Value>
 							</Value>
 							<Value>
 								<Name>Maximum dynamic B.D</Name>
-								<Value>100</Value>
+								<Value>99.9999999999999</Value>
 							</Value>
 							<Value>
 								<Name>Maximum dynamic B.J</Name>
-								<Value>1000</Value>
+								<Value>999.999999999999</Value>
 							</Value>
 							<Value>
 								<Name>Default dynamic path XY.V</Name>
@@ -15501,7 +15509,7 @@
 							</Value>
 							<Value>
 								<Name>Default dynamic C.J</Name>
-								<Value>100</Value>
+								<Value>99.9999999999999</Value>
 							</Value>
 							<Value>
 								<Name>Default dynamic Z.V</Name>
@@ -15533,7 +15541,7 @@
 							</Value>
 							<Value>
 								<Name>Default dynamic A.J</Name>
-								<Value>100</Value>
+								<Value>99.9999999999999</Value>
 							</Value>
 							<Value>
 								<Name>Default dynamic B.V</Name>
@@ -15549,7 +15557,7 @@
 							</Value>
 							<Value>
 								<Name>Default dynamic B.J</Name>
-								<Value>100</Value>
+								<Value>99.9999999999999</Value>
 							</Value>
 						</ParameterValues>
 					</TmcDesc>
@@ -16419,7 +16427,7 @@
 		</Motion>
 		<Plc>
 			<Project GUID="{233169FE-F7A5-4EC4-9427-C86C70D23AE6}" Name="PLC1" PrjFilePath="PLC1\PLC1.plcproj" TmcFilePath="PLC1\PLC1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{0F4BC003-A0C1-549C-108F-341B88BEF71D}" TmcPath="PLC1\PLC1.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{A107A5FE-EEC6-4FE7-BFBF-556343226C8C}" TmcPath="PLC1\PLC1.tmc">
 					<Name>PLC1 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">

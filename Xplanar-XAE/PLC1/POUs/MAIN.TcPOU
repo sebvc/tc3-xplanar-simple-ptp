@@ -555,15 +555,18 @@ CASE Step OF
 		// for Pipet (mover1) --> move to first pipetting dispensing position
 		CASE PipetSubStep OF 
 			0:
-				IF 	ip.Movers[1].MoveCommand.FreeMove(BOTTOM_UPPER_LEFT.X,BOTTOM_UPPER_LEFT.Y).Done THEN
+				//IF ip.Movers[1].MoveCommand.FreeMove(BOTTOM_UPPER_LEFT.X,BOTTOM_UPPER_LEFT.Y).Done THEN
+				IF ip.Movers[1].MoveCommand.FreeMove(
+						PIPET_DISPENSING_HEAD.X-WELLPLATE_OFFSET.X,BOTTOM_UPPER_LEFT.Y).Done THEN
 					PipetSubStep:=1;
 				END_IF
-			1:
-				IF 	ip.Movers[1].MoveCommand.FreeMove(
+		(*	1:
+				IF ip.Movers[1].MoveCommand.FreeMove(
 						PIPET_DISPENSING_HEAD.X-WELLPLATE_OFFSET.X,BOTTOM_UPPER_LEFT.Y).Done THEN
 					PipetSubStep:=2;
-				END_IF
-			2:
+				END_IF 
+			2:		*)
+			1:
 				IF ip.Movers[1].MoveCommand.FreeMove(
 						PIPET_DISPENSING_HEAD.X-WELLPLATE_OFFSET.X,
 						PIPET_DISPENSING_HEAD.Y-WELLPLATE_OFFSET.Y).Done THEN
@@ -794,7 +797,11 @@ CASE Step OF
 			Track1.Reset();
 		END_IF
 		
-{endregion}			
+{endregion}	
+{region "Manual Mode"}
+	E_DemoStep.ManualMode:
+		// do nothing or use MC3 Motion UI
+{endRegion}
 END_CASE
 
 {region "Error detection"}

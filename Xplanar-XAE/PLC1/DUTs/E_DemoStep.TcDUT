@@ -29,8 +29,8 @@ TYPE E_DemoStep :
 	ADLM_Step1, // L_move for test tubes AND RotateInverse for Pipeting
 	ADLM_Step2, // traverse to start positions for Gripper AND dispensing head
 	ADLM_Step3, // cycle through six tubes AND start Pipeting sequence
-	ADLM_Step4 // Spin Test tubes AND finish Pipeting sequence
-
+	ADLM_Step4, // Spin Test tubes AND finish Pipeting sequence
+	ManualMode // basically a do nothing to interact with MC3 Motion UI Mover View.
 );
 END_TYPE
 ]]></Declaration>
