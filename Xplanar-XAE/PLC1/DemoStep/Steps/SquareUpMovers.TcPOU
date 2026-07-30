@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.19">
+  <POU Name="SquareUpMovers" Id="{0243f4e0-eb69-4642-bd5b-6056700c9759}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK SquareUpMovers EXTENDS FB_DemoStepBase IMPLEMENTS I_TwoMovers
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="CyclicLogic" Id="{13e63152-bec4-4910-9c94-57f285c6c0e7}">
+      <Declaration><![CDATA[METHOD CyclicLogic
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF Mover.MoveCommand.SquareUp().Done AND Mover2.MoveCommand.SquareUp().Done THEN
+			Done:=TRUE;
+ELSIF Mover.MoveCommand.SquareUp().Error OR Mover2.MoveCommand.SquareUp().Error THEN
+			Step:=E_DemoStep.Disable;
+		END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Done" Id="{53d7ee30-13ab-4e06-b4c7-e01ebd675f8e}">
+      <Declaration><![CDATA[{error 'Add property implementation or delete property to use base implementation'}
+PROPERTY Done : BOOL
+]]></Declaration>
+      <Get Name="Get" Id="{9c165da7-f5c7-4c05-ba12-f8666675eb7b}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="Mover2" Id="{ff92c466-7ba1-467d-970d-da1ef653039a}">
+      <Declaration><![CDATA[{warning 'Add property implementation'}
+PROPERTY Mover2 : I_XPlanarMover
+]]></Declaration>
+      <Get Name="Get" Id="{c3bc423d-4045-4dc6-8a13-aab90e2d79b4}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{f59c4d6d-a132-4058-a50d-7b0910799ea3}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+  </POU>
+</TcPlcObject>

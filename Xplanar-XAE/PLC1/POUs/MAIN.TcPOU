@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.19">
   <POU Name="MAIN" Id="{5d7a64d1-e12e-4103-aeb9-3e5714fc6cb6}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
@@ -151,6 +151,7 @@ CASE Step OF
 {region "SquareUpMovers"}	
 	
 	E_DemoStep.SquareUpMovers:	
+		
 		IF ip.Movers[1].MoveCommand.SquareUp().Done AND ip.Movers[2].MoveCommand.SquareUp().Done THEN
 			Step:= E_DemoStep.MoveToSeqenceStartPos;	
 		ELSIF Mover1.SquareUp().Error OR Mover2.SquareUp().Error THEN

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.19">
+  <Itf Name="I_DemoStep" Id="{9e853b84-91fd-4f0b-930f-fa0ad335ed40}">
+    <Declaration><![CDATA[INTERFACE I_DemoStep EXTENDS I_Cyclic, I_Resettable
+]]></Declaration>
+    <Property Name="CurrentSubstep" Id="{14b14e25-d59b-4609-a4a9-986e389090aa}">
+      <Declaration><![CDATA[PROPERTY CurrentSubstep : INT]]></Declaration>
+      <Get Name="Get" Id="{504b72d4-9152-490f-91c1-b77e40aa878e}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="Done" Id="{d73c1b49-1ed5-45a3-ba89-7b20f42b703d}">
+      <Declaration><![CDATA[PROPERTY Done : BOOL]]></Declaration>
+      <Get Name="Get" Id="{63a6f64c-4b92-489f-857c-3d4086495c8f}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="Mover" Id="{8dc8b5d4-6475-4d96-85c3-9ae0446e10df}">
+      <Declaration><![CDATA[PROPERTY Mover : I_XPlanarMover]]></Declaration>
+      <Get Name="Get" Id="{a85e410a-22f4-4dd2-831c-dd00e531adf8}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+      <Set Name="Set" Id="{73dcb646-657d-4a02-9241-231f5b3a00f3}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Set>
+    </Property>
+  </Itf>
+</TcPlcObject>
