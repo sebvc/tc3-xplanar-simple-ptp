@@ -61,13 +61,33 @@
 	</ImageDatas>
 	<Device Id="1" DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="169.254.69.196.3.1" RemoteName="IO (EtherCAT)" InfoImageId="4">
 		<Name>__FILENAME__</Name>
-		<ProjectVariant PvUseDisable="true" PvUseSimulation="true">
+		<ProjectVariant PvUseDisable="true" PvUseLink="true" PvUseSimulation="true">
 			<Variant>
 				<Name>Normal</Name>
-				<Name>SimOnIPC</Name>
-				<Name>UMRT</Name>
 				<Disable>false</Disable>
 				<Simulation Enable="false"/>
+				<AddressInfo PromiscuousMode="false" PromiscuousModeNoCopy="true" VirtualDeviceName="false">
+					<Pnp>
+						<DeviceDesc>LAN2 X103 (Other IO) (TwinCAT-Intel PCI Ethernet Ad</DeviceDesc>
+						<DeviceName>\DEVICE\{38409CD1-259B-499E-A9F3-4D6DDE17FC20}</DeviceName>
+						<DeviceData>0001058d6bba</DeviceData>
+					</Pnp>
+				</AddressInfo>
+				<AmsNetId>169.254.69.196.3.1</AmsNetId>
+			</Variant>
+			<Variant>
+				<Name>SimOnIPC</Name>
+				<Name>UMRT</Name>
+				<Disable>true</Disable>
+				<Simulation Enable="false"/>
+				<AddressInfo PromiscuousMode="false" PromiscuousModeNoCopy="true" VirtualDeviceName="false">
+					<Pnp>
+						<DeviceDesc>LAN2 X103 (Other IO) (TwinCAT-Intel PCI Ethernet Ad</DeviceDesc>
+						<DeviceName>\DEVICE\{38409CD1-259B-499E-A9F3-4D6DDE17FC20}</DeviceName>
+						<DeviceData>0001058d6bba</DeviceData>
+					</Pnp>
+				</AddressInfo>
+				<AmsNetId>169.254.69.196.3.1</AmsNetId>
 			</Variant>
 		</ProjectVariant>
 		<AddressInfo>

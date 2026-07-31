@@ -525,9 +525,9 @@ CASE Step OF
 		END_CASE
 		IF TestTubeSubStep <> 6 THEN
 			IF 	ip.Movers[2].MoveCommand.FreeMove(Mover2Target.x,Mover2Target.Y).Done THEN
-				IF TestTubeSubStep=5 THEN //Cycle completed
+				IF TestTubeSubStep>=5 THEN //Cycle completed
 					TestTubeCycles			:=TestTubeCycles+1;
-					IF TestTubeCycles=2 THEN
+					IF TestTubeCycles>=2 THEN
 						TestTubeSubStep:=6;
 					ELSE
 						TestTubeSubStep	:=1; // first move substep
