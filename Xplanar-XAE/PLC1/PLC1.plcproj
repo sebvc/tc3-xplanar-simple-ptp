@@ -9,7 +9,7 @@
     <WriteProductVersion>true</WriteProductVersion>
     <GenerateTpy>false</GenerateTpy>
     <Name>PLC1</Name>
-    <ProgramVersion>3.1.4026.25</ProgramVersion>
+    <ProgramVersion>3.1.4026.26</ProgramVersion>
     <Application>{5a2fb397-92e6-4204-bd6e-216bc41ce243}</Application>
     <TypeSystem>{b78a24a5-397d-4c9a-b81a-ce14b634d8f0}</TypeSystem>
     <Implicit_Task_Info>{8a4ecf42-cedc-47e2-8318-8f4016af6f01}</Implicit_Task_Info>
@@ -21,13 +21,49 @@
     <Compile Include="DemoStep\E_DemoStep.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DemoStep\FB_DemoStepBase.TcPOU">
+    <Compile Include="DemoStep\I_BothMovers.TcIO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DemoStep\I_TwoMovers.TcIO">
+    <Compile Include="DemoStep\I_Errorable.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DemoStep\I_SingleMover.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DemoStep\I_XplanarTable.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DemoStep\Steps\DetectXplanarMovers.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DemoStep\Steps\JoinAllClosestTracks.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DemoStep\Steps\RecoverMoveToAnyPos.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DemoStep\Steps\FlyByMove.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DemoStep\Steps\SameTrackMove.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DemoStep\Steps\LeaveAllTracks.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DemoStep\Steps\SimpleSort2Movers.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DemoStep\Steps\SquareUpMovers.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DemoStep\Steps\WaitForRotSw.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DemoStep\Steps\InitStep.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DemoStep\Steps\WaitForPB.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\EStop\E_EStop.TcDUT">
@@ -37,6 +73,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\EStop\U_Estop.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\E_ButtonColors.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\E_UsbLicenseDongleSate.TcDUT">
@@ -57,13 +96,27 @@
     <Compile Include="DemoStep\I_DemoStep.TcIO">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GVLs\CoorPoint2Tile.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="GVLs\Defaults.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
     <Compile Include="PlcTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\FB_PushButton.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\F_SetAllMoversMovement.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\F_SetAllMoversRotation.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\I_DemoSystem.TcIO">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
@@ -132,6 +185,9 @@
     </PlaceholderResolution>
     <PlaceholderResolution Include="System_VisuNativeControl">
       <Resolution>VisuNativeControl, * (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="XPlanarApplication">
+      <Resolution>XPlanarApplication, 2.0.7.1 (Beckhoff Automation LLC)</Resolution>
     </PlaceholderResolution>
   </ItemGroup>
   <ProjectExtensions>

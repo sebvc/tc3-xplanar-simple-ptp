@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+  <POU Name="FlyByMove" Id="{08eab7a9-b575-4847-bed1-023e31462cf0}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FlyByMove IMPLEMENTS I_DemoStep
+VAR_INPUT
+	FlyByMoveDynamics : ST_MoveDynamics:=(Velocity := 1500.0, Accel := 20000.0, 	Decel := 20000.0, 	Jerk := 200000.0);
+	Cycles: USINT:=1;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	SubStep: USINT;
+	_Done: BOOL;
+	_CycleCount: INT;
+	_FlipFlop: BOOL;
+	_M1IsOnLeftSide:BOOL;
+	M1CurrentPos,M2CurrentPos :	ST_Point;
+	Mover1Target: ST_POINT;
+	Mover2Target: ST_POINT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="CyclicLogic" Id="{f667d126-0ad8-4e81-b2da-512100dd33d5}">
+      <Declaration><![CDATA[METHOD CyclicLogic
+VAR
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE SubStep OF
+	0:	
+		F_SetAllMoversMovement(FlyByMoveDynamics);
+		_CycleCount		:=0;
+		_FlipFlop	:=FALSE;
+		//Save Current Positions
+		M1CurrentPos.X:=ip.Movers[1].ActualPosition.x;
+		M1CurrentPos.Y:=ip.Movers[1].ActualPosition.y;
+		M2CurrentPos.X:=ip.Movers[2].ActualPosition.x;
+		M2CurrentPos.Y:=ip.Movers[2].ActualPosition.y;
+		//find alignment to decide which is the proper opposing side for Step1
+		FindCorrectOpposingCornerPosition(
+			M1AlignmentPos	:= M1CurrentPos, 
+			M2AlignmentPos	:= M2CurrentPos, 
+			M1CornerPos		:= Mover1Target,
+			M2CornerPos		:= Mover2Target);
+		SubStep:=1;
+	1:	//step 1: Move laterally to nearer edge from CURRENT/Initial alignment
+		IF	ip.Movers[1].MoveCommand.MoveX(Mover1Target.X).Done AND 
+			ip.Movers[2].MoveCommand.MoveX(Mover2Target.X).Done THEN
+			// x / left or right
+			IF ip.Movers[1].ActualPosition.X > ip.Movers[2].ActualPosition.X THEN
+				Mover1Target.X:=RIGHT;
+				Mover2Target.X:=LEFT;
+			ELSE
+				Mover1Target.X:=LEFT;
+				Mover2Target.X:=RIGHT;
+			END_IF			
+			SubStep:=2;
+
+		END_IF
+	2:
+		IF _FlipFlop THEN
+			Mover1Target.Y:=TOP_UPPER;
+			Mover2Target.Y:=BOTTOM_LOWER;
+		ELSE
+			Mover1Target.Y:=BOTTOM_LOWER;
+			Mover2Target.Y:=TOP_UPPER;				
+		END_IF
+		
+		IF 	ip.Movers[1].MoveCommand.MoveY(Mover1Target.Y).Done AND
+			ip.Movers[2].MoveCommand.MoveY(Mover2Target.Y).Done
+		THEN
+			IF _FlipFlop THEN //Cycle completed
+				_CycleCount:=_CycleCount+1;
+				IF _CycleCount=Cycles THEN
+					_Done			:=TRUE;
+					_CycleCount			:=0;
+					SubStep			:=0;
+				END_IF
+			END_IF
+			
+			_FlipFlop	:=NOT _FlipFlop;
+		END_IF
+
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Done" Id="{58136e2b-dfe0-4376-a234-a4acc19cf227}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Done : BOOL
+]]></Declaration>
+      <Get Name="Get" Id="{ab105d0e-9c12-4785-8d76-b88a3141cf14}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Done:=_Done;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="FindCorrectOpposingCornerPosition" Id="{caefe4e1-64b1-4005-82b1-4f42212d49cf}">
+      <Declaration><![CDATA[METHOD PROTECTED FindCorrectOpposingCornerPosition
+VAR_INPUT
+	M1AlignmentPos : ST_POINT; //from/reference alignment for Mover 1
+	M2AlignmentPos : ST_POINT; //from/reference alignment for Mover 2
+	M1CornerPos : REFERENCE TO ST_POINT; //to/target corner for Mover 1 ( Method OUTPUT by REFERENCE )
+	M2CornerPos : REFERENCE TO ST_POINT; //to/target corner for Mover 2 ( Method OUTPUT by REFERENCE )
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[//Find a Target Opposing Corner from a respective Position Alignmnet
+(*	i.e.	from:	┌──────────┐    to:	┌─────┌────┐ 
+					│          │      	│     │ M2 │ 
+					│       ▲  │      	│     └────┘ 
+					│   ┌───┼┐ │      	│          │ 
+					│   │ M2└┼►│      	│          │ 
+					│ ┌─┴──┬─┘ │      	│          │ 
+					│◄┼┐M1 │   │      	│          │ 
+					│ └┼───┘   │      	┌────┐     │ 
+					│  ▼       │      	│ M1 │     │ 
+					└──────────┘      	└────┴─────┘ 		*)
+//find alignment to decide which is the proper opposing side 
+IF M1AlignmentPos.Y >= M2AlignmentPos.Y THEN
+	//M1 moves to TOP / M2 moves to BOTTOM
+	M1CornerPos.Y := TOP_UPPER;
+	M2CornerPos.Y := BOTTOM_LOWER;
+ELSE 	
+	//M1 moves to BOTTOM / M2 moves to TOP
+	M1CornerPos.Y := BOTTOM_LOWER;
+	M2CornerPos.Y := TOP_UPPER;
+END_IF
+IF M1AlignmentPos.X >= M2AlignmentPos.X THEN
+	//M1 moves to RIGHT / M2 moves to LEFT
+	M1CornerPos.X := RIGHT;
+	M2CornerPos.X := LEFT;
+ELSE 	
+	//M1 moves to LEFT / M2 moves to RIGHT
+	M1CornerPos.X := LEFT;
+	M2CornerPos.X := RIGHT;
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Reset" Id="{53a7a197-2ae4-4e91-9197-b07a368d2c5a}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_Done:=FALSE;
+SubStep:=0;
+Reset:=TRUE;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

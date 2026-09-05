@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+  <POU Name="FB_PushButton" Id="{64073d3f-7881-4b10-bdf3-4f246b450fe6}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_PushButton
+VAR_INPUT
+    button_type  : USINT := 0; // 0=other, 1=start, 2=stop, 3=reset
+    enabled      : BOOL := TRUE;
+    fault_active : BOOL := FALSE;
+END_VAR
+
+VAR_OUTPUT
+    pressed            : BOOL;
+    press_event        : BOOL;
+    press_count        : UINT;
+    touch_strength     : BYTE;
+    ambient_brightness : BYTE;
+END_VAR
+
+VAR
+    // IO-Link process data inputs
+    actuation_flag         AT %I* : BYTE;
+    actuation_count        AT %I* : UINT;
+    actuation_strength     AT %I* : BYTE;
+    surrounding_brightness AT %I* : BYTE;
+
+    // IO-Link process data outputs
+    active_leds      AT %Q* : UINT;
+    led_brightness   AT %Q* : BYTE;
+    led_red          AT %Q* : BYTE;
+    led_green        AT %Q* : BYTE;
+    led_blue         AT %Q* : BYTE;
+    led_effect       AT %Q* : BYTE;
+    effect_frequency AT %Q* : BYTE;
+
+    press_edge : R_TRIG;
+	_toggle_state : BOOL;
+	
+	custom_red	: BYTE;
+	custom_green: BYTE;
+	custom_blue	: BYTE;
+	customOn_effect : BYTE:=LED_STATIC;
+	customOn_effectFrequency : BYTE:=0;
+	customPressed_effect : BYTE:=LED_STATIC;
+	customPressed_effectFrequency : BYTE:=0;
+//    sH     : STRING := 'AB CD EF 01 23 45 67 89';
+//     RGB_DATA   : ARRAY[1..3] OF BYTE;
+//     
+END_VAR
+
+VAR CONSTANT
+    // pushbutton types
+    BUTTON_GENERIC : USINT := 0;
+    BUTTON_START : USINT := 1;
+    BUTTON_STOP  : USINT := 2;
+    BUTTON_RESET : USINT := 3;
+	BUTTON_CUSTOM : USINT := 5;
+
+    // LED effects
+    LED_STATIC : BYTE := 0;
+    LED_FLASH  : BYTE := 1;
+    LED_PULSE  : BYTE := 2;
+END_VAR
+
+
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CyclicLogic();]]></ST>
+    </Implementation>
+    <Property Name="Color" Id="{779858f8-5883-4904-b488-81c691ebbc20}">
+      <Declaration><![CDATA[PROPERTY Color : E_ButtonColors]]></Declaration>
+      <Set Name="Set" Id="{e3b79a1d-c384-405e-a347-1b8707142b18}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[CASE Color OF
+	E_ButtonColors.red:
+		led_red		:= 255;
+		led_green	:= 0;
+		led_blue	:= 0;
+	E_ButtonColors.green:
+		led_red		:= 0;
+		led_green	:= 255;
+		led_blue	:= 0;
+	E_ButtonColors.blue:
+		led_red		:= 0;
+		led_green	:= 0;
+		led_blue	:= 255;
+	E_ButtonColors.white:
+		led_red		:= 255;
+		led_green	:= 255;
+		led_blue	:= 255;
+END_CASE]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <Method Name="CyclicLogic" Id="{908deb47-ef6c-4ddf-a439-ef54102b90bf}">
+      <Declaration><![CDATA[METHOD CyclicLogic : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+// read pushbutton state
+	pressed := actuation_flag = 1;
+	
+	press_edge(CLK := pressed);
+	press_event := press_edge.Q;
+	
+	press_count := actuation_count;
+	touch_strength := actuation_strength;
+	ambient_brightness := surrounding_brightness;
+
+// default LED configuration.
+	active_leds := 1;
+	led_brightness := 60;
+	// color = white
+		led_red := 255;
+		led_green := 255;
+		led_blue := 255;
+	// effect = on
+		led_effect := LED_STATIC;
+		effect_frequency := 0;
+
+// disable LED when the pushbutton is disabled
+IF NOT enabled THEN
+    active_leds := 0;
+	
+    led_red := 0;
+    led_green := 0;
+    led_blue := 0;
+	
+    led_effect := LED_STATIC;
+    effect_frequency := 0;
+
+// fault condition overrides normal behavior
+ELSIF fault_active THEN
+	//color = red
+		led_red := 255;
+		led_green := 0;
+	    led_blue := 0;
+	// effect = flashing fast
+		led_brightness := 100;
+		led_effect := LED_FLASH;
+		effect_frequency := 20;
+// normal pushbutton behavior		
+ELSE 
+    CASE button_type OF
+        BUTTON_START:
+			//color = green
+				led_red := 0;
+				led_green := 255;
+				led_blue := 0;
+			//effect = off normally, on when pressed
+				led_effect := LED_STATIC;
+				effect_frequency := 0;
+				IF pressed THEN
+					led_brightness := 100;
+				END_IF
+				
+        BUTTON_STOP:
+            // color = red
+				led_red := 255;
+				led_green := 0;
+				led_blue := 0;
+			//effect = off normally, on when pressed
+				led_effect := LED_STATIC;
+				effect_frequency := 0;
+				IF pressed THEN
+					led_brightness := 100;
+				END_IF
+				
+        BUTTON_RESET:
+            // color = blue
+				led_red := 0;
+				led_green := 0;
+				led_blue := 255;
+			//effect = slow pulse normally, on when pressed
+				led_effect := LED_PULSE;
+				effect_frequency := 10; // slow pulse makes reset visually distinct
+				IF pressed THEN
+					led_effect := LED_STATIC;
+					led_brightness := 100;
+				END_IF
+		BUTTON_GENERIC:
+            //color = white
+				led_red := 255;
+				led_green := 255;
+				led_blue := 255;
+			//effect = normally off, on when pressed
+				led_effect := LED_STATIC;
+				effect_frequency := 0;
+				IF pressed THEN
+					led_brightness := 100;
+				END_IF	
+		ELSE
+			// custom button, must set through properties and methods
+			            //color = white
+				led_red 	:= custom_red; 
+				led_green 	:= custom_green;
+				led_blue 	:= custom_blue;
+			//effect = normally off, on when pressed
+				led_effect := customOn_effect;
+				effect_frequency :=customOn_effectFrequency;
+				IF pressed THEN
+					led_effect := customPressed_effect;
+					effect_frequency :=customPressed_effectFrequency;
+					led_brightness := 100;
+				END_IF	
+    END_CASE
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="setCustomEffect" Id="{b2a94e8c-06a7-4af2-a203-97a7cd4719d9}">
+      <Declaration><![CDATA[METHOD setCustomEffect
+VAR_INPUT
+	On_effect : BYTE:=LED_STATIC;
+	On_effectFrequency : BYTE:=0;
+	Pressed_effect : BYTE:=LED_STATIC;
+	Pressed_effectFrequency : BYTE:=0;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[	customOn_effect := On_effect; 
+	customOn_effectFrequency := On_effectFrequency;  
+	customPressed_effect := Pressed_effect;
+	customPressed_effectFrequency := Pressed_effectFrequency;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="setCustomRGB" Id="{6bfd8b67-4648-4519-8215-60384af45d9f}">
+      <Declaration><![CDATA[METHOD setCustomRGB
+VAR_INPUT
+	red		: BYTE;
+    green	: BYTE;
+    blue	: BYTE;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[custom_red	:= led_red		:= red;  
+custom_green:= led_green	:= green;
+custom_blue	:= led_blue		:= blue; ]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

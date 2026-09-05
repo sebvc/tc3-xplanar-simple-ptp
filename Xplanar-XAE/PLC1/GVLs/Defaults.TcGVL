@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+  <GVL Name="Defaults" Id="{a9614923-164a-4c0b-87f8-b620c6dbb5bd}">
+    <Declaration><![CDATA[//{attribute 'qualified_only'}
+VAR_GLOBAL CONSTANT
+	//Move dynamics                 	
+	DEFAULT_MOVE			: 	ST_MoveDynamics := (Velocity := 500.0, 	Accel := 1000.0,	Decel := 1000.0,	Jerk := 200000.0); 
+	DEFAULT_ROTATE			: 	ST_MoveDynamics := (Velocity := 5.0, 	Accel := 20.0, 		Decel := 20.0, 		Jerk := 100.0);  
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

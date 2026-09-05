@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+  <Itf Name="I_BothMovers" Id="{210507a2-603b-49d4-88c1-4d5d176a9a0c}">
+    <Declaration><![CDATA[INTERFACE I_BothMovers EXTENDS I_SingleMover
+]]></Declaration>
+    <Property Name="Mover2" Id="{8ea4ab8c-3229-41cb-b6e1-f0575bc1fa47}">
+      <Declaration><![CDATA[PROPERTY Mover2 : I_XPlanarMover
+]]></Declaration>
+      <Get Name="Get" Id="{30d8c4f8-ad99-421c-8dde-2400d088f962}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+      <Set Name="Set" Id="{9b482b1a-7bc6-475c-800b-beb0dd0b1cf8}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Set>
+    </Property>
+  </Itf>
+</TcPlcObject>

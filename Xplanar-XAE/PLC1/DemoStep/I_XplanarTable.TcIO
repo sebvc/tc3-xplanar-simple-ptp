@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+  <Itf Name="I_XplanarTable" Id="{393729b2-f9fc-44bd-bd30-109f4eaa1dbd}">
+    <Declaration><![CDATA[INTERFACE I_XplanarTable EXTENDS I_Base, I_DemoStep]]></Declaration>
+    <Property Name="Table" Id="{9f94cf65-dfe8-4302-a27a-9f5ed784849e}">
+      <Declaration><![CDATA[PROPERTY Table : I_XPlanarSystem
+]]></Declaration>
+      <Get Name="Get" Id="{7991b6d4-1ee7-4fa4-9363-1b0210be66fb}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+      <Set Name="Set" Id="{e67442c7-b59f-4708-8d6e-b5378803d2e4}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Set>
+    </Property>
+  </Itf>
+</TcPlcObject>

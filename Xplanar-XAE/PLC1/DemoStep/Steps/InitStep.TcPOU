@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+  <POU Name="InitStep" Id="{911033ba-b1f1-4b66-a40a-a03afe548d72}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK InitStep IMPLEMENTS I_DemoStep
+VAR_INPUT
+	XPlanarSys		: 	I_XPlanarSystem;
+	MoveDyn			: 	ST_MoveDynamics := (Velocity := 500.0, 	Accel := 1000.0,	Decel := 1000.0,	Jerk := 200000.0); 
+	RotateDyn		: 	ST_MoveDynamics := (Velocity := 5.0, 	Accel := 20.0, 		Decel := 20.0, 		Jerk := 100.0);  
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	_XPlanarSysInit: I_Initializable;
+	_Done			: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="CyclicLogic" Id="{cf843613-a189-4eaf-b35d-983d09dbe21c}">
+      <Declaration><![CDATA[METHOD CyclicLogic
+VAR
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Table Cyclic logic should already be called.
+F_SetAllMoversMovement(MoveDyn);
+F_SetAllMoversRotation(RotateDyn);
+
+IF XPlanarSys<>0 AND_THEN __QUERYINTERFACE(XPlanarSys, _XPlanarSysInit) THEN
+	_Done := _XPlanarSysInit.Initialized;
+ELSE 
+	_Done:=FALSE;
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Done" Id="{1561f740-1156-4428-85b5-5d2c202d3267}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Done : BOOL
+]]></Declaration>
+      <Get Name="Get" Id="{42b4b6be-be2a-4047-b69b-4641cfc2e1d4}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Done:= _Done;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Reset" Id="{7a761514-e2e9-4456-bca6-e30127fa87f8}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[//Not really needed
+_Done:=FALSE;
+Reset:=TRUE;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

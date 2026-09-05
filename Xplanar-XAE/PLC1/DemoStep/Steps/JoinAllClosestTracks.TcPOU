@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+  <POU Name="JoinAllClosestTracks" Id="{42b93498-6f63-4169-82ce-f7c0f205be7d}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK JoinAllClosestTracks IMPLEMENTS I_DemoStep, I_XplanarTable
+VAR_INPUT
+	XPlanarSys		: 	I_XPlanarSystem;
+	UseOrientation : BOOL := FALSE;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	_Done				: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="CyclicLogic" Id="{f02fb9b8-f251-4a83-bdbe-877fedfb106d}">
+      <Declaration><![CDATA[METHOD CyclicLogic
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[//E_DemoStep.JoinTrack:
+IF XPlanarSys.EnableTracks().Done AND 
+	ip.Movers[1].MoveCommand.JoinClosestTrack(UseOrientation).Done AND
+	ip.Movers[2].MoveCommand.JoinClosestTrack(UseOrientation).Done 
+THEN
+	_Done:=TRUE;
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Done" Id="{3e1a5e81-419b-4c2a-8221-60dcf82fdbb7}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Done : BOOL
+]]></Declaration>
+      <Get Name="Get" Id="{ea12fd83-43ae-4d12-bcb8-2870791efc64}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Done:= _Done;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Reset" Id="{75077b62-9d74-49d1-bc7a-01692252d5f7}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_Done:=FALSE;
+Reset:=TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Table" Id="{5cb14338-6d41-4365-b5b3-a7d0ef616e3a}">
+      <Declaration><![CDATA[PROPERTY Table : I_XPlanarSystem
+]]></Declaration>
+      <Get Name="Get" Id="{af8818ea-2f47-4007-b873-73532957033e}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Table:=XPlanarSys;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{02051645-4c0f-4f68-8c7f-6ebf7a9ebcae}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[XPlanarSys:=Table;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+  </POU>
+</TcPlcObject>

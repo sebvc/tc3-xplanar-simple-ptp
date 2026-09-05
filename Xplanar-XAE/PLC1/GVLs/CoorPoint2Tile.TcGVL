@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+  <GVL Name="CoorPoint2Tile" Id="{4f755574-4079-47d4-9db8-9e18c19c5345}">
+    <Declaration><![CDATA[//{attribute 'qualified_only'}
+VAR_GLOBAL CONSTANT
+	RIGHT	: LREAL:=180.0;
+	CENTER	: LREAL:=120.0;	
+	LEFT	: LREAL:=60.0;
+	//---
+	TOP_UPPER		: LREAL:=420.0;
+	TOP_MIDDLE		: LREAL:=360.0;
+	TOP_LOWER		: LREAL:=300.0;
+	MEDIAN			: LREAL:=240.0;
+	BOTTOM_UPPER	: LREAL:=180.0;
+	BOTTOM_MIDDLE	: LREAL:=120.0;
+	BOTTOM_LOWER	: LREAL:=60.0;
+	//---
+	TOP_UPPER_RIGHT,TOP_RIGHT			: ST_POINT := (X := RIGHT,	Y := TOP_UPPER);
+	TOP_UPPER_CENTER					: ST_POINT := (X := CENTER,	Y := TOP_UPPER);
+	TOP_UPPER_LEFT,TOP_LEFT				: ST_POINT := (X := LEFT,	Y := TOP_UPPER);
+	TOP_MIDDLE_RIGHT					: ST_POINT := (X := RIGHT,	Y := TOP_MIDDLE);
+	TOP_MIDDLE_CENTER,TOP_CENTER		: ST_POINT := (X := CENTER,	Y := TOP_MIDDLE);
+	TOP_MIDDLE_LEFT						: ST_POINT := (X := LEFT,	Y := TOP_MIDDLE);
+	TOP_LOWER_RIGHT						: ST_POINT := (X := RIGHT,	Y := TOP_LOWER);
+	TOP_LOWER_CENTER					: ST_POINT := (X := CENTER,	Y := TOP_LOWER);
+	TOP_LOWER_LEFT						: ST_POINT := (X := LEFT,	Y := TOP_LOWER);
+	MEDIAN_RIGHT						: ST_POINT := (X := RIGHT,	Y := MEDIAN);
+	MEDIAN_CENTER, PRIME_MIDDLE			: ST_POINT := (X := CENTER,	Y := MEDIAN);
+	MEDIAN_LEFT							: ST_POINT := (X := LEFT,	Y := MEDIAN);
+	BOTTOM_UPPER_RIGHT					: ST_POINT := (X := RIGHT,	Y := BOTTOM_UPPER);
+	BOTTOM_UPPER_CENTER					: ST_POINT := (X := CENTER,	Y := BOTTOM_UPPER);	
+	BOTTOM_UPPER_LEFT					: ST_POINT := (X := LEFT,	Y := BOTTOM_UPPER);
+	BOTTOM_MIDDLE_RIGHT					: ST_POINT := (X := RIGHT,	Y := BOTTOM_MIDDLE);
+	BOTTOM_MIDDLE_CENTER,BOTTOM_CENTER	: ST_POINT := (X := CENTER,	Y := BOTTOM_MIDDLE);
+	BOTTOM_MIDDLE_LEFT					: ST_POINT := (X := LEFT,	Y := BOTTOM_MIDDLE);
+	BOTTOM_LOWER_RIGHT,BOTTOM_RIGHT		: ST_POINT := (X := RIGHT,	Y := BOTTOM_LOWER);
+	BOTTOM_LOWER_CENTER					: ST_POINT := (X := CENTER,	Y := BOTTOM_LOWER);
+	BOTTOM_LOWER_LEFT,BOTTOM_LEFT		: ST_POINT := (X := LEFT,	Y := BOTTOM_LOWER);
+END_VAR
+(*
+       2-Tile layout of (x,y) ST_Points          
+        (positions marked with `*` Asteriks)     
+(0,480)                                 (240,480)
+       ┌───────────────┐───────────────┐         
+       │               │               │         
+       │               │               │         
+  upper│       *       *       *       │         
+       │               │               │         
+       │            TOP│               │         
+ middle│───────*───────*───────*───────│         
+       │               │TILE           │         
+       │               │               │         
+  lower│       *       *       *       │         
+       │               │               │         
+       │               │               │         
+ median├───────*───────*───────*───────┤        
+       │               │               │         
+       │               │               │         
+  upper│       *       *       *       │         
+       │               │               │         
+       │         BOTTOM│               │         
+ middle│───────*───────*───────*───────│         
+       │               │TILE           │         
+       │               │               │         
+  lower│       *       *       *       │         
+       │               │               │         
+       │               │               │         
+       └───────────────┘───────────────┘         
+  (0,0)      left    center   right     (240,0)  
+*)]]></Declaration>
+  </GVL>
+</TcPlcObject>

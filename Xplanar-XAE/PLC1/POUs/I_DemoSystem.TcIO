@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+  <Itf Name="I_DemoSystem" Id="{5fafa043-8e41-4258-8e1a-0af4085765c1}">
+    <Declaration><![CDATA[INTERFACE I_DemoSystem EXTENDS I_Base
+]]></Declaration>
+  </Itf>
+</TcPlcObject>

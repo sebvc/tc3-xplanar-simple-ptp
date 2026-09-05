@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
-  <POU Name="SquareUpMovers" Id="{dd543abc-784f-4147-a464-13cbde804aa0}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK SquareUpMovers IMPLEMENTS I_DemoStep, I_BothMovers, I_Errorable
+  <POU Name="SimpleSort2Movers" Id="{0b3b5cc6-89d4-46ef-8516-83afbf2ef414}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK SimpleSort2Movers IMPLEMENTS I_DemoStep, I_BothMovers, I_Errorable
 VAR_INPUT
 		M1	:	I_XPlanarMover;
 		M2	:	I_XPlanarMover;
@@ -16,24 +16,31 @@ END_VAR
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
-    <Method Name="CyclicLogic" Id="{a3dc30a3-4b84-48a6-8274-ba134193a898}">
-      <Declaration><![CDATA[METHOD CyclicLogic]]></Declaration>
+    <Method Name="CyclicLogic" Id="{f4a31661-676b-45e8-a02a-ae3035f30584}">
+      <Declaration><![CDATA[METHOD CyclicLogic
+]]></Declaration>
       <Implementation>
-        <ST><![CDATA[//E_DemoStep.SquareUpMovers:	
-
-IF ip.Movers[1].MoveCommand.SquareUp().Done AND ip.Movers[2].MoveCommand.SquareUp().Done THEN
-	_Done := TRUE;
-ELSIF M1.MoveCommand.SquareUp().Error OR M1.MoveCommand.SquareUp().Error THEN
-	_Error:=TRUE;
+        <ST><![CDATA[IF M1<>0 AND_THEN M2<>0 THEN
+	_Error:=FALSE;
+	IF M1.ActualPosition.y < M2.ActualPosition.y THEN
+		ip.Movers[1] 	:= M1;
+		ip.Movers[2] 	:= M2;	
+	ELSE
+		ip.Movers[2] 	:= M1;
+		ip.Movers[1] 	:= M2;		
+	END_IF	
+	_Done:=TRUE;
+ELSE
+	_Error := TRUE;
 END_IF
-		]]></ST>
+]]></ST>
       </Implementation>
     </Method>
-    <Property Name="Done" Id="{a12ad461-1d16-4881-b1cc-52584a492671}">
+    <Property Name="Done" Id="{18dbf2d2-ca2a-401a-b43f-85383008d1bc}">
       <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
 PROPERTY Done : BOOL
 ]]></Declaration>
-      <Get Name="Get" Id="{6827b39a-c4cc-4e06-a668-20ad520cbb4a}">
+      <Get Name="Get" Id="{0cec8e5e-cc21-41cb-85e5-3e493c0d6c2b}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
@@ -42,10 +49,10 @@ END_VAR
         </Implementation>
       </Get>
     </Property>
-    <Property Name="Error" Id="{1c756a72-cb58-45c5-b580-d7d56f19adbf}">
+    <Property Name="Error" Id="{7b7382ba-c353-42de-96b6-03fa6bbcbec2}">
       <Declaration><![CDATA[PROPERTY Error : BOOL
 ]]></Declaration>
-      <Get Name="Get" Id="{43749be0-b1d9-4c74-b65e-75b22920ecee}">
+      <Get Name="Get" Id="{730bc7b3-caed-48a6-b2ee-9253c388e42a}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
@@ -54,10 +61,10 @@ END_VAR
         </Implementation>
       </Get>
     </Property>
-    <Property Name="Mover1" Id="{0bc18334-45bb-4aa7-a16f-0f81eb70a9c7}">
+    <Property Name="Mover1" Id="{d5b961fc-9c76-4767-ba35-2bfae814eefe}">
       <Declaration><![CDATA[PROPERTY Mover1 : I_XPlanarMover
 ]]></Declaration>
-      <Get Name="Get" Id="{578abd06-e39d-4f14-8551-ed01949e9a5c}">
+      <Get Name="Get" Id="{05b2b182-1aa5-4f5c-8c9d-2877cc22fd2f}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
@@ -69,7 +76,7 @@ ELSE
 END_IF]]></ST>
         </Implementation>
       </Get>
-      <Set Name="Set" Id="{a0b7398c-fd94-40b2-9b26-6de975fa8cb6}">
+      <Set Name="Set" Id="{48ed2f78-3450-48d3-8ab0-6c73b7bbc66b}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
@@ -80,10 +87,10 @@ END_IF]]></ST>
         </Implementation>
       </Set>
     </Property>
-    <Property Name="Mover2" Id="{af833735-cd5c-43e4-aada-af5b172577d4}">
+    <Property Name="Mover2" Id="{47619d5a-00aa-4f9d-bac6-590d9ee7966c}">
       <Declaration><![CDATA[PROPERTY Mover2 : I_XPlanarMover
 ]]></Declaration>
-      <Get Name="Get" Id="{88ef4749-16b2-4c62-a3d0-cd1b917ad7f5}">
+      <Get Name="Get" Id="{ad920bf3-ba87-47b9-b518-ed5de68b6c40}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
@@ -95,7 +102,7 @@ ELSE
 END_IF]]></ST>
         </Implementation>
       </Get>
-      <Set Name="Set" Id="{8fbf7426-fb72-4264-9572-52bb43c81351}">
+      <Set Name="Set" Id="{91a5fc9a-25aa-4a1c-bcd8-bc8276ade7a5}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
@@ -106,7 +113,7 @@ END_IF]]></ST>
         </Implementation>
       </Set>
     </Property>
-    <Method Name="Reset" Id="{4001e46d-8de7-44c7-b47c-d0adcde196f7}">
+    <Method Name="Reset" Id="{144e8ef9-aab5-42d7-8087-9dccb4daed16}">
       <Declaration><![CDATA[METHOD Reset : BOOL
 ]]></Declaration>
       <Implementation>
@@ -115,7 +122,7 @@ _Done:=FALSE;
 Reset:=TRUE;]]></ST>
       </Implementation>
     </Method>
-    <Method Name="SetMovers" Id="{fc289321-6db5-4571-ac12-015a5124385a}">
+    <Method Name="SetMovers" Id="{8903e4ff-9530-42a0-8b8f-0567619e0970}">
       <Declaration><![CDATA[METHOD SetMovers : BOOL
 VAR_INPUT
 	M1	: I_XPlanarMover;

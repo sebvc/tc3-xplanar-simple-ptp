@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+  <Itf Name="I_Errorable" Id="{0de0621e-ca7a-482e-8bd3-812c04fa26dd}">
+    <Declaration><![CDATA[INTERFACE I_Errorable EXTENDS I_Base
+]]></Declaration>
+    <Property Name="Error" Id="{da61e61e-a376-4436-bf5a-b260733f29f3}">
+      <Declaration><![CDATA[PROPERTY Error : BOOL
+]]></Declaration>
+      <Get Name="Get" Id="{459c16f4-6791-44d9-bac7-1e1b97f1ee03}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+  </Itf>
+</TcPlcObject>

@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+  <POU Name="DetectXplanarMovers" Id="{9357c914-5ce6-4001-9742-0ab21b43b6e8}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK DetectXplanarMovers IMPLEMENTS I_DemoStep, I_XplanarTable
+VAR_INPUT
+	XPlanarSys		: 	I_XPlanarSystem;
+	DesiredNumberOfMovers : UDINT := 2 ;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	_DetectedMoversInfo	: 	XPlanarApplication.ST_TcIoMoverDetectionInfos;
+	_Done				: BOOL;
+	_Reset: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="CyclicLogic" Id="{76f4924a-e4ff-4212-a115-39606b5cd325}">
+      <Declaration><![CDATA[METHOD CyclicLogic
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[//E_DemoStep.DetectMovers:
+IF NOT _Reset THEN
+	IF XPlanarSys<>0 AND_THEN XPlanarSys.MoverRedetect().Done THEN
+		_DetectedMoversInfo		:= XPlanarSys.Utility.GetMoverDetectionInfos();
+		_Done := TRUE;
+	END_IF	
+ELSE
+	//skip cycle for reset
+END_IF
+
+//might need to wait a cycle to re-trigger 
+IF  _DetectedMoversInfo.TotalDetected = DesiredNumberOfMovers THEN //Default to two
+	_Done := TRUE;
+	_Reset := TRUE;
+END_IF
+]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Done" Id="{107bd4f5-b16f-4ae3-b0b4-b62aec7ea538}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Done : BOOL
+]]></Declaration>
+      <Get Name="Get" Id="{1588b441-4006-4775-8132-3016f9d89fe5}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Done:= _Done;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Reset" Id="{4875c87d-e810-417b-8c02-43686480be00}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_DetectedMoversInfo.TotalDetected:=0;
+_DetectedMoversInfo.TotalExpected:=0;
+_Reset:= TRUE;//skip detect cycle
+_Done:=FALSE;]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Table" Id="{2b4f620e-0e17-417c-8da8-7c42e56c31c8}">
+      <Declaration><![CDATA[PROPERTY Table : I_XPlanarSystem
+]]></Declaration>
+      <Get Name="Get" Id="{2312d837-4c9a-4167-bccc-a1d8da1e6b22}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Table:=XPlanarSys;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{231ee5f2-df62-42d3-a474-1ab777766c44}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[XPlanarSys:=Table;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <Property Name="TotalMoversDetected" Id="{de9dd903-4421-4b4d-afc8-5daa2cbe59b7}">
+      <Declaration><![CDATA[PROPERTY TotalMoversDetected : UDINT;]]></Declaration>
+      <Get Name="Get" Id="{4152bfcd-1141-457c-809e-df6d52959d28}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[TotalMoversDetected := _DetectedMoversInfo.TotalDetected;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+  </POU>
+</TcPlcObject>

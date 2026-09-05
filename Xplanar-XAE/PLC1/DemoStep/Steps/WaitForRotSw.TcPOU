@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+  <POU Name="WaitForRotSw" Id="{085cf4ca-5c15-4264-af5d-6d86165ea40f}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK WaitForRotSw IMPLEMENTS I_DemoStep
+VAR_INPUT
+	SelectorSwitch	: 	REFERENCE TO U_SelectorSwitch;
+	SimStart		: 	REFERENCE TO BOOL;
+	SimDisable		: 	REFERENCE TO BOOL;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	//TwinCATRestart : TC_Restart := (NETID:='', RESTART:=FALSE);
+	_bDisableInNextStep	: BOOL; // passed to Error Prop
+	_Done		: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="CyclicLogic" Id="{d833bb19-84ff-4054-bc76-e04e4bde7387}">
+      <Declaration><![CDATA[METHOD CyclicLogic
+VAR
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Table Cyclic logic should already be called.
+_bDisableInNextStep := _Done := FALSE;
+//E_DemoStep.WaitForSwitch:
+IF XPlanar.OperationMode = XPlanarApplication.XPlanarOperationMode.Normal THEN
+	CASE SelectorSwitch.Pos OF
+		E_SelectorSwitchPos.Left:	_Done:= TRUE; // E_DemoStep.DetectMovers; //(Usually) 
+		E_SelectorSwitchPos.Up:		_bDisableInNextStep:= TRUE; // E_DemoStep.Disable; ==> Error=TRUE
+	//	E_SelectorSwitchPos.Right:	TwinCATRestart(NETID:='', RESTART:=TRUE); // Done in other part of code 
+	END_CASE
+ELSE // XPlanar TcCOM OperationMode in a Simulation mode
+	IF 	SimStart	THEN _Done:= TRUE; END_IF
+	IF 	SimDisable 	THEN _bDisableInNextStep:= TRUE; END_IF
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Done" Id="{515050c5-c072-47bd-8176-ef8252f7e891}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Done : BOOL
+]]></Declaration>
+      <Get Name="Get" Id="{82c974b4-fcb8-4be3-ace4-df94686cef16}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Done:= _Done;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="Error" Id="{522d96ff-6709-4792-9dd6-dd53f4f0eb51}">
+      <Declaration><![CDATA[PROPERTY Error : BOOL
+]]></Declaration>
+      <Get Name="Get" Id="{9555bf2b-49b3-43a7-bc28-4e2c1449d69c}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Error:= _bDisableInNextStep;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Reset" Id="{211386c6-0970-4d09-9636-efa507d859ab}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[//Not really needed
+_bDisableInNextStep := _Done := FALSE;
+Reset:=TRUE;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

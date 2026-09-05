@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+  <POU Name="SameTrackMove" Id="{21a5f74d-6f72-42d7-904e-8f45dbf9db1b}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK SameTrackMove IMPLEMENTS I_DemoStep
+VAR_INPUT
+	Track			: I_XPlanarTrack;
+	nLaps			: INT := 0;
+	M1EndTrackPos	: LREAL;
+	M2EndTrackPos	: LREAL;
+	Gap				: LREAL:=30.0;
+	moveDirection	: XPlanarApplication.MC_DIRECTION := XPlanarApplication.MC_DIRECTION.mcDirectionNonModulo;
+	TrackMoveDynamics: ST_MoveDynamics:=Defaults.DEFAULT_MOVE;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	SubStep: USINT;
+	_Done: BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+]]></ST>
+    </Implementation>
+    <Method Name="CyclicLogic" Id="{8b0b3dba-8517-46ba-b5c8-0a932ca5de58}">
+      <Declaration><![CDATA[METHOD CyclicLogic
+VAR
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE SubStep OF
+	0:	
+		F_SetAllMoversMovement(TrackMoveDynamics);// set move dynamics
+		SubStep:=1;
+	1:
+		IF 	ip.Movers[1].MoveCommand.TrackMove(M1EndTrackPos+(nLaps*Track.TrackLength),Gap,Track,moveDirection).Done AND 
+		 	ip.Movers[2].MoveCommand.TrackMove(M2EndTrackPos+(nLaps*Track.TrackLength),Gap,Track,moveDirection).Done 
+		THEN
+			_Done	:= TRUE;
+			SubStep	:=0;//reset
+		END_IF					
+
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Done" Id="{7069b616-5b4e-4575-8a3a-ec4a2bf66431}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Done : BOOL
+]]></Declaration>
+      <Get Name="Get" Id="{affba44b-e87d-41a5-8d34-37b7621ad7a9}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Done:=_Done;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Reset" Id="{10655bd2-541c-41bc-8cd9-2b59653a71b9}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_Done:=FALSE;
+SubStep:=0;
+Reset:=TRUE;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

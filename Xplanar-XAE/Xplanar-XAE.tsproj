@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.25" TcProjectVariant="Normal">
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.26" TcProjectVariant="Normal">
 	<DataTypes>
 		<DataType>
 			<Name GUID="{5AC0538E-BDFA-4B58-A6B5-99E997DABADA}" Namespace="MC">MoverVector</Name>
@@ -4816,7 +4816,7 @@
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{50FEC5F2-C9A2-49A2-AB32-4764BBA0A649}" Namespace="MC" TcBaseType="true">MC_GAP_MODE_ON_TRACK</Name>
+			<Name GUID="{50303B52-5435-40EC-BE91-2B4E356D2642}" Namespace="MC" TcBaseType="true">MC_GAP_MODE_ON_TRACK</Name>
 			<Comment><![CDATA[Indicates the way in which gap control is done on track.]]></Comment>
 			<BitSize>16</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000005}">UINT</BaseType>
@@ -4835,6 +4835,16 @@
 				<Enum>2</Enum>
 				<Comment><![CDATA[The Planar Mover keeps a distance to its neighbors on track that is at least the gap.]]></Comment>
 			</EnumInfo>
+			<EnumInfo>
+				<Text><![CDATA[Standard2D]]></Text>
+				<Enum>3</Enum>
+				<Comment><![CDATA[The Planar Mover keeps a distance to its neighbors in 2D that is at least the gap and stop distance.]]></Comment>
+			</EnumInfo>
+			<EnumInfo>
+				<Text><![CDATA[Fast2D]]></Text>
+				<Enum>4</Enum>
+				<Comment><![CDATA[The Planar Mover keeps a distance to its neighbors in 2D that is at least the gap.]]></Comment>
+			</EnumInfo>
 			<Properties>
 				<Property>
 					<Name>plcAttribute_qualified_only</Name>
@@ -4843,6 +4853,9 @@
 					<Name>plcAttribute_to_string</Name>
 				</Property>
 			</Properties>
+			<Hides>
+				<Hide GUID="{50FEC5F2-C9A2-49A2-AB32-4764BBA0A649}"/>
+			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{51EC8EBA-E260-4EDC-94C0-5ED02ABD2F9A}" Namespace="MC" TcBaseType="true">MC_DYNAMICS_REDUCTION_MODE</Name>
@@ -4951,7 +4964,7 @@
 			</SubItem>
 			<SubItem>
 				<Name>GapMode</Name>
-				<Type GUID="{50FEC5F2-C9A2-49A2-AB32-4764BBA0A649}" Namespace="MC">MC_GAP_MODE_ON_TRACK</Type>
+				<Type GUID="{50303B52-5435-40EC-BE91-2B4E356D2642}" Namespace="MC">MC_GAP_MODE_ON_TRACK</Type>
 				<Comment><![CDATA[Indicates the way in which gap control is done on track.]]></Comment>
 				<BitSize>16</BitSize>
 				<BitOffs>512</BitOffs>
@@ -5699,7 +5712,7 @@
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{2263B32B-2A5D-8C32-E22B-A2BF19412C6C}" Namespace="XPlanarApplication.Tc3_Mc3PlanarMotion" IecLibraryType="true" AutoDeleteType="true">CDT_MCTOPLC_PLANAR_MOVER</Name>
+			<Name GUID="{437319F6-7414-348A-5277-2C6976878DBB}" Namespace="XPlanarApplication.Tc3_Mc3PlanarMotion" IecLibraryType="true" AutoDeleteType="true">CDT_MCTOPLC_PLANAR_MOVER</Name>
 			<Comment><![CDATA[ Contains the information of the Planar Mover passed from MC to PLC. ]]></Comment>
 			<BitSize>320</BitSize>
 			<SubItem>
@@ -5782,6 +5795,12 @@
 					</Property>
 				</Properties>
 			</SubItem>
+			<Properties>
+				<Property>
+					<Name>Namespace</Name>
+					<Value>Tc3_Mc3PlanarMotion</Value>
+				</Property>
+			</Properties>
 		</DataType>
 		<DataType>
 			<Name GUID="{D98B1DAF-0C0E-3C5A-353F-0691F6C83C78}" AutoDeleteType="true">E_UsbLicenseDongleSate</Name>
@@ -5818,7 +5837,7 @@
 			</Properties>
 		</DataType>
 		<DataType>
-			<Name GUID="{7025CD2D-79E0-FAA0-100B-AA4B1F1993F2}" Namespace="XPlanarApplication.Tc3_Mc3PlanarMotion" IecLibraryType="true" AutoDeleteType="true">CDT_PLCTOMC_PLANAR_MOVER</Name>
+			<Name GUID="{C7DFF9F2-7F0A-FCF7-446E-7196BC55B22F}" Namespace="XPlanarApplication.Tc3_Mc3PlanarMotion" IecLibraryType="true" AutoDeleteType="true">CDT_PLCTOMC_PLANAR_MOVER</Name>
 			<Comment><![CDATA[ Contains the information of the Planar Mover passed from PLC to MC. ]]></Comment>
 			<BitSize>64</BitSize>
 			<SubItem>
@@ -5837,6 +5856,12 @@
 					</Property>
 				</Properties>
 			</SubItem>
+			<Properties>
+				<Property>
+					<Name>Namespace</Name>
+					<Value>Tc3_Mc3PlanarMotion</Value>
+				</Property>
+			</Properties>
 		</DataType>
 	</DataTypes>
 	<ModuleTmcs>
@@ -6904,7 +6929,6 @@
 				<ProjectVariant PvUseParameter="true">
 					<Variant>
 						<Name>Normal</Name>
-						<Name>SimOnIPC</Name>
 						<Parameters RouterMemory="32" CoresPerPkg="0" MaxWinCpus="2" MaxNonWinCpus="2">
 							<Cpu Id="2" Percent="80" BaseTime="10000"/>
 							<Cpu Id="3" Percent="80" BaseTime="2500"/>
@@ -6915,6 +6939,20 @@
 							<Affinity ObjId="#x02010050" Mask="#x8"/>
 							<Affinity ObjId="#x02010060" Mask="#x4"/>
 							<Affinity ObjId="#x02010070" Mask="#x4"/>
+						</Parameters>
+					</Variant>
+					<Variant>
+						<Name>SimOnIPC</Name>
+						<Parameters RouterMemory="32" CoresPerPkg="0" MaxWinCpus="15" MaxNonWinCpus="1">
+							<Cpu Id="14" Percent="80" BaseTime="10000"/>
+							<Cpu Id="15" Percent="80" BaseTime="2500"/>
+							<Affinity ObjId="#x03000011"/>
+							<Affinity ObjId="#x02010030"/>
+							<Affinity ObjId="#x02010040"/>
+							<Affinity ObjId="#x02010050" Mask="#x8000"/>
+							<Affinity ObjId="#x02010060"/>
+							<Affinity ObjId="#x02010070"/>
+							<Affinity ObjId="#x08500010"/>
 						</Parameters>
 					</Variant>
 					<Variant>
@@ -6936,7 +6974,24 @@
 			<Licenses>
 				<Target>
 					<ManualSelect>{27326EE5-AB30-4084-B15B-8CCA96CCBF0B}</ManualSelect>
-					<LicenseDevice DongleHardwareId="2" DongleDevice="#x03020007" DongleLevel="60" DongleSystemId="{C22FCD40-C6AF-9E06-E312-CF9F5749A104}" DongleSerialNumber="000bs99i" DongleCacheLicense="true"/>
+					<TargetSelect TargetId="2">{796D380F-D49E-4C0C-A05F-500052FAC883}</TargetSelect>
+					<TargetSelect TargetId="2">{C362DA3A-1771-4019-9AF9-F39972E4A76D}</TargetSelect>
+					<TargetSelect TargetId="2">{520DE751-9DB6-47CB-8240-BD5C466E7E64}</TargetSelect>
+					<TargetSelect TargetId="2">{66689887-CCBD-452C-AC9A-039D997C6E66}</TargetSelect>
+					<TargetSelect TargetId="2">{27326EE5-AB30-4084-B15B-8CCA96CCBF0B}</TargetSelect>
+					<LicenseDevice DongleHardwareId="2" DongleDevice="#x03020007" DongleLevel="60" DongleSerialNumber="000bs99i" DongleCacheLicense="true">
+						<ProjectVariant PvUseDisable="true">
+							<Variant>
+								<Name>Normal</Name>
+								<Name>UMRT</Name>
+								<Disable>false</Disable>
+							</Variant>
+							<Variant>
+								<Name>SimOnIPC</Name>
+								<Disable>true</Disable>
+							</Variant>
+						</ProjectVariant>
+					</LicenseDevice>
 				</Target>
 				<ProjectVariant PvUseParameter="true">
 					<Variant>
@@ -7016,24 +7071,11 @@
 				<Module Id="#x01010010" KeepUnrestoredLinks="2" ClassFactoryId="Beckhoff Automation GmbH|TcIoXPlanar|5.0.112.0">
 					<Name>XPlanar</Name>
 					<ImageId>1000</ImageId>
-					<ProjectVariant PvUseLink="true" PvUseSParameter="1">
+					<ProjectVariant PvUseLink="true" PvUseSParameter="2">
 						<Variant>
 							<Name>Normal</Name>
-							<Name>SimOnIPC</Name>
 							<Parameters>
-								<Parameter PID="#x3002103" Data="03000000"/>
-								<Parameter PID="#x3170000" Data="00000000"/>
-								<Parameter PID="#x3170001" Data="01"/>
-								<Parameter PID="#x317001b" Data="0000"/>
 								<Parameter PID="#x3170010" Data="0000"/>
-								<Parameter PID="#x3171002" Data=""/>
-								<Parameter PID="#x3171006" Data="0100"/>
-								<Parameter PID="#x3171007" Data="0000"/>
-								<Parameter PID="#x3171003" Data="0000"/>
-								<Parameter PID="#x3171012" Data="00"/>
-								<Parameter PID="#x3170032" Text=""/>
-								<Parameter PID="#x317000c" Data="8665"/>
-								<Parameter PID="#x3170016" Data=""/>
 								<Parameter PID="#x3170002" Data="0000000000000000000000000000000000000000"/>
 								<Parameter PID="#x3170020" Data="0000000000000000"/>
 								<Parameter PID="#x3170003" Data="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
@@ -7067,29 +7109,16 @@
 								<Parameter PID="#x3171004" Data="0000"/>
 								<Parameter PID="#x3171008" Data="00000000"/>
 								<Parameter PID="#x317002b" Text=""/>
-								<Parameter PID="#x317002a" Data="0000000000002440"/>
-								<Parameter PID="#x3170033" Data="0000000000c06240"/>
 								<Context>
 									<Id>1</Id>
 								</Context>
 							</Parameters>
 						</Variant>
 						<Variant>
+							<Name>SimOnIPC</Name>
 							<Name>UMRT</Name>
 							<Parameters>
-								<Parameter PID="#x3002103" Data="03000000"/>
-								<Parameter PID="#x3170000" Data="00000000"/>
-								<Parameter PID="#x3170001" Data="01"/>
-								<Parameter PID="#x317001b" Data="0000"/>
 								<Parameter PID="#x3170010" Data="0100"/>
-								<Parameter PID="#x3171002" Data=""/>
-								<Parameter PID="#x3171006" Data="0100"/>
-								<Parameter PID="#x3171007" Data="0000"/>
-								<Parameter PID="#x3171003" Data="0000"/>
-								<Parameter PID="#x3171012" Data="00"/>
-								<Parameter PID="#x3170032" Text=""/>
-								<Parameter PID="#x317000c" Data="8665"/>
-								<Parameter PID="#x3170016" Data=""/>
 								<Parameter PID="#x3170002" Data="0000000000000000000000000000000000000000"/>
 								<Parameter PID="#x3170020" Data="0000000000000000"/>
 								<Parameter PID="#x3170003" Data="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
@@ -7123,8 +7152,6 @@
 								<Parameter PID="#x3171004" Data="0000"/>
 								<Parameter PID="#x3171008" Data="00000000"/>
 								<Parameter PID="#x317002b" Text=""/>
-								<Parameter PID="#x317002a" Data="0000000000002440"/>
-								<Parameter PID="#x3170033" Data="0000000000c06240"/>
 								<Context>
 									<Id>1</Id>
 								</Context>
@@ -7164,7 +7191,7 @@
 						</Interfaces>
 						<Parameters>
 							<Group><![CDATA[General]]></Group>
-							<Group Collapsed="true"><![CDATA[AdditionalBmls]]></Group>
+							<Group><![CDATA[AdditionalBmls]]></Group>
 							<Group Collapsed="true"><![CDATA[Movers]]></Group>
 							<Group Collapsed="true"><![CDATA[MoverCouplings]]></Group>
 							<Group><![CDATA[MoverDetection]]></Group>
@@ -7175,12 +7202,12 @@
 							<Group Collapsed="true"><![CDATA[TransferAreas]]></Group>
 							<Group Collapsed="true"><![CDATA[MovementAreas]]></Group>
 							<Group Collapsed="true"><![CDATA[ParametrizationSets]]></Group>
-							<Group Collapsed="true"><![CDATA[ProcessingUnit]]></Group>
+							<Group><![CDATA[ProcessingUnit]]></Group>
 							<Group Collapsed="true"><![CDATA[ProcessingLines]]></Group>
 							<Group Collapsed="true"><![CDATA[Peers]]></Group>
-							<Group Collapsed="true"><![CDATA[Multicomputing]]></Group>
+							<Group><![CDATA[Multicomputing]]></Group>
 							<Group Collapsed="true"><![CDATA[Calibration]]></Group>
-							<Group Collapsed="true"><![CDATA[CycleTimeBalancing]]></Group>
+							<Group><![CDATA[CycleTimeBalancing]]></Group>
 							<Parameter HideParameter="true" Group="General">
 								<Name>TraceLevelMax</Name>
 								<Comment><![CDATA[Controls the amount of log messages.]]></Comment>
@@ -14859,14 +14886,9 @@
 				<Variant>
 					<Name>Normal</Name>
 					<Name>SimOnIPC</Name>
-					<Simulation Enable="false"/>
-					<TargetNetId>169.254.221.1.1.1</TargetNetId>
-					<BuildConfig>Release|TwinCAT RT (x64)</BuildConfig>
-				</Variant>
-				<Variant>
 					<Name>UMRT</Name>
 					<Simulation Enable="false"/>
-					<TargetNetId>199.4.42.250.1.1</TargetNetId>
+					<TargetNetId>169.254.221.1.1.1</TargetNetId>
 					<BuildConfig>Release|TwinCAT RT (x64)</BuildConfig>
 				</Variant>
 			</ProjectVariant>
@@ -15066,6 +15088,11 @@
 							</Parameters>
 						</Variant>
 					</ProjectVariant>
+					<Xml>
+						<mover-ui>
+							<app-cards>"{\"state\":{\"defaultCards\":[{\"id\":\"Basic Controls\",\"header\":{\"title\":\"Mover Controls\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"MoverJogDialog\",\"index\":0}]}},{\"id\":\"Basic Information and Control\",\"header\":{\"title\":\"Basic Information and Control\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"GeneralInformationDialog\",\"index\":0},{\"type\":\"JoinTrackDialog\",\"index\":1}]}},{\"id\":\"Default Movements\",\"header\":{\"title\":\"Default Movements\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"MoveToPositionDialog\",\"index\":0},{\"type\":\"SequenceDialog\",\"index\":1}]}}],\"cards\":[{\"id\":\"Basic Information and Control\",\"header\":{\"title\":\"Basic Information and Control\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"GeneralInformationDialog\",\"index\":0},{\"type\":\"JoinTrackDialog\",\"props\":{\"newTrack\":null,\"customDynamicsProps\":{\"isActive\":false,\"dynamics\":{\"velocity\":\"#Default\",\"acceleration\":\"#Default\",\"deceleration\":\"#Default\",\"jerk\":\"#Default\"}}},\"index\":1}]}},{\"id\":\"Basic Controls\",\"header\":{\"title\":\"Mover Controls\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"MoverJogDialog\",\"props\":{\"showAB\":true,\"rowOrder\":[\"X\",\"Y\",\"Z\",\"C\",\"A\",\"B\"],\"customDynamicsProps\":{\"dynamicsX\":{\"velocity\":\"#Default\",\"acceleration\":\"#Default\",\"deceleration\":\"#Default\",\"jerk\":\"#Default\"},\"dynamicsY\":{\"velocity\":\"#Default\",\"acceleration\":\"#Default\",\"deceleration\":\"#Default\",\"jerk\":\"#Default\"},\"dynamicsZ\":{\"velocity\":\"#Default\",\"acceleration\":\"#Default\",\"deceleration\":\"#Default\",\"jerk\":\"#Default\"},\"dynamicsA\":{\"velocity\":\"#Default\",\"acceleration\":\"#Default\",\"deceleration\":\"#Default\",\"jerk\":\"#Default\"},\"dynamicsB\":{\"velocity\":\"#Default\",\"acceleration\":\"#Default\",\"deceleration\":\"#Default\",\"jerk\":\"#Default\"},\"dynamicsC\":{\"velocity\":\"#Default\",\"acceleration\":\"#Default\",\"deceleration\":\"#Default\",\"jerk\":\"#Default\"},\"isActiveX\":false,\"isActiveY\":false,\"isActiveZ\":false,\"isActiveA\":false,\"isActiveB\":false,\"isActiveC\":false}},\"index\":0}]}},{\"id\":\"Default Movements\",\"header\":{\"title\":\"Default Movements\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"MoveToPositionDialog\",\"index\":0},{\"type\":\"SequenceDialog\",\"props\":{\"positionX1\":\"60\",\"positionY1\":\"60\",\"positionC1\":\"0\",\"useOrientation1\":false,\"positionX2\":\"120\",\"positionY2\":\"60\",\"positionC2\":\"0\",\"useOrientation2\":false,\"idleTime1\":\"0\",\"idleTime2\":\"0\",\"customDynamicsWorkProps\":{\"isActive\":false,\"dynamics\":{\"velocity\":\"#Default\",\"acceleration\":\"#Default\",\"deceleration\":\"#Default\",\"jerk\":\"#Default\"}},\"customDynamicsBaseProps\":{\"isActive\":false,\"dynamics\":{\"velocity\":\"#Default\",\"acceleration\":\"#Default\",\"deceleration\":\"#Default\",\"jerk\":\"#Default\"}},\"invokeId\":23},\"index\":1}]}}],\"layouts\":{\"lg\":[{\"i\":\"Basic Controls\",\"x\":0,\"y\":0,\"w\":1,\"minW\":1,\"h\":3,\"minH\":1},{\"i\":\"Basic Information and Control\",\"x\":1,\"y\":0,\"w\":1,\"minW\":1,\"h\":3,\"minH\":1},{\"i\":\"Default Movements\",\"x\":2,\"y\":0,\"w\":1,\"minW\":1,\"h\":3,\"minH\":1}],\"md\":[{\"i\":\"Basic Information and Control\",\"x\":1,\"y\":0,\"w\":1,\"h\":3,\"minW\":1,\"minH\":1,\"moved\":false,\"static\":false},{\"i\":\"Basic Controls\",\"x\":0,\"y\":0,\"w\":1,\"h\":3,\"minW\":1,\"minH\":1,\"moved\":false,\"static\":false},{\"i\":\"Default Movements\",\"x\":2,\"y\":0,\"w\":1,\"h\":3,\"minW\":1,\"minH\":1,\"moved\":false,\"static\":false}]},\"defaultGrid\":{\"cards\":[{\"id\":\"Basic Controls\",\"header\":{\"title\":\"Mover Controls\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"MoverJogDialog\",\"index\":0}]}},{\"id\":\"Basic Information and Control\",\"header\":{\"title\":\"Basic Information and Control\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"GeneralInformationDialog\",\"index\":0},{\"type\":\"JoinTrackDialog\",\"index\":1}]}},{\"id\":\"Default Movements\",\"header\":{\"title\":\"Default Movements\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"MoveToPositionDialog\",\"index\":0},{\"type\":\"SequenceDialog\",\"index\":1}]}}],\"layouts\":{\"lg\":[{\"i\":\"Basic Controls\",\"x\":0,\"y\":0,\"w\":1,\"minW\":1,\"h\":3,\"minH\":3},{\"i\":\"Basic Information and Control\",\"x\":1,\"y\":0,\"w\":1,\"minW\":1,\"h\":3,\"minH\":2},{\"i\":\"Default Movements\",\"x\":2,\"y\":0,\"w\":1,\"minW\":1,\"h\":3,\"minH\":3}]},\"widgetCollection\":{\"left-widgets\":[{\"containerId\":\"widget-container-left\",\"index\":0,\"widgetType\":{\"type\":\"MoverStatusWidget\"}},{\"containerId\":\"widget-container-left\",\"index\":1,\"widgetType\":{\"type\":\"MoverCommandModeWidget\"}},{\"containerId\":\"widget-container-left\",\"index\":2,\"widgetType\":{\"type\":\"ErrorWidget\"}}],\"right-widgets\":[]}},\"widgetCollection\":{\"left-widgets\":[{\"containerId\":\"widget-container-left\",\"index\":0,\"widgetType\":{\"type\":\"MoverStatusWidget\"}},{\"containerId\":\"widget-container-left\",\"index\":1,\"widgetType\":{\"type\":\"MoverCommandModeWidget\"}},{\"containerId\":\"widget-container-left\",\"index\":2,\"widgetType\":{\"type\":\"ErrorWidget\"}}],\"right-widgets\":[]},\"layoutVersion\":0},\"version\":0}"</app-cards>
+						</mover-ui>
+					</Xml>
 					<TmcDesc GUID="{5FC17892-62EA-4736-9999-D79964E87717}" TcSmClass="TComMcPlanarMoverObj">
 						<Name>Planar Mover</Name>
 						<InitSequence>PSO</InitSequence>
@@ -15973,6 +16000,11 @@
 				<Group Id="#x05120020" KeepUnrestoredLinks="2">
 					<Name>Environment</Name>
 					<ImageId>1004</ImageId>
+					<Xml>
+						<environment-ui>
+							<app-cards>"{\"state\":{\"defaultCards\":[{\"id\":\"Environment Overview\",\"header\":{\"title\":\"Environment Overview\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"Environment2DViewDialog\",\"index\":0}]}},{\"id\":\"Basic Controls\",\"header\":{\"title\":\"Basic Controls\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"EnableDialog\",\"index\":0},{\"type\":\"HaltDialog\",\"index\":1},{\"type\":\"ResetDialog\",\"index\":2},{\"type\":\"MoverJogDialog\",\"index\":3},{\"type\":\"GeneralInformationDialog\",\"index\":4}]}}],\"cards\":[{\"id\":\"Environment Overview\",\"header\":{\"title\":\"Environment Overview\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"Environment2DViewDialog\",\"props\":{},\"index\":0}]}},{\"id\":\"Basic Controls\",\"header\":{\"title\":\"Basic Controls\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"EnableDialog\",\"index\":0},{\"type\":\"HaltDialog\",\"index\":1},{\"type\":\"ResetDialog\",\"index\":2},{\"type\":\"MoverJogDialog\",\"props\":{\"showAB\":true,\"rowOrder\":[\"X\",\"Y\",\"Z\",\"C\",\"A\",\"B\"],\"customDynamicsProps\":{\"customDynamicsProps\":{\"dynamicsX\":{\"velocity\":100,\"acceleration\":200,\"deceleration\":200,\"jerk\":1000},\"dynamicsY\":{\"velocity\":100,\"acceleration\":200,\"deceleration\":200,\"jerk\":1000},\"dynamicsZ\":{\"velocity\":5,\"acceleration\":20,\"deceleration\":20,\"jerk\":100},\"dynamicsA\":{\"velocity\":5,\"acceleration\":20,\"deceleration\":20,\"jerk\":100},\"dynamicsB\":{\"velocity\":5,\"acceleration\":20,\"deceleration\":20,\"jerk\":100},\"dynamicsC\":{\"velocity\":5,\"acceleration\":20,\"deceleration\":20,\"jerk\":100},\"isActiveX\":false,\"isActiveY\":false,\"isActiveZ\":false,\"isActiveA\":false,\"isActiveB\":false,\"isActiveC\":false}}},\"index\":3},{\"type\":\"GeneralInformationDialog\",\"props\":{},\"index\":4}]}}],\"layouts\":{\"lg\":[{\"i\":\"Environment Overview\",\"x\":0,\"y\":0,\"w\":2,\"h\":6,\"minW\":1,\"minH\":1,\"moved\":false,\"static\":false},{\"i\":\"Basic Controls\",\"x\":2,\"y\":0,\"w\":1,\"h\":6,\"minW\":1,\"minH\":1,\"moved\":false,\"static\":false}],\"md\":[{\"i\":\"Environment Overview\",\"x\":0,\"y\":0,\"w\":2,\"h\":6,\"minW\":1,\"minH\":1,\"moved\":false,\"static\":false},{\"i\":\"Basic Controls\",\"x\":2,\"y\":0,\"w\":1,\"h\":6,\"minW\":1,\"minH\":1,\"moved\":false,\"static\":false}]},\"defaultGrid\":{\"cards\":[{\"id\":\"Environment Overview\",\"header\":{\"title\":\"Environment Overview\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"Environment2DViewDialog\",\"index\":0}]}},{\"id\":\"Basic Controls\",\"header\":{\"title\":\"Basic Controls\",\"description\":\"\"},\"content\":{\"dialogs\":[{\"type\":\"EnableDialog\",\"index\":0},{\"type\":\"HaltDialog\",\"index\":1},{\"type\":\"ResetDialog\",\"index\":2},{\"type\":\"MoverJogDialog\",\"index\":3},{\"type\":\"GeneralInformationDialog\",\"index\":4}]}}],\"layouts\":{\"lg\":[{\"i\":\"Environment Overview\",\"x\":0,\"y\":0,\"w\":2,\"minW\":1,\"h\":6,\"minH\":3},{\"i\":\"Basic Controls\",\"x\":2,\"y\":0,\"w\":1,\"minW\":1,\"h\":6,\"minH\":3}]},\"widgetCollection\":{\"left-widgets\":[{\"containerId\":\"widget-container-left\",\"index\":0,\"widgetType\":{\"type\":\"MoverCountWidget\"}}],\"right-widgets\":[{\"containerId\":\"widget-container-right\",\"index\":0,\"widgetType\":{\"type\":\"CreateBoundaryWidget\"}},{\"containerId\":\"widget-container-right\",\"index\":1,\"widgetType\":{\"type\":\"AddToGroupWidget\"}}]}},\"widgetCollection\":{\"left-widgets\":[{\"containerId\":\"widget-container-left\",\"index\":0,\"widgetType\":{\"type\":\"MoverCountWidget\"}}],\"right-widgets\":[{\"containerId\":\"widget-container-right\",\"index\":0,\"widgetType\":{\"type\":\"CreateBoundaryWidget\"}},{\"containerId\":\"widget-container-right\",\"index\":1,\"widgetType\":{\"type\":\"AddToGroupWidget\"}}]},\"layoutVersion\":0},\"version\":0}"</app-cards>
+						</environment-ui>
+					</Xml>
 					<TmcDesc GUID="{9A40A34B-DD2F-4271-8FEE-3ADE2271DB79}" TcSmClass="TComMcGroupObj">
 						<Name>Planar Environment</Name>
 						<CLSID ClassFactory="TcNc3">{050300CB-0000-0000-F000-000000000064}</CLSID>
@@ -16719,20 +16751,107 @@
 		</Motion>
 		<Plc>
 			<Project GUID="{233169FE-F7A5-4EC4-9427-C86C70D23AE6}" Name="PLC1" PrjFilePath="PLC1\PLC1.plcproj" TmcFilePath="PLC1\PLC1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{62FD940F-40CE-AFAD-7F98-837238965372}" TmcPath="PLC1\PLC1.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{2E256FC5-9D77-FA53-B0AE-9675FA47A78A}" TmcPath="PLC1\PLC1.tmc">
 					<Name>PLC1 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
 						<Name>PlcTask Outputs</Name>
 						<Var>
+							<Name>MAIN.START_Button.active_leds</Name>
+							<Comment><![CDATA[ IO-Link process data outputs]]></Comment>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.START_Button.led_brightness</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.START_Button.led_red</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.START_Button.led_green</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.START_Button.led_blue</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.START_Button.led_effect</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.START_Button.effect_frequency</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.DISABLE_Button.active_leds</Name>
+							<Comment><![CDATA[ IO-Link process data outputs]]></Comment>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.DISABLE_Button.led_brightness</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.DISABLE_Button.led_red</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.DISABLE_Button.led_green</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.DISABLE_Button.led_blue</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.DISABLE_Button.led_effect</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.DISABLE_Button.effect_frequency</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.RESET_Button.active_leds</Name>
+							<Comment><![CDATA[ IO-Link process data outputs]]></Comment>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.RESET_Button.led_brightness</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.RESET_Button.led_red</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.RESET_Button.led_green</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.RESET_Button.led_blue</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.RESET_Button.led_effect</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.RESET_Button.effect_frequency</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.Mover1._Mover.PLCTOMC</Name>
 							<Comment><![CDATA[ Mover data that is transferred from this function block to the Planar Mover. ]]></Comment>
-							<Type GUID="{7025CD2D-79E0-FAA0-100B-AA4B1F1993F2}" Namespace="XPlanarApplication.Tc3_Mc3PlanarMotion">CDT_PLCTOMC_PLANAR_MOVER</Type>
+							<Type GUID="{C7DFF9F2-7F0A-FCF7-446E-7196BC55B22F}" Namespace="XPlanarApplication.Tc3_Mc3PlanarMotion">CDT_PLCTOMC_PLANAR_MOVER</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.Mover2._Mover.PLCTOMC</Name>
 							<Comment><![CDATA[ Mover data that is transferred from this function block to the Planar Mover. ]]></Comment>
-							<Type GUID="{7025CD2D-79E0-FAA0-100B-AA4B1F1993F2}" Namespace="XPlanarApplication.Tc3_Mc3PlanarMotion">CDT_PLCTOMC_PLANAR_MOVER</Type>
+							<Type GUID="{C7DFF9F2-7F0A-FCF7-446E-7196BC55B22F}" Namespace="XPlanarApplication.Tc3_Mc3PlanarMotion">CDT_PLCTOMC_PLANAR_MOVER</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="1">
@@ -16746,6 +16865,15 @@
 							<Name>XPlanar.Group.MCTOPLC_STD</Name>
 							<Comment><![CDATA[ Group data that is transferred from the Planar Group to this function block. ]]></Comment>
 							<Type GUID="{E06D295F-3D94-4B18-B587-C89D73DA41F4}" Namespace="MC">CDT_MCTOPLC_GROUP_PLANAR</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.SimStart</Name>
+							<Comment><![CDATA[ These are inputs that are unlinked for writing conveninece]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.SimDisable</Name>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.SelectorSwitch.IO.Left</Name>
@@ -16764,14 +16892,65 @@
 							<Type>BIT</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.START_Button.actuation_flag</Name>
+							<Comment><![CDATA[ IO-Link process data inputs]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.START_Button.actuation_count</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.START_Button.actuation_strength</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.START_Button.surrounding_brightness</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.DISABLE_Button.actuation_flag</Name>
+							<Comment><![CDATA[ IO-Link process data inputs]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.DISABLE_Button.actuation_count</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.DISABLE_Button.actuation_strength</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.DISABLE_Button.surrounding_brightness</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.RESET_Button.actuation_flag</Name>
+							<Comment><![CDATA[ IO-Link process data inputs]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.RESET_Button.actuation_count</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.RESET_Button.actuation_strength</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.RESET_Button.surrounding_brightness</Name>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.Mover1._Mover.MCTOPLC</Name>
 							<Comment><![CDATA[ Mover data that is transferred from the Planar Mover to this function block. ]]></Comment>
-							<Type GUID="{2263B32B-2A5D-8C32-E22B-A2BF19412C6C}" Namespace="XPlanarApplication.Tc3_Mc3PlanarMotion">CDT_MCTOPLC_PLANAR_MOVER</Type>
+							<Type GUID="{437319F6-7414-348A-5277-2C6976878DBB}" Namespace="XPlanarApplication.Tc3_Mc3PlanarMotion">CDT_MCTOPLC_PLANAR_MOVER</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.Mover2._Mover.MCTOPLC</Name>
 							<Comment><![CDATA[ Mover data that is transferred from the Planar Mover to this function block. ]]></Comment>
-							<Type GUID="{2263B32B-2A5D-8C32-E22B-A2BF19412C6C}" Namespace="XPlanarApplication.Tc3_Mc3PlanarMotion">CDT_MCTOPLC_PLANAR_MOVER</Type>
+							<Type GUID="{437319F6-7414-348A-5277-2C6976878DBB}" Namespace="XPlanarApplication.Tc3_Mc3PlanarMotion">CDT_MCTOPLC_PLANAR_MOVER</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.Track1._Track.MCTOPLC_STD</Name>
@@ -16801,6 +16980,13 @@
 					</TaskPouOids>
 				</Instance>
 			</Project>
+			<Project Disabled="true" GUID="{90441FE5-B04E-4D88-8F06-891E08786634}" Name="xplanarapplication2071" PrjFilePath="xplanarapplication2071\xplanarapplication2071.plcproj" TmcFilePath="xplanarapplication2071\xplanarapplication2071.tmc" ReloadTmc="true" AmsPort="852" FileArchiveSettings="#x000e" SymbolicMapping="true">
+				<Instance Id="#x08502040" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{31094904-9FFC-8E81-95E9-368AE9660CF0}" TmcPath="xplanarapplication2071\xplanarapplication2071.tmc">
+					<Name>xplanarapplication2071 Instance</Name>
+					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+					<JsonDynPous><![CDATA[null]]></JsonDynPous>
+				</Instance>
+			</Project>
 		</Plc>
 		<Io>
 			<Device File="XPlanar.xti" Id="3"/>
@@ -16820,20 +17006,15 @@
 		</Variants>
 	</Project>
 	<Mappings>
-		<MappingInfo Identifier="{00000000-2001-0850-0020-500820000403}" Id="#x02030010"/>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030080"/>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500820000403}" Id="#x02030020"/>
 		<MappingInfo Identifier="{02010050-0060-0201-5000-010110001105}" Id="#x02030030" Watchdog="20000000040000000400000004000000"/>
 		<MappingInfo Identifier="{02010050-0060-0201-6000-010120001105}" Id="#x02030040" Watchdog="20000000040000000400000004000000"/>
-		<MappingInfo Identifier="{02010060-2001-0850-1000-100500205008}" Id="#x02030020" Watchdog="04000000080000000400000004000000"/>
+		<MappingInfo Identifier="{02010060-2001-0850-1000-100500205008}" Id="#x02030010" Watchdog="04000000080000000400000004000000"/>
 		<MappingInfo Identifier="{02010060-2001-0850-1000-120500205008}" Id="#x02030050" Watchdog="04000000080000000400000004000000"/>
 		<MappingInfo Identifier="{02010060-2001-0850-2000-120500205008}" Id="#x02030060" Watchdog="04000000080000000400000004000000"/>
 		<MappingInfo Identifier="{02010060-2001-0850-3000-120500205008}" Id="#x02030070" Watchdog="04000000080000000400000004000000"/>
 		<OwnerA Name="TIPC^PLC1^PLC1 Instance">
-			<OwnerB Name="TIID^IO (EtherCAT)^Box 5 (EP2316-0003)">
-				<Link VarA="PlcTask Inputs^MAIN.Estop.IO.Ch2" VarB="DIG Inputs^Estop Ch2"/>
-				<Link VarA="PlcTask Inputs^MAIN.Estop.IO.ch1" VarB="DIG Inputs^Estop Ch1"/>
-				<Link VarA="PlcTask Inputs^MAIN.SelectorSwitch.IO.Left" VarB="DIG Inputs^MAIN.SelectorSwitch.IO.Left"/>
-				<Link VarA="PlcTask Inputs^MAIN.SelectorSwitch.IO.Right" VarB="DIG Inputs^MAIN.SelectorSwitch.IO.Right"/>
-			</OwnerB>
 			<OwnerB Name="TIID^USB^Box 2 (C9900-L100 License-Key-USB-Stick)">
 				<Link VarA="PlcTask Inputs^MAIN.LicUsbState" VarB="BoxInfo^BoxState"/>
 			</OwnerB>
@@ -16864,6 +17045,482 @@
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TIRC^TcCOM Objects^XPlanar">
+			<OwnerB Name="TIID^XPlanar^Term 1 (APS4322-7000)">
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[0]" VarB="APS Outputs^Current D 0X0"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[10]" VarB="APS Outputs^Current D 1Y1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[11]" VarB="APS Outputs^Current D 1Y2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[12]" VarB="APS Outputs^Current D 2X0"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[13]" VarB="APS Outputs^Current D 2X1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[14]" VarB="APS Outputs^Current D 2X2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[15]" VarB="APS Outputs^Current D 2Y0"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[16]" VarB="APS Outputs^Current D 2Y1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[17]" VarB="APS Outputs^Current D 2Y2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[18]" VarB="APS Outputs^Current D 3X0"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[19]" VarB="APS Outputs^Current D 3X1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[1]" VarB="APS Outputs^Current D 0X1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[20]" VarB="APS Outputs^Current D 3X2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[21]" VarB="APS Outputs^Current D 3Y0"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[22]" VarB="APS Outputs^Current D 3Y1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[23]" VarB="APS Outputs^Current D 3Y2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[2]" VarB="APS Outputs^Current D 0X2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[3]" VarB="APS Outputs^Current D 0Y0"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[4]" VarB="APS Outputs^Current D 0Y1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[5]" VarB="APS Outputs^Current D 0Y2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[6]" VarB="APS Outputs^Current D 1X0"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[7]" VarB="APS Outputs^Current D 1X1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[8]" VarB="APS Outputs^Current D 1X2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DCurrentSetPoints[9]" VarB="APS Outputs^Current D 1Y0"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^DcLinkVoltage" VarB="APS Diagdata^DC Link Voltage"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^MoverCommControlWord" VarB="APS Comm Outputs^CommControlWord"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^MoverCommDataIn[0]" VarB="APS Comm Inputs^Data 1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^MoverCommDataIn[1]" VarB="APS Comm Inputs^Data 2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^MoverCommDataIn[2]" VarB="APS Comm Inputs^Data 3"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^MoverCommDataIn[3]" VarB="APS Comm Inputs^Data 4"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^MoverCommDataOut" VarB="APS Comm Outputs^Data 1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^MoverCommStatusWord" VarB="APS Comm Inputs^CommStatusWord"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[0]" VarB="APS Outputs^PhiE 0X0"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[10]" VarB="APS Outputs^PhiE 1Y1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[11]" VarB="APS Outputs^PhiE 1Y2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[12]" VarB="APS Outputs^PhiE 2X0"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[13]" VarB="APS Outputs^PhiE 2X1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[14]" VarB="APS Outputs^PhiE 2X2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[15]" VarB="APS Outputs^PhiE 2Y0"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[16]" VarB="APS Outputs^PhiE 2Y1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[17]" VarB="APS Outputs^PhiE 2Y2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[18]" VarB="APS Outputs^PhiE 3X0"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[19]" VarB="APS Outputs^PhiE 3X1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[1]" VarB="APS Outputs^PhiE 0X1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[20]" VarB="APS Outputs^PhiE 3X2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[21]" VarB="APS Outputs^PhiE 3Y0"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[22]" VarB="APS Outputs^PhiE 3Y1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[23]" VarB="APS Outputs^PhiE 3Y2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[2]" VarB="APS Outputs^PhiE 0X2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[3]" VarB="APS Outputs^PhiE 0Y0"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[4]" VarB="APS Outputs^PhiE 0Y1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[5]" VarB="APS Outputs^PhiE 0Y2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[6]" VarB="APS Outputs^PhiE 1X0"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[7]" VarB="APS Outputs^PhiE 1X1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[8]" VarB="APS Outputs^PhiE 1X2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PhiSetPoints[9]" VarB="APS Outputs^PhiE 1Y0"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PowerSupplyCurrent" VarB="APS Diagdata^Power supply current"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PowerUnitControlWord" VarB="APS Outputs^ControlWord"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^PowerUnitStatusWord" VarB="APS Inputs^StatusWord"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[0]" VarB="APS Outputs^Current Q 0X0"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[10]" VarB="APS Outputs^Current Q 1Y1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[11]" VarB="APS Outputs^Current Q 1Y2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[12]" VarB="APS Outputs^Current Q 2X0"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[13]" VarB="APS Outputs^Current Q 2X1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[14]" VarB="APS Outputs^Current Q 2X2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[15]" VarB="APS Outputs^Current Q 2Y0"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[16]" VarB="APS Outputs^Current Q 2Y1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[17]" VarB="APS Outputs^Current Q 2Y2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[18]" VarB="APS Outputs^Current Q 3X0"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[19]" VarB="APS Outputs^Current Q 3X1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[1]" VarB="APS Outputs^Current Q 0X1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[20]" VarB="APS Outputs^Current Q 3X2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[21]" VarB="APS Outputs^Current Q 3Y0"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[22]" VarB="APS Outputs^Current Q 3Y1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[23]" VarB="APS Outputs^Current Q 3Y2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[2]" VarB="APS Outputs^Current Q 0X2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[3]" VarB="APS Outputs^Current Q 0Y0"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[4]" VarB="APS Outputs^Current Q 0Y1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[5]" VarB="APS Outputs^Current Q 0Y2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[6]" VarB="APS Outputs^Current Q 1X0"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[7]" VarB="APS Outputs^Current Q 1X1"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[8]" VarB="APS Outputs^Current Q 1X2"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^QCurrentSetPoints[9]" VarB="APS Outputs^Current Q 1Y0"/>
+			</OwnerB>
+			<OwnerB Name="TIID^XPlanar^Term 1 (APS4322-7000)^Term 2 (APS4322-5000)">
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^FeedbackStatus" VarB="FB Inputs^Status"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[0]" VarB="FB Inputs^A0 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[100]" VarB="FB Inputs^G6 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[101]" VarB="FB Inputs^G6 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[102]" VarB="FB Inputs^G8 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[103]" VarB="FB Inputs^G8 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[104]" VarB="FB Inputs^G8 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[105]" VarB="FB Inputs^H1 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[106]" VarB="FB Inputs^H1 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[107]" VarB="FB Inputs^H1 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[108]" VarB="FB Inputs^H3 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[109]" VarB="FB Inputs^H3 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[10]" VarB="FB Inputs^A6 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[110]" VarB="FB Inputs^H3 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[111]" VarB="FB Inputs^H5 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[112]" VarB="FB Inputs^H5 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[113]" VarB="FB Inputs^H5 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[114]" VarB="FB Inputs^H7 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[115]" VarB="FB Inputs^H7 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[116]" VarB="FB Inputs^H7 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[117]" VarB="FB Inputs^H9 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[118]" VarB="FB Inputs^H9 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[119]" VarB="FB Inputs^H9 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[11]" VarB="FB Inputs^A6 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[120]" VarB="FB Inputs^I0 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[121]" VarB="FB Inputs^I0 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[122]" VarB="FB Inputs^I0 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[123]" VarB="FB Inputs^I2 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[124]" VarB="FB Inputs^I2 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[125]" VarB="FB Inputs^I2 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[126]" VarB="FB Inputs^I4 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[127]" VarB="FB Inputs^I4 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[128]" VarB="FB Inputs^I4 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[129]" VarB="FB Inputs^I6 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[12]" VarB="FB Inputs^A8 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[130]" VarB="FB Inputs^I6 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[131]" VarB="FB Inputs^I6 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[132]" VarB="FB Inputs^I8 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[133]" VarB="FB Inputs^I8 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[134]" VarB="FB Inputs^I8 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[135]" VarB="FB Inputs^J1 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[136]" VarB="FB Inputs^J1 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[137]" VarB="FB Inputs^J1 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[138]" VarB="FB Inputs^J3 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[139]" VarB="FB Inputs^J3 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[13]" VarB="FB Inputs^A8 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[140]" VarB="FB Inputs^J3 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[141]" VarB="FB Inputs^J5 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[142]" VarB="FB Inputs^J5 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[143]" VarB="FB Inputs^J5 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[144]" VarB="FB Inputs^J7 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[145]" VarB="FB Inputs^J7 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[146]" VarB="FB Inputs^J7 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[147]" VarB="FB Inputs^J9 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[148]" VarB="FB Inputs^J9 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[149]" VarB="FB Inputs^J9 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[14]" VarB="FB Inputs^A8 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[15]" VarB="FB Inputs^B1 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[16]" VarB="FB Inputs^B1 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[17]" VarB="FB Inputs^B1 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[18]" VarB="FB Inputs^B3 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[19]" VarB="FB Inputs^B3 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[1]" VarB="FB Inputs^A0 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[20]" VarB="FB Inputs^B3 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[21]" VarB="FB Inputs^B5 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[22]" VarB="FB Inputs^B5 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[23]" VarB="FB Inputs^B5 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[24]" VarB="FB Inputs^B7 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[25]" VarB="FB Inputs^B7 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[26]" VarB="FB Inputs^B7 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[27]" VarB="FB Inputs^B9 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[28]" VarB="FB Inputs^B9 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[29]" VarB="FB Inputs^B9 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[2]" VarB="FB Inputs^A0 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[30]" VarB="FB Inputs^C0 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[31]" VarB="FB Inputs^C0 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[32]" VarB="FB Inputs^C0 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[33]" VarB="FB Inputs^C2 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[34]" VarB="FB Inputs^C2 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[35]" VarB="FB Inputs^C2 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[36]" VarB="FB Inputs^C4 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[37]" VarB="FB Inputs^C4 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[38]" VarB="FB Inputs^C4 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[39]" VarB="FB Inputs^C6 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[3]" VarB="FB Inputs^A2 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[40]" VarB="FB Inputs^C6 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[41]" VarB="FB Inputs^C6 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[42]" VarB="FB Inputs^C8 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[43]" VarB="FB Inputs^C8 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[44]" VarB="FB Inputs^C8 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[45]" VarB="FB Inputs^D1 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[46]" VarB="FB Inputs^D1 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[47]" VarB="FB Inputs^D1 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[48]" VarB="FB Inputs^D3 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[49]" VarB="FB Inputs^D3 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[4]" VarB="FB Inputs^A2 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[50]" VarB="FB Inputs^D3 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[51]" VarB="FB Inputs^D5 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[52]" VarB="FB Inputs^D5 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[53]" VarB="FB Inputs^D5 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[54]" VarB="FB Inputs^D7 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[55]" VarB="FB Inputs^D7 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[56]" VarB="FB Inputs^D7 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[57]" VarB="FB Inputs^D9 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[58]" VarB="FB Inputs^D9 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[59]" VarB="FB Inputs^D9 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[5]" VarB="FB Inputs^A2 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[60]" VarB="FB Inputs^E0 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[61]" VarB="FB Inputs^E0 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[62]" VarB="FB Inputs^E0 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[63]" VarB="FB Inputs^E2 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[64]" VarB="FB Inputs^E2 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[65]" VarB="FB Inputs^E2 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[66]" VarB="FB Inputs^E4 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[67]" VarB="FB Inputs^E4 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[68]" VarB="FB Inputs^E4 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[69]" VarB="FB Inputs^E6 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[6]" VarB="FB Inputs^A4 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[70]" VarB="FB Inputs^E6 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[71]" VarB="FB Inputs^E6 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[72]" VarB="FB Inputs^E8 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[73]" VarB="FB Inputs^E8 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[74]" VarB="FB Inputs^E8 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[75]" VarB="FB Inputs^F1 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[76]" VarB="FB Inputs^F1 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[77]" VarB="FB Inputs^F1 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[78]" VarB="FB Inputs^F3 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[79]" VarB="FB Inputs^F3 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[7]" VarB="FB Inputs^A4 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[80]" VarB="FB Inputs^F3 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[81]" VarB="FB Inputs^F5 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[82]" VarB="FB Inputs^F5 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[83]" VarB="FB Inputs^F5 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[84]" VarB="FB Inputs^F7 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[85]" VarB="FB Inputs^F7 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[86]" VarB="FB Inputs^F7 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[87]" VarB="FB Inputs^F9 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[88]" VarB="FB Inputs^F9 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[89]" VarB="FB Inputs^F9 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[8]" VarB="FB Inputs^A4 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[90]" VarB="FB Inputs^G0 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[91]" VarB="FB Inputs^G0 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[92]" VarB="FB Inputs^G0 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[93]" VarB="FB Inputs^G2 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[94]" VarB="FB Inputs^G2 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[95]" VarB="FB Inputs^G2 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[96]" VarB="FB Inputs^G4 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[97]" VarB="FB Inputs^G4 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[98]" VarB="FB Inputs^G4 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[99]" VarB="FB Inputs^G6 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_2^Data Pointer^HallSensorFieldsXYZ[9]" VarB="FB Inputs^A6 X-Field"/>
+			</OwnerB>
+			<OwnerB Name="TIID^XPlanar^Term 3 (APS4322-7000)">
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[0]" VarB="APS Outputs^Current D 0X0"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[10]" VarB="APS Outputs^Current D 1Y1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[11]" VarB="APS Outputs^Current D 1Y2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[12]" VarB="APS Outputs^Current D 2X0"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[13]" VarB="APS Outputs^Current D 2X1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[14]" VarB="APS Outputs^Current D 2X2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[15]" VarB="APS Outputs^Current D 2Y0"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[16]" VarB="APS Outputs^Current D 2Y1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[17]" VarB="APS Outputs^Current D 2Y2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[18]" VarB="APS Outputs^Current D 3X0"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[19]" VarB="APS Outputs^Current D 3X1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[1]" VarB="APS Outputs^Current D 0X1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[20]" VarB="APS Outputs^Current D 3X2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[21]" VarB="APS Outputs^Current D 3Y0"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[22]" VarB="APS Outputs^Current D 3Y1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[23]" VarB="APS Outputs^Current D 3Y2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[2]" VarB="APS Outputs^Current D 0X2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[3]" VarB="APS Outputs^Current D 0Y0"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[4]" VarB="APS Outputs^Current D 0Y1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[5]" VarB="APS Outputs^Current D 0Y2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[6]" VarB="APS Outputs^Current D 1X0"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[7]" VarB="APS Outputs^Current D 1X1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[8]" VarB="APS Outputs^Current D 1X2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DCurrentSetPoints[9]" VarB="APS Outputs^Current D 1Y0"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^DcLinkVoltage" VarB="APS Diagdata^DC Link Voltage"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^MoverCommControlWord" VarB="APS Comm Outputs^CommControlWord"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^MoverCommDataIn[0]" VarB="APS Comm Inputs^Data 1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^MoverCommDataIn[1]" VarB="APS Comm Inputs^Data 2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^MoverCommDataIn[2]" VarB="APS Comm Inputs^Data 3"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^MoverCommDataIn[3]" VarB="APS Comm Inputs^Data 4"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^MoverCommDataOut" VarB="APS Comm Outputs^Data 1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^MoverCommStatusWord" VarB="APS Comm Inputs^CommStatusWord"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[0]" VarB="APS Outputs^PhiE 0X0"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[10]" VarB="APS Outputs^PhiE 1Y1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[11]" VarB="APS Outputs^PhiE 1Y2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[12]" VarB="APS Outputs^PhiE 2X0"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[13]" VarB="APS Outputs^PhiE 2X1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[14]" VarB="APS Outputs^PhiE 2X2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[15]" VarB="APS Outputs^PhiE 2Y0"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[16]" VarB="APS Outputs^PhiE 2Y1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[17]" VarB="APS Outputs^PhiE 2Y2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[18]" VarB="APS Outputs^PhiE 3X0"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[19]" VarB="APS Outputs^PhiE 3X1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[1]" VarB="APS Outputs^PhiE 0X1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[20]" VarB="APS Outputs^PhiE 3X2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[21]" VarB="APS Outputs^PhiE 3Y0"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[22]" VarB="APS Outputs^PhiE 3Y1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[23]" VarB="APS Outputs^PhiE 3Y2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[2]" VarB="APS Outputs^PhiE 0X2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[3]" VarB="APS Outputs^PhiE 0Y0"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[4]" VarB="APS Outputs^PhiE 0Y1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[5]" VarB="APS Outputs^PhiE 0Y2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[6]" VarB="APS Outputs^PhiE 1X0"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[7]" VarB="APS Outputs^PhiE 1X1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[8]" VarB="APS Outputs^PhiE 1X2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PhiSetPoints[9]" VarB="APS Outputs^PhiE 1Y0"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PowerSupplyCurrent" VarB="APS Diagdata^Power supply current"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PowerUnitControlWord" VarB="APS Outputs^ControlWord"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^PowerUnitStatusWord" VarB="APS Inputs^StatusWord"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[0]" VarB="APS Outputs^Current Q 0X0"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[10]" VarB="APS Outputs^Current Q 1Y1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[11]" VarB="APS Outputs^Current Q 1Y2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[12]" VarB="APS Outputs^Current Q 2X0"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[13]" VarB="APS Outputs^Current Q 2X1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[14]" VarB="APS Outputs^Current Q 2X2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[15]" VarB="APS Outputs^Current Q 2Y0"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[16]" VarB="APS Outputs^Current Q 2Y1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[17]" VarB="APS Outputs^Current Q 2Y2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[18]" VarB="APS Outputs^Current Q 3X0"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[19]" VarB="APS Outputs^Current Q 3X1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[1]" VarB="APS Outputs^Current Q 0X1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[20]" VarB="APS Outputs^Current Q 3X2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[21]" VarB="APS Outputs^Current Q 3Y0"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[22]" VarB="APS Outputs^Current Q 3Y1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[23]" VarB="APS Outputs^Current Q 3Y2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[2]" VarB="APS Outputs^Current Q 0X2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[3]" VarB="APS Outputs^Current Q 0Y0"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[4]" VarB="APS Outputs^Current Q 0Y1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[5]" VarB="APS Outputs^Current Q 0Y2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[6]" VarB="APS Outputs^Current Q 1X0"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[7]" VarB="APS Outputs^Current Q 1X1"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[8]" VarB="APS Outputs^Current Q 1X2"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^QCurrentSetPoints[9]" VarB="APS Outputs^Current Q 1Y0"/>
+			</OwnerB>
+			<OwnerB Name="TIID^XPlanar^Term 3 (APS4322-7000)^Term 4 (APS4322-5000)">
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^FeedbackStatus" VarB="FB Inputs^Status"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[0]" VarB="FB Inputs^A0 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[100]" VarB="FB Inputs^G6 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[101]" VarB="FB Inputs^G6 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[102]" VarB="FB Inputs^G8 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[103]" VarB="FB Inputs^G8 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[104]" VarB="FB Inputs^G8 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[105]" VarB="FB Inputs^H1 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[106]" VarB="FB Inputs^H1 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[107]" VarB="FB Inputs^H1 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[108]" VarB="FB Inputs^H3 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[109]" VarB="FB Inputs^H3 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[10]" VarB="FB Inputs^A6 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[110]" VarB="FB Inputs^H3 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[111]" VarB="FB Inputs^H5 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[112]" VarB="FB Inputs^H5 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[113]" VarB="FB Inputs^H5 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[114]" VarB="FB Inputs^H7 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[115]" VarB="FB Inputs^H7 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[116]" VarB="FB Inputs^H7 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[117]" VarB="FB Inputs^H9 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[118]" VarB="FB Inputs^H9 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[119]" VarB="FB Inputs^H9 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[11]" VarB="FB Inputs^A6 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[120]" VarB="FB Inputs^I0 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[121]" VarB="FB Inputs^I0 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[122]" VarB="FB Inputs^I0 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[123]" VarB="FB Inputs^I2 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[124]" VarB="FB Inputs^I2 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[125]" VarB="FB Inputs^I2 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[126]" VarB="FB Inputs^I4 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[127]" VarB="FB Inputs^I4 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[128]" VarB="FB Inputs^I4 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[129]" VarB="FB Inputs^I6 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[12]" VarB="FB Inputs^A8 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[130]" VarB="FB Inputs^I6 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[131]" VarB="FB Inputs^I6 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[132]" VarB="FB Inputs^I8 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[133]" VarB="FB Inputs^I8 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[134]" VarB="FB Inputs^I8 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[135]" VarB="FB Inputs^J1 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[136]" VarB="FB Inputs^J1 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[137]" VarB="FB Inputs^J1 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[138]" VarB="FB Inputs^J3 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[139]" VarB="FB Inputs^J3 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[13]" VarB="FB Inputs^A8 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[140]" VarB="FB Inputs^J3 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[141]" VarB="FB Inputs^J5 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[142]" VarB="FB Inputs^J5 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[143]" VarB="FB Inputs^J5 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[144]" VarB="FB Inputs^J7 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[145]" VarB="FB Inputs^J7 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[146]" VarB="FB Inputs^J7 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[147]" VarB="FB Inputs^J9 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[148]" VarB="FB Inputs^J9 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[149]" VarB="FB Inputs^J9 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[14]" VarB="FB Inputs^A8 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[15]" VarB="FB Inputs^B1 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[16]" VarB="FB Inputs^B1 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[17]" VarB="FB Inputs^B1 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[18]" VarB="FB Inputs^B3 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[19]" VarB="FB Inputs^B3 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[1]" VarB="FB Inputs^A0 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[20]" VarB="FB Inputs^B3 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[21]" VarB="FB Inputs^B5 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[22]" VarB="FB Inputs^B5 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[23]" VarB="FB Inputs^B5 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[24]" VarB="FB Inputs^B7 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[25]" VarB="FB Inputs^B7 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[26]" VarB="FB Inputs^B7 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[27]" VarB="FB Inputs^B9 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[28]" VarB="FB Inputs^B9 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[29]" VarB="FB Inputs^B9 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[2]" VarB="FB Inputs^A0 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[30]" VarB="FB Inputs^C0 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[31]" VarB="FB Inputs^C0 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[32]" VarB="FB Inputs^C0 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[33]" VarB="FB Inputs^C2 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[34]" VarB="FB Inputs^C2 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[35]" VarB="FB Inputs^C2 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[36]" VarB="FB Inputs^C4 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[37]" VarB="FB Inputs^C4 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[38]" VarB="FB Inputs^C4 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[39]" VarB="FB Inputs^C6 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[3]" VarB="FB Inputs^A2 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[40]" VarB="FB Inputs^C6 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[41]" VarB="FB Inputs^C6 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[42]" VarB="FB Inputs^C8 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[43]" VarB="FB Inputs^C8 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[44]" VarB="FB Inputs^C8 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[45]" VarB="FB Inputs^D1 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[46]" VarB="FB Inputs^D1 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[47]" VarB="FB Inputs^D1 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[48]" VarB="FB Inputs^D3 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[49]" VarB="FB Inputs^D3 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[4]" VarB="FB Inputs^A2 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[50]" VarB="FB Inputs^D3 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[51]" VarB="FB Inputs^D5 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[52]" VarB="FB Inputs^D5 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[53]" VarB="FB Inputs^D5 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[54]" VarB="FB Inputs^D7 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[55]" VarB="FB Inputs^D7 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[56]" VarB="FB Inputs^D7 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[57]" VarB="FB Inputs^D9 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[58]" VarB="FB Inputs^D9 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[59]" VarB="FB Inputs^D9 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[5]" VarB="FB Inputs^A2 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[60]" VarB="FB Inputs^E0 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[61]" VarB="FB Inputs^E0 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[62]" VarB="FB Inputs^E0 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[63]" VarB="FB Inputs^E2 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[64]" VarB="FB Inputs^E2 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[65]" VarB="FB Inputs^E2 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[66]" VarB="FB Inputs^E4 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[67]" VarB="FB Inputs^E4 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[68]" VarB="FB Inputs^E4 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[69]" VarB="FB Inputs^E6 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[6]" VarB="FB Inputs^A4 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[70]" VarB="FB Inputs^E6 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[71]" VarB="FB Inputs^E6 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[72]" VarB="FB Inputs^E8 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[73]" VarB="FB Inputs^E8 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[74]" VarB="FB Inputs^E8 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[75]" VarB="FB Inputs^F1 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[76]" VarB="FB Inputs^F1 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[77]" VarB="FB Inputs^F1 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[78]" VarB="FB Inputs^F3 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[79]" VarB="FB Inputs^F3 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[7]" VarB="FB Inputs^A4 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[80]" VarB="FB Inputs^F3 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[81]" VarB="FB Inputs^F5 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[82]" VarB="FB Inputs^F5 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[83]" VarB="FB Inputs^F5 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[84]" VarB="FB Inputs^F7 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[85]" VarB="FB Inputs^F7 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[86]" VarB="FB Inputs^F7 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[87]" VarB="FB Inputs^F9 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[88]" VarB="FB Inputs^F9 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[89]" VarB="FB Inputs^F9 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[8]" VarB="FB Inputs^A4 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[90]" VarB="FB Inputs^G0 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[91]" VarB="FB Inputs^G0 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[92]" VarB="FB Inputs^G0 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[93]" VarB="FB Inputs^G2 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[94]" VarB="FB Inputs^G2 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[95]" VarB="FB Inputs^G2 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[96]" VarB="FB Inputs^G4 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[97]" VarB="FB Inputs^G4 Y-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[98]" VarB="FB Inputs^G4 Z-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[99]" VarB="FB Inputs^G6 X-Field"/>
+				<Link VarA="Part1^APS4322_P1_1^Data Pointer^HallSensorFieldsXYZ[9]" VarB="FB Inputs^A6 X-Field"/>
+			</OwnerB>
 			<OwnerB Name="TINC^XPlanar MC Project^Axes^Mover4220_1">
 				<Link VarA="Mover4220_1^InputsFromNC3^NC3ToHW" VarB="McToIo^STD" Size="1408"/>
 				<Link VarA="Mover4220_1^OutputsToNC3^HWToNC3" VarB="IoToMc^STD" Size="960"/>
