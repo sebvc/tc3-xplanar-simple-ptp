@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+  <POU Name="LiftMove" Id="{43eab933-6811-46ea-bc5f-dfad3efae1a8}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK LiftMove IMPLEMENTS I_DemoStep
+VAR_INPUT
+	numLiftCycles: UINT:=4;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	SubStep: USINT;
+	_Done: BOOL;
+	_Cycles: UINT;
+	_FlipFlop: BOOL;
+	_VerticalTarget: LREAL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="CyclicLogic" Id="{85c60a62-37be-4072-8e32-8d947d8b47fd}">
+      <Declaration><![CDATA[METHOD CyclicLogic]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE SubStep OF
+	0:	
+		_Cycles	:=0;
+		_FlipFlop:=FALSE;
+		SubStep:=1;
+	1:
+		
+		IF _FlipFlop THEN
+			_VerticalTarget:=2.0;
+		ELSE
+			_VerticalTarget:=5.0;
+		END_IF
+		IF 	ip.Movers[1].MoveCommand.VerticalMove(_VerticalTarget).Done AND
+			ip.Movers[2].MoveCommand.VerticalMove(_VerticalTarget).Done
+		THEN
+			IF _FlipFlop THEN
+				_Cycles	:=_Cycles+1;
+				IF _Cycles>=numLiftCycles THEN
+					_Done:=TRUE;
+					SubStep:=2;
+				END_IF
+			END_IF
+			
+			_FlipFlop:=NOT _FlipFlop;
+		END_IF	
+	2://idle
+		_Done:=TRUE;
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Done" Id="{e8e30243-0176-4030-9bc0-f8b5f3d25cbd}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Done : BOOL
+]]></Declaration>
+      <Get Name="Get" Id="{4ddab110-dd2b-44f8-9bfa-eb78b356e0c4}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Done:=_Done;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Reset" Id="{36d831bb-de2d-4169-a0f2-18286a0ca470}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_Done:=FALSE;
+SubStep:=0;
+Reset:=TRUE;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+  <POU Name="F_FindCorrectOpposingCornerPosition" Id="{fc6c7093-3fc0-4e18-ac69-e766a10b8238}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION F_FindCorrectOpposingCornerPosition : BOOL
+VAR_INPUT
+	M1AlignmentPos : ST_POINT; //from/reference alignment for Mover 1
+	M2AlignmentPos : ST_POINT; //from/reference alignment for Mover 2
+	M1CornerPos : REFERENCE TO ST_POINT; //to/target corner for Mover 1 ( Method OUTPUT by REFERENCE )
+	M2CornerPos : REFERENCE TO ST_POINT; //to/target corner for Mover 2 ( Method OUTPUT by REFERENCE )
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Find a Target Opposing Corner from a respective Position Alignmnet
+(*	i.e.	from:	┌──────────┐    to:	┌─────┌────┐ 
+					│          │      	│     │ M2 │ 
+					│       ▲  │      	│     └────┘ 
+					│   ┌───┼┐ │      	│          │ 
+					│   │ M2└┼►│      	│          │ 
+					│ ┌─┴──┬─┘ │      	│          │ 
+					│◄┼┐M1 │   │      	│          │ 
+					│ └┼───┘   │      	┌────┐     │ 
+					│  ▼       │      	│ M1 │     │ 
+					└──────────┘      	└────┴─────┘ 		*)
+//find alignment to decide which is the proper opposing side 
+IF M1AlignmentPos.Y >= M2AlignmentPos.Y THEN
+	//M1 moves to TOP / M2 moves to BOTTOM
+	M1CornerPos.Y := TOP_UPPER;
+	M2CornerPos.Y := BOTTOM_LOWER;
+ELSE 	
+	//M1 moves to BOTTOM / M2 moves to TOP
+	M1CornerPos.Y := BOTTOM_LOWER;
+	M2CornerPos.Y := TOP_UPPER;
+END_IF
+IF M1AlignmentPos.X >= M2AlignmentPos.X THEN
+	//M1 moves to RIGHT / M2 moves to LEFT
+	M1CornerPos.X := RIGHT;
+	M2CornerPos.X := LEFT;
+ELSE 	
+	//M1 moves to LEFT / M2 moves to RIGHT
+	M1CornerPos.X := LEFT;
+	M2CornerPos.X := RIGHT;
+END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

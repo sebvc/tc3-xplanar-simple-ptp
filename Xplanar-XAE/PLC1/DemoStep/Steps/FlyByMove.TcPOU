@@ -13,7 +13,7 @@ VAR
 	_Done: BOOL;
 	_CycleCount: INT;
 	_FlipFlop: BOOL;
-	_M1IsOnLeftSide:BOOL;
+	//_M1IsOnLeftSide:BOOL;
 	M1CurrentPos,M2CurrentPos :	ST_Point;
 	Mover1Target: ST_POINT;
 	Mover2Target: ST_POINT;
@@ -37,7 +37,7 @@ END_VAR]]></Declaration>
 		M2CurrentPos.X:=ip.Movers[2].ActualPosition.x;
 		M2CurrentPos.Y:=ip.Movers[2].ActualPosition.y;
 		//find alignment to decide which is the proper opposing side for Step1
-		FindCorrectOpposingCornerPosition(
+		F_FindCorrectOpposingCornerPosition(
 			M1AlignmentPos	:= M1CurrentPos, 
 			M2AlignmentPos	:= M2CurrentPos, 
 			M1CornerPos		:= Mover1Target,
@@ -46,7 +46,7 @@ END_VAR]]></Declaration>
 	1:	//step 1: Move laterally to nearer edge from CURRENT/Initial alignment
 		IF	ip.Movers[1].MoveCommand.MoveX(Mover1Target.X).Done AND 
 			ip.Movers[2].MoveCommand.MoveX(Mover2Target.X).Done THEN
-			// x / left or right
+			// x / left or right (this step might be redundant due to Fuction call F_FindCorrectOpposingCornerPosition()
 			IF ip.Movers[1].ActualPosition.X > ip.Movers[2].ActualPosition.X THEN
 				Mover1Target.X:=RIGHT;
 				Mover2Target.X:=LEFT;
@@ -97,48 +97,6 @@ END_VAR
         </Implementation>
       </Get>
     </Property>
-    <Method Name="FindCorrectOpposingCornerPosition" Id="{caefe4e1-64b1-4005-82b1-4f42212d49cf}">
-      <Declaration><![CDATA[METHOD PROTECTED FindCorrectOpposingCornerPosition
-VAR_INPUT
-	M1AlignmentPos : ST_POINT; //from/reference alignment for Mover 1
-	M2AlignmentPos : ST_POINT; //from/reference alignment for Mover 2
-	M1CornerPos : REFERENCE TO ST_POINT; //to/target corner for Mover 1 ( Method OUTPUT by REFERENCE )
-	M2CornerPos : REFERENCE TO ST_POINT; //to/target corner for Mover 2 ( Method OUTPUT by REFERENCE )
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[//Find a Target Opposing Corner from a respective Position Alignmnet
-(*	i.e.	from:	┌──────────┐    to:	┌─────┌────┐ 
-					│          │      	│     │ M2 │ 
-					│       ▲  │      	│     └────┘ 
-					│   ┌───┼┐ │      	│          │ 
-					│   │ M2└┼►│      	│          │ 
-					│ ┌─┴──┬─┘ │      	│          │ 
-					│◄┼┐M1 │   │      	│          │ 
-					│ └┼───┘   │      	┌────┐     │ 
-					│  ▼       │      	│ M1 │     │ 
-					└──────────┘      	└────┴─────┘ 		*)
-//find alignment to decide which is the proper opposing side 
-IF M1AlignmentPos.Y >= M2AlignmentPos.Y THEN
-	//M1 moves to TOP / M2 moves to BOTTOM
-	M1CornerPos.Y := TOP_UPPER;
-	M2CornerPos.Y := BOTTOM_LOWER;
-ELSE 	
-	//M1 moves to BOTTOM / M2 moves to TOP
-	M1CornerPos.Y := BOTTOM_LOWER;
-	M2CornerPos.Y := TOP_UPPER;
-END_IF
-IF M1AlignmentPos.X >= M2AlignmentPos.X THEN
-	//M1 moves to RIGHT / M2 moves to LEFT
-	M1CornerPos.X := RIGHT;
-	M2CornerPos.X := LEFT;
-ELSE 	
-	//M1 moves to LEFT / M2 moves to RIGHT
-	M1CornerPos.X := LEFT;
-	M2CornerPos.X := RIGHT;
-END_IF]]></ST>
-      </Implementation>
-    </Method>
     <Method Name="Reset" Id="{53a7a197-2ae4-4e91-9197-b07a368d2c5a}">
       <Declaration><![CDATA[METHOD Reset : BOOL
 ]]></Declaration>

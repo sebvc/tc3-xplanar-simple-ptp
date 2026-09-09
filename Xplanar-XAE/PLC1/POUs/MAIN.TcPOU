@@ -31,8 +31,16 @@ VAR
 	dsJoinTrack		 : JoinAllClosestTracks	:= (XPlanarSys:=XPlanarTable);
 	dsFigure8Loop	 : SameTrackMove		:= (Track:=Track1, nLaps:=5, M1EndTrackPos:=864.0, M2EndTrackPos:=651.0,
 												TrackMoveDynamics := FIGURE_EIGHT_MOVE);
-	dsLeaveTrack	: LeaveAllTracks		:= (M1TargetPos:=BOTTOM_LEFT,M2TargetPos:=TOP_RIGHT);
-	dsFlyBy			: FlyByMove				:=(FlyByMoveDynamics:=FLY_BY_MOVE, Cycles:=4);
+	dsLeaveTrack	 : LeaveAllTracks		:= (M1TargetPos:=BOTTOM_LEFT,M2TargetPos:=TOP_RIGHT);
+	dsFlyBy			 : FlyByMove			:= (FlyByMoveDynamics:=FLY_BY_MOVE, Cycles:=4);
+	dsPerimeterMove	 : MoveAroundPerimeter	:= (PerimeterMoveDynamics:=PERIMETER_MOVE,numCycles:=2,bClockwise:=FALSE);
+	dsMoveToCenters  : MoveToCenters		;
+	dsInvRotate		 : OscillateRotateMove	:= (InverseRotateDynamics:=ROTATE_INVERSE_MOVE, numFlipCycles:=6,RotIncrement:=15.0);
+	dsSpin		 	 : SpinMove				:= (SpinRotateDynamics:=SPIN_MOVE,numSpins:=30);
+	dsLift		 	 : LiftMove				:= (numLiftCycles:=4);
+	dsTilt		 	 : TiltMove				:= (bM1Clockwise:=TRUE,bM2Clockwise:=FALSE);
+
+
 	
 	i						: 	UDINT;
 	
@@ -49,8 +57,6 @@ VAR
 	Cycles					:	UINT;
 	SubStep					:	UINT;
 	
-	MoverCurentPos			:	ST_Point;
-	
 	TwinCATRestart			:	TC_Restart;
 	
 	rtError					:	R_TRIG;
@@ -65,11 +71,10 @@ VAR CONSTANT
 	                          	
 	FIGURE_EIGHT_MOVE		: 	ST_MoveDynamics := (Velocity := 750.0, 	Accel := 5000.0, 	Decel := 5000.0, 	Jerk := 200000.0);               		
 	FLY_BY_MOVE				: 	ST_MoveDynamics := (Velocity := 1500.0, Accel := 20000.0, 	Decel := 20000.0, 	Jerk := 200000.0);    
-	PerimeterMove			: 	ST_MoveDynamics := (Velocity := 2000.0, Accel := 20000.0, 	Decel := 20000.0, 	Jerk := 200000.0);
+	PERIMETER_MOVE			: 	ST_MoveDynamics := (Velocity := 2000.0, Accel := 20000.0, 	Decel := 20000.0, 	Jerk := 200000.0);
                               	
 	ROTATE_INVERSE_MOVE		: 	ST_MoveDynamics := (Velocity := 750.0, 	Accel := 2000.0, 	Decel := 2000.0, 	Jerk := 15000.0);  
 	SPIN_MOVE				: 	ST_MoveDynamics := (Velocity := 2500.0, Accel := 4000.0, 	Decel := 4000.0, 	Jerk := 20000.0);
-	NUMBER_OF_SPINS			:   DINT:=30;
     
 	//Move positions                         	
 	START_POS_MOVER1		:	ST_Point 	:= 	(X := 60, 		Y := 60);
@@ -213,190 +218,72 @@ CASE Step OF
 {region "MoveAroundPerimeter"}	
 
 	E_DemoStep.MoveAroundPerimeter:						
-		CASE SubStep OF 
-			0:
-				F_SetAllMoversMovement(PerimeterMove);
-				Mover1Target:=BOTTOM_LEFT;
-				Mover2Target:=TOP_RIGHT;
-				
-			1:
-				Mover1Target:=BOTTOM_RIGHT;
-				Mover2Target:=TOP_LEFT;
-			
-			2:
-				Mover1Target:=TOP_RIGHT;
-				Mover2Target:=BOTTOM_LEFT;	
+		dsPerimeterMove.CyclicLogic();
+		IF dsPerimeterMove.Done THEN
+			Step:=E_DemoStep.MoveToCenterOfTiles;//NEXT STEP
+			dsPerimeterMove.Reset();			
+		END_IF	
 		
-			3:
-				Mover1Target:=TOP_LEFT;
-				Mover2Target:=BOTTOM_RIGHT;
-		END_CASE
-	
-		IF 	ip.Movers[1].MoveCommand.FreeMove(Mover1Target.x,Mover1Target.Y).Done AND
-			ip.Movers[2].MoveCommand.FreeMove(Mover2Target.x,Mover2Target.Y).Done
-		THEN
-			IF SubStep=3 THEN //Cycle completed
-				Cycles			:=Cycles+1;
-				IF Cycles=2 THEN
-					Step	:=E_DemoStep.MoveToCenterOfTiles;
-				ELSE
-					SubStep	:=0;
-				END_IF
-			ELSE
-				SubStep	:=SubStep+1;
-			END_IF
-				
-		END_IF
 		
 {endregion}	
 {region "MoveToCenterOfTiles"}	
 
 	E_DemoStep.MoveToCenterOfTiles:
-
-		IF 	ip.Movers[1].MoveCommand.FreeMove(TOP_CENTER.X,TOP_CENTER.Y).Done AND
-			ip.Movers[2].MoveCommand.FreeMove(BOTTOM_CENTER.X,BOTTOM_CENTER.Y).Done
-		THEN
-			Cycles	:=0;
-			FlipFlop:=FALSE;
-			Step	:=E_DemoStep.RotateInverse;
-			F_SetAllMoversRotation(ROTATE_INVERSE_MOVE);
+		dsMoveToCenters.CyclicLogic();
+		IF dsMoveToCenters.Done THEN
+			Step:=E_DemoStep.RotateInverse;//NEXT STEP
+			dsMoveToCenters.Reset();			
 		END_IF	
 		
 {endregion}	
 {region "RotateInverse"}	
 		
 	E_DemoStep.RotateInverse:
-			
-		IF FlipFlop THEN
-			Mover1RotateTarget:=RotateTarget;
-			Mover2RotateTarget:=(360.0-RotateTarget)*-1;			
-		ELSE
-			Mover1RotateTarget:=(360.0-RotateTarget)*-1;
-			Mover2RotateTarget:=RotateTarget;
-		END_IF
-		
-		IF 	ip.Movers[1].MoveCommand.Rotate(Mover1RotateTarget,0).Done AND
-			ip.Movers[2].MoveCommand.Rotate(Mover2RotateTarget,0).Done
-		THEN
-			IF FlipFlop THEN
-				Cycles:=Cycles+1;
-				IF Cycles>=6 THEN
-					Cycles		:=0;
-					FlipFlop	:=FALSE;
-					Step		:=E_DemoStep.Spin;
-					F_SetAllMoversRotation(SPIN_MOVE);
-				ELSE
-					RotateTarget:=RotateTarget+15;
-				END_IF
-			END_IF
-			FlipFlop:=NOT FlipFlop;	
+		dsInvRotate.CyclicLogic();
+		IF dsInvRotate.Done THEN
+			Step:=E_DemoStep.Spin;//NEXT STEP
+			dsInvRotate.Reset();			
 		END_IF
 		
 {endregion}	
 {region "Spin"}
 		
 	E_DemoStep.Spin:
-	
-		IF 	ip.Movers[1].MoveCommand.Rotate(0,(NUMBER_OF_SPINS*-1)).Done AND
-			ip.Movers[2].MoveCommand.Rotate(0,NUMBER_OF_SPINS).Done
-		THEN
-			Step	:=E_DemoStep.Lift;
-		END_IF		
+	dsSpin.CyclicLogic();
+		IF dsSpin.Done THEN
+			Step:=E_DemoStep.Lift;//NEXT STEP
+			dsSpin.Reset();			
+		END_IF
 	
 {endregion}	
 {region "Lift"}	
 
 	E_DemoStep.Lift:
-	
-		IF FlipFlop THEN
-			VerticalTarget:=2.0;
-		ELSE
-			VerticalTarget:=5.0;
-		END_IF
-		IF 	ip.Movers[1].MoveCommand.VerticalMove(VerticalTarget).Done AND
-			ip.Movers[2].MoveCommand.VerticalMove(VerticalTarget).Done
-		THEN
-			IF FlipFlop THEN
-				Cycles	:=Cycles+1;
-				IF Cycles>=4 THEN
-					SubStep	:=0;
-					Step	:=E_DemoStep.Tilt;
-				END_IF
-			END_IF
-			
-			FlipFlop:=NOT FlipFlop;
+	dsLift.CyclicLogic();
+		IF dsLift.Done THEN
+			Step:=E_DemoStep.Tilt;//NEXT STEP
+			dsLift.Reset();			
 		END_IF
 	
 {endregion}	
 {region "Tilt"}	
 	
 	E_DemoStep.Tilt:
-	
-		CASE SubStep OF
-			0:
-				IF 	ip.Movers[1].MoveCommand.VerticalMove(5).Done AND
-					ip.Movers[2].MoveCommand.VerticalMove(5).Done
-				THEN
-					SubStep:=1;
-				END_IF
+		dsTilt.CyclicLogic();
+		IF dsTilt.Done THEN
+			Step:=E_DemoStep.Init;//NEXT STEP is Init because this is the last step
+			dsTilt.Reset();			
+		END_IF
 				
-			1:
-				IF 	ip.Movers[1].MoveCommand.TiltA(2).Done AND
-					ip.Movers[2].MoveCommand.TiltA(-2).Done
-				THEN
-					SubStep:=2;
-				END_IF	
-
-			2:
-			
-				IF 	ip.Movers[1].MoveCommand.TiltA(-2).Done AND
-					ip.Movers[2].MoveCommand.TiltA(2).Done AND
-					ip.Movers[1].MoveCommand.TiltB(2).Done AND
-					ip.Movers[2].MoveCommand.TiltB(-2).Done
-				THEN
-					SubStep:=3;
-				END_IF
-				
-			3:	
-
-				IF 	ip.Movers[1].MoveCommand.TiltB(-2).Done AND
-					ip.Movers[2].MoveCommand.TiltB(2).Done
-				THEN
-					SubStep:=4;
-				END_IF	
-				
-			4:
-
-				IF 	ip.Movers[1].MoveCommand.TiltA(0).Done AND
-					ip.Movers[2].MoveCommand.TiltA(0).Done
-				THEN
-					SubStep:=5;
-				END_IF	
-
-			5:
-				IF 	ip.Movers[1].MoveCommand.TiltB(0).Done AND
-					ip.Movers[2].MoveCommand.TiltB(0).Done
-				THEN
-					SubStep:=6;
-				END_IF
-
-			6:
-
-				IF 	ip.Movers[1].MoveCommand.VerticalMove(2).Done AND
-					ip.Movers[2].MoveCommand.VerticalMove(2).Done
-				THEN
-					Step	:=E_DemoStep.Init;
-				END_IF					
-				
-		END_CASE
 		
 {endregion}			
 {region "Disable"}					
     
 	E_DemoStep.Disable:
-	
+		//TODO: (* need to rework IO logic with FB and Selector switches.*)
+		
 		//Wait till the mover has completed is current move. Then disable it.
-		//That way operator intervention is prevented to re-align the movers, and mover gracef
+		//That way operator intervention is prevented to re-align the movers, and mover gracefully stops
 		IF NOT Mover1.Status.Busy.busyMover AND NOT Mover2.Status.Busy.busyMover THEN
 			XplanarTable.DisableMovers();
 		END_IF

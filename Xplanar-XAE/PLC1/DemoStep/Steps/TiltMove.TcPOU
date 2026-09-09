@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+  <POU Name="TiltMove" Id="{32946ac5-fec1-4cf1-83f7-a33cf615a161}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK TiltMove IMPLEMENTS I_DemoStep
+VAR_INPUT
+	bM1Clockwise : BOOL:=TRUE;
+	bM2Clockwise : BOOL:=FALSE;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	SubStep: USINT;
+	_Done: BOOL;
+	_M1Direction: INT(-1..1);
+	_M2Direction: INT(-1..1);
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="CyclicLogic" Id="{deec6b8f-22e1-47ca-b12a-e69a49d3e9f6}">
+      <Declaration><![CDATA[METHOD CyclicLogic
+VAR
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE SubStep OF
+	0:
+		IF bM1Clockwise THEN
+			_M1Direction:=-1;
+		ELSE
+			_M1Direction:= +1;
+		END_IF
+		IF bM2Clockwise THEN
+			_M2Direction:=-1;
+		ELSE
+			_M2Direction:= +1;
+		END_IF
+		
+		IF 	ip.Movers[1].MoveCommand.VerticalMove(5).Done AND	ip.Movers[2].MoveCommand.VerticalMove(5).Done
+		THEN SubStep:=1; END_IF
+	1:
+		IF 	ip.Movers[1].MoveCommand.TiltA(2*_M1Direction).Done AND			ip.Movers[2].MoveCommand.TiltA(-2*_M2Direction).Done
+		THEN SubStep:=2; END_IF	
+	2:
+	
+		IF 	ip.Movers[1].MoveCommand.TiltA(-2*_M1Direction).Done AND			ip.Movers[2].MoveCommand.TiltA(2*_M2Direction).Done AND
+			ip.Movers[1].MoveCommand.TiltB(2*_M1Direction).Done AND			ip.Movers[2].MoveCommand.TiltB(-2*_M2Direction).Done
+		THEN SubStep:=3; END_IF
+	3:	
+		IF 	ip.Movers[1].MoveCommand.TiltB(-2*_M1Direction).Done AND			ip.Movers[2].MoveCommand.TiltB(2*_M2Direction).Done
+		THEN SubStep:=4; END_IF	
+		
+	4:
+		IF 	ip.Movers[1].MoveCommand.TiltA(0).Done AND			ip.Movers[2].MoveCommand.TiltA(0).Done
+		THEN SubStep:=5; END_IF	
+	
+	5:
+		IF 	ip.Movers[1].MoveCommand.TiltB(0).Done AND			ip.Movers[2].MoveCommand.TiltB(0).Done
+		THEN SubStep:=6; END_IF
+	
+	6:
+		IF 	ip.Movers[1].MoveCommand.VerticalMove(2).Done AND	ip.Movers[2].MoveCommand.VerticalMove(2).Done
+		THEN _Done:=TRUE; END_IF					
+		
+END_CASE
+		]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Done" Id="{097d9461-424d-4bf1-9700-1e2a1437730c}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Done : BOOL
+]]></Declaration>
+      <Get Name="Get" Id="{c8e71266-5647-4c0f-91b3-9b92188ea4e4}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Done:=_Done;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Reset" Id="{b8bacf95-ab06-469a-b52a-ffd948b74221}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_Done:=FALSE;
+SubStep:=0;
+Reset:=TRUE;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

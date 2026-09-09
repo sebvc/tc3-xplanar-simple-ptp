@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+  <POU Name="SpinMove" Id="{6647e9a9-a12e-4535-bc1a-23903753c732}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK SpinMove IMPLEMENTS I_DemoStep
+VAR_INPUT
+	SpinRotateDynamics : ST_MoveDynamics := (Velocity := 2500.0, Accel := 4000.0, Decel := 4000.0, Jerk := 20000.0);
+	numSpins: DINT := 1;
+	finalOrientation: LREAL := 0;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	SubStep: USINT;
+	_Done: BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="CyclicLogic" Id="{bf85742e-54a4-449b-94c1-8cce53926146}">
+      <Declaration><![CDATA[METHOD CyclicLogic
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE SubStep OF
+	0:	
+		F_SetAllMoversRotation(SpinRotateDynamics);
+		SubStep:=1;
+	1:
+		IF 	ip.Movers[1].MoveCommand.Rotate(finalOrientation,(numSpins * -1)).Done AND
+			ip.Movers[2].MoveCommand.Rotate(finalOrientation,numSpins).Done
+		THEN
+			_Done:=TRUE;
+		END_IF		
+
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Done" Id="{4938ebc3-09d0-4b2c-99f6-44d7e5d83ba8}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Done : BOOL
+]]></Declaration>
+      <Get Name="Get" Id="{9363cf58-4586-405b-8e77-6bdc96fa96bf}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Done:=_Done;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Reset" Id="{9929eb09-1a52-4ea9-ac83-1473d8396bf2}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_Done:=FALSE;
+SubStep:=0;
+Reset:=TRUE;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

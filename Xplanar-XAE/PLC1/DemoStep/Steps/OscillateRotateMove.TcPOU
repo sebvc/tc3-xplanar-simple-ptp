@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+  <POU Name="OscillateRotateMove" Id="{044bf607-feea-46aa-8502-efb8889ed781}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK OscillateRotateMove IMPLEMENTS I_DemoStep
+VAR_INPUT
+	InverseRotateDynamics : ST_MoveDynamics := (Velocity := 750.0, Accel := 2000.0, Decel := 2000.0, Jerk := 15000.0);
+	RotIncrement: LREAL := 15;
+	numFlipCycles: UINT:=6;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	SubStep: USINT;
+	_Done: BOOL;
+	_Cycles: UINT;
+	_FlipFlop: BOOL;
+	_RotateTarget: LREAL;
+	_Mover1RotateTarget: LREAL;
+	_Mover2RotateTarget: LREAL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="CyclicLogic" Id="{61d50d4d-18ab-4b9e-9c95-fb98215ae7b0}">
+      <Declaration><![CDATA[METHOD CyclicLogic
+
+VAR
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE SubStep OF
+	0:	
+		F_SetAllMoversRotation(InverseRotateDynamics);
+		_Cycles	:=0;
+		_FlipFlop:=FALSE;
+		_RotateTarget:=0;
+		SubStep:=1;
+	1:
+		IF _FlipFlop THEN
+			_Mover1RotateTarget:=_RotateTarget;
+			_Mover2RotateTarget:=(360.0-_RotateTarget)*-1;			
+		ELSE
+			_Mover1RotateTarget:=(360.0-_RotateTarget)*-1;
+			_Mover2RotateTarget:=_RotateTarget;
+		END_IF
+		
+		IF 	ip.Movers[1].MoveCommand.Rotate(_Mover1RotateTarget,0).Done AND
+			ip.Movers[2].MoveCommand.Rotate(_Mover2RotateTarget,0).Done
+		THEN
+			IF _FlipFlop THEN
+				_Cycles:=_Cycles+1;
+				IF _Cycles>=numFlipCycles THEN
+					_Done:=TRUE;
+					SubStep:=2;
+				ELSE
+					_RotateTarget:=_RotateTarget+RotIncrement;
+				END_IF
+			END_IF
+			_FlipFlop:=NOT _FlipFlop;	
+		END_IF		
+
+	2://idle
+		_Done:=TRUE;
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Done" Id="{ae66994d-0478-472c-9624-a4a6268a14a3}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Done : BOOL
+]]></Declaration>
+      <Get Name="Get" Id="{b62ad5a7-456f-4ee4-9b03-b20e74be7698}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Done:=_Done;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Reset" Id="{b936309c-ab1b-44d8-944f-7d3a83232403}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_Done:=FALSE;
+SubStep:=0;
+Reset:=TRUE;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+  <POU Name="MoveToCenters" Id="{53e57c88-0a0f-4f16-885b-77d864624d8e}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK MoveToCenters IMPLEMENTS I_DemoStep
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	SubStep: USINT;
+	M1CurrentPos, M2CurrentPos	: ST_Point;
+	M1TargetPos, M2TargetPos	: ST_Point;
+	_Done: BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="CyclicLogic" Id="{59c5f709-ef9c-47d5-889b-bf079b8a2aa3}">
+      <Declaration><![CDATA[METHOD CyclicLogic
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE SubStep OF
+	0:	//Save Current Positions
+		M1CurrentPos.X:=ip.Movers[1].ActualPosition.x;
+		M1CurrentPos.Y:=ip.Movers[1].ActualPosition.y;
+		M2CurrentPos.X:=ip.Movers[2].ActualPosition.x;
+		M2CurrentPos.Y:=ip.Movers[2].ActualPosition.y;
+		//find alignment to decide which is the proper opposing side for Step1
+		F_FindOpposingRotationPosition(
+			M1AlignmentPos	:= M1CurrentPos, 
+			M2AlignmentPos	:= M2CurrentPos, 
+			M1CornerPos		:= M1TargetPos,
+			M2CornerPos		:= M2TargetPos);
+		SubStep:=1;
+	1:
+		//step 1-2: Move laterally to opposing extremes from CURRENT/to center alignment
+		IF	ip.Movers[1].MoveCommand.MoveY(M1TargetPos.Y).Done AND 
+			ip.Movers[2].MoveCommand.MoveY(M2TargetPos.Y).Done THEN
+			SubStep:=SubStep+1;
+		END_IF
+	2:
+		IF	ip.Movers[1].MoveCommand.MoveX(M1TargetPos.X).Done AND 
+			ip.Movers[2].MoveCommand.MoveX(M2TargetPos.X).Done THEN
+			_Done	:= TRUE;
+			SubStep	:=0;//reset
+		END_IF					
+
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Done" Id="{bd4b6f9f-256c-43ac-bd4e-bf3164722719}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Done : BOOL
+]]></Declaration>
+      <Get Name="Get" Id="{3a55ad40-9b4b-4d15-90ed-263f61ad7cc3}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Done:=_Done;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Reset" Id="{e053dc89-e5a6-485a-87d7-ad9dc88173be}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_Done:=FALSE;
+SubStep:=0;
+Reset:=TRUE;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

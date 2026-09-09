@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+  <POU Name="MoveAroundInSequence" Id="{1abe0952-4ec9-4624-9f99-04f28e37e07b}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK MoveAroundInSequence IMPLEMENTS I_DemoStep
+VAR_INPUT
+	PerimeterMoveDynamics : 	ST_MoveDynamics := (Velocity := 2000.0, Accel := 20000.0, 	Decel := 20000.0, 	Jerk := 200000.0);
+	Cycles: USINT:=1;
+END_VAR
+VAR_OUTPUT
+	
+END_VAR
+VAR
+	SubStep: USINT;
+	_Done: BOOL;
+	_CycleCount: INT;
+	_FlipFlop: BOOL;
+	_M1IsOnLeftSide:BOOL;
+	M1CurrentPos,M2CurrentPos :	ST_Point;
+	Mover1Target: ST_POINT;
+	Mover2Target: ST_POINT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="CyclicLogic" Id="{ed53862d-c63d-4b81-8703-3d7d6e151944}">
+      <Declaration><![CDATA[METHOD CyclicLogic
+VAR
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// E_DemoStep.MoveAroundPerimeter:						
+	CASE SubStep OF 
+		0:
+			F_SetAllMoversMovement(PerimeterMoveDynamics);//Save Current Positions
+		M1CurrentPos.X:=ip.Movers[1].ActualPosition.x;
+		M1CurrentPos.Y:=ip.Movers[1].ActualPosition.y;
+		M2CurrentPos.X:=ip.Movers[2].ActualPosition.x;
+		M2CurrentPos.Y:=ip.Movers[2].ActualPosition.y;
+		//find alignment to decide which is the proper opposing side for Step1
+		F_FindCorrectOpposingCornerPosition(
+			M1AlignmentPos	:= M1CurrentPos, 
+			M2AlignmentPos	:= M2CurrentPos, 
+			M1CornerPos		:= Mover1Target,
+			M2CornerPos		:= Mover2Target);
+		SubStep:=1;
+		1:
+			IF	ip.Movers[1].MoveCommand.MoveX(Mover1Target.X).Done AND 
+				ip.Movers[2].MoveCommand.MoveX(Mover2Target.X).Done THEN
+				SubStep:=2;
+			END_IF
+		2: 
+			IF	ip.Movers[1].MoveCommand.MoveY(Mover1Target.Y).Done AND 
+				ip.Movers[2].MoveCommand.MoveY(Mover2Target.Y).Done THEN
+				SubStep:=3;
+			END_IF
+		3:
+		// [M1]=> BL->BR->TR->TL
+		// [M2]=> TR->TL->BL->BR
+			Mover1Target:=BOTTOM_LEFT;
+			Mover2Target:=TOP_RIGHT;
+		
+		1:
+			Mover1Target:=BOTTOM_RIGHT;
+			Mover2Target:=TOP_LEFT;
+		
+		2:
+			Mover1Target:=TOP_RIGHT;
+			Mover2Target:=BOTTOM_LEFT;	
+	
+		3:
+			Mover1Target:=TOP_LEFT;
+			Mover2Target:=BOTTOM_RIGHT;
+	END_CASE
+
+	IF 	ip.Movers[1].MoveCommand.FreeMove(Mover1Target.x,Mover1Target.Y).Done AND
+		ip.Movers[2].MoveCommand.FreeMove(Mover2Target.x,Mover2Target.Y).Done
+	THEN
+		IF SubStep=3 THEN //Cycle completed
+			Cycles			:=Cycles+1;
+			IF Cycles=2 THEN
+				_Done:=TRUE;
+			ELSE
+				SubStep	:=0;
+			END_IF
+		ELSE
+			SubStep	:=SubStep+1;
+		END_IF
+			
+	END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Done" Id="{9ee62af6-1c3c-4136-83c4-4f1323683955}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Done : BOOL
+]]></Declaration>
+      <Get Name="Get" Id="{e5ed3bce-c90e-496b-965c-032575ee2a4c}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Done:=_Done;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="NextCorner" Id="{46270994-c930-467b-8457-ef5532d41027}">
+      <Declaration><![CDATA[METHOD NextCorner : BOOL
+VAR_INPUT
+	CornerStep:USINT:=0;
+	bClockwise: BOOL:=FALSE; // CCW by default
+END_VAR
+
+VAR
+	NextCoordinateFlip: STRING(INT#1);
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[	(*
+					┌----◀------┐(Y)			┌----◀------┐(X)	 (4)┌─────┌────┐(3)
+	// CCW: (M1)=> BL-▶BR-▶TR-▶TL	CW: (M1)=> BL-▶TL-▶TR-▶BR		 [2]│ TL◀─┼▷TR │[1]
+	coordinate-flip: (X) (Y) (X) 				 (Y) (X) (Y)		 	│  │  └──┼─┘	
+	// CCW: [M2]=> TR-▷TL-▷BL-▷BR	CW: [M2]=> TR-▷BR-▷BL-▷TL		    │  △     │ │	
+					└----◁------┘(Y)			└----◁------┘(X)	    │  │     ▲ │	
+	i.e. Directions:												    │  ▼     │ │	
+							CCW: ↺⥀ ▼▲◀▶ ⮔	(M1)=>(position)		    │  │     ▽ │	
+							CW : ↻⥁ △▽◁▷	[M2]=>[position]		    ┌──┼─┐   | │	
+																	 (1)│ BL◁┼─▶BR │(2)
+																	 [3]└────┴─────┘[4] *)
+NextCorner:=FALSE;
+IF CornerStep = 0 THEN
+	// First Calculate the starting current CornerStep;
+	IF		(Mover1Target.X=BOTTOM_LEFT.X	AND Mover1Target.Y=BOTTOM_LEFT.Y) AND_THEN
+			(Mover2Target.X=TOP_RIGHT.X		AND	Mover2Target.Y=TOP_RIGHT.Y) THEN
+		CornerStep:=1;
+	ELSIF	(Mover1Target.X=BOTTOM_RIGHT.X	AND Mover1Target.Y=BOTTOM_RIGHT.Y) AND_THEN
+			(Mover2Target.X=TOP_LEFT.X		AND Mover2Target.Y=TOP_LEFT.Y) THEN
+		CornerStep:=2;
+	ELSIF	(Mover1Target.X=TOP_RIGHT.X		AND Mover1Target.Y=TOP_RIGHT.Y) AND_THEN
+			(Mover2Target.X=BOTTOM_LEFT.X	AND Mover2Target.Y=BOTTOM_LEFT.Y) THEN
+		CornerStep:=3;				
+	ELSIF	(Mover1Target.X=TOP_LEFT.X		AND Mover1Target.Y=TOP_LEFT.Y) AND_THEN
+			(Mover2Target.X=BOTTOM_RIGHT.X	AND Mover2Target.Y=BOTTOM_RIGHT.Y) THEN
+		CornerStep:=4;
+	ELSE 
+		//error
+		NextCorner:=FALSE;
+		RETURN;
+	END_IF
+END_IF
+
+IF CornerStep <> 0 THEN
+	IF bClockwise THEN
+		CornerStep:=CornerStep-1;
+		IF CornerStep<1 THEN
+			CornerStep:=4;
+		END_IF
+	ELSE // CCW
+		CornerStep:=CornerStep+1;
+		IF CornerStep>4 THEN
+			CornerStep:=1;
+		END_IF
+	END_IF
+
+	NextCorner:=TRUE;
+	CASE CornerStep OF
+		1:	Mover1Target:=BOTTOM_LEFT;	Mover2Target:=TOP_RIGHT;
+		2:	Mover1Target:=BOTTOM_RIGHT;	Mover2Target:=TOP_LEFT;
+		3:	Mover1Target:=TOP_RIGHT;	Mover2Target:=BOTTOM_LEFT;	
+		4:	Mover1Target:=TOP_LEFT;		Mover2Target:=BOTTOM_RIGHT;
+	END_CASE
+	CASE CornerStep OF
+		1,3:
+			IF bClockwise THEN
+				NextCoordinateFlip := 'Y';
+			ELSE
+				NextCoordinateFlip := 'X';
+			END_IF
+		2,4:
+			IF bClockwise THEN
+				NextCoordinateFlip := 'X';
+			ELSE
+				NextCoordinateFlip := 'Y';
+			END_IF
+		ELSE
+			//error
+			NextCorner:=FALSE;
+			return;
+	END_CASE
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Reset" Id="{80b13f4d-9c65-483a-8589-2da4bcf3e203}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_Done:=FALSE;
+SubStep:=0;
+Reset:=TRUE;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

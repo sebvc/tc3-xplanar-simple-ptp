@@ -5,6 +5,7 @@
 VAR_INPUT
 		M1	:	I_XPlanarMover;
 		M2	:	I_XPlanarMover;
+		SortByY : BOOL := TRUE;
 END_VAR
 VAR_OUTPUT
 END_VAR
@@ -22,7 +23,8 @@ END_VAR
       <Implementation>
         <ST><![CDATA[IF M1<>0 AND_THEN M2<>0 THEN
 	_Error:=FALSE;
-	IF M1.ActualPosition.y < M2.ActualPosition.y THEN
+	IF (SortByY AND_THEN M1.ActualPosition.y < M2.ActualPosition.y)
+		OR (NOT SortByY AND_THEN M1.ActualPosition.X < M2.ActualPosition.X) THEN
 		ip.Movers[1] 	:= M1;
 		ip.Movers[2] 	:= M2;	
 	ELSE

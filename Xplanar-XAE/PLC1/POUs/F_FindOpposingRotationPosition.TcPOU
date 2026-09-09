@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+  <POU Name="F_FindOpposingRotationPosition" Id="{26704c5d-6b01-419f-9c48-c2043a25c8c4}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION F_FindOpposingRotationPosition : BOOL
+VAR_INPUT
+	M1AlignmentPos : ST_POINT; //from/reference alignment for Mover 1
+	M2AlignmentPos : ST_POINT; //from/reference alignment for Mover 2
+	M1CornerPos : REFERENCE TO ST_POINT; //to/target corner for Mover 1 ( Method OUTPUT by REFERENCE )
+	M2CornerPos : REFERENCE TO ST_POINT; //to/target corner for Mover 2 ( Method OUTPUT by REFERENCE )
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Find a Target Opposing tile centers from a respective Position Alignmnet
+(*	i.e.	from:	┌──────────┐    to:	┌──────────┐ 
+					│          │      	│  ┌────┐  │
+					│    ▲     │      	│  │ M2 │  │
+					│   ┌┼───┐ │      	│  └────┘  │
+					│  ◀┼┘M2 │ │      	│          │
+					│ ┌─┴──┬─┘ │      	│          │
+					│ │ M1┌┼▶  │      	│  ┌────┐  │
+					│ └───┼┘   │      	│  │ M1 │  │
+					│     ▼    │      	│  └────┘  │ 
+					└──────────┘      	└──────────┘ 		*)
+//find alignment to decide which is the proper opposing side 
+IF M1AlignmentPos.Y >= M2AlignmentPos.Y THEN
+	//M1 moves to TOP / M2 moves to BOTTOM
+	M1CornerPos.Y := TOP_MIDDLE;
+	M2CornerPos.Y := BOTTOM_MIDDLE;
+ELSE 	
+	//M1 moves to BOTTOM / M2 moves to TOP
+	M1CornerPos.Y := BOTTOM_MIDDLE;
+	M2CornerPos.Y := TOP_MIDDLE;
+END_IF
+
+M1CornerPos.X := CENTER;
+M2CornerPos.X := CENTER;
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
