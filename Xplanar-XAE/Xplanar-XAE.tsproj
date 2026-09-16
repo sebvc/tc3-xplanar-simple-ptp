@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.26" TcProjectVariant="Normal">
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.27" TcProjectVariant="Normal">
 	<DataTypes>
 		<DataType>
 			<Name GUID="{5AC0538E-BDFA-4B58-A6B5-99E997DABADA}" Namespace="MC">MoverVector</Name>
@@ -5803,7 +5803,7 @@
 			</Properties>
 		</DataType>
 		<DataType>
-			<Name GUID="{D98B1DAF-0C0E-3C5A-353F-0691F6C83C78}" AutoDeleteType="true">E_UsbLicenseDongleSate</Name>
+			<Name GUID="{F3F005C2-1027-35E1-C410-3F33C185278E}" AutoDeleteType="true">E_UsbLicenseDongleSate</Name>
 			<BitSize>16</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000005}">UINT</BaseType>
 			<EnumInfo>
@@ -5821,6 +5821,9 @@
 				<Enum>4</Enum>
 				<Comment><![CDATA[ 0x0004 = Not found]]></Comment>
 			</EnumInfo>
+			<Default>
+				<EnumText>NOT_FOUND</EnumText>
+			</Default>
 			<Properties>
 				<Property>
 					<Name>qualified_only</Name>
@@ -6921,6 +6924,7 @@
 						<Variant>
 							<Name>Normal</Name>
 							<Name>SimOnIPC</Name>
+							<Name>SimOnLaptop_Local</Name>
 							<Name>UMRT</Name>
 							<Parameters Priority="11" CycleTime="10000"/>
 						</Variant>
@@ -6943,7 +6947,21 @@
 					</Variant>
 					<Variant>
 						<Name>SimOnIPC</Name>
-						<Parameters RouterMemory="32" CoresPerPkg="0" MaxWinCpus="15" MaxNonWinCpus="1">
+						<Parameters RouterMemory="32" CoresPerPkg="0" MaxWinCpus="2" MaxNonWinCpus="2" CoreBoost="false">
+							<Cpu Id="2" Percent="80" BaseTime="10000"/>
+							<Cpu Id="3" Percent="80" BaseTime="2500"/>
+							<Affinity ObjId="#x03000011"/>
+							<Affinity ObjId="#x02010030"/>
+							<Affinity ObjId="#x02010040"/>
+							<Affinity ObjId="#x02010050" Mask="#x8"/>
+							<Affinity ObjId="#x02010060"/>
+							<Affinity ObjId="#x02010070"/>
+							<Affinity ObjId="#x08500010"/>
+						</Parameters>
+					</Variant>
+					<Variant>
+						<Name>SimOnLaptop_Local</Name>
+						<Parameters RouterMemory="32" CoresPerPkg="0" MaxWinCpus="15" MaxNonWinCpus="1" CoreBoost="false">
 							<Cpu Id="14" Percent="80" BaseTime="10000"/>
 							<Cpu Id="15" Percent="80" BaseTime="2500"/>
 							<Affinity ObjId="#x03000011"/>
@@ -6979,7 +6997,7 @@
 					<TargetSelect TargetId="2">{520DE751-9DB6-47CB-8240-BD5C466E7E64}</TargetSelect>
 					<TargetSelect TargetId="2">{66689887-CCBD-452C-AC9A-039D997C6E66}</TargetSelect>
 					<TargetSelect TargetId="2">{27326EE5-AB30-4084-B15B-8CCA96CCBF0B}</TargetSelect>
-					<LicenseDevice DongleHardwareId="2" DongleDevice="#x03020007" DongleLevel="60" DongleSerialNumber="000bs99i" DongleCacheLicense="true">
+					<LicenseDevice DongleHardwareId="2" DongleDevice="#x03020007" DongleLevel="60" DongleSystemId="{C22FCD40-C6AF-9E06-E312-CF9F5749A104}" DongleSerialNumber="000bs99i" DongleCacheLicense="true">
 						<ProjectVariant PvUseDisable="true">
 							<Variant>
 								<Name>Normal</Name>
@@ -6988,6 +7006,7 @@
 							</Variant>
 							<Variant>
 								<Name>SimOnIPC</Name>
+								<Name>SimOnLaptop_Local</Name>
 								<Disable>true</Disable>
 							</Variant>
 						</ProjectVariant>
@@ -6997,6 +7016,7 @@
 					<Variant>
 						<Name>Normal</Name>
 						<Name>SimOnIPC</Name>
+						<Name>SimOnLaptop_Local</Name>
 						<Name>UMRT</Name>
 						<Parameters>
 							<ManualSelect>
@@ -7013,6 +7033,7 @@
 						<Variant>
 							<Name>Normal</Name>
 							<Name>SimOnIPC</Name>
+							<Name>SimOnLaptop_Local</Name>
 							<Name>UMRT</Name>
 							<Parameters Priority="20" CycleTime="10000"/>
 						</Variant>
@@ -7025,6 +7046,7 @@
 						<Variant>
 							<Name>Normal</Name>
 							<Name>SimOnIPC</Name>
+							<Name>SimOnLaptop_Local</Name>
 							<Name>UMRT</Name>
 							<Parameters Priority="32" CycleTime="0"/>
 						</Variant>
@@ -7036,6 +7058,7 @@
 						<Variant>
 							<Name>Normal</Name>
 							<Name>SimOnIPC</Name>
+							<Name>SimOnLaptop_Local</Name>
 							<Parameters Priority="1" CycleTime="2500"/>
 						</Variant>
 						<Variant>
@@ -7050,6 +7073,7 @@
 						<Variant>
 							<Name>Normal</Name>
 							<Name>SimOnIPC</Name>
+							<Name>SimOnLaptop_Local</Name>
 							<Name>UMRT</Name>
 							<Parameters Priority="2" CycleTime="20000"/>
 						</Variant>
@@ -7061,6 +7085,7 @@
 						<Variant>
 							<Name>Normal</Name>
 							<Name>SimOnIPC</Name>
+							<Name>SimOnLaptop_Local</Name>
 							<Name>UMRT</Name>
 							<Parameters Priority="3" CycleTime="100000"/>
 						</Variant>
@@ -7116,6 +7141,7 @@
 						</Variant>
 						<Variant>
 							<Name>SimOnIPC</Name>
+							<Name>SimOnLaptop_Local</Name>
 							<Name>UMRT</Name>
 							<Parameters>
 								<Parameter PID="#x3170010" Data="0100"/>
@@ -14885,10 +14911,21 @@
 			<ProjectVariant PvUseParameter="true" PvUseLink="true" PvUseSimulation="true">
 				<Variant>
 					<Name>Normal</Name>
+					<Simulation Enable="false"/>
+					<BuildConfig>Release|TwinCAT RT (x64)</BuildConfig>
+					<TargetNetId>169.254.221.1.1.1</TargetNetId>
+				</Variant>
+				<Variant>
 					<Name>SimOnIPC</Name>
 					<Name>UMRT</Name>
 					<Simulation Enable="false"/>
 					<TargetNetId>169.254.221.1.1.1</TargetNetId>
+					<BuildConfig>Release|TwinCAT RT (x64)</BuildConfig>
+				</Variant>
+				<Variant>
+					<Name>SimOnLaptop_Local</Name>
+					<Simulation Enable="false"/>
+					<TargetNetId/>
 					<BuildConfig>Release|TwinCAT RT (x64)</BuildConfig>
 				</Variant>
 			</ProjectVariant>
@@ -14983,6 +15020,7 @@
 						<Variant>
 							<Name>Normal</Name>
 							<Name>SimOnIPC</Name>
+							<Name>SimOnLaptop_Local</Name>
 							<Parameters>
 								<Parameter PID="#x3002103" Data="02000000"/>
 								<Parameter PID="#x3002060" Data="60000102"/>
@@ -15466,6 +15504,7 @@
 						<Variant>
 							<Name>Normal</Name>
 							<Name>SimOnIPC</Name>
+							<Name>SimOnLaptop_Local</Name>
 							<Name>UMRT</Name>
 							<Parameters>
 								<Parameter PID="#x3002103" Data="02000000"/>
@@ -16751,7 +16790,7 @@
 		</Motion>
 		<Plc>
 			<Project GUID="{233169FE-F7A5-4EC4-9427-C86C70D23AE6}" Name="PLC1" PrjFilePath="PLC1\PLC1.plcproj" TmcFilePath="PLC1\PLC1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{0EB4A178-F773-A529-A533-C515F27E56EB}" TmcPath="PLC1\PLC1.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{6E852639-E21D-1E7E-B66D-2950996563F5}" TmcPath="PLC1\PLC1.tmc">
 					<Name>PLC1 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -16960,7 +16999,7 @@
 						<Var>
 							<Name>MAIN.LicUsbState</Name>
 							<Comment><![CDATA[ license dongle state //UINT;]]></Comment>
-							<Type GUID="{D98B1DAF-0C0E-3C5A-353F-0691F6C83C78}">E_UsbLicenseDongleSate</Type>
+							<Type GUID="{F3F005C2-1027-35E1-C410-3F33C185278E}">E_UsbLicenseDongleSate</Type>
 						</Var>
 					</Vars>
 					<Contexts>
@@ -16974,7 +17013,6 @@
 							<CycleTime>1000000</CycleTime>
 						</Context>
 					</Contexts>
-					<JsonDynPous><![CDATA[null]]></JsonDynPous>
 					<TaskPouOids>
 						<TaskPouOid Prio="20" OTCID="#x08502001"/>
 					</TaskPouOids>
@@ -16984,7 +17022,6 @@
 				<Instance Id="#x08502040" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{31094904-9FFC-8E81-95E9-368AE9660CF0}" TmcPath="xplanarapplication2071\xplanarapplication2071.tmc">
 					<Name>xplanarapplication2071 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
-					<JsonDynPous><![CDATA[null]]></JsonDynPous>
 				</Instance>
 			</Project>
 		</Plc>
@@ -17003,10 +17040,14 @@
 			<Variant>
 				<Name>UMRT</Name>
 			</Variant>
+			<Variant>
+				<Name>SimOnLaptop_Local</Name>
+			</Variant>
 		</Variants>
 	</Project>
 	<Mappings>
-		<MappingInfo Identifier="{00000000-2001-0850-0020-500820000403}" Id="#x02030020"/>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030020"/>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500820000403}" Id="#x02030080"/>
 		<MappingInfo Identifier="{02010050-0060-0201-5000-010110001105}" Id="#x02030030" Watchdog="20000000040000000400000004000000"/>
 		<MappingInfo Identifier="{02010050-0060-0201-6000-010120001105}" Id="#x02030040" Watchdog="20000000040000000400000004000000"/>
 		<MappingInfo Identifier="{02010060-2001-0850-1000-100500205008}" Id="#x02030010" Watchdog="04000000080000000400000004000000"/>

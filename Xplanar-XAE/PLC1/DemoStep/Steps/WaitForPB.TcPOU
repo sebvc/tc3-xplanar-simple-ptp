@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.21">
   <POU Name="WaitForPB" Id="{20718501-64b8-4b3b-8a5b-613b3c827ed0}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK WaitForPB IMPLEMENTS I_DemoStep
 VAR_INPUT
-	StartPB			: 	REFERENCE TO FB_PushButton;// Start Pushbutton for Start command
-	DisablePB		: 	REFERENCE TO FB_PushButton;// Stop Pushbutton for disable command
+	StartPB			: 	REFERENCE TO FB_ToggleButton;// Start Pushbutton for Start command
+	DisablePB		: 	REFERENCE TO FB_ToggleButton;// Stop Pushbutton for disable command
 	SimStart		: 	REFERENCE TO BOOL;
 	SimDisable		: 	REFERENCE TO BOOL;
 END_VAR
@@ -29,13 +29,12 @@ _bDisableInNextStep := FALSE;
 //E_DemoStep.WaitForSwitch:
 IF XPlanar.OperationMode = XPlanarApplication.XPlanarOperationMode.Normal THEN
 	//CyclicLogic() called in Main;
-	IF StartPB.pressed THEN // dont reset done to latch.
-			_Done:= NOT _Done; // E_DemoStep.DetectMovers; //(Usually) 
+		// dont reset done to latch.
+	_Done:= StartPB.toggleActive OR StartPB.pressed; // E_DemoStep.DetectMovers; //(Usually) 
 		//	E_SelectorSwitchPos.Right:	TwinCATRestart(NETID:='', RESTART:=TRUE); // Done in other part of code 
-	END_IF
-	IF DisablePB.pressed THEN
+	IF DisablePB.pressed OR  DisablePB.toggleactive THEN
 			_bDisableInNextStep:= TRUE; // E_DemoStep.Disable; ==> Error=TRUE
-			_Done := FALSE;
+			_Done := FALSE; // OVERWRITE _Done from Start PB.
 	END_IF
 ELSE // XPlanar TcCOM OperationMode in a Simulation mode
 	IF 	SimStart	THEN _Done:= TRUE; END_IF

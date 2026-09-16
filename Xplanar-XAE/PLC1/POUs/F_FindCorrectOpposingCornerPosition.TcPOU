@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.21">
   <POU Name="F_FindCorrectOpposingCornerPosition" Id="{fc6c7093-3fc0-4e18-ac69-e766a10b8238}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION F_FindCorrectOpposingCornerPosition : BOOL
 VAR_INPUT
@@ -26,7 +26,7 @@ IF M1AlignmentPos.Y >= M2AlignmentPos.Y THEN
 	//M1 moves to TOP / M2 moves to BOTTOM
 	M1CornerPos.Y := TOP_UPPER;
 	M2CornerPos.Y := BOTTOM_LOWER;
-ELSE 	
+ELSE
 	//M1 moves to BOTTOM / M2 moves to TOP
 	M1CornerPos.Y := BOTTOM_LOWER;
 	M2CornerPos.Y := TOP_UPPER;
@@ -35,7 +35,7 @@ IF M1AlignmentPos.X >= M2AlignmentPos.X THEN
 	//M1 moves to RIGHT / M2 moves to LEFT
 	M1CornerPos.X := RIGHT;
 	M2CornerPos.X := LEFT;
-ELSE 	
+ELSE
 	//M1 moves to LEFT / M2 moves to RIGHT
 	M1CornerPos.X := LEFT;
 	M2CornerPos.X := RIGHT;

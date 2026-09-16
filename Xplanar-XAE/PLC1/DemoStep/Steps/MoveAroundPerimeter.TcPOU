@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.21">
   <POU Name="MoveAroundPerimeter" Id="{6463740f-26a2-409e-a8b5-3667cc423b94}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK MoveAroundPerimeter IMPLEMENTS I_DemoStep
 VAR_INPUT
@@ -23,9 +23,7 @@ END_VAR]]></Declaration>
       <ST><![CDATA[]]></ST>
     </Implementation>
     <Method Name="CyclicLogic" Id="{68ac34d2-d4df-4e58-b30f-4e1ccd6546b2}">
-      <Declaration><![CDATA[METHOD CyclicLogic
-VAR
-END_VAR]]></Declaration>
+      <Declaration><![CDATA[METHOD CyclicLogic]]></Declaration>
       <Implementation>
         <ST><![CDATA[// E_DemoStep.MoveAroundPerimeter:						
 	CASE SubStep OF 
@@ -65,12 +63,12 @@ END_VAR]]></Declaration>
 				_CornerCount:=_CornerCount+1;
 			END_IF
 		4:
-			IF Mover1Target.X <> M1CurrentPos.X OR Mover2Target.X <> M2CurrentPos.X THEN
+			IF (Mover1Target.X <> M1CurrentPos.X OR Mover2Target.X <> M2CurrentPos.X) AND (Mover1Target.X <> Mover2Target.X) THEN
 				IF	ip.Movers[1].MoveCommand.MoveX(Mover1Target.X).Done AND 
 					ip.Movers[2].MoveCommand.MoveX(Mover2Target.X).Done THEN
 					SubStep:=3;
 				END_IF
-			ELSIF Mover1Target.Y <> M1CurrentPos.Y OR Mover2Target.Y <> M2CurrentPos.Y THEN
+			ELSIF (Mover1Target.Y <> M1CurrentPos.Y OR Mover2Target.Y <> M2CurrentPos.Y) AND (Mover1Target.Y <> Mover2Target.Y) THEN
 				IF	ip.Movers[1].MoveCommand.MoveY(Mover1Target.Y).Done AND 
 					ip.Movers[2].MoveCommand.MoveY(Mover2Target.Y).Done THEN
 					SubStep:=3;
@@ -108,13 +106,13 @@ END_VAR
 VAR_INPUT
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF Mover1Target.X >= MEDIAN THEN
+        <ST><![CDATA[IF Mover1Target.X >= CENTER THEN
 	Mover1Target.X:= LEFT;
 ELSE 
 	Mover1Target.X:= RIGHT;
 END_IF
 
-IF Mover2Target.X <= MEDIAN THEN
+IF Mover2Target.X <= CENTER THEN
 	Mover2Target.X:= RIGHT;
 ELSE
 	Mover2Target.X:= LEFT;
@@ -151,17 +149,17 @@ VAR
 	NextCoordinateFlip: STRING(INT#1);
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[	(*
-					┌----◀------┐(Y)			┌----◀------┐(X)	 (4)┌─────┌────┐(3)
-	// CCW: (M1)=> BL-▶BR-▶TR-▶TL	CW: (M1)=> BL-▶TL-▶TR-▶BR		 [2]│ TL◀─┼▷TR │[1]
-	coordinate-flip: (X) (Y) (X) 				 (Y) (X) (Y)		 	│  │  └──┼─┘	
-	// CCW: [M2]=> TR-▷TL-▷BL-▷BR	CW: [M2]=> TR-▷BR-▷BL-▷TL		    │  △     │ │	
-					└----◁------┘(Y)			└----◁------┘(X)	    │  │     ▲ │	
-	i.e. Directions:												    │  ▼     │ │	
-							CCW: ↺⥀ ▼▲◀▶ ⮔	(M1)=>(position)		    │  │     ▽ │	
-							CW : ↻⥁ △▽◁▷	[M2]=>[position]		    ┌──┼─┐   | │	
-																	 (1)│ BL◁┼─▶BR │(2)
-																	 [3]└────┴─────┘[4] *)
+        <ST><![CDATA[(*
+				┌----◀------┐(Y)			┌----◀------┐(X)	 (4)┌─────┌────┐(3)
+// CCW: (M1)=> BL-▶BR-▶TR-▶TL	CW: (M1)=> BL-▶TL-▶TR-▶BR		 [2]│ TL◀─┼▷TR │[1]
+coordinate-flip: (X) (Y) (X) 				 (Y) (X) (Y)		 	│  │  └──┼─┘	
+// CCW: [M2]=> TR-▷TL-▷BL-▷BR	CW: [M2]=> TR-▷BR-▷BL-▷TL		    │  △     │ │	
+				└----◁------┘(Y)			└----◁------┘(X)	    │  │     ▲ │	
+i.e. Directions:												    │  ▼     │ │	
+						CCW: ↺⥀ ▼▲◀▶ ⮔	(M1)=>(position)		    │  │     ▽ │	
+						CW : ↻⥁ △▽◁▷	[M2]=>[position]		    ┌──┼─┐   | │	
+																 (1)│ BL◁┼─▶BR │(2)
+																 [3]└────┴─────┘[4] *)
 IF CornerStep = 0 THEN
 	// First Calculate the starting current CornerStep;
 	IF		(Mover1Target.X=BOTTOM_LEFT.X	AND Mover1Target.Y=BOTTOM_LEFT.Y) AND_THEN

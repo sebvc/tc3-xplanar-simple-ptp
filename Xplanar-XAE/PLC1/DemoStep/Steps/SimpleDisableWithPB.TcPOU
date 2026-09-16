@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.21">
+  <POU Name="SimpleDisableWithPB" Id="{9e11dab4-e8e6-435a-885d-debfd0b05f86}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK SimpleDisableWithPB IMPLEMENTS I_DemoStep
+VAR_INPUT
+	XPlanarSys	: I_XPlanarSystem;
+	M1			: I_XPlanarMover;
+	M2			: I_XPlanarMover;
+	Track		: I_XPlanarTrack;
+	
+	DisablePB	: REFERENCE TO FB_PushButton;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	SubStep: USINT;
+	_Done: BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+]]></ST>
+    </Implementation>
+    <Method Name="CyclicLogic" Id="{249f91e2-f6e7-4189-86d1-d0cd98f16241}">
+      <Declaration><![CDATA[METHOD CyclicLogic
+VAR
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF XPlanarSys<>0 AND M1<>0 AND M2<>0 THEN
+		//Wait till the mover has completed is current move. Then disable it.
+		//That way operator intervention is prevented to re-align the movers, and mover gracefully stops
+	IF NOT M1.Status.Busy.busyMover AND NOT M2.Status.Busy.busyMover THEN
+		XPlanarSys.DisableMovers();
+	END_IF
+	_Done:= FALSE;
+	IF 	M1.Status.State		= MC_PLANAR_STATE.Disabled 
+		AND M2.Status.State	= MC_PLANAR_STATE.Disabled 
+		AND (
+			(__ISVALIDREF(DisablePB) AND_THEN DisablePB.pressed  )
+		OR XPlanar.OperationMode = XPlanarApplication.XPlanarOperationMode.BasicSimulation)
+	THEN
+		_Done:= TRUE;
+	END_IF
+	IF M1.Error THEN
+		M1.Reset();
+	END_IF
+
+	IF M2.Error THEN
+		M2.Reset();
+	END_IF
+END_IF
+
+IF Track<>0 AND_THEN Track.Error THEN
+	Track.Reset();
+END_IF
+	]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Done" Id="{ddd3d6e1-12fd-4b56-a9e7-a3801306257a}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Done : BOOL
+]]></Declaration>
+      <Get Name="Get" Id="{9c90fda1-f7ae-4ad6-a131-7a780ff28ef3}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Done:=_Done;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Reset" Id="{bcc0113e-3ecb-4c51-92fc-69a756b8f924}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_Done:=FALSE;
+SubStep:=0;
+Reset:=TRUE;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

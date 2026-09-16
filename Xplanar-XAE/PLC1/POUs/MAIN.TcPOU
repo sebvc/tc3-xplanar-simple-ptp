@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.20">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.21">
   <POU Name="MAIN" Id="{5d7a64d1-e12e-4103-aeb9-3e5714fc6cb6}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
@@ -7,8 +7,8 @@ VAR
 	SimDisable AT %I*		:	BOOL;
 	// Initialized for AutoStart when IO is disabled
 	SelectorSwitch: U_SelectorSwitch := (Pos := E_SelectorSwitchPos.Left);
-	START_Button : FB_PushButton := (button_type := 1);
-	DISABLE_Button : FB_PushButton  := (button_type := 2);
+	START_Button : FB_ToggleButton := (button_type := 1);
+	DISABLE_Button : FB_ToggleButton  := (button_type := 2);
 	RESET_Button : FB_PushButton := (button_type := 3);
 	// Initialized for AutoStart when IO is disabled
 	Estop					:	U_Estop := (Pos := E_EStop.Normallyclosed);
@@ -22,8 +22,9 @@ VAR
 	
 // DEMO STEPS
 	dsInit			 : InitStep 			:= (XPlanarSys:=XPlanarTable, MoveDyn:=DEFAULT_MOVE, RotateDyn:=DEFAULT_ROTATE);
-	dsWaitForIO		 : WaitForRotSW			:= (SelectorSwitch:=SelectorSwitch,SimStart:=SimStart, SimDisable:=SimDisable);
-	//dsWaitForIO		 : WaitForPB			:= (StartPB:=START_Button,DisablePB:=Disable_Button,SimStart:=SimStart, SimDisable:=SimDisable);
+	//dsWaitForIO		 : WaitForRotSW			:= (SelectorSwitch:=SelectorSwitch,
+	dsWaitForIO		 : WaitForPB			:= (StartPB:=START_Button,DisablePB:=Disable_Button,
+												SimStart:=SimStart, SimDisable:=SimDisable);
 	dsDetectMovers	 : DetectXplanarMovers 	:= (XPlanarSys:=XPlanarTable, DesiredNumberOfMovers:=SYSTEM_MOVER_COUNT);
 	dsSortMovers	 : SimpleSort2Movers	:= (M1:=Mover1, M2:=Mover2);
 	dsSquareUpMovers : SquareUpMovers		:= (M1:=Mover1, M2:=Mover2);
@@ -39,6 +40,9 @@ VAR
 	dsSpin		 	 : SpinMove				:= (SpinRotateDynamics:=SPIN_MOVE,numSpins:=30);
 	dsLift		 	 : LiftMove				:= (numLiftCycles:=4);
 	dsTilt		 	 : TiltMove				:= (bM1Clockwise:=TRUE,bM2Clockwise:=FALSE);
+	dsDisable		 : SimpleDisableWithPB	:= (DisablePB:=DISABLE_Button,
+//	dsDisable		 : SimpleDisableWithRotSwAndEstop:=(SelectorSW:=SelectorSwitch,ESTOP:=Estop,
+												XPlanarSys:=XPlanarTable,M1:=Mover1, M2:=Mover2,Track:=Track1);
 
 
 	
@@ -92,10 +96,6 @@ CASE Step OF
 {region "Init"}	
 	E_DemoStep.Init:
 		//TODO: Delete vars and set in respective Demo Steps
-			FlipFlop		:=FALSE;
-			Cycles			:=0;
-			RotateTarget	:=0;
-			SubStep			:=0;
 		dsInit.CyclicLogic();
  		IF dsInit.Done THEN
  			Step := E_DemoStep.WaitForIO; //NEXT STEP
@@ -280,34 +280,11 @@ CASE Step OF
 {region "Disable"}					
     
 	E_DemoStep.Disable:
-		//TODO: (* need to rework IO logic with FB and Selector switches.*)
-		
-		//Wait till the mover has completed is current move. Then disable it.
-		//That way operator intervention is prevented to re-align the movers, and mover gracefully stops
-		IF NOT Mover1.Status.Busy.busyMover AND NOT Mover2.Status.Busy.busyMover THEN
-			XplanarTable.DisableMovers();
+		dsDisable.CyclicLogic();
+		IF dsDisable.Done THEN
+			Step:=E_DemoStep.Init;//NEXT STEP is Init because this is the last step
+			dsDisable.Reset();			
 		END_IF
-		
-		IF 	Mover1.Status.State		= MC_PLANAR_STATE.Disabled 
-			AND Mover2.Status.State	= MC_PLANAR_STATE.Disabled 
-			AND ((SelectorSwitch.Pos = E_SelectorSwitchPos.Left AND Estop.Pos = E_EStop.Normallyclosed)
-			OR XPlanar.OperationMode = XPlanarApplication.XPlanarOperationMode.BasicSimulation)
-		THEN
- 			Step:= E_DemoStep.Init;
-		END_IF
-		
-		IF Mover1.Error THEN
-			Mover1.Reset();
-		END_IF
-	
-		IF Mover2.Error THEN
-			Mover2.Reset();
-		END_IF
-		
-		IF Track1.Error THEN
-			Track1.Reset();
-		END_IF
-		
 {endregion}			
 END_CASE
 
