@@ -153,7 +153,7 @@ ELSE
             // color = red
 				led_red := 255;
 				led_green := 0;
-				led_blue := 0
+				led_blue := 0;
 			//effect = off normally, on when pressed
 				led_effect := LED_STATIC;
 				effect_frequency := 0;

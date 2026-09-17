@@ -3,8 +3,7 @@
   <POU Name="WaitForPB" Id="{20718501-64b8-4b3b-8a5b-613b3c827ed0}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK WaitForPB IMPLEMENTS I_DemoStep
 VAR_INPUT
-	StartPB			: 	REFERENCE TO FB_ToggleButton;// Start Pushbutton for Start command
-	DisablePB		: 	REFERENCE TO FB_ToggleButton;// Stop Pushbutton for disable command
+	StartPB			: 	REFERENCE TO FB_ToggleButton;// Start Pushbutton for Start/Disable command
 	SimStart		: 	REFERENCE TO BOOL;
 	SimDisable		: 	REFERENCE TO BOOL;
 END_VAR
@@ -17,7 +16,7 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[//TODO: LOGIC NOT COMPLETE]]></ST>
+      <ST><![CDATA[]]></ST>
     </Implementation>
     <Method Name="CyclicLogic" Id="{ecb77946-4f82-4ebc-b3f7-5fdeaa705fb1}">
       <Declaration><![CDATA[METHOD CyclicLogic
@@ -30,9 +29,10 @@ _bDisableInNextStep := FALSE;
 IF XPlanar.OperationMode = XPlanarApplication.XPlanarOperationMode.Normal THEN
 	//CyclicLogic() called in Main;
 		// dont reset done to latch.
-	_Done:= StartPB.toggleActive OR StartPB.pressed; // E_DemoStep.DetectMovers; //(Usually) 
+	IF StartPB.toggleActive OR StartPB.pressed THEN
+		_Done:=TRUE; // E_DemoStep.DetectMovers; //(Usually) 
 		//	E_SelectorSwitchPos.Right:	TwinCATRestart(NETID:='', RESTART:=TRUE); // Done in other part of code 
-	IF DisablePB.pressed OR  DisablePB.toggleactive THEN
+	ELSE
 			_bDisableInNextStep:= TRUE; // E_DemoStep.Disable; ==> Error=TRUE
 			_Done := FALSE; // OVERWRITE _Done from Start PB.
 	END_IF

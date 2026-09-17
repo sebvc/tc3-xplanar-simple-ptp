@@ -8,7 +8,7 @@ VAR_INPUT
 	M2			: I_XPlanarMover;
 	Track		: I_XPlanarTrack;
 	
-	DisablePB	: REFERENCE TO FB_PushButton;
+	DisablePB	: REFERENCE TO FB_ToggleButton; // toggle active not used
 END_VAR
 VAR_OUTPUT
 END_VAR
@@ -34,8 +34,7 @@ END_VAR]]></Declaration>
 	_Done:= FALSE;
 	IF 	M1.Status.State		= MC_PLANAR_STATE.Disabled 
 		AND M2.Status.State	= MC_PLANAR_STATE.Disabled 
-		AND (
-			(__ISVALIDREF(DisablePB) AND_THEN DisablePB.pressed  )
+		AND ((__ISVALIDREF(DisablePB) AND_THEN not DisablePB.toggleActive)
 		OR XPlanar.OperationMode = XPlanarApplication.XPlanarOperationMode.BasicSimulation)
 	THEN
 		_Done:= TRUE;

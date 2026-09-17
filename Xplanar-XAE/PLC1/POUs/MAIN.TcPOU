@@ -6,12 +6,13 @@ VAR
 	SimStart AT %I*			: 	BOOL;// These are inputs that are unlinked for writing conveninece
 	SimDisable AT %I*		:	BOOL;
 	// Initialized for AutoStart when IO is disabled
-	SelectorSwitch: U_SelectorSwitch := (Pos := E_SelectorSwitchPos.Left);
+	//SelectorSwitch: U_SelectorSwitch := (Pos := E_SelectorSwitchPos.Left);
 	START_Button : FB_ToggleButton := (button_type := 1);
 	DISABLE_Button : FB_ToggleButton  := (button_type := 2);
 	RESET_Button : FB_PushButton := (button_type := 3);
+	RestartTimer: TON := (PT := TIME#3S0MS);
 	// Initialized for AutoStart when IO is disabled
-	Estop					:	U_Estop := (Pos := E_EStop.Normallyclosed);
+	//Estop					:	U_Estop := (Pos := E_EStop.Normallyclosed);
 	Step					:	E_DemoStep:=E_DemoStep.Init;
 	
 //	XPlanarDemo				:	FB_XPlanar2TileDemo;
@@ -23,7 +24,7 @@ VAR
 // DEMO STEPS
 	dsInit			 : InitStep 			:= (XPlanarSys:=XPlanarTable, MoveDyn:=DEFAULT_MOVE, RotateDyn:=DEFAULT_ROTATE);
 	//dsWaitForIO		 : WaitForRotSW			:= (SelectorSwitch:=SelectorSwitch,
-	dsWaitForIO		 : WaitForPB			:= (StartPB:=START_Button,DisablePB:=Disable_Button,
+	dsWaitForIO		 : WaitForPB			:= (StartPB:=START_Button,
 												SimStart:=SimStart, SimDisable:=SimDisable);
 	dsDetectMovers	 : DetectXplanarMovers 	:= (XPlanarSys:=XPlanarTable, DesiredNumberOfMovers:=SYSTEM_MOVER_COUNT);
 	dsSortMovers	 : SimpleSort2Movers	:= (M1:=Mover1, M2:=Mover2);
@@ -40,12 +41,9 @@ VAR
 	dsSpin		 	 : SpinMove				:= (SpinRotateDynamics:=SPIN_MOVE,numSpins:=30);
 	dsLift		 	 : LiftMove				:= (numLiftCycles:=4);
 	dsTilt		 	 : TiltMove				:= (bM1Clockwise:=TRUE,bM2Clockwise:=FALSE);
-	dsDisable		 : SimpleDisableWithPB	:= (DisablePB:=DISABLE_Button,
 //	dsDisable		 : SimpleDisableWithRotSwAndEstop:=(SelectorSW:=SelectorSwitch,ESTOP:=Estop,
+	dsDisable		 : SimpleDisableWithPB	:= (DisablePB:=DISABLE_Button,
 												XPlanarSys:=XPlanarTable,M1:=Mover1, M2:=Mover2,Track:=Track1);
-
-
-	
 	i						: 	UDINT;
 	
 	MoverStatus				:	ARRAY[1..SYSTEM_MOVER_COUNT] OF CDT_MCTOPLC_PLANAR_MOVER_STD;
@@ -67,7 +65,9 @@ VAR
 	rtEstop					: 	R_TRIG;
 	
 	LicUsbState AT %I* : E_UsbLicenseDongleSate; // license dongle state //UINT;
-	
+	IODeviceState AT %I* : UINT;//good is 0;
+	XPlanarDeviceState AT %I* : UINT; //good is 0;
+
 END_VAR                      	
 VAR CONSTANT
 	//Mover Count
@@ -89,6 +89,20 @@ END_VAR
       <ST><![CDATA[//XplanarDemo.CyclicLogic();
 XplanarTable.CyclicLogic();
 
+CASE LicUsbState OF
+	E_UsbLicenseDongleSate.NO_ACTUAL_INPUTS,
+	E_UsbLicenseDongleSate.NOT_FOUND: 
+		RESET_Button.fault_active:=TRUE;
+	E_UsbLicenseDongleSate.NO_ERROR: 
+		RESET_Button.fault_active:=FALSE;
+END_CASE
+ 
+
+IF XPlanarDeviceState <> 0 THEN
+		START_Button.fault_active:=TRUE;
+ELSE
+		START_Button.fault_active:=FALSE;
+END_IF
 // Buttons do not do anything yet
 START_Button.CyclicLogic(); DISABLE_Button.CyclicLogic(); RESET_Button.CyclicLogic();
 
@@ -291,8 +305,10 @@ END_CASE
 {region "Error detection"}
 
 	rtError(CLK:=Mover1.Error OR Mover2.Error OR Track1.Error );
-	rtEstop(CLK:=Estop.Pos = E_EStop.Activated );
-	IF rtError.Q OR rtEstop.Q THEN
+	//rtEstop(CLK:=Estop.Pos = E_EStop.Activated );
+	IF rtError.Q
+	//OR rtEstop.Q THEN
+	OR DISABLE_Button.press_event THEN //rising edge of disable button
 		Step:=E_DemoStep.Disable;
 	END_IF	
 	
@@ -312,10 +328,12 @@ END_CASE
 
 {region "System Restart"}
 	//In the event of an unrecovrable error, turn the selector switch to the right
+	RestartTimer(IN:= RESET_Button.pressed);
 	TwinCATRestart(
 		NETID:='' , 
-		RESTART:=SelectorSwitch.Pos = E_SelectorSwitchPos.Right);
-		
+//		RESTART:=SelectorSwitch.Pos = E_SelectorSwitchPos.Right);
+		RESTART:=RestartTimer.Q);
+
 {endregion}]]></ST>
     </Implementation>
   </POU>

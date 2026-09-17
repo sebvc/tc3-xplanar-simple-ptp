@@ -14911,11 +14911,6 @@
 			<ProjectVariant PvUseParameter="true" PvUseLink="true" PvUseSimulation="true">
 				<Variant>
 					<Name>Normal</Name>
-					<Simulation Enable="false"/>
-					<BuildConfig>Release|TwinCAT RT (x64)</BuildConfig>
-					<TargetNetId>169.254.221.1.1.1</TargetNetId>
-				</Variant>
-				<Variant>
 					<Name>SimOnIPC</Name>
 					<Name>UMRT</Name>
 					<Simulation Enable="false"/>
@@ -16790,7 +16785,7 @@
 		</Motion>
 		<Plc>
 			<Project GUID="{233169FE-F7A5-4EC4-9427-C86C70D23AE6}" Name="PLC1" PrjFilePath="PLC1\PLC1.plcproj" TmcFilePath="PLC1\PLC1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{6E852639-E21D-1E7E-B66D-2950996563F5}" TmcPath="PLC1\PLC1.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{6E720DE7-0813-8005-92EE-1868DDD33026}" TmcPath="PLC1\PLC1.tmc">
 					<Name>PLC1 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -16915,22 +16910,6 @@
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.SelectorSwitch.IO.Left</Name>
-							<Type>BIT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.SelectorSwitch.IO.Right</Name>
-							<Type>BIT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Estop.IO.ch1</Name>
-							<Type>BIT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Estop.IO.Ch2</Name>
-							<Type>BIT</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.START_Button.actuation_flag</Name>
 							<Comment><![CDATA[ IO-Link process data inputs]]></Comment>
 							<Type>BYTE</Type>
@@ -17001,6 +16980,16 @@
 							<Comment><![CDATA[ license dongle state //UINT;]]></Comment>
 							<Type GUID="{F3F005C2-1027-35E1-C410-3F33C185278E}">E_UsbLicenseDongleSate</Type>
 						</Var>
+						<Var>
+							<Name>MAIN.IODeviceState</Name>
+							<Comment><![CDATA[good is 0;]]></Comment>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.XPlanarDeviceState</Name>
+							<Comment><![CDATA[good is 0;]]></Comment>
+							<Type>UINT</Type>
+						</Var>
 					</Vars>
 					<Contexts>
 						<Context>
@@ -17048,6 +17037,7 @@
 	<Mappings>
 		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030020"/>
 		<MappingInfo Identifier="{00000000-2001-0850-0020-500820000403}" Id="#x02030080"/>
+		<MappingInfo Identifier="{08502001-0030-0304-0020-500830000403}" Id="#x02030090" Watchdog="00000000000000000000000000000000"/>
 		<MappingInfo Identifier="{02010050-0060-0201-5000-010110001105}" Id="#x02030030" Watchdog="20000000040000000400000004000000"/>
 		<MappingInfo Identifier="{02010050-0060-0201-6000-010120001105}" Id="#x02030040" Watchdog="20000000040000000400000004000000"/>
 		<MappingInfo Identifier="{02010060-2001-0850-1000-100500205008}" Id="#x02030010" Watchdog="04000000080000000400000004000000"/>
@@ -17055,8 +17045,14 @@
 		<MappingInfo Identifier="{02010060-2001-0850-2000-120500205008}" Id="#x02030060" Watchdog="04000000080000000400000004000000"/>
 		<MappingInfo Identifier="{02010060-2001-0850-3000-120500205008}" Id="#x02030070" Watchdog="04000000080000000400000004000000"/>
 		<OwnerA Name="TIPC^PLC1^PLC1 Instance">
+			<OwnerB Name="TIID^IO (EtherCAT)">
+				<Link VarA="PlcTask Inputs^MAIN.IODeviceState" VarB="Inputs^DevState"/>
+			</OwnerB>
 			<OwnerB Name="TIID^USB^Box 2 (C9900-L100 License-Key-USB-Stick)">
 				<Link VarA="PlcTask Inputs^MAIN.LicUsbState" VarB="BoxInfo^BoxState"/>
+			</OwnerB>
+			<OwnerB Name="TIID^XPlanar">
+				<Link VarA="PlcTask Inputs^MAIN.XPlanarDeviceState" VarB="Inputs^DevState"/>
 			</OwnerB>
 			<OwnerB Name="TINC^XPlanar MC Project^Axes^Mover4220_1">
 				<Link VarA="PlcTask Inputs^MAIN.Mover1._Mover.MCTOPLC^ACT" VarB="McToPlc^ACT" Size="896"/>
