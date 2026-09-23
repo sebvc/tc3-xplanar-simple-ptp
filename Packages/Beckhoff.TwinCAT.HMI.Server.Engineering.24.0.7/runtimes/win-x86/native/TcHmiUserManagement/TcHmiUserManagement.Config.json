@@ -1,0 +1,271 @@
+{
+  "$schema": "../../TcHmiSrv/schema/ExtensionSettings.Schema.json",
+  "version": "24.0.7.0",
+  "configVersion": "1.0.1.9",
+  "guid": "2E0817F0-DE05-42ED-BAFA-552D96B07127",
+  "visibility": "HideInEngineering",
+  "policies": [
+    "StrictPropertyValidation",
+    "StrictConfigListenerFilter"
+  ],
+  "symbolCategories": [
+    {
+      "name": "__CUSTOM_CONFIG__",
+      "localization": "USERS",
+      "config": true
+    }
+  ],
+  "symbols": {
+    "GetComplexityRules": {
+      "readValue": {
+        "function": true,
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "properties": {
+            "regex": {
+              "type": "string",
+              "format": "regex"
+            },
+            "localizationParameters": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "regex"
+          ]
+        }
+      }
+    },
+    "ListUsers": {
+      "readValue": {
+        "function": true,
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "ListDisabledUsers": {
+      "readValue": {
+        "function": true,
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "RenameUser": {
+      "readValue": {
+        "function": true
+      },
+      "writeValue": {
+        "type": "object",
+        "properties": {
+          "currentUserName": {
+            "type": "string",
+            "description": "Current name of the user."
+          },
+          "newUserName": {
+            "type": "string",
+            "description": "The new name of the user."
+          }
+        },
+        "required": [
+          "currentUserName",
+          "newUserName"
+        ]
+      }
+    },
+    "DisableUser": {
+      "readValue": {
+        "function": true
+      },
+      "writeValue": {
+        "type": "string",
+        "description": "Name of the user."
+      }
+    },
+    "EnableUser": {
+      "readValue": {
+        "function": true
+      },
+      "writeValue": {
+        "type": "string",
+        "description": "Name of the user."
+      }
+    },
+    "RemoveUser": {
+      "readValue": {
+        "function": true
+      },
+      "writeValue": {
+        "type": "string",
+        "description": "Name of the user."
+      }
+    },
+    "AddUser": {
+      "readValue": {
+        "function": true
+      },
+      "writeValue": {
+        "type": "object",
+        "properties": {
+          "userName": {
+            "type": "string",
+            "description": "Name of the user."
+          },
+          "password": {
+            "type": "string",
+            "format": "masked",
+            "description": "Password of the user. Only a hash will be stored."
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Indicates if the user can be used or not."
+          }
+        },
+        "required": [
+          "userName",
+          "password"
+        ]
+      }
+    },
+    "ChangePassword": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "readValue": {
+        "function": true
+      },
+      "writeValue": {
+        "type": "object",
+        "properties": {
+          "currentPassword": {
+            "type": "string",
+            "format": "masked"
+          },
+          "newPassword": {
+            "type": "string",
+            "format": "masked"
+          },
+          "twoFactorToken": {
+            "type": "string",
+            "format": "masked"
+          }
+        }
+      }
+    },
+    "Disable2FA": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "writeValue": {
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string",
+            "format": "masked"
+          },
+          "twoFactorToken": {
+            "type": "string",
+            "format": "masked"
+          }
+        },
+        "required": [
+          "password",
+          "twoFactorToken"
+        ]
+      },
+      "readValue": {
+        "function": true,
+        "type": "boolean"
+      }
+    },
+    "Reset2FA": {
+      "readValue": {
+        "function": true,
+        "type": "boolean"
+      },
+      "writeValue": {
+        "type": "string"
+      }
+    },
+    "Enable2FA": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "readValue": {
+        "function": true,
+        "type": "boolean"
+      },
+      "writeValue": {
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string"
+          },
+          "secret": {
+            "type": "string"
+          },
+          "twoFactorToken": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "password",
+          "secret",
+          "twoFactorToken"
+        ]
+      }
+    },
+    "Get2FAStatus": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "readValue": {
+        "type": "integer",
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "options": [
+          {
+            "value": 0,
+            "label": "2FAEnabled",
+            "description": "2FA is enabled."
+          },
+          {
+            "value": 1,
+            "label": "2FACanBeEnabled",
+            "description": "2FA can be enabled."
+          },
+          {
+            "value": 2,
+            "label": "2FACannotBeEnabled",
+            "description": "2FA cannot be enabled."
+          },
+          {
+            "value": 3,
+            "label": "2FACanBeDisabled",
+            "description": "2FA may be disabled."
+          },
+          {
+            "value": 4,
+            "label": "2FANotRequired",
+            "description": "2FA is enabled but not asked for"
+          }
+        ]
+      }
+    }
+  },
+  "packageVersion": "24.0.7.0",
+  "productVersion": "24.0.7",
+  "signature": "fjgrTprzsLXOcutFNc195zfYdq3yEQjGTq6MlxImM3KhjhpfgYJrYsqGjmlgNmVGicQTPKgSj51pD0E1hqy540YJSXm26MU7+LdMr+5Uy9FLMCTZwaOwLg32BK63qUS7KkJiXZPQBvI6behXSHLyO6pgsPt48rfeYjkd1+qqe3NRKqCHAVR4JhjYBH/t9WaVid7Eh6QQHvPvpACVdcLTZPx9tB+NIUGDqUAg4hBsaLbX9Oq7yRa0l/OwHi1QE83hhzuxikCmq1KUXic5lkgOT0PMW5E6wNHy+ZULkHtTBPUEumgo0m1/kGrDLaU5cXSfFafdXW/P7n3aSRMy0LUG0A=="
+}

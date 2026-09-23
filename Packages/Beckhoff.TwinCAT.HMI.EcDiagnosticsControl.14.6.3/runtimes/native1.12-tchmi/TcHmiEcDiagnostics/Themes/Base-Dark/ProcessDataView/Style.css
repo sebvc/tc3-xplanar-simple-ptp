@@ -1,0 +1,19 @@
+.beckhoff-ec-diagnostics {
+    & .process-data-chart-wrapper {
+        & .current-value {
+            background: rgba(100, 100, 100, 0.9);
+        }
+
+        & .min-value {
+            background: rgba(100, 100, 100, 0.9);
+        }
+
+        & .max-value {
+            background: rgba(100, 100, 100, 0.9);
+        }
+    }
+
+    & .process-data-chart-info {
+        color: var(--main-grayed-out);
+    }
+}

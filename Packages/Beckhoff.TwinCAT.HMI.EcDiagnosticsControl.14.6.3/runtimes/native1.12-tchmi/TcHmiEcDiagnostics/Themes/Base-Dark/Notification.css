@@ -1,0 +1,44 @@
+.beckhoff-ec-diagnostics {
+    & .notifications-wrapper-category {
+        background: #333;
+        border-left-style: solid;
+        border-left-width: 12px;
+        border-left-color: var(--tchmi-highlight-color-1);
+        &::before {
+            background: var(--tchmi-highlight-color-1);
+        }
+    }
+    & .notifications-wrapper-success {
+        border-left-color: var(--tchmi-confirmed-color);
+        &::before {
+            background: var(--tchmi-confirmed-color);
+        }
+    }
+
+    & .notifications-wrapper-error {
+        border-left: 12px solid var(--tchmi-error-color);
+        &::before {
+            background: var(--tchmi-error-color);
+        }
+    }
+
+    & .notifications-wrapper-warning {
+        border-left-color: var(--tchmi-warning-color);
+        &::before {
+            background: var(--tchmi-warning-color);
+        }
+    }
+
+    & .notification-wrapper-v2 {
+        &.level-warning {
+            background: #544900;
+            border: 1px solid #a68a18;
+            & .icon-wrapper {
+                background: #a68a18;
+            }
+        }
+        & .close-btn {
+            color: #dedede;
+        }
+    }
+}

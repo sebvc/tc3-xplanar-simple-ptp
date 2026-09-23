@@ -1,1 +1,0 @@
-export const extensionName="TcHmiEcDiagnostics";export const customElementsPrefix="beckhoff-ec-diagnostics-";customElements.define(`${customElementsPrefix}topmostlayer-wrapper`,class extends HTMLElement{});
