@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Xplanar_HMI</title>
-  <meta name="tchmi-buildtime" content="2026-09-21T13:05:07">
+  <meta name="tchmi-buildtime" content="2026-09-23T16:10:08">
 
   <!-- target-densitydpi=device-dpi -->
   <meta name="viewport" content="width=device-width"><script>
@@ -14,37 +14,37 @@
 	TCHMI_TARGET_PARTIAL = new URL(window.location.href).searchParams.get('TargetPartial') ?? undefined;
 </script><script>TCHMI_NUGET_METADATA = {
   "Beckhoff.TwinCAT.HMI.BaseTemplate": {
-    "version": "14.4.1",
+    "version": "14.6.1",
     "authors": "Beckhoff",
     "title": "BaseTemplate",
     "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides controls for TwinCAT HMI project templates."
   },
   "Beckhoff.TwinCAT.HMI.Controls": {
-    "version": "14.5.1",
+    "version": "14.8.3",
     "authors": "Beckhoff",
     "title": "Controls",
     "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides the controls for the TwinCAT HMI client."
   },
   "Beckhoff.TwinCAT.HMI.EcDiagnostics": {
-    "version": "22.0.7765",
+    "version": "24.0.7",
     "authors": "Beckhoff",
     "title": "EcDiagnostics",
     "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides the extension for the TwinCAT HMI Server to enable the fieldbus diagnostics of EtherCAT topologies in TwinCAT HMI applications."
   },
   "Beckhoff.TwinCAT.HMI.EcDiagnosticsControl": {
-    "version": "14.4.1",
+    "version": "14.6.3",
     "authors": "Beckhoff",
     "title": "EcDiagnosticsControl",
     "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides a control for fieldbus diagnostics of EtherCAT topologies in TwinCAT HMI applications."
   },
   "Beckhoff.TwinCAT.HMI.Framework": {
-    "version": "14.4.5",
+    "version": "14.6.3",
     "authors": "Beckhoff",
     "title": "Framework",
     "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides the client framework for the TwinCAT HMI."
   },
   "Beckhoff.TwinCAT.HMI.Functions": {
-    "version": "14.4.1",
+    "version": "14.6.2",
     "authors": "Beckhoff",
     "title": "Functions",
     "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides functions for use in the \"Actions and Conditions Editor\" and symbol expressions."
@@ -62,7 +62,7 @@
     "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides a control for analysis and charting of TwinCAT Scope data in TwinCAT HMI applications."
   },
   "Beckhoff.TwinCAT.HMI.Server.Engineering": {
-    "version": "22.0.7983",
+    "version": "24.0.7",
     "authors": "Beckhoff",
     "title": "TcHmiSrv",
     "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides the TwinCAT HMI Server for the engineering."
@@ -122,14 +122,17 @@
     "XPlanarView/": "./XPlanarView/",
     "XPlanarView": "./XPlanarView/index.esm.js"
   },
-  "scopes": {}
+  "scopes": {
+    "./Beckhoff.TwinCAT.HMI.Framework/": {
+      "acorn": "./Beckhoff.TwinCAT.HMI.Framework/Lib/acorn/acorn.mjs"
+    }
+  }
 }
 </script>
 
 <script src="/Beckhoff.TwinCAT.HMI.Framework/Lib/tslib.js" defer=""></script>
 <script src="/Beckhoff.TwinCAT.HMI.Framework/Lib/EsHelper.js" defer=""></script>
 <script src="/Beckhoff.TwinCAT.HMI.Framework/Lib/jquery.min.js" defer=""></script>
-<script src="/Beckhoff.TwinCAT.HMI.Framework/Lib/acorn.js" defer=""></script>
 <script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Main.js" type="module"></script>
 <script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Controls/System/TcHmiControl/TcHmiControl.esm.js" type="module"></script>
 <script src="/Beckhoff.TwinCAT.HMI.Framework/dist/index/TcHmi.js" type="module"></script>
@@ -139,6 +142,8 @@
 <script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Controls/System/TcHmiContainer/TcHmiContainer.esm.js" type="module"></script>
 <script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Controls/System/TcHmiContent/TcHmiContent.esm.js" type="module"></script>
 <script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Controls/System/TcHmiGrid/TcHmiGrid.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Controls/System/TcHmiGridContainer/TcHmiGridContainer.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Controls/System/TcHmiFlexContainer/TcHmiFlexContainer.esm.js" type="module"></script>
 <script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Controls/System/TcHmiHtmlHost/TcHmiHtmlHost.esm.js" type="module"></script>
 <script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Controls/System/TcHmiUserControl/TcHmiUserControl.esm.js" type="module"></script>
 <script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Controls/System/TcHmiView/TcHmiView.esm.js" type="module"></script>
@@ -157,6 +162,8 @@
 <script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiDatagrid/TcHmiDatagrid.esm.js" type="module"></script>
 <script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiDateTimeDisplay/TcHmiDateTimeDisplay.esm.js" type="module"></script>
 <script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiDateTimeInput/TcHmiDateTimeInput.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiDateInput/TcHmiDateInput.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiDatePicker/TcHmiDatePicker.esm.js" type="module"></script>
 <script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiDateTimePicker/TcHmiDateTimePicker.esm.js" type="module"></script>
 <script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiEllipse/TcHmiEllipse.esm.js" type="module"></script>
 <script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiEventGrid/TcHmiEventGrid.esm.js" type="module"></script>
@@ -264,6 +271,7 @@
 <script src="/Beckhoff.TwinCAT.HMI.Functions/Wait.js" type="module"></script>
 <script src="/Beckhoff.TwinCAT.HMI.Functions/TcUiClientIsAvailable.js" type="module"></script>
 <script src="/Beckhoff.TwinCAT.HMI.Functions/TcUiClientScreenshot.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/TcUiClientKiosk.js" type="module"></script>
 <script src="/Beckhoff.TwinCAT.HMI.Functions/TeachRecipe.js" type="module"></script>
 <script src="/Beckhoff.TwinCAT.HMI.Functions/ToDateString.js" type="module"></script>
 <script src="/Beckhoff.TwinCAT.HMI.Functions/ToDateTimeString.js" type="module"></script>
@@ -277,145 +285,261 @@
 <script src="/XPlanarView/XPlanarView/XPlanarView.js" defer=""></script>
 </head>
 <body class="tchmi-body-designer">
-	<div id="StartPage" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-height-mode="Value" data-tchmi-creator-viewport-width="1152" data-tchmi-right="0" data-tchmi-bottom="0" data-tchmi-creator-partial-key="/Pages/StartPage.content">
-  <div id="TcHmiTextblock_StartPage_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="32" data-tchmi-height-unit="px" data-tchmi-left="32" data-tchmi-left-unit="px" data-tchmi-text="%l%L_StartPage%/l%" data-tchmi-top="16" data-tchmi-top-unit="px" data-tchmi-width="288" data-tchmi-width-unit="px" data-tchmi-word-wrap="True">
-    <script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
-      [
-      "headline-2"
-      ]
-    </script>
-  </div>
-
-  <div id="TcHmiGrid_StartPage_1" data-tchmi-type="TcHmi.Controls.System.TcHmiGrid" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-top="48" data-tchmi-top-unit="px" data-tchmi-cell-wrap="True" data-tchmi-creator-visibility="Visible" data-tchmi-width-unit="%" data-tchmi-width="100" data-tchmi-bottom="0">
-    <script data-tchmi-target-attribute="data-tchmi-column-options" type="application/json">
-[
-  {
-    "width": 1.0,
-    "widthMode": "Content",
-    "widthUnit": "factor"
-  },
-  {
-    "width": 1.0,
-    "widthMode": "Content",
-    "widthUnit": "factor"
-  },
-  {
-    "width": 1.0,
-    "widthMode": "Value",
-    "widthUnit": "factor"
-  }
-]
-</script>
-    <script data-tchmi-target-attribute="data-tchmi-row-options" type="application/json">
-[
-  {
-    "height": 1.0,
-    "heightMode": "Value",
-    "heightUnit": "factor",
-    "maxHeightUnit": "px",
-    "minHeightUnit": "px",
-    "overflow": false
-  }
-]
-</script>
-
-
-    
-        
+	<div id="Desktop" data-tchmi-type="TcHmi.Controls.System.TcHmiView" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width-unit="%" data-tchmi-width="100" data-tchmi-height-unit="%" data-tchmi-height="100" data-tchmi-background-image-width-unit="%" data-tchmi-background-image-height-unit="%" data-tchmi-background-image-width="100" data-tchmi-background-image-height="100" data-tchmi-creator-viewport-width="1152" data-tchmi-creator-viewport-height="864" data-tchmi-creator-partial-key="/Desktop.view">
   
-<script data-tchmi-target-attribute="data-tchmi-cell-options" type="application/json">
+<div id="Header_Top" data-tchmi-type="TcHmi.Controls.BaseTemplate.TcHmiHeader" data-tchmi-height="80" data-tchmi-left="0" data-tchmi-top="0" data-tchmi-right="0">
+<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">[
+"divider",
+"divider-top"
+]
+</script><script data-tchmi-target-attribute="data-tchmi-header-items" type="application/json">[
+                {
+                    "itemType": "Image",
+                    "priority": "2",
+                    "itemAlign": "Left",
+                    "prefWidth": 288.0,
+                    "prefWidthUnit": "px",
+                    "prefHeight": 95.0,
+                    "prefHeightUnit": "px",
+                    "minWidth": 128.0,
+                    "minWidthUnit": "px",
+                    "classList": [],
+                    "accessRights": [],
+                    "image": "Images/Beckhoff_Logo.svg",
+                    "altText": "Beckhoff",
+                    "targetRegion": "%ctrl%Region_Center%/ctrl%",
+                    "targetContent": "Pages/StartPage.content"
+                },
+                {
+                    "itemType": "Text",
+                    "priority": "1",
+                    "itemAlign": "Left",
+                    "prefWidth": 288.0,
+                    "prefWidthUnit": "px",
+                    "prefHeight": 95.0,
+                    "prefHeightUnit": "px",
+                    "minWidth": 128.0,
+                    "minWidthUnit": "px",
+                    "classList": [],
+                    "accessRights": [],
+                    "text": "Xplanar-HMI"
+                },
+                {
+                    "itemType": "EventLine",
+                    "priority": "5",
+                    "itemAlign": "Right",
+                    "prefWidth": 800.0,
+                    "prefWidthUnit": "px",
+                    "prefHeight": 48.0,
+                    "prefHeightUnit": "px",
+                    "minWidth": 288.0,
+                    "minWidthUnit": "px",
+                    "classList": [],
+                    "accessRights": [],
+                    "messageFormat": [
+                        {
+                            "name": "timeRaised"
+                        },
+                        {
+                            "text": " | "
+                        },
+                        {
+                            "name": "domain"
+                        },
+                        {
+                            "text": " | "
+                        },
+                        {
+                            "name": "text"
+                        }
+                    ],
+                    "filter": [
+                        {
+                            "path": "domain",
+                            "comparator": "==",
+                            "value": "TcHmiEventLogger"
+                        },
+                        {
+                            "logic": "OR"
+                        },
+                        {
+                            "path": "domain",
+                            "comparator": "==",
+                            "value": "TcHmiAlarm"
+                        }
+                    ]
+                    ,
+                    "targetRegion": "%ctrl%Region_Center%/ctrl%",
+                    "targetContent": "Pages/Events.content"
+                
+                },
+                {
+                    "itemType": "AdsState",
+                    "priority": "3",
+                    "itemAlign": "Right",
+                    "prefWidth": 160.0,
+                    "prefWidthUnit": "px",
+                    "prefHeight": 48.0,
+                    "prefHeightUnit": "px",
+                    "minWidth": 48.0,
+                    "minWidthUnit": "px",
+                    "classList": [],
+                    "accessRights": [],
+                    "adsRuntime": "TcSysService",
+                    "iconWidth": 48,
+                    "iconWidthUnit": "px",
+                    "text": "TwinCAT",
+                    "textPosition": "Left",
+                    "serverInterval": 1000,
+                    "serverDomain": "ADS",
+                    "stateImages": {
+                        "Fallback": "%tr%TwinCAT_Fallback%/tr%",
+                        "Run": "%tr%TwinCAT_Run%/tr%",
+                        "Stop": "%tr%TwinCAT_Stop%/tr%",
+                        "Config": "%tr%TwinCAT_Config%/tr%",
+                        "Exception": "%tr%TwinCAT_Exception%/tr%"
+                    }
+                },
+                {
+                    "itemType": "AdsState",
+                    "priority": "3",
+                    "itemAlign": "Right",
+                    "prefWidth": 160.0,
+                    "prefWidthUnit": "px",
+                    "prefHeight": 48.0,
+                    "prefHeightUnit": "px",
+                    "minWidth": 48.0,
+                    "minWidthUnit": "px",
+                    "classList": [],
+                    "accessRights": [],
+                    "adsRuntime": "PLC1",
+                    "iconWidth": 48,
+                    "iconWidthUnit": "px",
+                    "text": "PLC",
+                    "textPosition": "Left",
+                    "serverInterval": 1000,
+                    "serverDomain": "ADS",
+                    "stateImages": {
+                        "Fallback": "%tr%PLC_Fallback%/tr%",
+                        "Run": "%tr%PLC_Run%/tr%",
+                        "Stop": "%tr%PLC_Stop%/tr%",
+                        "Config": "%tr%PLC_Config%/tr%",
+                        "Exception": "%tr%PLC_Exception%/tr%"
+                    }
+                },
+                {
+                    "itemType": "UserManagement",
+                    "priority": "3",
+                    "itemAlign": "Right",
+                    "prefWidth": 288.0,
+                    "prefWidthUnit": "px",
+                    "prefHeight": 48.0,
+                    "prefHeightUnit": "px",
+                    "minWidth": 176.0,
+                    "minWidthUnit": "px",
+                    "classList": [],
+                    "accessRights": [],
+                    "allowLogout": true,
+                    "allowSwitchUser": false
+                },
+                {
+                    "itemType": "Time",
+                    "priority": "4",
+                    "itemAlign": "Right",
+                    "prefWidth": 128.0,
+                    "prefWidthUnit": "px",
+                    "prefHeight": 48.0,
+                    "prefHeightUnit": "px",
+                    "minWidth": 96.0,
+                    "minWidthUnit": "px",
+                    "classList": [],
+                    "accessRights": [],
+                    "timeDisplayLayout": "TimeDateMultiLine"
+                }
+            ]</script></div><div id="Accordion_Navigation_Right" data-tchmi-type="TcHmi.Controls.BaseTemplate.TcHmiAccordionNavigation" data-tchmi-width="320" data-tchmi-top="%ctrl%Header_Top::Height%/ctrl%" data-tchmi-bottom="0" data-tchmi-right="0" data-tchmi-target-region="%ctrl%Region_Center%/ctrl%" data-tchmi-show-back-button="true" data-tchmi-close-when-clicked="False">
+
+<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">[
+"divider",
+"divider-right"
+]
+</script><script data-tchmi-target-attribute="data-tchmi-navigation-items" type="application/json">
 [
   {
-    "columnIndex": 2,
-    "padding": {
-      "left": 0,
-      "right": 16,
-      "top": 16,
-      "bottom": 16,
-      "leftUnit": "px",
-      "rightUnit": "px",
-      "topUnit": "px",
-      "bottomUnit": "px"
-    },
-    "rowIndex": 0
+    "content": "Pages/StartPage.content",
+    "icon": "%tr%TR_Icon_StartPage_normal%/tr%",
+    "iconActive": "%tr%TR_Icon_StartPage_active%/tr%",
+    "iconPressed": "%tr%TR_Icon_StartPage_pressed%/tr%",
+    "id": "Start Page",
+    "name": "%l%L_StartPage%/l%"
   },
   {
-    "columnIndex": 1,
-    "padding": {
-      "left": 0,
-      "right": 16,
-      "top": 16,
-      "bottom": 16,
-      "leftUnit": "px",
-      "rightUnit": "px",
-      "topUnit": "px",
-      "bottomUnit": "px"
-    },
-    "rowIndex": 0
+    "content": "Pages/Visualization.content",
+    "icon": "%tr%TR_Icon_Visualization_normal%/tr%",
+    "iconActive": "%tr%TR_Icon_Visualization_active%/tr%",
+    "iconPressed": "%tr%TR_Icon_Visualization_pressed%/tr%",
+    "id": "Visualization",
+    "name": "%l%L_Visualization%/l%"
   },
   {
-    "columnIndex": 0,
-    "padding": {
-      "left": 16,
-      "right": 16,
-      "top": 16,
-      "bottom": 16,
-      "leftUnit": "px",
-      "rightUnit": "px",
-      "topUnit": "px",
-      "bottomUnit": "px"
-    },
-    "rowIndex": 0
-  }
-]
-</script>
-<div id="XPlanarView_2" data-tchmi-type="TcHmi.Controls.XPlanarView.XPlanarView" data-tchmi-tile-config="%s%ADS.PLC1.XPlanarHMI.TileObjects%/s%" data-tchmi-mover-info="%s%ADS.PLC1.XPlanarHMI.MoverObjects%/s%" data-tchmi-mover-vector-data="%s%ADS.PLC1.XPlanarHMI.MoverPositions%/s%" data-tchmi-rotate="False" data-tchmi-use-mover-image="True" data-tchmi-scale-to-fit="True" data-tchmi-display-mover-btn="False" data-tchmi-smooth-motion="True" data-tchmi-grid-column-index="0" data-tchmi-height-mode="Value" data-tchmi-width-mode="Value" data-tchmi-opacity="1" data-tchmi-width="%f%%ctrl%TcHmiGrid_StartPage_1::RenderedHeight%/ctrl%/2-16%/f%" data-tchmi-width-unit="px" data-tchmi-height-unit="%" data-tchmi-height="100">
-
-
-
-
-
-
-
-
-
-
-
-
-<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
-{
-  "color": "rgba(255, 0, 0, 1)"
-}
-</script>
-</div>
-<div id="TcHmiScopeControl_XY_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiScopeControl.TcHmiScopeControl" data-tchmi-enable-record-controls="False" data-tchmi-enable-show-trigger-window="False" data-tchmi-server-interval="100" data-tchmi-chart-color-source="Theme" data-tchmi-trigger-window-position="Left" data-tchmi-autostart-record="True" data-tchmi-creator-visibility="Visible" data-tchmi-grid-column-index="1" data-tchmi-height-mode="Value" data-tchmi-width-mode="Value" data-tchmi-opacity="1" data-tchmi-width="%f%%ctrl%TcHmiGrid_StartPage_1::RenderedHeight%/ctrl%/2%/f%" data-tchmi-height-unit="%" data-tchmi-height="100">
-<script data-tchmi-target-attribute="data-tchmi-scope-config" type="application/json">
-{
-  "name": "Xplanar-Scope",
-  "chart": "XY Chart"
-}
-</script>
-        
-
-
-
-
-
-
-
-</div>
-<div id="TcHmiVideo_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiVideo" data-tchmi-controls="True" data-tchmi-mute="True" data-tchmi-autoplay="True" data-tchmi-loop="True" data-tchmi-poster="Images/Media/XPlanar_PC_based_kv.jpg" data-tchmi-width-mode="Value" data-tchmi-height-mode="Value" data-tchmi-height="100" data-tchmi-height-unit="%" data-tchmi-width="100" data-tchmi-width-unit="%" data-tchmi-left="0" data-tchmi-top="0" data-tchmi-grid-row-index="0" data-tchmi-grid-column-index="2">
-<script data-tchmi-target-attribute="data-tchmi-src-list" type="application/json">
-[
+    "content": "Pages/Scope.content",
+    "icon": "%tr%TR_Icon_Scope_normal%/tr%",
+    "iconActive": "%tr%TR_Icon_Scope_active%/tr%",
+    "iconPressed": "%tr%TR_Icon_Scope_pressed%/tr%",
+    "id": "TwinCATScope",
+    "name": "%l%L_TwinCATScope%/l%"
+  },
   {
-    "source": "Images/Media/IO_production_testing_machine_XPlanar.mp4"
+    "content": "Pages/EtherCATDiagnostics.content",
+    "icon": "%tr%TR_Icon_EtherCATDiagnostics_normal%/tr%",
+    "iconActive": "%tr%TR_Icon_EtherCATDiagnostics_active%/tr%",
+    "iconPressed": "%tr%TR_Icon_EtherCATDiagnostics_pressed%/tr%",
+    "iconWidth": 96.0,
+    "id": "Diagnostics",
+    "name": "%l%L_Diagnostics%/l%"
+  },
+  {
+    "content": "Pages/Events.content",
+    "icon": "%tr%TR_Icon_Events_normal%/tr%",
+    "iconActive": "%tr%TR_Icon_Events_active%/tr%",
+    "iconPressed": "%tr%TR_Icon_Events_pressed%/tr%",
+    "id": "Events",
+    "name": "%l%L_Events%/l%"
+  },
+  {
+    "content": "Pages/Settings.content",
+    "icon": "%tr%TR_Icon_Settings_normal%/tr%",
+    "iconActive": "%tr%TR_Icon_Settings_active%/tr%",
+    "iconPressed": "%tr%TR_Icon_Settings_pressed%/tr%",
+    "id": "Settings",
+    "name": "%l%L_Settings%/l%"
   }
 ]
-</script>
+</script></div><div id="Region_Center" data-tchmi-type="TcHmi.Controls.System.TcHmiRegion" data-tchmi-left="0" data-tchmi-top="%ctrl%Header_Top::Height%/ctrl%" data-tchmi-scrolling="Yes" data-tchmi-bottom="0" data-tchmi-right="%ctrl%Accordion_Navigation_Right::Width%/ctrl%">
 
-
-</div>
-</div>
-</div>
+<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json"></script></div><script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[ 
+                {   
+                    "event": "%ctx%owner::RenderedWidth%/ctx%", 
+                    "actions": [ 
+                        {  
+                            "objectType": "Function",
+                            "active": true,  
+                            "fn":  "TcHmiResponsiveBehaviour", 
+                            "fnParams": [ 
+                                {  
+                                    "objectType": "Symbol",  
+                                    "valueType":  "tchmi:general#/definitions/String",  
+                                    "symbolExpression":  "%i%MediaQueryList%/i%" 
+                                }, 
+                                {  
+                                    "objectType": "Symbol", 
+                                    "valueType": "tchmi:general#/definitions/String", 
+                                    "symbolExpression": "%i%AffectedControls%/i%" 
+                                }
+                            ], 
+                            "asyncWait": true 
+                        } 
+                    ] 
+                } 
+            ]</script></div>
 </body>
 </html>
