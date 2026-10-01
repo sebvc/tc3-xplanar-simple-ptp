@@ -6127,10 +6127,10 @@
                                                             },
                                                             "ticks": {
                                                                 "dimensions": {
-                                                                    "$ref": "#/definitions/dimensions"
+                                                                    "$ref": "tchmi:server#/definitions/TcHmiScope-dimensions"
                                                                 },
                                                                 "position": {
-                                                                    "$ref": "#/definitions/position"
+                                                                    "$ref": "tchmi:server#/definitions/TcHmiScope-position"
                                                                 },
                                                                 "type": "number"
                                                             },
@@ -6834,10 +6834,10 @@
                     },
                     "overviewRect": {
                         "dimensions": {
-                            "$ref": "#/definitions/dimensions"
+                            "$ref": "tchmi:server#/definitions/TcHmiScope-dimensions"
                         },
                         "position": {
-                            "$ref": "#/definitions/position"
+                            "$ref": "tchmi:server#/definitions/TcHmiScope-position"
                         }
                     },
                     "redo": {

@@ -18,7 +18,7 @@
     <div id="TcHmiEcDiagnostics_EtherCATDiagnostics_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEcDiagnostics" data-tchmi-allow-zoom-and-pan="true" data-tchmi-device="XPlanar" data-tchmi-left="16" data-tchmi-left-unit="px" data-tchmi-toolbox-reset-view="true" data-tchmi-top="16" data-tchmi-top-unit="px" data-tchmi-right="16" data-tchmi-bottom="16">
     </div>
   </div>
-<div id="TcHmiToggleSwitch_EtherCatDiag" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiToggleSwitch" data-tchmi-height="40" data-tchmi-height-unit="px" data-tchmi-text="Change EtherCAT Device" data-tchmi-top="16" data-tchmi-top-unit="px" data-tchmi-text-horizontal-alignment="Right" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-position="Left" data-tchmi-right="32" data-tchmi-is-enabled="False" data-tchmi-toggle-state="Normal">
+<div id="TcHmiToggleSwitch_EtherCatDiag" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiToggleSwitch" data-tchmi-height="40" data-tchmi-height-unit="px" data-tchmi-text="Change EtherCAT Device" data-tchmi-top="16" data-tchmi-top-unit="px" data-tchmi-text-horizontal-alignment="Right" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-position="Left" data-tchmi-right="32" data-tchmi-is-enabled="True" data-tchmi-toggle-state="Normal">
 
 <script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
 [
@@ -33,14 +33,13 @@
             "if": [
               {
                 "compare1": {
-                  "objectType": "Symbol",
-                  "valueType": "tchmi:general#/definitions/String",
-                  "symbolExpression": "%f%%ctx%owner::ToggleState%/ctx%\n%/f%"
+                  "objectType": "FunctionExpression",
+                  "functionExpression": "%ctx%owner::ToggleState%/ctx%"
                 },
                 "compare2": {
                   "objectType": "StaticValue",
-                  "valueType": "tchmi:general#/definitions/String",
-                  "value": null
+                  "valueType": "tchmi:framework#/definitions/ToggleState",
+                  "value": "Normal"
                 },
                 "compareOperator": "==",
                 "logic": null
