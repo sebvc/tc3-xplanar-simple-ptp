@@ -6990,14 +6990,21 @@
 				</ProjectVariant>
 			</Settings>
 			<Licenses>
-				<Target>
+				<Target BkhfOrder="XplanarDemo" CustomOrder="BALA">
+					<CustomComment><![CDATA[2-Tile XPlanar Demo License Dongle with Scope and HMI]]></CustomComment>
+					<ManualSelect>{8161723B-0C2E-405C-B829-EDC5DAAB5104}</ManualSelect>
+					<ManualSelect>{4989A799-AEEA-4FEE-88EF-666B99EEFB45}</ManualSelect>
+					<ManualSelect>{1C20D4D8-C732-464D-AF34-6EA5D2180E06}</ManualSelect>
 					<ManualSelect>{27326EE5-AB30-4084-B15B-8CCA96CCBF0B}</ManualSelect>
 					<TargetSelect TargetId="2">{796D380F-D49E-4C0C-A05F-500052FAC883}</TargetSelect>
 					<TargetSelect TargetId="2">{C362DA3A-1771-4019-9AF9-F39972E4A76D}</TargetSelect>
+					<TargetSelect TargetId="2">{8161723B-0C2E-405C-B829-EDC5DAAB5104}</TargetSelect>
 					<TargetSelect TargetId="2">{520DE751-9DB6-47CB-8240-BD5C466E7E64}</TargetSelect>
 					<TargetSelect TargetId="2">{66689887-CCBD-452C-AC9A-039D997C6E66}</TargetSelect>
+					<TargetSelect TargetId="2">{4989A799-AEEA-4FEE-88EF-666B99EEFB45}</TargetSelect>
+					<TargetSelect TargetId="2">{1C20D4D8-C732-464D-AF34-6EA5D2180E06}</TargetSelect>
 					<TargetSelect TargetId="2">{27326EE5-AB30-4084-B15B-8CCA96CCBF0B}</TargetSelect>
-					<LicenseDevice DongleHardwareId="2" DongleDevice="#x03020007" DongleLevel="90" DongleSerialNumber="000bs99i" DongleCacheLicense="true">
+					<LicenseDevice DongleHardwareId="2" DongleDevice="#x03020007" DongleLevel="94" DongleSystemId="{32D2F285-F6B4-F761-CB01-406A81BCDF13}" DongleSerialNumber="000bs99i" DongleCacheLicense="true">
 						<ProjectVariant PvUseDisable="true">
 							<Variant>
 								<Name>Normal</Name>
@@ -7020,6 +7027,9 @@
 						<Name>UMRT</Name>
 						<Parameters>
 							<ManualSelect>
+								<Lic>{8161723B-0C2E-405C-B829-EDC5DAAB5104}</Lic>
+								<Lic>{4989A799-AEEA-4FEE-88EF-666B99EEFB45}</Lic>
+								<Lic>{1C20D4D8-C732-464D-AF34-6EA5D2180E06}</Lic>
 								<Lic>{27326EE5-AB30-4084-B15B-8CCA96CCBF0B}</Lic>
 							</ManualSelect>
 						</Parameters>
@@ -14915,8 +14925,8 @@
 					<Name>SimOnLaptop_Local</Name>
 					<Name>UMRT</Name>
 					<Simulation Enable="false"/>
-					<BuildConfig>Release|TwinCAT RT (x64)</BuildConfig>
 					<TargetNetId>169.254.221.1.1.1</TargetNetId>
+					<BuildConfig>Release|TwinCAT RT (x64)</BuildConfig>
 				</Variant>
 			</ProjectVariant>
 		</System>

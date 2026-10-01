@@ -1,0 +1,71 @@
+<div
+  id="AdsXarPopUp"
+  data-tchmi-type="TcHmi.Controls.System.TcHmiContent"
+  data-tchmi-top="0"
+  data-tchmi-left="0"
+
+
+ data-tchmi-creator-viewport-width="1024" data-tchmi-creator-viewport-height="1024" data-tchmi-width-mode="Value" data-tchmi-height-mode="Value" data-tchmi-width="100" data-tchmi-height="100" data-tchmi-width-unit="%" data-tchmi-height-unit="%"><div id="TcHmiFlexContainer_1" data-tchmi-type="TcHmi.Controls.System.TcHmiFlexContainer" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-top="5" data-tchmi-top-unit="px" data-tchmi-right="5" data-tchmi-bottom="5" data-tchmi-height-mode="Value" data-tchmi-width-mode="Value">
+<div id="TcHmiTextblock_18" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-text="Are you sure you want to toggle the IPC between RUN and CONFIG mode?" data-tchmi-word-wrap="True" data-tchmi-height-mode="Value" data-tchmi-width-mode="Value" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-font-size="120" data-tchmi-text-font-size-unit="%" data-tchmi-width="100" data-tchmi-height="100">
+
+<script data-tchmi-target-attribute="data-tchmi-flex-item-layout" type="application/json">
+{
+  "alignSelf": "Center",
+  "flex": "1 1 auto"
+}
+</script>
+</div>
+<div id="Header_Top_2" data-tchmi-type="TcHmi.Controls.BaseTemplate.TcHmiHeader" data-tchmi-expandable="False" data-tchmi-left="0" data-tchmi-top="0" data-tchmi-right="0" data-tchmi-bottom="0" data-tchmi-height="80" data-tchmi-width="500" data-tchmi-width-unit="px">
+<script data-tchmi-target-attribute="data-tchmi-header-items" type="application/json">
+[
+  {
+    "accessRights": [],
+    "adsRuntime": "TcSysService",
+    "classList": [],
+    "iconWidth": 50.0,
+    "iconWidthUnit": "%",
+    "itemAlign": "Left",
+    "itemType": "AdsState",
+    "minWidth": 50.0,
+    "minWidthUnit": "%",
+    "prefHeight": 200.0,
+    "prefHeightUnit": "px",
+    "prefWidth": 50.0,
+    "prefWidthUnit": "%",
+    "priority": "1",
+    "serverDomain": "ADS",
+    "serverInterval": 1000,
+    "stateImages": {
+      "Config": "%tr%TwinCAT_Config%/tr%",
+      "Exception": "%tr%TwinCAT_Exception%/tr%",
+      "Fallback": "%tr%TwinCAT_Fallback%/tr%",
+      "Run": "%tr%TwinCAT_Run%/tr%",
+      "Stop": "%tr%TwinCAT_Stop%/tr%"
+    },
+    "text": "TwinCAT",
+    "textPosition": "Right"
+  }
+]
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-flex-item-layout" type="application/json">
+{
+  "alignSelf": "Center",
+  "flex": "2 1 auto"
+}
+</script>
+</div>
+
+<script data-tchmi-target-attribute="data-tchmi-flex-layout" type="application/json">
+{
+  "alignContent": "Flex-Start",
+  "alignItems": "Flex-Start",
+  "flexDirection": "Column",
+  "flexWrap": "Wrap",
+  "justifyContent": "Flex-Start",
+  "overflowY": "Auto"
+}
+</script>
+</div>
+</div>

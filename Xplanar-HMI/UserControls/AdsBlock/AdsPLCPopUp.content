@@ -1,0 +1,73 @@
+<div
+  id="AdsXarPopUp_1"
+  data-tchmi-type="TcHmi.Controls.System.TcHmiContent"
+  data-tchmi-top="0"
+  data-tchmi-left="0"
+  data-tchmi-width="800"
+  data-tchmi-height="640"
+><div id="Header_Top_1" data-tchmi-type="TcHmi.Controls.BaseTemplate.TcHmiHeader" data-tchmi-height="150" data-tchmi-left="0" data-tchmi-top="0" data-tchmi-right="0" data-tchmi-expandable="False">
+<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">[
+"divider",
+"divider-top"
+]
+</script><script data-tchmi-target-attribute="data-tchmi-header-items" type="application/json">
+[
+  {
+    "accessRights": [],
+    "adsRuntime": "TcSysService",
+    "classList": [],
+    "iconWidth": 48,
+    "iconWidthUnit": "px",
+    "itemAlign": "Left",
+    "itemType": "AdsState",
+    "minWidth": 48.0,
+    "minWidthUnit": "px",
+    "prefHeight": 48.0,
+    "prefHeightUnit": "px",
+    "prefWidth": 160.0,
+    "prefWidthUnit": "px",
+    "priority": "3",
+    "serverDomain": "ADS",
+    "serverInterval": 1000,
+    "stateImages": {
+      "Fallback": "%tr%TwinCAT_Fallback%/tr%",
+      "Run": "%tr%TwinCAT_Run%/tr%",
+      "Stop": "%tr%TwinCAT_Stop%/tr%",
+      "Config": "%tr%TwinCAT_Config%/tr%",
+      "Exception": "%tr%TwinCAT_Exception%/tr%"
+    },
+    "text": "TwinCAT XAR",
+    "textPosition": "Right"
+  },
+  {
+    "accessRights": [],
+    "adsRuntime": "PLC1",
+    "classList": [],
+    "iconWidth": 48,
+    "iconWidthUnit": "px",
+    "itemAlign": "Left",
+    "itemType": "AdsState",
+    "minWidth": 48.0,
+    "minWidthUnit": "px",
+    "prefHeight": 48.0,
+    "prefHeightUnit": "px",
+    "prefWidth": 160.0,
+    "prefWidthUnit": "px",
+    "priority": "3",
+    "serverDomain": "ADS",
+    "serverInterval": 1000,
+    "stateImages": {
+      "Fallback": "%tr%PLC_Fallback%/tr%",
+      "Run": "%tr%PLC_Run%/tr%",
+      "Stop": "%tr%PLC_Stop%/tr%",
+      "Config": "%tr%PLC_Config%/tr%",
+      "Exception": "%tr%PLC_Exception%/tr%"
+    },
+    "text": "PLC",
+    "textPosition": "Right"
+  }
+]
+</script>
+
+</div>
+</div>

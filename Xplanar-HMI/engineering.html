@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Xplanar_HMI</title>
-  <meta name="tchmi-buildtime" content="2026-09-23T16:10:08">
+  <meta name="tchmi-buildtime" content="2026-10-01T03:18:48">
 
   <!-- target-densitydpi=device-dpi -->
   <meta name="viewport" content="width=device-width"><script>
@@ -14,46 +14,46 @@
 	TCHMI_TARGET_PARTIAL = new URL(window.location.href).searchParams.get('TargetPartial') ?? undefined;
 </script><script>TCHMI_NUGET_METADATA = {
   "Beckhoff.TwinCAT.HMI.BaseTemplate": {
-    "version": "14.6.1",
+    "version": "14.7.4",
     "authors": "Beckhoff",
     "title": "BaseTemplate",
     "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides controls for TwinCAT HMI project templates."
   },
   "Beckhoff.TwinCAT.HMI.Controls": {
-    "version": "14.8.3",
+    "version": "14.9.10",
     "authors": "Beckhoff",
     "title": "Controls",
     "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides the controls for the TwinCAT HMI client."
   },
   "Beckhoff.TwinCAT.HMI.EcDiagnostics": {
-    "version": "24.0.7",
-    "authors": "Beckhoff",
-    "title": "EcDiagnostics",
-    "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides the extension for the TwinCAT HMI Server to enable the fieldbus diagnostics of EtherCAT topologies in TwinCAT HMI applications."
+    "version": "25.0.122",
+    "authors": "",
+    "title": "",
+    "description": ""
   },
   "Beckhoff.TwinCAT.HMI.EcDiagnosticsControl": {
-    "version": "14.6.3",
+    "version": "14.7.11",
     "authors": "Beckhoff",
     "title": "EcDiagnosticsControl",
     "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides a control for fieldbus diagnostics of EtherCAT topologies in TwinCAT HMI applications."
   },
   "Beckhoff.TwinCAT.HMI.Framework": {
-    "version": "14.6.3",
+    "version": "14.7.23",
     "authors": "Beckhoff",
     "title": "Framework",
     "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides the client framework for the TwinCAT HMI."
   },
   "Beckhoff.TwinCAT.HMI.Functions": {
-    "version": "14.6.2",
+    "version": "14.7.3",
     "authors": "Beckhoff",
     "title": "Functions",
     "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides functions for use in the \"Actions and Conditions Editor\" and symbol expressions."
   },
   "Beckhoff.TwinCAT.HMI.Scope": {
     "version": "14.2.7758",
-    "authors": "Beckhoff",
-    "title": "Scope Extension",
-    "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides the extension for the TwinCAT HMI Server to enable TwinCAT Scope support for analysis and charting in TwinCAT HMI applications."
+    "authors": "",
+    "title": "",
+    "description": ""
   },
   "Beckhoff.TwinCAT.HMI.ScopeControl": {
     "version": "14.4.1",
@@ -62,16 +62,16 @@
     "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides a control for analysis and charting of TwinCAT Scope data in TwinCAT HMI applications."
   },
   "Beckhoff.TwinCAT.HMI.Server.Engineering": {
-    "version": "24.0.7",
-    "authors": "Beckhoff",
-    "title": "TcHmiSrv",
-    "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides the TwinCAT HMI Server for the engineering."
+    "version": "25.0.122",
+    "authors": "",
+    "title": "",
+    "description": ""
   },
   "Microsoft.TypeScript.MSBuild": {
     "version": "5.9.2",
-    "authors": "Microsoft",
-    "title": "Microsoft.TypeScript.MSBuild",
-    "description": "The TypeScript MSBuild task, and matching compiler version."
+    "authors": "",
+    "title": "",
+    "description": ""
   },
   "XPlanarView": {
     "version": "1.2.3",
@@ -220,6 +220,7 @@
 <script src="/Beckhoff.TwinCAT.HMI.BaseTemplate/dist/TcHmiNavigation/TcHmiNavigation.esm.js" type="module"></script>
 <script src="/Beckhoff.TwinCAT.HMI.BaseTemplate/dist/TcHmiResponsiveBehaviour/TcHmiResponsiveBehaviour.esm.js" type="module"></script>
 <script src="/Beckhoff.TwinCAT.HMI.EcDiagnosticsControl/dist/TcHmiEcDiagnostics/TcHmiEcDiagnostics.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.EcDiagnosticsControl/dist/TcHmiEcSlave/TcHmiEcSlave.esm.js" type="module"></script>
 <script src="/Beckhoff.TwinCAT.HMI.Functions/ActivateRecipe.js" type="module"></script>
 <script src="/Beckhoff.TwinCAT.HMI.Functions/BigIntToNumber.js" type="module"></script>
 <script src="/Beckhoff.TwinCAT.HMI.Functions/CheckAccess.js" type="module"></script>
@@ -287,7 +288,7 @@
 <body class="tchmi-body-designer">
 	<div id="Desktop" data-tchmi-type="TcHmi.Controls.System.TcHmiView" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width-unit="%" data-tchmi-width="100" data-tchmi-height-unit="%" data-tchmi-height="100" data-tchmi-background-image-width-unit="%" data-tchmi-background-image-height-unit="%" data-tchmi-background-image-width="100" data-tchmi-background-image-height="100" data-tchmi-creator-viewport-width="1152" data-tchmi-creator-viewport-height="864" data-tchmi-creator-partial-key="/Desktop.view">
   
-<div id="Header_Top" data-tchmi-type="TcHmi.Controls.BaseTemplate.TcHmiHeader" data-tchmi-height="80" data-tchmi-left="0" data-tchmi-top="0" data-tchmi-right="0">
+<div id="Header_Top" data-tchmi-type="TcHmi.Controls.BaseTemplate.TcHmiHeader" data-tchmi-height="80" data-tchmi-left="0" data-tchmi-top="0" data-tchmi-right="0" data-tchmi-expandable="True">
 <script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">[
 "divider",
 "divider-top"

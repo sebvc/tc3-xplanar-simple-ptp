@@ -1,0 +1,64 @@
+.beckhoff-ec-diagnostics {
+    & .notifications-wrapper {
+        position: absolute;
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+    }
+    & .notifications-wrapper-category {
+        gap: 2px;
+        width: 100%;
+        height: auto;
+        display: flex;
+        padding: 15px;
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            transform-origin: left;
+        }
+        &.disappearing::before {
+            animation: TcHmiEcDiagnosticsDisappearBorder 3s linear forwards;
+        }
+    }
+    & .flex-col {
+        flex-direction: column;
+    }
+
+    & .notification-wrapper-v2 {
+        margin: 10px 0px;
+        white-space: break-spaces;
+        display: grid;
+        grid-template-columns: 29px 1fr 14px;
+        padding-right: 5px;
+        & .icon-wrapper {
+            padding: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        & .msg {
+            padding: 10px;
+        }
+        & .close-btn {
+            width: 14px;
+            margin-top: 10px;
+            margin-right: 5px;
+        }
+    }
+}
+@keyframes TcHmiEcDiagnosticsDisappearBorder {
+    from {
+        transform: scaleX(1);
+    }
+
+    to {
+        transform: scaleX(0);
+    }
+}

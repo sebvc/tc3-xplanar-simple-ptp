@@ -1,0 +1,1 @@
+import{Log,TopMostLayer}from"Beckhoff.TwinCAT.HMI.Framework/index.esm.js";import{setFrameworkCore}from"../Common/FrameworkCore.js";setFrameworkCore({log:{errorEx:Log.errorEx,warnEx:Log.warnEx,infoEx:Log.infoEx},topMostLayer:{addEx:TopMostLayer.addEx,removeEx:TopMostLayer.removeEx}});

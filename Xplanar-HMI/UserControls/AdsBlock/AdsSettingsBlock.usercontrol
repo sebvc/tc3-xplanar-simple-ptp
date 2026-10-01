@@ -1,0 +1,275 @@
+<div
+  id="UserControl1"
+  data-tchmi-type="TcHmi.Controls.System.TcHmiUserControl"
+  data-tchmi-top="0"
+  data-tchmi-left="0"
+  data-tchmi-width="100"
+  data-tchmi-height="100"
+  data-tchmi-width-unit="%"
+  data-tchmi-height-unit="%"
+  data-tchmi-creator-viewport-width="500"
+  data-tchmi-creator-viewport-height="500"
+><div id="TcHmiGridContainer_Settings_ADS" data-tchmi-type="TcHmi.Controls.System.TcHmiGridContainer" data-tchmi-grid-column-index="0" data-tchmi-grid-row-index="2" data-tchmi-left="10" data-tchmi-left-unit="px" data-tchmi-top="10" data-tchmi-top-unit="px" data-tchmi-right="10" data-tchmi-bottom="10">
+<div id="TcHmiTextblock_Settings_XarAdsState_Title" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-text="%l%L_AdsState%/l%" data-tchmi-word-wrap="True" data-tchmi-left="0" data-tchmi-top="0" data-tchmi-right="0" data-tchmi-bottom="0" data-tchmi-height="26" data-tchmi-height-mode="Content">
+<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
+          [
+          "headline-3"
+          ]
+        </script>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-grid-item-layout" type="application/json">
+{
+  "alignSelf": "Start",
+  "justifySelf": "Stretch"
+}
+</script>
+</div>
+<div id="TcHmiTextblock_Settings_XarAdsState_Desc" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-text="%l%L_AdsState_Description%/l%" data-tchmi-word-wrap="True" data-tchmi-left="0" data-tchmi-right="0" data-tchmi-top="0" data-tchmi-bottom="0" data-tchmi-height-mode="Content" data-tchmi-height="26" data-tchmi-visibility="Collapsed">
+<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
+          [
+          "headline-3"
+          ]
+        </script>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-grid-item-layout" type="application/json">
+{
+  "alignSelf": "End",
+  "justifySelf": "Stretch"
+}
+</script>
+</div>
+<div id="TcHmiGridContainer_AdsIcons" data-tchmi-type="TcHmi.Controls.System.TcHmiGridContainer" data-tchmi-height="100" data-tchmi-height-unit="%" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="%">
+<div id="TcHmiAdsState_TcSys" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiAdsState" data-tchmi-ads-runtime="%pp%XarAdsTargetName%/pp%" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="20" data-tchmi-server-interval="500" data-tchmi-creator-visibility="Visible" data-tchmi-left="0" data-tchmi-top="0" data-tchmi-height-mode="Value" data-tchmi-width-unit="%" data-tchmi-height-unit="%" data-tchmi-width="100" data-tchmi-height="100" data-tchmi-tooltip="press to toggle RUN/CONFIG XAR State">
+<script data-tchmi-target-attribute="data-tchmi-state-images" type="application/json">
+{
+  "Config": "%tr%TwinCAT_Config%/tr%",
+  "Exception": "%tr%TwinCAT_Exception%/tr%",
+  "Fallback": "%tr%TwinCAT_Fallback%/tr%",
+  "Run": "%tr%TwinCAT_Run%/tr%",
+  "Stop": "%tr%TwinCAT_Stop%/tr%"
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "%ctx%owner::Id|EventRegistrationMode=Resolve%/ctx%.onPressed",
+    "actions": [
+      {
+        "objectType": "ControlApiFunction",
+        "active": false,
+        "control": "TcHmiPopup_1",
+        "fn": "open",
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div id="TcHmiAdsState_PLC" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiAdsState" data-tchmi-ads-runtime="%pp%PlcAdsTargetName%/pp%" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="20" data-tchmi-server-interval="500" data-tchmi-left="0" data-tchmi-top="0" data-tchmi-height-mode="Value" data-tchmi-width-unit="%" data-tchmi-height-unit="%" data-tchmi-width="100" data-tchmi-height="100" data-tchmi-tooltip="press to toggle START/STOP PLC State">
+{
+  "Config": "%tr%PLC_Config%/tr%",
+  "Exception": "%tr%PLC_Exception%/tr%",
+  "Fallback": "%tr%PLC_Fallback%/tr%",
+  "Run": "%tr%PLC_Run%/tr%",
+  "Stop": "%tr%PLC_Stop%/tr%"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-state-images" type="application/json">
+{
+  "Config": "%tr%PLC_Config%/tr%",
+  "Exception": "%tr%PLC_Exception%/tr%",
+  "Fallback": "%tr%PLC_Fallback%/tr%",
+  "Run": "%tr%PLC_Run%/tr%",
+  "Stop": "%tr%PLC_Stop%/tr%"
+}
+</script>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-grid-layout" type="application/json">
+{
+  "columnGap": 5.0,
+  "gridAutoFlow": "%f%(%ctrl%TcHmiGridContainer_AdsIcons::RenderedWidth%/ctrl%<=%ctrl%TcHmiGridContainer_AdsIcons::RenderedHeight%/ctrl%)? \"Row\" : \"Column\";%/f%",
+  "gridTemplateColumns": "1fr",
+  "gridTemplateRows": "1fr"
+}
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-grid-item-layout" type="application/json">
+{
+  "gridRow": "2"
+}
+</script>
+</div>
+
+
+<script data-tchmi-target-attribute="data-tchmi-grid-layout" type="application/json">
+{
+  "columnGap": 5.0,
+  "gridTemplateColumns": "1fr",
+  "gridTemplateRows": "fit-content(26px) 1fr fit-content(52px)",
+  "justifyItems": "Center"
+}
+</script>
+
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-grid-item-layout" type="application/json">
+{
+  "alignSelf": "Stretch",
+  "justifySelf": "Stretch"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-flex-item-layout" type="application/json">
+{
+  "alignSelf": "Stretch"
+}
+</script>
+</div>
+
+<script data-tchmi-target-attribute="data-tchmi-box-shadow" type="application/json">
+[
+  {
+    "blur": 6.0,
+    "offsetY": 1.0,
+    "spread": 1.0
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
+[
+  "background-container"
+]
+</script>
+<div id="TcHmiPopup_1" data-tchmi-type="TcHmi.Controls.System.TcHmiPopup" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-header-text="Are you sure... (DOES NOT WORK YET)" data-tchmi-modal="True" data-tchmi-scrolling="Yes" data-tchmi-width="100" data-tchmi-height="100" data-tchmi-width-unit="%" data-tchmi-height-unit="%" data-tchmi-movable="True" data-tchmi-restore-bounds="True" data-tchmi-close-on-background="True">
+
+<script data-tchmi-target-attribute="data-tchmi-target-file" type="application/json">
+{
+  "path": "UserControls/AdsBlock/AdsXarPopUp.content"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-buttons" type="application/json">
+[
+  {
+    "actions": [],
+    "height": 30,
+    "heightMode": "Content",
+    "keepPopupOpen": true,
+    "name": "restart",
+    "text": "Restart TwinCAT",
+    "tooltip": "",
+    "width": 60
+  },
+  {
+    "actions": [],
+    "height": 30,
+    "heightMode": "Content",
+    "keepPopupOpen": false,
+    "name": "cancel",
+    "text": "Cancel",
+    "tooltip": "",
+    "width": 60
+  }
+]
+</script>
+</div>
+</div>

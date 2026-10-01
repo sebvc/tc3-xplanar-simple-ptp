@@ -1,0 +1,170 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "definitions": {
+        "TcHmi.Controls.Beckhoff.TcHmiEcSlave": {
+            "$schema": "http://json-schema.org/draft-04/schema",
+            "type": "object",
+            "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+            "frameworkControlType": "TcHmiEcSlave",
+            "frameworkControlNamespace": "TcHmi.Controls.Beckhoff"
+        },
+        "TcHmiEcSlave": {
+            "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiEcSlave"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiEcSlave.Layout": {
+            "title": "Layout",
+            "description": "Sections of the slave view, they are shown below each other in the configured order.",
+            "type": "array",
+            "uniqueItems": true,
+            "maxItems": 4,
+            "items": {
+                "anyOf": [
+                    {
+                        "title": "Slave Selection",
+                        "type": "object",
+                        "propertiesMeta": [
+                            {
+                                "name": "type",
+                                "category": "general",
+                                "displayName": "Type",
+                                "displayPriority": 10,
+                                "description": "Part of the slave view which is shown by this section.",
+                                "defaultValue": "SlaveSelection",
+                                "defaultValueInternal": "SlaveSelection"
+                            },
+                            {
+                                "name": "sticky",
+                                "category": "general",
+                                "displayName": "Sticky",
+                                "displayPriority": 20,
+                                "description": "Keeps the selection in place while the other sections scroll. Its position in the list decides whether it is shown above or below them.",
+                                "defaultValue": true,
+                                "defaultValueInternal": true
+                            }
+                        ],
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "enum": ["SlaveSelection"]
+                            },
+                            "sticky": {
+                                "type": "boolean",
+                                "default": true
+                            }
+                        },
+                        "required": ["type"],
+                        "additionalProperties": false
+                    },
+                    {
+                        "title": "Trace",
+                        "type": "object",
+                        "propertiesMeta": [
+                            {
+                                "name": "type",
+                                "category": "general",
+                                "displayName": "Type",
+                                "displayPriority": 10,
+                                "description": "Part of the slave view which is shown by this section.",
+                                "defaultValue": "Trace",
+                                "defaultValueInternal": "Trace"
+                            }
+                        ],
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "enum": ["Trace"]
+                            }
+                        },
+                        "required": ["type"],
+                        "additionalProperties": false
+                    },
+                    {
+                        "title": "Slave Details",
+                        "type": "object",
+                        "propertiesMeta": [
+                            {
+                                "name": "type",
+                                "category": "general",
+                                "displayName": "Type",
+                                "displayPriority": 10,
+                                "description": "Part of the slave view which is shown by this section.",
+                                "defaultValue": "SlaveDetails",
+                                "defaultValueInternal": "SlaveDetails"
+                            }
+                        ],
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "enum": ["SlaveDetails"]
+                            }
+                        },
+                        "required": ["type"],
+                        "additionalProperties": false
+                    },
+                    {
+                        "title": "Process Data",
+                        "type": "object",
+                        "propertiesMeta": [
+                            {
+                                "name": "type",
+                                "category": "general",
+                                "displayName": "Type",
+                                "displayPriority": 10,
+                                "description": "Part of the slave view which is shown by this section.",
+                                "defaultValue": "ProcessData",
+                                "defaultValueInternal": "ProcessData"
+                            },
+                            {
+                                "name": "showApply",
+                                "category": "general",
+                                "displayName": "Show Apply",
+                                "displayPriority": 20,
+                                "description": "Shows the buttons which write the prepared process data values.",
+                                "defaultValue": true,
+                                "defaultValueInternal": true
+                            },
+                            {
+                                "name": "showForce",
+                                "category": "general",
+                                "displayName": "Show Force",
+                                "displayPriority": 30,
+                                "description": "Shows the buttons which force the process data values to the prepared ones.",
+                                "defaultValue": true,
+                                "defaultValueInternal": true
+                            },
+                            {
+                                "name": "showRelease",
+                                "category": "general",
+                                "displayName": "Show Release",
+                                "displayPriority": 40,
+                                "description": "Shows the buttons which release forced process data values.",
+                                "defaultValue": true,
+                                "defaultValueInternal": true
+                            }
+                        ],
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "enum": ["ProcessData"]
+                            },
+                            "showApply": {
+                                "type": "boolean",
+                                "default": true
+                            },
+                            "showForce": {
+                                "type": "boolean",
+                                "default": true
+                            },
+                            "showRelease": {
+                                "type": "boolean",
+                                "default": true
+                            }
+                        },
+                        "required": ["type"],
+                        "additionalProperties": false
+                    }
+                ]
+            }
+        }
+    }
+}

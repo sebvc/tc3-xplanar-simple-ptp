@@ -1,0 +1,226 @@
+beckhoff-ec-diagnostics-process-data-view {
+    display: grid;
+    /* no padding above the sticky header, otherwise scrolled entries stay visible in that gap */
+    padding: 0 10px 10px;
+    grid-template-columns: repeat(9, max-content) 1fr;
+    justify-content: left;
+    /* the rows keep their height, the free space of a high view stays below them */
+    align-content: start;
+    overflow-x: auto;
+    background: var(--main-background-color);
+
+    /* keeps the column headers in place while the process data entries are scrolled */
+    & .process-data-header-cell {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        background: inherit;
+        border-bottom: 1px solid var(--main-border-color);
+    }
+
+    & .headline {
+        font-size: 16px;
+        padding-top: 10px;
+    }
+
+    &.process-data-view-embedded .headline {
+        display: none;
+    }
+
+    & .process-data-view-toggle,
+    & .process-data-groups-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        padding: 0;
+        box-sizing: border-box;
+        border: 1px solid transparent;
+        border-radius: 2px;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+        opacity: 0.65;
+
+        &:hover:not(:disabled) {
+            opacity: 1;
+            background: var(--main-change-highlight);
+        }
+
+        &:focus-visible {
+            opacity: 1;
+            outline: 2px solid var(--main-focus-color);
+            outline-offset: -2px;
+        }
+
+        &:disabled {
+            opacity: 0.3;
+            cursor: default;
+        }
+
+        & svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+    }
+
+    & .process-data-view-toggle {
+        margin-left: auto;
+    }
+
+    & .process-data-groups-toggle {
+        margin-left: 2px;
+    }
+
+    & .process-data-groups-actions {
+        display: flex;
+        padding-left: 6px;
+        border-left: 1px solid var(--main-border-color);
+    }
+
+    & .entry-cell {
+        display: flex;
+        min-height: 32px;
+        align-items: center;
+        padding: 0 5px;
+    }
+
+    & .process-data-name-header {
+        column-gap: 10px;
+    }
+
+    /* the buttons of an action column all get the width of that column, so they line up over all rows */
+    & .entry-cell > .regular-button {
+        flex: 1;
+        white-space: nowrap;
+    }
+
+    & .entry-cell-element {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    & .process-data-force-tooltip {
+        position: relative;
+        cursor: help;
+
+        &::after {
+            position: absolute;
+            z-index: 3;
+            left: 50%;
+            top: calc(100% + 6px);
+            display: none;
+            width: max-content;
+            max-width: 240px;
+            padding: 5px 8px;
+            transform: translateX(-50%);
+            color: var(--main-text-color);
+            background: var(--main-input-bg);
+            border: 1px solid var(--main-border-color);
+            content: attr(data-force-tooltip);
+            font-size: 12px;
+            font-weight: normal;
+            line-height: 16px;
+            text-align: left;
+            text-transform: none;
+            white-space: normal;
+            pointer-events: none;
+        }
+
+        &:hover::after,
+        &:focus-visible::after {
+            display: block;
+        }
+    }
+
+    /** sub process data (per property) editing and history charts */
+    & .process-data-chart-cell {
+        padding: 4px 5px 10px 25px;
+    }
+
+    & beckhoff-ec-diagnostics-process-data-history-chart {
+        display: block;
+    }
+
+    & .process-data-chart {
+        display: block;
+    }
+
+    & .process-data-chart-info {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%);
+        text-align: center;
+        font-style: italic;
+    }
+
+    & .process-data-chart-wrapper {
+        position: relative;
+        height: 100px;
+
+        & canvas {
+            position: absolute;
+        }
+
+        & .label {
+            z-index: 2;
+        }
+
+        & .max-value {
+            cursor: pointer;
+            font-family: monospace;
+            position: absolute;
+            left: 0px;
+            top: 3px;
+            text-align: left;
+            padding: 1px 5px;
+            user-select: none;
+        }
+
+        & .min-value {
+            cursor: pointer;
+            font-family: monospace;
+            position: absolute;
+            left: 0px;
+            bottom: 6px;
+            text-align: left;
+            padding: 1px 5px;
+            user-select: none;
+        }
+
+        & .current-value {
+            cursor: pointer;
+            font-family: monospace;
+            position: absolute;
+            right: 10px;
+            top: 3px;
+            text-align: left;
+            padding: 1px 5px;
+            user-select: none;
+        }
+    }
+
+    & .entry-name-icon {
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        margin-right: 5px;
+        vertical-align: text-bottom;
+    }
+
+    & .channel-name {
+        grid-column: 1 / 4;
+    }
+
+    & .channel-process-data-forced-flag {
+        grid-column: 4;
+    }
+}

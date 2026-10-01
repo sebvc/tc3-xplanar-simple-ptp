@@ -11,6 +11,8 @@
     "L_Theme": "Theme",
     "L_Settings": "Settings",
     "L_Diagnostics": "Diagnostics",
-    "L_TwinCATScope": "TwinCAT Scope"
+    "L_TwinCATScope": "TwinCAT Scope",
+    "L_AdsState": "ADS State",
+    "L_AdsState_Description": "Tap the Icons to toggle the states. "
   }
 }

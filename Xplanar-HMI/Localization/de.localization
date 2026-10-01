@@ -11,6 +11,8 @@
     "L_Theme": "Farbschema",
     "L_Settings": "Einstellungen",
     "L_Diagnostics": "Diagnóstik",
-    "L_TwinCATScope": "TwinCAT Scope"
+    "L_TwinCATScope": "TwinCAT Scope",
+    "L_AdsState": "ADS Status",
+    "L_AdsState_Description": "Tippen Sie auf die Symbole, um den Status umzuschalten. "
   }
 }

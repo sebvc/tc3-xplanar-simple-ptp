@@ -1,0 +1,150 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "definitions": {
+        "TcHmi.Controls.Beckhoff.TcHmiEcDiagnostics": {
+            "$schema": "http://json-schema.org/draft-04/schema",
+            "type": "object",
+            "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+            "frameworkControlType": "TcHmiEcDiagnostics",
+            "frameworkControlNamespace": "TcHmi.Controls.Beckhoff"
+        },
+        "TcHmiEcDiagnostics": {
+            "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiEcDiagnostics"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiEcDiagnostics.TargetControls": {
+            "title": "Target Controls",
+            "description": "TcHmiEcSlave controls which show the slave selected in the topology.",
+            "type": "array",
+            "items": {
+                "title": "Target Control",
+                "type": "object",
+                "engineeringColumns": ["control"],
+                "propertiesMeta": [
+                    {
+                        "name": "control",
+                        "category": "general",
+                        "displayName": "Control",
+                        "displayPriority": 10,
+                        "description": "TcHmiEcSlave control which shows the slave selected in the topology.",
+                        "defaultValue": null,
+                        "defaultValueInternal": null
+                    }
+                ],
+                "properties": {
+                    "control": {
+                        "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiEcSlave"
+                    }
+                },
+                "required": ["control"],
+                "additionalProperties": false
+            }
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiEcDiagnostics.ZoomMode": {
+            "title": "Zoom Mode",
+            "description": "Reference of the zoom levels. 'Absolute' renders a terminal with 400px x 100px at 100 %. 'ScaleToFit' shows the complete topology at 100 %.",
+            "type": "string",
+            "enum": ["Absolute", "ScaleToFit"],
+            "default": "Absolute"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiEcDiagnostics.PanBounds": {
+            "title": "Pan Bounds",
+            "description": "Controls how far the topology can be panned. 'Free' allows moving it out of view. 'KeepContentInFrame' keeps the topology inside the visible frame.",
+            "type": "string",
+            "enum": ["Free", "KeepContentInFrame"],
+            "default": "Free"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiEcDiagnostics.PreviewVisibility": {
+            "title": "Preview Visibility",
+            "description": "Controls when the topology preview is shown. 'OnlyWhenZoomedIn' shows it when the topology is zoomed beyond its fitted view.",
+            "type": "string",
+            "enum": ["Always", "Never", "OnlyWhenZoomedIn"],
+            "default": "OnlyWhenZoomedIn"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiEcDiagnostics.TopologyView": {
+            "title": "TopologyView",
+            "description": "Position and zoom of the topology view.",
+            "type": "object",
+            "propertiesMeta": [
+                {
+                    "name": "posX",
+                    "displayName": "Pos X",
+                    "displayPriority": 10,
+                    "description": "Horizontal translation of the topology view in pixels.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "posY",
+                    "displayName": "Pos Y",
+                    "displayPriority": 11,
+                    "description": "Vertical translation of the topology view in pixels.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "zoom",
+                    "displayName": "Zoom",
+                    "displayPriority": 12,
+                    "description": "Zoom of the topology view in percent, relative to the reference of the zoom mode.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                }
+            ],
+            "properties": {
+                "posX": {
+                    "$ref": "tchmi:general#/definitions/Number"
+                },
+                "posY": {
+                    "$ref": "tchmi:general#/definitions/Number"
+                },
+                "zoom": {
+                    "$ref": "tchmi:general#/definitions/Number"
+                }
+            },
+            "additionalProperties": false
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiEcDiagnostics.InitTopologyView": {
+            "title": "InitTopologyView",
+            "description": "Definition of cell options in the grid.",
+            "type": "object",
+            "propertiesMeta": [
+                {
+                    "name": "posX",
+                    "displayName": "Pos X",
+                    "displayPriority": 10,
+                    "description": "Default is zero. Set a number to adjust the initial horizontal translation of the topology view in pixels.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "posY",
+                    "displayName": "Pos Y",
+                    "displayPriority": 11,
+                    "description": "Default is zero. Set a number to adjust the initial vertical translation of the topology view in pixels.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "zoom",
+                    "displayName": "Zoom",
+                    "displayPriority": 12,
+                    "description": "Default is the calculated zoom factor so that the topology covers the available space. Set a number to adjust the initial zoom of the topology view. Zoom 100 renders a terminal with 400px x 100px.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                }
+            ],
+            "properties": {
+                "posX": {
+                    "$ref": "tchmi:framework#/definitions/MeasurementValue"
+                },
+                "posY": {
+                    "$ref": "tchmi:framework#/definitions/MeasurementValue"
+                },
+                "zoom": {
+                    "$ref": "tchmi:framework#/definitions/MeasurementValue"
+                }
+            },
+            "additionalProperties": false
+        }
+    }
+}

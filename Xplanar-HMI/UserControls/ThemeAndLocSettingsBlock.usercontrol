@@ -1,0 +1,106 @@
+<div
+  id="ThemeAndLocSettingsBlock"
+  data-tchmi-type="TcHmi.Controls.System.TcHmiUserControl"
+  data-tchmi-top="0"
+  data-tchmi-left="0"
+  data-tchmi-width="100"
+  data-tchmi-height="100"
+  data-tchmi-width-unit="%"
+  data-tchmi-height-unit="%"
+  data-tchmi-creator-viewport-width="500"
+  data-tchmi-creator-viewport-height="500"
+><div id="TcHmiGridContainer_Settings_ADS_1" data-tchmi-type="TcHmi.Controls.System.TcHmiGridContainer" data-tchmi-left="10" data-tchmi-left-unit="px" data-tchmi-top="10" data-tchmi-top-unit="px" data-tchmi-right="10" data-tchmi-bottom="10"><div id="TcHmiTextblock_Settings_Localization_18" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="%l%L_Localization%/l%" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-word-wrap="True" data-tchmi-right="0" data-tchmi-height-mode="Content" data-tchmi-bottom="0">
+<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
+          [
+          "headline-3"
+          ]
+        </script>
+      </div>
+<div id="TcHmiLocalizationSelect_Settings_Localization_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiLocalizationSelect" data-tchmi-height-mode="Value" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="20" data-tchmi-left="0" data-tchmi-min-width="80" data-tchmi-height="50" data-tchmi-top="0" data-tchmi-bottom="0" data-tchmi-zindex="0" data-tchmi-left-unit="px" data-tchmi-width-mode="Value">
+<script data-tchmi-target-attribute="data-tchmi-localization-mapping" type="application/json">
+          [
+          {
+          "code": "de",
+          "text": "German"
+          },
+          {
+          "code": "en",
+          "text": "English"
+          }
+          ]
+        </script>
+        <script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+          {
+          "top": 3,
+          "right": 3,
+          "bottom": 3,
+          "left": 3
+          }
+        </script>
+
+      
+
+
+<script data-tchmi-target-attribute="data-tchmi-grid-item-layout" type="application/json">
+{
+  "alignSelf": "Stretch",
+  "justifySelf": "Stretch"
+}
+</script>
+</div>
+<div id="TcHmiTextblock_Settings_Theme_18" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="%l%L_Theme%/l%" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-word-wrap="True" data-tchmi-right="0" data-tchmi-height-mode="Content" data-tchmi-creator-visibility="Visible" data-tchmi-bottom="0">
+<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
+          [
+          "headline-3"
+          ]
+        </script>
+      </div>
+<div id="TcHmiThemeSelect_Settings_Theme_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiThemeSelect" data-tchmi-height-mode="Value" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="20" data-tchmi-left="0" data-tchmi-min-width="80" data-tchmi-height="50" data-tchmi-top="0" data-tchmi-creator-visibility="Visible" data-tchmi-bottom="-5" data-tchmi-left-unit="px" data-tchmi-width-mode="Value">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+          {
+          "top": 3,
+          "right": 3,
+          "bottom": 3,
+          "left": 3
+          }
+        </script>
+
+      
+
+
+<script data-tchmi-target-attribute="data-tchmi-grid-item-layout" type="application/json">
+{
+  "alignSelf": "Stretch",
+  "justifySelf": "Stretch"
+}
+</script>
+</div>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-grid-layout" type="application/json">
+{
+  "columnGap": 0.0,
+  "gridAutoFlow": "Column",
+  "gridTemplateColumns": "1fr",
+  "gridTemplateRows": "fit-content(26px) 1fr fit-content(26px) 1fr",
+  "justifyItems": "Left",
+  "rowGap": 10.0
+}
+</script>
+
+
+
+
+
+
+
+
+</div>
+
+<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
+[
+  "background-container"
+]
+</script>
+</div>

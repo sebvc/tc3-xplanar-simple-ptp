@@ -1,0 +1,43 @@
+{
+  "parameters": [
+    {
+      "allowSymbolExpressionsInObject": true,
+      "defaultValueInternal": "TcSysService",
+      "requiredOnCompile": false,
+      "bindable": true,
+      "propertySetterName": "setXarAdsTargetName",
+      "propertyGetterName": "getXarAdsTargetName",
+      "refTo": "",
+      "name": "data-tchmi-xaradstargetname",
+      "displayName": "XarAdsTargetName",
+      "visible": true,
+      "type": "tchmi:general#/definitions/String",
+      "category": "",
+      "description": "",
+      "readOnly": false,
+      "heritable": true,
+      "propertyName": "XarAdsTargetName"
+    },
+    {
+      "allowSymbolExpressionsInObject": true,
+      "defaultValueInternal": "PLC1",
+      "requiredOnCompile": false,
+      "bindable": true,
+      "propertySetterName": "setPlcAdsTargetName",
+      "propertyGetterName": "getPlcAdsTargetName",
+      "refTo": "",
+      "name": "data-tchmi-plcadstargetname",
+      "displayName": "PlcAdsTargetName",
+      "visible": true,
+      "type": "tchmi:general#/definitions/String",
+      "category": "",
+      "description": "",
+      "readOnly": false,
+      "heritable": true,
+      "propertyName": "PlcAdsTargetName"
+    }
+  ],
+  "virtualRights": [],
+  "$schema": "./../../Packages/Beckhoff.TwinCAT.HMI.Framework.14.7.23/runtimes/native1.12-tchmi/Schema/UserControlConfig.Schema.json",
+  "description": ""
+}

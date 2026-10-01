@@ -1,0 +1,163 @@
+/*
+ * The notifications cover the view they belong to, which would take the selection of the slave view out of reach.
+ * A notification like the one about a device which is not configured is renewed with every tick, so it cannot be
+ * closed either. In this view they take their own space above the content instead.
+ */
+.beckhoff-ec-diagnostics.slave-view-root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    & > .notifications-wrapper {
+        position: static;
+        flex: 0 0 auto;
+    }
+
+    & > beckhoff-ec-diagnostics-slave-view {
+        flex: 1 1 auto;
+        min-height: 0;
+        height: auto;
+    }
+}
+
+beckhoff-ec-diagnostics-slave-view {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+    box-sizing: border-box;
+    background: var(--main-background-color);
+
+    & .slave-view-header {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        padding: 10px;
+        border-bottom: 1px solid var(--main-border-color);
+    }
+
+    & .slave-view-header-bottom {
+        border-bottom: none;
+        border-top: 1px solid var(--main-border-color);
+    }
+
+    & .slave-view-selection {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 6px 20px;
+        margin-left: auto;
+    }
+
+    /* the label stays with its control when the header wraps */
+    & .slave-view-field {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    & .slave-view-field > label {
+        color: var(--main-grayed-out);
+        white-space: nowrap;
+    }
+
+    & .slave-view-select,
+    & .slave-view-device-select {
+        height: 26px;
+        box-sizing: border-box;
+        color: var(--main-text-color);
+        background: var(--main-input-bg);
+        border: 1px solid var(--main-border-color);
+        border-radius: 2px;
+        padding: 0 6px;
+    }
+
+    & .slave-view-select:focus,
+    & .slave-view-device-select:focus {
+        outline: none;
+        border-color: var(--main-focus-color);
+    }
+
+    & .slave-view-select {
+        min-width: 200px;
+        max-width: 400px;
+    }
+
+    & .slave-view-device-select {
+        min-width: 120px;
+        max-width: 240px;
+    }
+
+    & .slave-view-message:not(:empty) {
+        padding: 0 0 10px;
+    }
+
+    & .slave-view-sections {
+        flex: 1;
+        min-height: 0;
+        overflow: auto;
+        display: flex;
+    }
+
+    & .slave-layout {
+        display: flex;
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    & .slave-layout-column {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* the sections keep the size of their content, the view scrolls them as a whole like the popup does */
+    & .slave-layout-group {
+        display: flex;
+        flex: 0 0 auto;
+        flex-direction: column;
+        min-width: 0;
+    }
+
+    /* the panel content is part of the slave view, but it is placed by the layout */
+    & .slave-layout-group > .slave-layout-panel {
+        display: flex;
+        flex: 0 0 auto;
+        flex-direction: column;
+        min-width: 0;
+        margin: 0;
+    }
+
+    /* the trace table is as wide as the panel, its columns scroll next to the fixed row labels */
+    & .slave-layout-panel .trace-table > .content {
+        flex: 1 1 0;
+        width: auto;
+        min-width: 0;
+    }
+
+    /* the popup shell of the extended info stays empty, its content is placed into the layout */
+    & beckhoff-ec-diagnostics-pop-up.inline {
+        display: none;
+    }
+
+    /* without the other panels the process data table scrolls itself, which keeps its column headers in place */
+    &.only-process-data {
+        & .slave-view-sections {
+            padding: 0;
+            overflow: hidden;
+        }
+
+        & .slave-layout,
+        & .slave-layout-group,
+        & .slave-layout-panel {
+            flex: 1;
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        & beckhoff-ec-diagnostics-process-data-view {
+            flex: 1;
+            min-height: 0;
+        }
+    }
+}
