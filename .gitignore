@@ -58,5 +58,9 @@ LineIDs.dbg.bak
 
 # TwinCAT Measurement
 *.vsm
-/Xplanar-XAE/xplanarapplication2071
+
 /t 200011OBOBq
+# xplanarapplication reference library files
+/Xplanar-XAE/xplanarapplication*
+/Xplanar-XAE/_Config/PLC/xplanarapplication*.xti
+/Xplanar-XAE/_Config/xplanarapplication*
