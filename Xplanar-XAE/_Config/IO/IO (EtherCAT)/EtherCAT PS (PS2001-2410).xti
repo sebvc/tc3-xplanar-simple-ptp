@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.27" ClassName="CFlbTermDef" SubType="9099" TcProjectVariant="Normal">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-002000000001}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..0] OF BIT</Name>
+			<BitSize>1</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>1</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-00200000001C}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..27] OF BIT</Name>
+			<BitSize>28</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>28</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-002000000002}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..1] OF BIT</Name>
+			<BitSize>2</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>2</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-00200000000D}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..12] OF BIT</Name>
+			<BitSize>13</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>13</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-00200000000F}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..14] OF BIT</Name>
+			<BitSize>15</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>15</Elements>
+			</ArrayInfo>
+		</DataType>
+	</DataTypes>
+	<ImageDatas>
+		<ImageData Id="1000">424dd6020000000000003600000028000000100000000e0000000100180000000000a002000000000000000000000000000000000000ff00ffff00ffff00ffff00ffff00ffb5b4b45554549e9e9eababab777777b3b2b2ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff3f3e3f2625263a39394e4d4e272526272526ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff3e3c3d201f203130302a292a201f20201f20ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff8c8aba8c8aba8c8abaa4a2a2a19f9f9f9d9dff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffb3b1b1b6b4b4b5b3b3b2b0b0aeacacaaa7a8ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffa8a6a6aeacacb3b1b1b6b4b4b7b5b5b6b5b5ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff9a98989d9b9ba19f9fa6a4a4aca9a9b1afafff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff918f8f939191949292969494949292999797ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff8e8c8c8f8d8d8e8c8c8e8b8c8280807d7b7bff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff868484908e8e908e8e908e8e908e8e918f8fff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff858383979595979595969494959293979495ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff89888892909093919192909002febe939091ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff474646302f2f434142434242323131302f2fff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffa5a5a55453538c8b8b979797989898a1a0a1ff00ffff00ffff00ffff00ffff00ff</ImageData>
+	</ImageDatas>
+	<Box Id="6" BoxType="9099" BoxFlags="#x00000020">
+		<Name>__FILENAME__</Name>
+		<ImageId>1000</ImageId>
+		<ProjectVariant PvUseDisable="true" PvUseLink="true">
+			<Variant>
+				<Name>Normal</Name>
+				<Name>SimOnIPC</Name>
+				<Name>SimOnLaptop_Local</Name>
+				<Name>UMRT</Name>
+				<Disable>false</Disable>
+				<PortABoxInfo>#x00ffffff</PortABoxInfo>
+			</Variant>
+		</ProjectVariant>
+		<EtherCAT SlaveType="2" PdiType="#x0c80" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="47" FoeType="1" VendorId="#x00000002" ProductCode="#x07d14d02" RevisionNo="#x0011096a" BIC="1P261046SBTN999r0cr91KPS2001-2410-1001              Q1    52SP1100400569         " InfoDataAddr="true" RepeatSupport="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="17" SdoUploadWithMaxLength="true" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="PS2001-2410-1001 Power supply (24V, 10A, 1-phase)" Desc="PS2001-2410">
+			<SyncMan>001000012600010001000000800000010001001026010000</SyncMan>
+			<SyncMan>001100012200010002000000800000010001001122010000</SyncMan>
+			<SyncMan>001202002400010003000000000000000000001224010000</SyncMan>
+			<SyncMan>001912002000010004000000000000000e00001920010000</SyncMan>
+			<Fmmu>0000000000000000001200020100000001000000000000000000000000000000</Fmmu>
+			<Fmmu>0000000000000000001900010100000002000000000000000000000000000000</Fmmu>
+			<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
+			<BootStrapData>0010f400f410f400</BootStrapData>
+			<MBoxUserCmdData>004003000c0000000000000003000000000000000000000000000000000000002081f001040000006a09110000</MBoxUserCmdData>
+			<MBoxUserCmdData>004003000a0000001f000000030010000000000000000000000000000000000020f31005020000000100456e61626c6520446961674d65737361676520617320656d657267656e637900</MBoxUserCmdData>
+			<MBoxUserCmdData>020003000900000012000000030000000000000000000000000000000000000020018019010000000e53656c65637420696e666f2064617461203100</MBoxUserCmdData>
+			<MBoxUserCmdData>020003000900000012000000030000000000000000000000000000000000000020018021010000000053656c65637420696e666f2064617461203200</MBoxUserCmdData>
+			<Pdo Name="PSU Inputs" Index="#x1a00" Flags="#x0010" SyncMan="3">
+				<Entry Name="Warning" Index="#x6000" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Error" Index="#x6000" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry>
+					<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
+				</Entry>
+				<Entry Name="DC OK" Index="#x6000" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry>
+					<Type GUID="{18071995-0000-0000-0000-00200000001C}">ARRAY [0..27] OF BIT</Type>
+				</Entry>
+				<Entry Name="Output voltage" Index="#x6000" Sub="#x11">
+					<Type>REAL</Type>
+				</Entry>
+				<Entry Name="Output current" Index="#x6000" Sub="#x12">
+					<Type>REAL</Type>
+				</Entry>
+			</Pdo>
+			<Pdo Name="PSU Synchron info data" Index="#x1a01" Flags="#x0010" SyncMan="3">
+				<Entry Name="Info data 1(actTemp)" Index="#x6000" Sub="#x15">
+					<Type>UINT</Type>
+				</Entry>
+				<Entry Name="Info data 2(actRmsV_in)" Index="#x6000" Sub="#x16">
+					<Type>UINT</Type>
+				</Entry>
+			</Pdo>
+			<Pdo Name="PSU Inputs Device" Index="#x1a80" Flags="#x0010" SyncMan="3">
+				<Entry>
+					<Type GUID="{18071995-0000-0000-0000-002000000002}">ARRAY [0..1] OF BIT</Type>
+				</Entry>
+				<Entry Name="Input undervoltage" Index="#xf614" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry>
+					<Type GUID="{18071995-0000-0000-0000-00200000000D}">ARRAY [0..12] OF BIT</Type>
+				</Entry>
+			</Pdo>
+			<Pdo Name="PSU Outputs" Index="#x1600" InOut="1" Flags="#x0010" SyncMan="2">
+				<Entry Name="Disable output" Index="#x7000" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry>
+					<Type GUID="{18071995-0000-0000-0000-00200000000F}">ARRAY [0..14] OF BIT</Type>
+				</Entry>
+			</Pdo>
+			<CoeProfile ProfileNo="59642761"/>
+		</EtherCAT>
+	</Box>
+</TcSmItem>
