@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ScopeProject AssemblyName="TwinCAT.Measurement.Scope.API.Model">
-  <ActiveWorkfolderPath>C:\Users\sebastianv\Documents\TcXaeShell\tc3-xplanar-simple-ptp\Xplanar-Scope\XY Scope Project 563060599</ActiveWorkfolderPath>
+  <ActiveWorkfolderPath>C:\Users\Administrator\Documents\GitRepos\sebvc\tc3-xplanar-simple-ptp\Xplanar-Scope\XY Scope Project 563060599</ActiveWorkfolderPath>
   <AutoDeleteCapacity>0</AutoDeleteCapacity>
   <AutoDeleteMode>Disabled</AutoDeleteMode>
   <AutoDeleteOlderThan>0</AutoDeleteOlderThan>
@@ -29,12 +29,12 @@
   <KeepPreviousImageExports>true</KeepPreviousImageExports>
   <Layout>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;Layout&gt;
-  &lt;Window Guid="592de8b9-e005-412c-9314-7ba21296dd8f" LastFocused="134237958664985734" DockedSize="200" PopupSize="0" FloatingLocation="-1, -1" FloatingSize="550, 400" LastOpenDockSituation="Document" LastFixedDockSituation="Document" LastFixedDockLocation="Right" LastFloatingWindowGuid="00000000-0000-0000-0000-000000000000" LastDockContainerCount="0" LastDockContainerIndex="0" DockedWorkingSize="250, 400" DockedWindowGroupGuid="00000000-0000-0000-0000-000000000000" DockedIndexInWindowGroup="0" DockedSplitPath="0" DocumentWorkingSize="279.924866, 400" DocumentWindowGroupGuid="eaf7f658-d83d-42e2-a0c0-68cd1e2d05d1" DocumentIndexInWindowGroup="1" DocumentSplitPath="0|1" FloatingWorkingSize="250, 400" FloatingWindowGroupGuid="00000000-0000-0000-0000-000000000000" FloatingIndexInWindowGroup="0" FloatingSplitPath="0" /&gt;
-  &lt;Window Guid="d6304073-2eba-4a33-9e2e-c152a55fad31" LastFocused="134237946176185910" DockedSize="200" PopupSize="0" FloatingLocation="-1, -1" FloatingSize="550, 400" LastOpenDockSituation="Document" LastFixedDockSituation="Document" LastFixedDockLocation="Right" LastFloatingWindowGuid="00000000-0000-0000-0000-000000000000" LastDockContainerCount="0" LastDockContainerIndex="0" DockedWorkingSize="250, 400" DockedWindowGroupGuid="00000000-0000-0000-0000-000000000000" DockedIndexInWindowGroup="0" DockedSplitPath="0" DocumentWorkingSize="305.2226, 400" DocumentWindowGroupGuid="914be848-2224-414a-a66c-eb1d2b8ca81a" DocumentIndexInWindowGroup="2" DocumentSplitPath="0|0" FloatingWorkingSize="250, 400" FloatingWindowGroupGuid="00000000-0000-0000-0000-000000000000" FloatingIndexInWindowGroup="0" FloatingSplitPath="0" /&gt;
-  &lt;Window Guid="1c9d457e-8141-4b2f-9184-1b5fe6a45494" LastFocused="134237958656545655" DockedSize="200" PopupSize="0" FloatingLocation="-1, -1" FloatingSize="550, 400" LastOpenDockSituation="Document" LastFixedDockSituation="Document" LastFixedDockLocation="Right" LastFloatingWindowGuid="00000000-0000-0000-0000-000000000000" LastDockContainerCount="0" LastDockContainerIndex="0" DockedWorkingSize="250, 400" DockedWindowGroupGuid="00000000-0000-0000-0000-000000000000" DockedIndexInWindowGroup="0" DockedSplitPath="0" DocumentWorkingSize="279.924866, 400" DocumentWindowGroupGuid="eaf7f658-d83d-42e2-a0c0-68cd1e2d05d1" DocumentIndexInWindowGroup="2" DocumentSplitPath="0|1" FloatingWorkingSize="250, 400" FloatingWindowGroupGuid="00000000-0000-0000-0000-000000000000" FloatingIndexInWindowGroup="0" FloatingSplitPath="0" /&gt;
-  &lt;Window Guid="7143f444-3a72-4f7d-9fa7-5f191743bf3d" LastFocused="134237946447525304" DockedSize="200" PopupSize="0" FloatingLocation="-1, -1" FloatingSize="550, 400" LastOpenDockSituation="Document" LastFixedDockSituation="Document" LastFixedDockLocation="Right" LastFloatingWindowGuid="00000000-0000-0000-0000-000000000000" LastDockContainerCount="0" LastDockContainerIndex="0" DockedWorkingSize="250, 400" DockedWindowGroupGuid="00000000-0000-0000-0000-000000000000" DockedIndexInWindowGroup="0" DockedSplitPath="0" DocumentWorkingSize="305.2226, 400" DocumentWindowGroupGuid="914be848-2224-414a-a66c-eb1d2b8ca81a" DocumentIndexInWindowGroup="1" DocumentSplitPath="0|0" FloatingWorkingSize="250, 400" FloatingWindowGroupGuid="00000000-0000-0000-0000-000000000000" FloatingIndexInWindowGroup="0" FloatingSplitPath="0" /&gt;
-  &lt;Window Guid="b59ad2e3-54ae-4f47-b5dd-d9e317ddb499" LastFocused="134237946517856548" DockedSize="200" PopupSize="0" FloatingLocation="-1, -1" FloatingSize="550, 400" LastOpenDockSituation="Document" LastFixedDockSituation="Document" LastFixedDockLocation="Right" LastFloatingWindowGuid="00000000-0000-0000-0000-000000000000" LastDockContainerCount="0" LastDockContainerIndex="0" DockedWorkingSize="250, 400" DockedWindowGroupGuid="00000000-0000-0000-0000-000000000000" DockedIndexInWindowGroup="0" DockedSplitPath="0" DocumentWorkingSize="305.2226, 400" DocumentWindowGroupGuid="914be848-2224-414a-a66c-eb1d2b8ca81a" DocumentIndexInWindowGroup="0" DocumentSplitPath="0|0" FloatingWorkingSize="250, 400" FloatingWindowGroupGuid="00000000-0000-0000-0000-000000000000" FloatingIndexInWindowGroup="0" FloatingSplitPath="0" /&gt;
-  &lt;Window Guid="880be6d0-0598-4045-a88c-d9272d96bba0" LastFocused="134237958681285237" DockedSize="200" PopupSize="0" FloatingLocation="-1, -1" FloatingSize="550, 400" LastOpenDockSituation="Document" LastFixedDockSituation="Document" LastFixedDockLocation="Right" LastFloatingWindowGuid="00000000-0000-0000-0000-000000000000" LastDockContainerCount="0" LastDockContainerIndex="0" DockedWorkingSize="250, 400" DockedWindowGroupGuid="00000000-0000-0000-0000-000000000000" DockedIndexInWindowGroup="0" DockedSplitPath="0" DocumentWorkingSize="279.924866, 400" DocumentWindowGroupGuid="eaf7f658-d83d-42e2-a0c0-68cd1e2d05d1" DocumentIndexInWindowGroup="0" DocumentSplitPath="0|1" FloatingWorkingSize="250, 400" FloatingWindowGroupGuid="00000000-0000-0000-0000-000000000000" FloatingIndexInWindowGroup="0" FloatingSplitPath="0" /&gt;
+  &lt;Window Guid="1c9d457e-8141-4b2f-9184-1b5fe6a45494" LastFocused="134364934745919505" DockedSize="200" PopupSize="0" FloatingLocation="-1, -1" FloatingSize="550, 400" LastOpenDockSituation="Document" LastFixedDockSituation="Document" LastFixedDockLocation="Right" LastFloatingWindowGuid="00000000-0000-0000-0000-000000000000" LastDockContainerCount="0" LastDockContainerIndex="0" DockedWorkingSize="250, 400" DockedWindowGroupGuid="00000000-0000-0000-0000-000000000000" DockedIndexInWindowGroup="0" DockedSplitPath="0" DocumentWorkingSize="279.924866, 400" DocumentWindowGroupGuid="eaf7f658-d83d-42e2-a0c0-68cd1e2d05d1" DocumentIndexInWindowGroup="2" DocumentSplitPath="0|1" FloatingWorkingSize="250, 400" FloatingWindowGroupGuid="00000000-0000-0000-0000-000000000000" FloatingIndexInWindowGroup="0" FloatingSplitPath="0" /&gt;
+  &lt;Window Guid="592de8b9-e005-412c-9314-7ba21296dd8f" LastFocused="134364934764240752" DockedSize="200" PopupSize="0" FloatingLocation="-1, -1" FloatingSize="550, 400" LastOpenDockSituation="Document" LastFixedDockSituation="Document" LastFixedDockLocation="Right" LastFloatingWindowGuid="00000000-0000-0000-0000-000000000000" LastDockContainerCount="0" LastDockContainerIndex="0" DockedWorkingSize="250, 400" DockedWindowGroupGuid="00000000-0000-0000-0000-000000000000" DockedIndexInWindowGroup="0" DockedSplitPath="0" DocumentWorkingSize="279.924866, 400" DocumentWindowGroupGuid="eaf7f658-d83d-42e2-a0c0-68cd1e2d05d1" DocumentIndexInWindowGroup="1" DocumentSplitPath="0|1" FloatingWorkingSize="250, 400" FloatingWindowGroupGuid="00000000-0000-0000-0000-000000000000" FloatingIndexInWindowGroup="0" FloatingSplitPath="0" /&gt;
+  &lt;Window Guid="880be6d0-0598-4045-a88c-d9272d96bba0" LastFocused="134364934775617087" DockedSize="200" PopupSize="0" FloatingLocation="-1, -1" FloatingSize="550, 400" LastOpenDockSituation="Document" LastFixedDockSituation="Document" LastFixedDockLocation="Right" LastFloatingWindowGuid="00000000-0000-0000-0000-000000000000" LastDockContainerCount="0" LastDockContainerIndex="0" DockedWorkingSize="250, 400" DockedWindowGroupGuid="00000000-0000-0000-0000-000000000000" DockedIndexInWindowGroup="0" DockedSplitPath="0" DocumentWorkingSize="279.924866, 400" DocumentWindowGroupGuid="eaf7f658-d83d-42e2-a0c0-68cd1e2d05d1" DocumentIndexInWindowGroup="0" DocumentSplitPath="0|1" FloatingWorkingSize="250, 400" FloatingWindowGroupGuid="00000000-0000-0000-0000-000000000000" FloatingIndexInWindowGroup="0" FloatingSplitPath="0" /&gt;
+  &lt;Window Guid="7143f444-3a72-4f7d-9fa7-5f191743bf3d" LastFocused="134364934870206882" DockedSize="200" PopupSize="0" FloatingLocation="-1, -1" FloatingSize="550, 400" LastOpenDockSituation="Document" LastFixedDockSituation="Document" LastFixedDockLocation="Right" LastFloatingWindowGuid="00000000-0000-0000-0000-000000000000" LastDockContainerCount="0" LastDockContainerIndex="0" DockedWorkingSize="250, 400" DockedWindowGroupGuid="00000000-0000-0000-0000-000000000000" DockedIndexInWindowGroup="0" DockedSplitPath="0" DocumentWorkingSize="305.2226, 400" DocumentWindowGroupGuid="914be848-2224-414a-a66c-eb1d2b8ca81a" DocumentIndexInWindowGroup="1" DocumentSplitPath="0|0" FloatingWorkingSize="250, 400" FloatingWindowGroupGuid="00000000-0000-0000-0000-000000000000" FloatingIndexInWindowGroup="0" FloatingSplitPath="0" /&gt;
+  &lt;Window Guid="b59ad2e3-54ae-4f47-b5dd-d9e317ddb499" LastFocused="134364935152515390" DockedSize="200" PopupSize="0" FloatingLocation="-1, -1" FloatingSize="550, 400" LastOpenDockSituation="Document" LastFixedDockSituation="Document" LastFixedDockLocation="Right" LastFloatingWindowGuid="00000000-0000-0000-0000-000000000000" LastDockContainerCount="0" LastDockContainerIndex="0" DockedWorkingSize="250, 400" DockedWindowGroupGuid="00000000-0000-0000-0000-000000000000" DockedIndexInWindowGroup="0" DockedSplitPath="0" DocumentWorkingSize="305.2226, 400" DocumentWindowGroupGuid="914be848-2224-414a-a66c-eb1d2b8ca81a" DocumentIndexInWindowGroup="0" DocumentSplitPath="0|0" FloatingWorkingSize="250, 400" FloatingWindowGroupGuid="00000000-0000-0000-0000-000000000000" FloatingIndexInWindowGroup="0" FloatingSplitPath="0" /&gt;
+  &lt;Window Guid="d6304073-2eba-4a33-9e2e-c152a55fad31" LastFocused="134364935083407966" DockedSize="200" PopupSize="0" FloatingLocation="-1, -1" FloatingSize="550, 400" LastOpenDockSituation="Document" LastFixedDockSituation="Document" LastFixedDockLocation="Right" LastFloatingWindowGuid="00000000-0000-0000-0000-000000000000" LastDockContainerCount="0" LastDockContainerIndex="0" DockedWorkingSize="250, 400" DockedWindowGroupGuid="00000000-0000-0000-0000-000000000000" DockedIndexInWindowGroup="0" DockedSplitPath="0" DocumentWorkingSize="305.2226, 400" DocumentWindowGroupGuid="914be848-2224-414a-a66c-eb1d2b8ca81a" DocumentIndexInWindowGroup="2" DocumentSplitPath="0|0" FloatingWorkingSize="250, 400" FloatingWindowGroupGuid="00000000-0000-0000-0000-000000000000" FloatingIndexInWindowGroup="0" FloatingSplitPath="0" /&gt;
   &lt;DocumentContainer Dock="5"&gt;
     &lt;SplitLayoutSystem WorkingSize="250, 400" SplitMode="0"&gt;
       &lt;SplitLayoutSystem WorkingSize="303.693573, 400" SplitMode="1"&gt;
@@ -60,7 +60,7 @@
   <Name>Scope Project</Name>
   <RecordTime>600000000</RecordTime>
   <ServerVersions>
-    <Version>4.50.49.0</Version>
+    <Version>4.50.91.0</Version>
   </ServerVersions>
   <SortPriority>100</SortPriority>
   <StopMode>ClientStop</StopMode>
@@ -76,6 +76,7 @@
           <AmsNetId>169.254.221.1.1.1</AmsNetId>
           <Area>Local</Area>
           <ArrayLength>0</ArrayLength>
+          <ArrayLength2D>0</ArrayLength2D>
           <ArrayStartIndex>0</ArrayStartIndex>
           <BaseSampleTime>10000</BaseSampleTime>
           <ChannelStyleInformation />
@@ -101,7 +102,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>e2a3e982-7cdf-470b-bf3f-f3c07854b808</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>454264</IndexOffset>
+          <IndexOffset>455048</IndexOffset>
           <IsEvent>false</IsEvent>
           <IsHistorical>false</IsHistorical>
           <IsTimeline>false</IsTimeline>
@@ -146,7 +147,6 @@
           <SaveOption>IncludeDataInSVDX</SaveOption>
           <ServerHandle>0</ServerHandle>
           <SortPriority>10</SortPriority>
-          <SubAdsAcquisition />
           <SubMember>
             <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
               <Comment />
@@ -176,6 +176,7 @@
           <AmsNetId>169.254.221.1.1.1</AmsNetId>
           <Area>Local</Area>
           <ArrayLength>0</ArrayLength>
+          <ArrayLength2D>0</ArrayLength2D>
           <ArrayStartIndex>0</ArrayStartIndex>
           <BaseSampleTime>10000</BaseSampleTime>
           <ChannelStyleInformation />
@@ -201,7 +202,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>5283222f-278c-4b21-91dd-2ff7d15553d7</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>454256</IndexOffset>
+          <IndexOffset>455040</IndexOffset>
           <IsEvent>false</IsEvent>
           <IsHistorical>false</IsHistorical>
           <IsTimeline>false</IsTimeline>
@@ -246,7 +247,6 @@
           <SaveOption>IncludeDataInSVDX</SaveOption>
           <ServerHandle>0</ServerHandle>
           <SortPriority>10</SortPriority>
-          <SubAdsAcquisition />
           <SubMember>
             <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
               <Comment />
@@ -276,6 +276,7 @@
           <AmsNetId>169.254.221.1.1.1</AmsNetId>
           <Area>Local</Area>
           <ArrayLength>0</ArrayLength>
+          <ArrayLength2D>0</ArrayLength2D>
           <ArrayStartIndex>0</ArrayStartIndex>
           <BaseSampleTime>10000</BaseSampleTime>
           <ChannelStyleInformation />
@@ -301,7 +302,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>eebe1269-ee07-4f21-8851-0c073c57ed59</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>454280</IndexOffset>
+          <IndexOffset>455064</IndexOffset>
           <IsEvent>false</IsEvent>
           <IsHistorical>false</IsHistorical>
           <IsTimeline>false</IsTimeline>
@@ -346,7 +347,6 @@
           <SaveOption>IncludeDataInSVDX</SaveOption>
           <ServerHandle>0</ServerHandle>
           <SortPriority>10</SortPriority>
-          <SubAdsAcquisition />
           <SubMember>
             <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
               <Comment />
@@ -376,6 +376,7 @@
           <AmsNetId>169.254.221.1.1.1</AmsNetId>
           <Area>Local</Area>
           <ArrayLength>0</ArrayLength>
+          <ArrayLength2D>0</ArrayLength2D>
           <ArrayStartIndex>0</ArrayStartIndex>
           <BaseSampleTime>10000</BaseSampleTime>
           <ChannelStyleInformation />
@@ -401,7 +402,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>d1b7b4a4-b493-4ed7-b36c-8fae4cd6dadb</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>454272</IndexOffset>
+          <IndexOffset>455056</IndexOffset>
           <IsEvent>false</IsEvent>
           <IsHistorical>false</IsHistorical>
           <IsTimeline>false</IsTimeline>
@@ -446,7 +447,6 @@
           <SaveOption>IncludeDataInSVDX</SaveOption>
           <ServerHandle>0</ServerHandle>
           <SortPriority>10</SortPriority>
-          <SubAdsAcquisition />
           <SubMember>
             <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
               <Comment />
@@ -476,6 +476,7 @@
           <AmsNetId>169.254.221.1.1.1</AmsNetId>
           <Area>Local</Area>
           <ArrayLength>0</ArrayLength>
+          <ArrayLength2D>0</ArrayLength2D>
           <ArrayStartIndex>0</ArrayStartIndex>
           <BaseSampleTime>10000</BaseSampleTime>
           <ChannelStyleInformation />
@@ -501,7 +502,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>61700ffe-6acf-4eab-8e25-4eab0f6ed881</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>454296</IndexOffset>
+          <IndexOffset>455080</IndexOffset>
           <IsEvent>false</IsEvent>
           <IsHistorical>false</IsHistorical>
           <IsTimeline>false</IsTimeline>
@@ -546,7 +547,6 @@
           <SaveOption>IncludeDataInSVDX</SaveOption>
           <ServerHandle>0</ServerHandle>
           <SortPriority>10</SortPriority>
-          <SubAdsAcquisition />
           <SubMember>
             <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
               <Comment />
@@ -576,6 +576,7 @@
           <AmsNetId>169.254.221.1.1.1</AmsNetId>
           <Area>Local</Area>
           <ArrayLength>0</ArrayLength>
+          <ArrayLength2D>0</ArrayLength2D>
           <ArrayStartIndex>0</ArrayStartIndex>
           <BaseSampleTime>10000</BaseSampleTime>
           <ChannelStyleInformation />
@@ -601,7 +602,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>d2fd4e87-f11a-416d-9f61-b870360cc02b</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>454288</IndexOffset>
+          <IndexOffset>455072</IndexOffset>
           <IsEvent>false</IsEvent>
           <IsHistorical>false</IsHistorical>
           <IsTimeline>false</IsTimeline>
@@ -646,7 +647,6 @@
           <SaveOption>IncludeDataInSVDX</SaveOption>
           <ServerHandle>0</ServerHandle>
           <SortPriority>10</SortPriority>
-          <SubAdsAcquisition />
           <SubMember>
             <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
               <Comment />
@@ -676,6 +676,7 @@
           <AmsNetId>169.254.221.1.1.1</AmsNetId>
           <Area>Local</Area>
           <ArrayLength>0</ArrayLength>
+          <ArrayLength2D>0</ArrayLength2D>
           <ArrayStartIndex>0</ArrayStartIndex>
           <BaseSampleTime>10000</BaseSampleTime>
           <ChannelStyleInformation />
@@ -701,7 +702,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>1d2ff52b-9c16-4d75-8708-fd2f2e8cca13</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>454312</IndexOffset>
+          <IndexOffset>455096</IndexOffset>
           <IsEvent>false</IsEvent>
           <IsHistorical>false</IsHistorical>
           <IsTimeline>false</IsTimeline>
@@ -746,7 +747,6 @@
           <SaveOption>IncludeDataInSVDX</SaveOption>
           <ServerHandle>0</ServerHandle>
           <SortPriority>10</SortPriority>
-          <SubAdsAcquisition />
           <SubMember>
             <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
               <Comment />
@@ -776,6 +776,7 @@
           <AmsNetId>169.254.221.1.1.1</AmsNetId>
           <Area>Local</Area>
           <ArrayLength>0</ArrayLength>
+          <ArrayLength2D>0</ArrayLength2D>
           <ArrayStartIndex>0</ArrayStartIndex>
           <BaseSampleTime>10000</BaseSampleTime>
           <ChannelStyleInformation />
@@ -801,7 +802,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>52e6ecae-eab4-433d-beff-2893910478cd</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>454304</IndexOffset>
+          <IndexOffset>455088</IndexOffset>
           <IsEvent>false</IsEvent>
           <IsHistorical>false</IsHistorical>
           <IsTimeline>false</IsTimeline>
@@ -846,7 +847,6 @@
           <SaveOption>IncludeDataInSVDX</SaveOption>
           <ServerHandle>0</ServerHandle>
           <SortPriority>10</SortPriority>
-          <SubAdsAcquisition />
           <SubMember>
             <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
               <Comment />
@@ -876,6 +876,7 @@
           <AmsNetId>169.254.221.1.1.1</AmsNetId>
           <Area>Local</Area>
           <ArrayLength>0</ArrayLength>
+          <ArrayLength2D>0</ArrayLength2D>
           <ArrayStartIndex>0</ArrayStartIndex>
           <BaseSampleTime>10000</BaseSampleTime>
           <ChannelStyleInformation />
@@ -901,7 +902,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>d4d0a8df-33eb-4d8d-ae8a-ec8d6481f1e0</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>454328</IndexOffset>
+          <IndexOffset>455112</IndexOffset>
           <IsEvent>false</IsEvent>
           <IsHistorical>false</IsHistorical>
           <IsTimeline>false</IsTimeline>
@@ -946,7 +947,6 @@
           <SaveOption>IncludeDataInSVDX</SaveOption>
           <ServerHandle>0</ServerHandle>
           <SortPriority>10</SortPriority>
-          <SubAdsAcquisition />
           <SubMember>
             <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
               <Comment />
@@ -976,6 +976,7 @@
           <AmsNetId>169.254.221.1.1.1</AmsNetId>
           <Area>Local</Area>
           <ArrayLength>0</ArrayLength>
+          <ArrayLength2D>0</ArrayLength2D>
           <ArrayStartIndex>0</ArrayStartIndex>
           <BaseSampleTime>10000</BaseSampleTime>
           <ChannelStyleInformation />
@@ -1001,7 +1002,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>9b7cfe9b-b15e-44d4-9d70-b6fc278365f9</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>454320</IndexOffset>
+          <IndexOffset>455104</IndexOffset>
           <IsEvent>false</IsEvent>
           <IsHistorical>false</IsHistorical>
           <IsTimeline>false</IsTimeline>
@@ -1046,7 +1047,6 @@
           <SaveOption>IncludeDataInSVDX</SaveOption>
           <ServerHandle>0</ServerHandle>
           <SortPriority>10</SortPriority>
-          <SubAdsAcquisition />
           <SubMember>
             <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
               <Comment />
@@ -1076,6 +1076,7 @@
           <AmsNetId>169.254.221.1.1.1</AmsNetId>
           <Area>Local</Area>
           <ArrayLength>0</ArrayLength>
+          <ArrayLength2D>0</ArrayLength2D>
           <ArrayStartIndex>0</ArrayStartIndex>
           <BaseSampleTime>10000</BaseSampleTime>
           <ChannelStyleInformation />
@@ -1101,7 +1102,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>4350421d-f0df-4cee-952a-88c05665f811</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>454344</IndexOffset>
+          <IndexOffset>455128</IndexOffset>
           <IsEvent>false</IsEvent>
           <IsHistorical>false</IsHistorical>
           <IsTimeline>false</IsTimeline>
@@ -1146,7 +1147,6 @@
           <SaveOption>IncludeDataInSVDX</SaveOption>
           <ServerHandle>0</ServerHandle>
           <SortPriority>10</SortPriority>
-          <SubAdsAcquisition />
           <SubMember>
             <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
               <Comment />
@@ -1176,6 +1176,7 @@
           <AmsNetId>169.254.221.1.1.1</AmsNetId>
           <Area>Local</Area>
           <ArrayLength>0</ArrayLength>
+          <ArrayLength2D>0</ArrayLength2D>
           <ArrayStartIndex>0</ArrayStartIndex>
           <BaseSampleTime>10000</BaseSampleTime>
           <ChannelStyleInformation />
@@ -1201,7 +1202,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>0e7944f4-6022-45df-9dfe-7a08e57096ff</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>454336</IndexOffset>
+          <IndexOffset>455120</IndexOffset>
           <IsEvent>false</IsEvent>
           <IsHistorical>false</IsHistorical>
           <IsTimeline>false</IsTimeline>
@@ -1246,7 +1247,6 @@
           <SaveOption>IncludeDataInSVDX</SaveOption>
           <ServerHandle>0</ServerHandle>
           <SortPriority>10</SortPriority>
-          <SubAdsAcquisition />
           <SubMember>
             <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
               <Comment />
@@ -1333,6 +1333,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>False</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -1372,6 +1373,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style</Name>
                   <Precision>5</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>False</ShowName>
                   <ShowUnit>None</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -1728,9 +1730,9 @@
                 </PropertyUpdater>
               </SubMember>
               <Title>AngularShape_166</Title>
-              <XOffset>180.009322340329</XOffset>
+              <XOffset>120.00039065396</XOffset>
               <XScalefactor>1</XScalefactor>
-              <YOffset>247.33839161871</YOffset>
+              <YOffset>359.997331077817</YOffset>
               <YScalefactor>1</YScalefactor>
             </AngularShape>
             <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -2278,7 +2280,7 @@
               <Bandwidth>0</Bandwidth>
               <Comment />
               <DisplayColor>-23296</DisplayColor>
-              <Guid>be4790da-8324-45bf-8ba7-436603715d83</Guid>
+              <Guid>32f05322-038f-4dce-be01-95e9a186aed9</Guid>
               <LineStyle>Solid</LineStyle>
               <Locked>false</Locked>
               <Marker3DType>AllPoints</Marker3DType>
@@ -2338,6 +2340,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (3)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>False</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -2377,6 +2380,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (4)</Name>
                   <Precision>5</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>False</ShowName>
                   <ShowUnit>None</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -2816,9 +2820,9 @@
                 </PropertyUpdater>
               </SubMember>
               <Title>AngularShape_172</Title>
-              <XOffset>59.9672977292287</XOffset>
+              <XOffset>120.00176377762</XOffset>
               <XScalefactor>1</XScalefactor>
-              <YOffset>232.683485927195</YOffset>
+              <YOffset>120.001771352592</YOffset>
               <YScalefactor>1</YScalefactor>
             </AngularShape>
             <AngularShape AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -3241,6 +3245,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (2)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>True</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -3286,15 +3291,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>milli</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>m</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>1</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>milli</Prefix>
                       <ReturnText>mm (Length) </ReturnText>
@@ -3305,10 +3310,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>Length</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
@@ -3429,6 +3434,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (1)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>False</ShowName>
                   <ShowUnit>None</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -3481,6 +3487,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (21)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>True</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -3526,15 +3533,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>milli</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>m</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>1</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>milli</Prefix>
                       <ReturnText>mm (Length) </ReturnText>
@@ -3545,10 +3552,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>Length</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
@@ -3681,6 +3688,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (22)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>True</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -3726,15 +3734,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>milli</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>m</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>1</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>milli</Prefix>
                       <ReturnText>mm (Length) </ReturnText>
@@ -3745,10 +3753,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>Length</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
@@ -3881,6 +3889,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (24)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>True</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -3926,15 +3935,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
@@ -3945,10 +3954,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>Degrees</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
@@ -4081,6 +4090,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (25)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>True</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -4126,15 +4136,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
@@ -4145,10 +4155,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>Degrees</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
@@ -4281,6 +4291,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (23)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>True</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -4326,15 +4337,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
@@ -4345,10 +4356,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>Degrees</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
@@ -4467,7 +4478,7 @@
       <LayerEndTimestamp>0</LayerEndTimestamp>
       <LayerEndTriggerGroupOffset>0</LayerEndTriggerGroupOffset>
       <LayerLength>0</LayerLength>
-      <MasterChart>592de8b9-e005-412c-9314-7ba21296dd8f</MasterChart>
+      <MasterChart>00000000-0000-0000-0000-000000000000</MasterChart>
       <MaxResolution>120000</MaxResolution>
       <Name>XYZ Chart</Name>
       <ShowImageChart>false</ShowImageChart>
@@ -4501,7 +4512,7 @@
               </ButtonSize>
               <Comment />
               <DisplayColor>Black</DisplayColor>
-              <EnabledButtons>UnzoomButton OverviewButton Splitter6 MasterLabel CopyToClipboard ZoomXYZPoint PanningXYZChart</EnabledButtons>
+              <EnabledButtons>RunButton PauseButton Splitter1 DisplaywidthTextBox Splitter2 ScrollBackBig ScrollBackSmall ScrollForwardSmall ScrollForwardBig Splitter3 PositionTextBox Splitter4 UndoButton RedoButton Splitter5 UnzoomButton ZoomOutMaxButton OverviewButton CopyToClipboard ZoomXYZPoint PanningXYZChart</EnabledButtons>
               <EnabledTimeLabels>All</EnabledTimeLabels>
               <Guid>e7c9318d-4276-4615-b440-d59b921f466b</Guid>
               <IndexNavigation>false</IndexNavigation>
@@ -4563,6 +4574,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (5)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>True</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -4602,6 +4614,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (6)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>True</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -4641,6 +4654,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (7)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>True</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -5316,6 +5330,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (19)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>True</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -5361,15 +5376,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>milli</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>m</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>1</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>milli</Prefix>
                       <ReturnText>mm (Length) </ReturnText>
@@ -5380,10 +5395,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>Length</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
@@ -5504,6 +5519,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (17)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>False</ShowName>
                   <ShowUnit>None</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -5556,6 +5572,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (15)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>True</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -5601,15 +5618,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>milli</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>m</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>1</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>milli</Prefix>
                       <ReturnText>mm (Length) </ReturnText>
@@ -5620,10 +5637,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>Length</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
@@ -5756,6 +5773,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (20)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>True</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -5801,15 +5819,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>milli</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>m</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>1</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>milli</Prefix>
                       <ReturnText>mm (Length) </ReturnText>
@@ -5820,10 +5838,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>Length</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
@@ -5956,6 +5974,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (16)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>True</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -6001,15 +6020,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
@@ -6020,10 +6039,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>Degrees</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
@@ -6156,6 +6175,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (9)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>True</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -6201,15 +6221,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
@@ -6220,10 +6240,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>Degrees</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
@@ -6356,6 +6376,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (18)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>True</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -6401,15 +6422,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
@@ -6420,10 +6441,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>Degrees</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
@@ -6584,6 +6605,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (8)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>False</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -6623,6 +6645,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (10)</Name>
                   <Precision>5</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>False</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -7175,9 +7198,9 @@
                 </PropertyUpdater>
               </SubMember>
               <Title>AngularShape_166</Title>
-              <XOffset>247.33839161871</XOffset>
+              <XOffset>359.997331077817</XOffset>
               <XScalefactor>1</XScalefactor>
-              <YOffset>180.009322340329</YOffset>
+              <YOffset>120.00039065396</YOffset>
               <YScalefactor>1</YScalefactor>
             </AngularShape>
             <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -7529,7 +7552,7 @@
               <Bandwidth>0</Bandwidth>
               <Comment />
               <DisplayColor>-16711936</DisplayColor>
-              <Guid>6fef3274-9552-4c42-a82f-3515e5a52511</Guid>
+              <Guid>6f29a73e-dd90-483a-89e2-9954e39b6347</Guid>
               <LineStyle>Solid</LineStyle>
               <Locked>false</Locked>
               <Marker3DType>AllPoints</Marker3DType>
@@ -7589,6 +7612,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (11)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>False</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -7628,6 +7652,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (12)</Name>
                   <Precision>5</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>False</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -8067,9 +8092,9 @@
                 </PropertyUpdater>
               </SubMember>
               <Title>AngularShape_172</Title>
-              <XOffset>232.683485927195</XOffset>
+              <XOffset>120.001771352592</XOffset>
               <XScalefactor>1</XScalefactor>
-              <YOffset>59.9672977292287</YOffset>
+              <YOffset>120.00176377762</YOffset>
               <YScalefactor>1</YScalefactor>
             </AngularShape>
             <AngularShape AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -8483,6 +8508,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (26)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>True</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -8533,6 +8559,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (14)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>False</ShowName>
                   <ShowUnit>None</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -8561,7 +8588,7 @@
                   <Comment />
                   <DisplayColor>Black</DisplayColor>
                   <Guid>ccc0ffdd-8644-4cf1-beae-62be213e2ae0</Guid>
-                  <Name>Y: MoverPositions[1].x (1)</Name>
+                  <Name>Y: MoverPositions[1].x</Name>
                   <Offset>0</Offset>
                   <ResultingUnit>
                     <Transformation>
@@ -8569,15 +8596,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>milli</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>m</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>1</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>milli</Prefix>
                       <ReturnText>mm (Length) </ReturnText>
@@ -8588,10 +8615,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>Length</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
@@ -8699,7 +8726,7 @@
                   <Comment />
                   <DisplayColor>Black</DisplayColor>
                   <Guid>b7db384f-1fd1-4571-993a-fc0256158e1f</Guid>
-                  <Name>Y: MoverPositions[2].x (1)</Name>
+                  <Name>Y: MoverPositions[2].x</Name>
                   <Offset>0</Offset>
                   <ResultingUnit>
                     <Transformation>
@@ -8707,15 +8734,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>milli</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>m</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>1</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>milli</Prefix>
                       <ReturnText>mm (Length) </ReturnText>
@@ -8726,10 +8753,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>Length</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
@@ -8861,6 +8888,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (27)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>True</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -8899,7 +8927,7 @@
                   <Comment />
                   <DisplayColor>Black</DisplayColor>
                   <Guid>55afcbfa-124f-42d3-8964-1f5f7a774a0a</Guid>
-                  <Name>Y: MoverPositions[2].y (1)</Name>
+                  <Name>Y: MoverPositions[2].y</Name>
                   <Offset>0</Offset>
                   <ResultingUnit>
                     <Transformation>
@@ -8907,15 +8935,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>milli</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>m</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>1</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>milli</Prefix>
                       <ReturnText>mm (Length) </ReturnText>
@@ -8926,10 +8954,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>Length</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
@@ -9037,7 +9065,7 @@
                   <Comment />
                   <DisplayColor>Black</DisplayColor>
                   <Guid>86a31883-e2a4-4abf-800f-75e51a55c6c0</Guid>
-                  <Name>Y: MoverPositions[1].y (1)</Name>
+                  <Name>Y: MoverPositions[1].y</Name>
                   <Offset>0</Offset>
                   <ResultingUnit>
                     <Transformation>
@@ -9045,15 +9073,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>milli</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>m</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>1</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>milli</Prefix>
                       <ReturnText>mm (Length) </ReturnText>
@@ -9064,10 +9092,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>Length</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
@@ -9199,6 +9227,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (28)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>True</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -9237,7 +9266,7 @@
                   <Comment />
                   <DisplayColor>Black</DisplayColor>
                   <Guid>ffd1c451-7b81-406b-9ee7-cfd4b6849e79</Guid>
-                  <Name>Y: MoverPositions[1].z (1)</Name>
+                  <Name>Y: MoverPositions[1].z</Name>
                   <Offset>0</Offset>
                   <ResultingUnit>
                     <Transformation>
@@ -9245,15 +9274,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>milli</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>m</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>1</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>milli</Prefix>
                       <ReturnText>mm (Length) </ReturnText>
@@ -9264,10 +9293,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>Length</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
@@ -9375,7 +9404,7 @@
                   <Comment />
                   <DisplayColor>Black</DisplayColor>
                   <Guid>56c6d84d-644d-41d0-8a8f-b720f7c5495e</Guid>
-                  <Name>Y: MoverPositions[2].z (1)</Name>
+                  <Name>Y: MoverPositions[2].z</Name>
                   <Offset>0</Offset>
                   <ResultingUnit>
                     <Transformation>
@@ -9383,15 +9412,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>milli</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>m</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>1</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>milli</Prefix>
                       <ReturnText>mm (Length) </ReturnText>
@@ -9402,10 +9431,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>Length</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>1</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
@@ -9537,6 +9566,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (30)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>True</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -9575,7 +9605,7 @@
                   <Comment />
                   <DisplayColor>Black</DisplayColor>
                   <Guid>db5f3132-c200-4249-ae53-df331f147d9e</Guid>
-                  <Name>Y: MoverPositions[1].a (1)</Name>
+                  <Name>Y: MoverPositions[1].a</Name>
                   <Offset>0</Offset>
                   <ResultingUnit>
                     <Transformation>
@@ -9583,15 +9613,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
@@ -9602,10 +9632,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>Degrees</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
@@ -9713,7 +9743,7 @@
                   <Comment />
                   <DisplayColor>Black</DisplayColor>
                   <Guid>63272cb6-c456-4611-b5a0-2051b9d7926b</Guid>
-                  <Name>Y: MoverPositions[2].a (1)</Name>
+                  <Name>Y: MoverPositions[2].a</Name>
                   <Offset>0</Offset>
                   <ResultingUnit>
                     <Transformation>
@@ -9721,15 +9751,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
@@ -9740,10 +9770,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>Degrees</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
@@ -9876,6 +9906,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (13)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>True</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -9913,7 +9944,7 @@
                   <Comment />
                   <DisplayColor>Black</DisplayColor>
                   <Guid>a3cd6887-eae2-424d-87da-0325fd2b4bcb</Guid>
-                  <Name>Y: MoverPositions[1].b (1)</Name>
+                  <Name>Y: MoverPositions[1].b</Name>
                   <Offset>0</Offset>
                   <ResultingUnit>
                     <Transformation>
@@ -9921,15 +9952,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
@@ -9940,10 +9971,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>Degrees</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
@@ -10051,7 +10082,7 @@
                   <Comment />
                   <DisplayColor>Black</DisplayColor>
                   <Guid>44367313-6fa1-44e5-a656-fbfe81d74c81</Guid>
-                  <Name>Y: MoverPositions[2].b (1)</Name>
+                  <Name>Y: MoverPositions[2].b</Name>
                   <Offset>0</Offset>
                   <ResultingUnit>
                     <Transformation>
@@ -10059,15 +10090,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
@@ -10078,10 +10109,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>Degrees</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
@@ -10214,6 +10245,7 @@
                   <LineWidth>1</LineWidth>
                   <Name>Axis Style (29)</Name>
                   <Precision>6</Precision>
+                  <ShowEnum>AllChannels</ShowEnum>
                   <ShowName>True</ShowName>
                   <ShowUnit>AllChannels</ShowUnit>
                   <SortPriority>100</SortPriority>
@@ -10251,7 +10283,7 @@
                   <Comment />
                   <DisplayColor>Black</DisplayColor>
                   <Guid>cff951b9-3552-4ec6-aac6-a028bea03a74</Guid>
-                  <Name>Y: MoverPositions[1].c (1)</Name>
+                  <Name>Y: MoverPositions[1].c</Name>
                   <Offset>0</Offset>
                   <ResultingUnit>
                     <Transformation>
@@ -10259,15 +10291,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
@@ -10278,10 +10310,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>Degrees</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
@@ -10389,7 +10421,7 @@
                   <Comment />
                   <DisplayColor>Black</DisplayColor>
                   <Guid>3b2405ba-c3a6-495e-ada2-8480a64edec3</Guid>
-                  <Name>Y: MoverPositions[2].c (1)</Name>
+                  <Name>Y: MoverPositions[2].c</Name>
                   <Offset>0</Offset>
                   <ResultingUnit>
                     <Transformation>
@@ -10397,15 +10429,15 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
@@ -10416,10 +10448,10 @@
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>Degrees</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
