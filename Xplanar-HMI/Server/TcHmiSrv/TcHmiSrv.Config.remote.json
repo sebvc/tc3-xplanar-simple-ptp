@@ -6,6 +6,7 @@
     "MAXREQUESTSIZE": 1048576,
     "REQUIREAUTH": 2,
     "VIRTUALDIRECTORIES": {
-        "/": "www"
+        "/": "www",
+        "/localDocs": "C:\\Program Files (x86)\\Beckhoff\\TwinCAT\\Functions\\TF2000-HMI-Server-Documentation\\"
     }
 }
