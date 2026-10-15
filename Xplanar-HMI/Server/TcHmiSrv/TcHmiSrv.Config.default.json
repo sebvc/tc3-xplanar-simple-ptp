@@ -9638,12 +9638,13 @@
     "VIRTUALDIRECTORIES": {
         "/": "..\\..\\Xplanar-HMI\\",
         "/Beckhoff.TwinCAT.HMI.BaseTemplate": "..\\..\\Packages\\Beckhoff.TwinCAT.HMI.BaseTemplate.14.7.4\\runtimes\\native1.12-tchmi",
-        "/Beckhoff.TwinCAT.HMI.Controls": "..\\..\\Packages\\Beckhoff.TwinCAT.HMI.Controls.14.9.10\\runtimes\\native1.12-tchmi",
+        "/Beckhoff.TwinCAT.HMI.Controls": "..\\..\\Packages\\Beckhoff.TwinCAT.HMI.Controls.14.9.11\\runtimes\\native1.12-tchmi",
         "/Beckhoff.TwinCAT.HMI.EcDiagnosticsControl": "..\\..\\Packages\\Beckhoff.TwinCAT.HMI.EcDiagnosticsControl.14.7.11\\runtimes\\native1.12-tchmi",
         "/Beckhoff.TwinCAT.HMI.Framework": "..\\..\\Packages\\Beckhoff.TwinCAT.HMI.Framework.14.7.23\\runtimes\\native1.12-tchmi",
         "/Beckhoff.TwinCAT.HMI.Functions": "..\\..\\Packages\\Beckhoff.TwinCAT.HMI.Functions.14.7.3\\runtimes\\native1.12-tchmi",
         "/Beckhoff.TwinCAT.HMI.ScopeControl": "..\\..\\Packages\\Beckhoff.TwinCAT.HMI.ScopeControl.14.4.1\\runtimes\\native1.12-tchmi",
         "/XPlanarView": "..\\..\\Packages\\XPlanarView.1.2.3\\runtimes\\native1.12-tchmi",
-        "/bin": "..\\..\\Xplanar-HMI\\bin\\"
+        "/bin": "..\\..\\Xplanar-HMI\\bin\\",
+        "/localDocs": "C:\\Program Files (x86)\\Beckhoff\\TwinCAT\\Functions\\TF2000-HMI-Server-Documentation\\"
     }
 }

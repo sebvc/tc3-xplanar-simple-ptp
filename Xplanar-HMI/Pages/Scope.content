@@ -76,7 +76,7 @@
             <div id="TcHmiScopeControl_XY" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiScopeControl.TcHmiScopeControl" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-top="5" data-tchmi-top-unit="px" data-tchmi-enable-record-controls="False" data-tchmi-enable-show-trigger-window="False" data-tchmi-server-interval="100" data-tchmi-opacity="1" data-tchmi-chart-color-source="Theme" data-tchmi-trigger-window-position="Left" data-tchmi-autostart-record="True" data-tchmi-right="5" data-tchmi-bottom="5" data-tchmi-creator-visibility="Visible">
 <script data-tchmi-target-attribute="data-tchmi-scope-config" type="application/json">
 {
-  "name": "XPlanar-Scope",
+  "name": "Xplanar-Scope2",
   "chart": "XY Chart"
 }
 </script>
@@ -99,7 +99,7 @@
 
 <script data-tchmi-target-attribute="data-tchmi-scope-config" type="application/json">
 {
-  "name": "XPlanar-Scope",
+  "name": "Xplanar-Scope2",
   "chart": "YT Chart (Both)"
 }
 </script>
@@ -142,7 +142,7 @@
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiScopeControl.Config",
                   "value": {
-                    "name": "XPlanar-Scope",
+                    "name": "Xplanar-Scope2",
                     "chart": "M1 YT Chart"
                   }
                 },
@@ -160,7 +160,7 @@
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiScopeControl.Config",
                   "value": {
-                    "name": "XPlanar-Scope",
+                    "name": "Xplanar-Scope2",
                     "chart": "M2 YT Chart"
                   }
                 },
