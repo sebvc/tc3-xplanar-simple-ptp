@@ -55,6 +55,11 @@
       "name": "Fonts/Fonts.css",
       "description": "",
       "type": "Stylesheet"
+    },
+    {
+      "name": "UserControls/AdsBlock/togglePlc1State.js",
+      "description": "",
+      "type": "EsModule"
     }
   ],
   "userControls": [
@@ -146,7 +151,11 @@
       "preloadBindings": false
     }
   ],
-  "userFunctions": [],
+  "userFunctions": [
+    {
+      "url": "UserControls/AdsBlock/togglePlc1State.js"
+    }
+  ],
   "symbols": {
     "internal": {
       "MediaQueryList": {

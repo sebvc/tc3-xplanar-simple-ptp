@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Xplanar_HMI</title>
-  <meta name="tchmi-buildtime" content="2026-10-14T17:32:48">
+  <meta name="tchmi-buildtime" content="2026-10-16T19:02:25">
 
   <!-- target-densitydpi=device-dpi -->
   <meta name="viewport" content="width=device-width"><script>
@@ -27,9 +27,9 @@
   },
   "Beckhoff.TwinCAT.HMI.EcDiagnostics": {
     "version": "25.0.122",
-    "authors": "Beckhoff",
-    "title": "EcDiagnostics",
-    "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides the extension for the TwinCAT HMI Server to enable the fieldbus diagnostics of EtherCAT topologies in TwinCAT HMI applications."
+    "authors": "",
+    "title": "",
+    "description": ""
   },
   "Beckhoff.TwinCAT.HMI.EcDiagnosticsControl": {
     "version": "14.7.11",
@@ -51,9 +51,9 @@
   },
   "Beckhoff.TwinCAT.HMI.Scope": {
     "version": "14.2.7758",
-    "authors": "Beckhoff",
-    "title": "Scope Extension",
-    "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides the extension for the TwinCAT HMI Server to enable TwinCAT Scope support for analysis and charting in TwinCAT HMI applications."
+    "authors": "",
+    "title": "",
+    "description": ""
   },
   "Beckhoff.TwinCAT.HMI.ScopeControl": {
     "version": "14.4.1",
@@ -63,15 +63,15 @@
   },
   "Beckhoff.TwinCAT.HMI.Server.Engineering": {
     "version": "25.0.122",
-    "authors": "Beckhoff",
-    "title": "TcHmiSrv",
-    "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides the TwinCAT HMI Server for the engineering."
+    "authors": "",
+    "title": "",
+    "description": ""
   },
   "Microsoft.TypeScript.MSBuild": {
-    "version": "5.9.2",
-    "authors": "Microsoft",
-    "title": "Microsoft.TypeScript.MSBuild",
-    "description": "The TypeScript MSBuild task, and matching compiler version."
+    "version": "7.0.1",
+    "authors": "",
+    "title": "",
+    "description": ""
   },
   "XPlanarView": {
     "version": "1.2.3",
@@ -284,92 +284,12 @@
 <script src="/Beckhoff.TwinCAT.HMI.ScopeControl/dist/TcHmiScopeControl/TcHmiScopeControl.esm.js" type="module"></script>
 <script src="/Beckhoff.TwinCAT.HMI.ScopeControl/dist/ScopeDisableCellClassesProvider/ScopeDisableCellClassesProvider.esm.js" type="module"></script>
 <script src="/XPlanarView/XPlanarView/XPlanarView.js" defer=""></script>
+<script src="/UserControls/AdsBlock/togglePlc1State.js" type="module"></script>
 </head>
 <body class="tchmi-body-designer">
-	<div id="EtherCATDiagnostics" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="100" data-tchmi-width-unit="%" data-tchmi-height="100" data-tchmi-height-unit="%" data-tchmi-creator-viewport-width="640" data-tchmi-creator-viewport-height="600" data-tchmi-creator-partial-key="/Pages/EtherCATDiagnostics.content">
-
-  <div id="TcHmiTextblock_EtherCATDiagnostics_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="48" data-tchmi-height-unit="px" data-tchmi-left="26" data-tchmi-left-unit="px" data-tchmi-text="%l%L_EtherCATDiagnostics%/l%" data-tchmi-top="16" data-tchmi-top-unit="px" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-right="6">
-    <script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
-      [
-      "headline-2"
-      ]
-    </script>
-  </div>
-  <div id="TcHmiContainer_EtherCATDiagnostics_1" data-tchmi-type="TcHmi.Controls.System.TcHmiContainer" data-tchmi-height-unit="px" data-tchmi-left="16" data-tchmi-left-unit="px" data-tchmi-top="64" data-tchmi-top-unit="px" data-tchmi-width-unit="px" data-tchmi-right-unit="px" data-tchmi-right="16" data-tchmi-bottom="16">
-
-    <script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
-      [
-      "background-container"
-      ]
-    </script>
-
-    <div id="TcHmiEcDiagnostics_EtherCATDiagnostics_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEcDiagnostics" data-tchmi-allow-zoom-and-pan="true" data-tchmi-device="XPlanar" data-tchmi-left="16" data-tchmi-left-unit="px" data-tchmi-toolbox-reset-view="true" data-tchmi-top="16" data-tchmi-top-unit="px" data-tchmi-right="16" data-tchmi-bottom="16">
-    </div>
-  </div>
-<div id="TcHmiToggleSwitch_EtherCatDiag" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiToggleSwitch" data-tchmi-height="40" data-tchmi-height-unit="px" data-tchmi-text="Change EtherCAT Device" data-tchmi-top="16" data-tchmi-top-unit="px" data-tchmi-text-horizontal-alignment="Right" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-position="Left" data-tchmi-right="32" data-tchmi-is-enabled="True" data-tchmi-toggle-state="Normal">
-
-<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
-[
-  {
-    "event": "%ctx%owner::Id|EventRegistrationMode=Resolve%/ctx%.onToggleStateChanged",
-    "actions": [
-      {
-        "objectType": "Condition",
-        "active": true,
-        "parts": [
-          {
-            "if": [
-              {
-                "compare1": {
-                  "objectType": "FunctionExpression",
-                  "functionExpression": "%ctx%owner::ToggleState%/ctx%"
-                },
-                "compare2": {
-                  "objectType": "StaticValue",
-                  "valueType": "tchmi:framework#/definitions/ToggleState",
-                  "value": "Normal"
-                },
-                "compareOperator": "==",
-                "logic": null
-              }
-            ],
-            "then": [
-              {
-                "objectType": "WriteToSymbol",
-                "active": true,
-                "symbolExpression": "%ctrl%TcHmiEcDiagnostics_EtherCATDiagnostics_1::Device%/ctrl%",
-                "value": {
-                  "objectType": "StaticValue",
-                  "valueType": "tchmi:general#/definitions/String",
-                  "value": "XPlanar"
-                },
-                "asyncWait": true
-              }
-            ]
-          },
-          {
-            "else": [
-              {
-                "objectType": "WriteToSymbol",
-                "active": true,
-                "symbolExpression": "%ctrl%TcHmiEcDiagnostics_EtherCATDiagnostics_1::Device%/ctrl%",
-                "value": {
-                  "objectType": "StaticValue",
-                  "valueType": "tchmi:general#/definitions/String",
-                  "value": "IO (EtherCAT)"
-                },
-                "asyncWait": true
-              }
-            ]
-          }
-        ],
-        "asyncWait": true
-      }
-    ]
-  }
-]
-</script>
+	<div id="AdsXarPopUp_1" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="100" data-tchmi-height="100" data-tchmi-min-width="100" data-tchmi-min-height="100" data-tchmi-width-unit="%" data-tchmi-height-unit="%" data-tchmi-creator-partial-key="/UserControls/AdsBlock/AdsPlcPopUp.content"><div id="TcHmiTextblock_19" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Do you want to Change the Current PLC State?" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size-unit="%" data-tchmi-text-font-size="300" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-horizontal-alignment="Center" data-tchmi-horizontal-scroll="Auto" data-tchmi-vertical-scroll="Auto" data-tchmi-right="0" data-tchmi-bottom="0">
 </div>
 </div>
+
 </body>
 </html>
